@@ -65,6 +65,7 @@ public class BannerItem : BannerBase {
 		//UIAtlas atlas = AtlasManager.Instance.GetAtlas (strIcon);
 		//m_sprIcon.atlas = atlas;
 		m_sprIcon.sprite2D = SpriteManager.Instance.Load( strIcon );
+		SpriteIconAdjust (m_sprIcon);
 
 		SetPrice (_data);
 

@@ -84,6 +84,25 @@ public class BannerBase : MonoBehaviour {
 		return;
 	}
 
+	protected void SpriteIconAdjust( UI2DSprite _sprite ){
+		_sprite.width = (int)_sprite.sprite2D.textureRect.width;
+		_sprite.height = (int)_sprite.sprite2D.textureRect.height;
+		float set_size = 120.0f;
+
+		if (_sprite.width < _sprite.height) {
+			float rate = set_size / (float)_sprite.height;
+			_sprite.width = (int)(_sprite.width * rate);
+			_sprite.height = (int)set_size;
+		} else {
+			float rate = set_size / (float)_sprite.width;
+			_sprite.width = (int)set_size;
+			_sprite.height = (int)(_sprite.height * rate);
+		}
+
+
+		return;
+	}
+
 	public string SetReasonSprite( UI2DSprite _sprite , ABLE_BUY_REASON _eReason ){
 		string strRet = "";
 		switch (_eReason) {

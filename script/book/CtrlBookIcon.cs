@@ -34,6 +34,8 @@ public class CtrlBookIcon : ButtonBase {
 			m_sprMonster.color = Color.black;
 			m_lbName.text = "？？？？？？";
 		}
+		m_sprMonster.width = (int)m_sprMonster.sprite2D.textureRect.width;
+		m_sprMonster.height = (int)m_sprMonster.sprite2D.textureRect.height;
 		return bRet;
 	}
 	public bool Initialize( int _iMonsterId , GameObject _posDisplay ){
