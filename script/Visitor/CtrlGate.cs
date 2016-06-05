@@ -23,8 +23,17 @@ public class CtrlGate : MonoBehaviour {
 	public void Initialize(int _iX , int _iY ){
 		m_iX = _iX;
 		m_iY = _iY;
-		m_iCapacity = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL);
+		m_iCapacity = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL) / 2 ;
 		m_eStep = STEP.IDLE;
+		bool bDispVisitor = true;
+		if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
+			if (DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
+				bDispVisitor = false;
+			}
+		}
+		if (bDispVisitor == false) {
+			m_eStep = STEP.MAX;
+		}
 		m_eStepPre = STEP.MAX;
 		return;
 	}
@@ -98,6 +107,10 @@ public class CtrlGate : MonoBehaviour {
 				}
 			}
 			m_eStep = STEP.IDLE;
+			break;
+
+		case STEP.MAX:
+		default:
 			break;
 
 		}

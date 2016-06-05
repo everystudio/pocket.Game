@@ -38,6 +38,7 @@ public class DataManager : DataManagerBase <DataManager>{
 	public readonly string KEY_SHARE_MESSAGE_IOS = "key_share_message_ios";
 
 	public readonly string KEY_TOUCHABLE_FIELD_NAME = "parkRootTouchable";
+	public readonly string KEY_DISP_VISITOR = "key_disp_visitor";
 
 	/*
 	 * 

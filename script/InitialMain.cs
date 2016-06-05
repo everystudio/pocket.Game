@@ -77,7 +77,10 @@ public class InitialMain : MonoBehaviour {
 	}
 	#endregion
 
-
+	[SerializeField]
+	private ButtonBase m_btnVisitorDisp;
+	[SerializeField]
+	private UILabel m_lbVisitorDisp;
 
 	// Use this for initialization
 	void Start () {
@@ -109,7 +112,31 @@ public class InitialMain : MonoBehaviour {
 				*/
 		#endif
 
+		SpriteManager.Instance.LoadAtlas ("atlas/ad001");
+		SpriteManager.Instance.LoadAtlas ("atlas/item001");
+		SpriteManager.Instance.LoadAtlas ("atlas/item002");
+		SpriteManager.Instance.LoadAtlas ("atlas/item003");
+		SpriteManager.Instance.LoadAtlas ("atlas/item004");
+		SpriteManager.Instance.LoadAtlas ("atlas/item005");
+		SpriteManager.Instance.LoadAtlas ("atlas/monster001");
+		SpriteManager.Instance.LoadAtlas ("atlas/monster002");
+		SpriteManager.Instance.LoadAtlas ("atlas/staff001");
+		SpriteManager.Instance.LoadAtlas ("atlas/tutorial001");
+		SpriteManager.Instance.LoadAtlas ("atlas/tutorial002");
+		SpriteManager.Instance.LoadAtlas ("atlas/tutorial003");
+		SpriteManager.Instance.LoadAtlas ("atlas/ui001");
+		SpriteManager.Instance.LoadAtlas ("atlas/ui002");
+		SpriteManager.Instance.LoadAtlas ("atlas/ui003");
 
+		bool bDispVisitor = true;
+		if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
+			if (DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
+				bDispVisitor = false;
+			}
+		}
+		if (bDispVisitor == false) {
+			m_lbVisitorDisp.text = "非表示";
+		}
 	}
 	
 	// Update is called once per frame
@@ -120,6 +147,24 @@ public class InitialMain : MonoBehaviour {
 			m_eStepPre  = m_eStep;
 			bInit = true;
 			//Debug.LogError (m_eStep);
+		}
+
+		if (m_btnVisitorDisp.ButtonPushed) {
+			m_btnVisitorDisp.TriggerClear ();
+			SoundManager.Instance.PlaySE( SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+			int set_disp_visitor = 0;
+			if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
+				if (DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
+					set_disp_visitor = 1;
+				}
+			}
+
+			if (set_disp_visitor == 0) {
+				m_lbVisitorDisp.text = "非表示";
+			} else {
+				m_lbVisitorDisp.text = "表示";
+			}
+			DataManager.Instance.data_kvs.WriteInt ( DataManager.Instance.KEY_DISP_VISITOR , set_disp_visitor);
 		}
 
 		switch (m_eStep) {

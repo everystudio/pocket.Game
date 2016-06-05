@@ -149,8 +149,8 @@ public class CtrlIconMonster : CtrlIconBase {
 			string strName = string.Format( "chara{0:D2}_eat1" ,m_dataMonster.monster_id );
 			//m_sprIcon.atlas = AtlasManager.Instance.GetAtlas (strName);
 			m_sprIcon.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/monster/{0}.png" , strName ));
-			m_sprIcon.width = (int)m_sprIcon.sprite2D.texture.width;
-			m_sprIcon.height = (int)m_sprIcon.sprite2D.texture.height;
+			m_sprIcon.width = (int)m_sprIcon.sprite2D.textureRect.width + (int)m_sprIcon.sprite2D.textureRectOffset.x;
+			m_sprIcon.height = (int)m_sprIcon.sprite2D.textureRect.height + (int)m_sprIcon.sprite2D.textureRectOffset.y;
 			//m_sprIcon.spriteName = strName;
 		}
 	}
@@ -174,8 +174,8 @@ public class CtrlIconMonster : CtrlIconBase {
 
 			string strName = string.Format( "chara{0:D2}_move{1}" , m_dataMonster.monster_id , iDispFrame);
 			m_sprIcon.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/monster/{0}.png" , strName ));
-			m_sprIcon.width = (int)m_sprIcon.sprite2D.texture.width;
-			m_sprIcon.height = (int)m_sprIcon.sprite2D.texture.height;
+			m_sprIcon.width = (int)m_sprIcon.sprite2D.textureRect.width + (int)m_sprIcon.sprite2D.textureRectOffset.x;
+			m_sprIcon.height = (int)m_sprIcon.sprite2D.textureRect.height + (int)m_sprIcon.sprite2D.textureRectOffset.y;
 		}
 		return;
 	}
