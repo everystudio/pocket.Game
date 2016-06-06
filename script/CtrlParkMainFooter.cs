@@ -3,6 +3,15 @@ using System.Collections;
 
 public class CtrlParkMainFooter : MonoBehaviourEx {
 
+	void Start(){
+
+		#if UNITY_IOS
+		if (SystemInfo.deviceModel.Contains ("iPad")) {
+			gameObject.transform.localPosition = new Vector3 (gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + 20.0f, gameObject.transform.localPosition.z);
+		}
+		#endif
+	}
+
 	public void TriggerClearAll(){
 		m_PageButton.ButtonInit ();
 		m_PageButton.TriggerClearAll();

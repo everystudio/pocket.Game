@@ -16,15 +16,16 @@ public class CtrlOjisanCheck : MonoBehaviour {
 		get{ return m_buttonYesNo; }
 	}
 
-	public bool IsYes(){
+	public bool IsYes(bool _bOnlyButton = false ){
 
-		if (GameMain.Instance.bOjisanCheck) {
-			if (GameMain.Instance.OjisanCheckIndex == 0) {
-				GameMain.Instance.bOjisanCheck = false;
-				return true;
+		if (_bOnlyButton == false) {
+			if (GameMain.Instance.bOjisanCheck) {
+				if (GameMain.Instance.OjisanCheckIndex == 0) {
+					GameMain.Instance.bOjisanCheck = false;
+					return true;
+				}
 			}
 		}
-
 		return m_buttonYesNo.IsYes();
 	}
 

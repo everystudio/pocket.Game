@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class ReviewManager : MonoBehaviourEx {
+	public const string KEY_COUNT 	=  "key_review_count_ver2";
+	public const string KEY_STATUS	=  "key_review_status_ver2";
 
 	protected static ReviewManager instance = null;
 	public static ReviewManager Instance {
@@ -51,7 +53,11 @@ public class ReviewManager : MonoBehaviourEx {
 		switch (_eReply) {
 		case REPLY.REVIEWED:
 			m_eStatus = STATUS.REVIEWED;
-			Application.OpenURL ("https://play.google.com/store/apps/details?id=jp.app.bokunosuizokukan");
+			#if UNITY_ANDROID
+			Application.OpenURL ("https://play.google.com/store/apps/details?id=jp.everystudio.pocket.zoo");
+			#else
+			Application.OpenURL ("https://itunes.apple.com/us/app/leshii-fang-zhi-jing-yinggemu/id1112070121?mt=8");
+			#endif
 			//Application.OpenURL ("itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1052503169");
 			break;
 		case REPLY.RETRY:
@@ -69,9 +75,6 @@ public class ReviewManager : MonoBehaviourEx {
 		PlayerPrefs.Save ();
 		return;
 	}
-
-	public const string KEY_COUNT 	=  "key_review_count";
-	public const string KEY_STATUS	=  "key_review_status";
 
 	public int ReviewInterval = 3;
 	public int m_iReviewIntervalCount;

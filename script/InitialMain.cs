@@ -11,30 +11,31 @@ public class InitialMain : MonoBehaviour {
 	public bool CONFIG_UPDATE = false;
 	public enum STEP
 	{
-		NONE				= 0,
+		NONE					= 0,
 
-		CHECK_CONFIG		,
-		CHECK_UPDATE		,
-		UPDATE_DOWNLOAD		,
-		DATA_DOWNLOAD		,
-		UPDATE_ITEM_DATA	,
-		UPDATE_MONSTER_DATA	,
-		UPDATE_WORK_DATA	,
+		CHECK_CONFIG			,
+		CHECK_UPDATE			,
+		UPDATE_DOWNLOAD			,
+		DATA_DOWNLOAD			,
+		UPDATE_ITEM_DATA		,
+		UPDATE_MONSTER_DATA		,
+		UPDATE_WORK_DATA		,
 
-		DATAMANAGER_SETUP	,
-		SOUND_LOAD			,
-		REVIEW				,
+		DATAMANAGER_SETUP		,
+		SOUND_LOAD				,
+		ATTENTION_DISP_VISITOR	,
+		REVIEW					,
 
-		IDLE				,
-		DB_SETUP			,
-		INPUT_WAIT			,
+		IDLE					,
+		DB_SETUP				,
+		INPUT_WAIT				,
 
-		DB_BACKUP_NOEXIST	,
-		DB_BACKUP_CHECK		,
-		DB_BACKUP			,
-		END					,
-		NETWORK_ERROR		,
-		MAX					,
+		DB_BACKUP_NOEXIST		,
+		DB_BACKUP_CHECK			,
+		DB_BACKUP				,
+		END						,
+		NETWORK_ERROR			,
+		MAX						,
 	}
 	public STEP m_eStep;
 	public STEP m_eStepPre;
@@ -372,11 +373,26 @@ public class InitialMain : MonoBehaviour {
 			m_btnStart.gameObject.SetActive (true);
 			m_eStep = STEP.IDLE;
 
-			if (ReviewManager.Instance.IsReadyReview ()) {
+			if (ReviewManager.Instance.IsReadyReview () && 3 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL)) {
 				m_eStep = STEP.REVIEW;
 			}
+			if ( 5 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL) && !DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR)) {
+				m_eStep = STEP.ATTENTION_DISP_VISITOR;
+			}
 
+			break;
 
+		case STEP.ATTENTION_DISP_VISITOR:
+			if (bInit) {
+				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", m_posDisplay);
+				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
+				m_ojisanCheck.Initialize ("お客さんの表示・非表示の切り替えができるようになりました。\nこの画面お上で切り替えることが出来ます。", true);
+			}
+			if (m_ojisanCheck.IsYes (true)) {
+				Destroy (m_ojisanCheck.gameObject);
+				m_eStep = STEP.IDLE;
+				DataManager.Instance.data_kvs.Write (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR, "disped");
+			}
 			break;
 
 		case STEP.REVIEW:
