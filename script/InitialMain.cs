@@ -150,25 +150,6 @@ public class InitialMain : MonoBehaviour {
 		if (m_eStepPre != m_eStep) {
 			m_eStepPre  = m_eStep;
 			bInit = true;
-			//Debug.LogError (m_eStep);
-		}
-
-		if (m_btnVisitorDisp.ButtonPushed) {
-			m_btnVisitorDisp.TriggerClear ();
-			SoundManager.Instance.PlaySE( SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
-			int set_disp_visitor = 0;
-			if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
-				if (DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
-					set_disp_visitor = 1;
-				}
-			}
-
-			if (set_disp_visitor == 0) {
-				m_lbVisitorDisp.text = "非表示";
-			} else {
-				m_lbVisitorDisp.text = "表示";
-			}
-			DataManager.Instance.data_kvs.WriteInt ( DataManager.Instance.KEY_DISP_VISITOR , set_disp_visitor);
 		}
 
 		switch (m_eStep) {
@@ -192,10 +173,20 @@ public class InitialMain : MonoBehaviour {
 				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
 				CsvConfig config_data = new CsvConfig ();
 				config_data.Input (m_ssdSample);
+
+				// 毎回更新させる
+				DataManager.Instance.config.WriteInt(CsvConfig.KEY_CONFIG_VERSION , 0);
+				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, 0);
+				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION , 0 );
+				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION , 0 );
+
 				if (false == config_data.Read (CsvConfig.KEY_CONFIG_VERSION).Equals (DataManager.Instance.config.Read (CsvConfig.KEY_CONFIG_VERSION)) || CONFIG_UPDATE == true) {
 					config_data.Save (CsvConfig.FILE_NAME);
 					DataManager.Instance.config.Load (CsvConfig.FILE_NAME);
 					m_eStep = STEP.CHECK_UPDATE;
+
+
+
 				}
 			} else if (CommonNetwork.Instance.IsError (m_iNetworkSerial ) ) {
 				m_eStep = STEP.NETWORK_ERROR;
@@ -263,85 +254,112 @@ public class InitialMain : MonoBehaviour {
 			break;
 
 		case STEP.UPDATE_ITEM_DATA:
-			if (0 < DataManager.Instance.m_csvItem.list.Count) {
-				CsvItem item_master = new CsvItem ();
-				item_master.Load ("csv/master/InitialCsvItem");
-				foreach (CsvItemParam param in item_master.list) {
-					CsvItemParam temp = DataManager.Instance.m_csvItem.Select (param.item_id);
-					if (temp.item_id != 0) {
-						param.status = temp.status;
-					} else {
-						item_master.list.Add (param);
-					}
-				}
-				item_master.Save (CsvItem.FilePath);
+			if (bInit) {
+				m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet (
+					DataManager.Instance.SPREAD_SHEET,
+					DataManager.Instance.config.Read ("item"));
 			}
-
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("アイテムデータ更新中", 0.0f);
 			}
-			DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_ITEM_VERSION));
-			DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
-			DataManager.Instance.AllLoad ();
-			m_eStep = STEP.CHECK_UPDATE;
+
+			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
+				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
+				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+
+				if (0 < DataManager.Instance.m_csvItem.list.Count) {
+					CsvItem item_master = new CsvItem ();
+					item_master.Input (m_ssdSample);
+					//item_master.Load ("csv/master/InitialCsvItem");
+					foreach (CsvItemParam param in item_master.list) {
+						CsvItemParam temp = DataManager.Instance.m_csvItem.Select (param.item_id);
+						if (temp.item_id != 0) {
+							param.status = temp.status;
+						} else {
+							item_master.list.Add (param);
+						}
+					}
+					item_master.Save (CsvItem.FilePath);
+				}
+				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_ITEM_VERSION));
+				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+				DataManager.Instance.AllLoad ();
+				m_eStep = STEP.CHECK_UPDATE;
+			}
 			break;
 		case STEP.UPDATE_MONSTER_DATA:
-			if (0 < DataManager.Instance.m_csvMonster.list.Count) {
-				CsvMonster monster_master = new CsvMonster ();
-				monster_master.Load ("csv/master/InitialCsvMonster");
-				foreach (CsvMonsterParam param in monster_master.list) {
-					CsvMonsterParam temp = DataManager.Instance.m_csvMonster.Select (param.monster_id);
-					if (temp.monster_id != 0) {
-						param.status = temp.status;
-					} else {
-						monster_master.list.Add (param);
-					}
-				}
-				monster_master.Save (CsvMonster.FilePath);
+			if (bInit) {
+				m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet (
+					DataManager.Instance.SPREAD_SHEET,
+					DataManager.Instance.config.Read ("monster"));
 			}
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("キャラデータ更新中", 0.0f);
 			}
-			DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_MONSTER_VERSION));
-			DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
-			DataManager.Instance.AllLoad ();
-			m_eStep = STEP.CHECK_UPDATE;
+
+			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
+				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
+				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+
+				if (0 < DataManager.Instance.m_csvMonster.list.Count) {
+					CsvMonster monster_master = new CsvMonster ();
+					monster_master.Input (m_ssdSample);
+					//monster_master.Load ("csv/master/InitialCsvMonster");
+					foreach (CsvMonsterParam param in monster_master.list) {
+						CsvMonsterParam temp = DataManager.Instance.m_csvMonster.Select (param.monster_id);
+						if (temp.monster_id != 0) {
+							param.status = temp.status;
+						} else {
+							monster_master.list.Add (param);
+						}
+					}
+					monster_master.Save (CsvMonster.FilePath);
+				}
+				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_MONSTER_VERSION));
+				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+				DataManager.Instance.AllLoad ();
+				m_eStep = STEP.CHECK_UPDATE;
+			}
 			break;
 
 		case STEP.UPDATE_WORK_DATA:
-			if (0 < DataManager.Instance.dataWork.list.Count) {
-				CsvWork work_master = new CsvWork();
-				work_master.Load ("csv/master/InitialCsvWork");
-				foreach (CsvWorkParam param in work_master.list) {
-					DataWorkParam temp = DataManager.Instance.dataWork.SelectOne (string.Format ("work_id = {0}", param.work_id));
-					if (temp.work_id != 0) {
-						temp.Copy (param, temp.status);
-					} else {
-						DataManager.Instance.dataWork.list.Add (new DataWorkParam (param));
-					}
-				}
-				DataManager.Instance.dataWork.Save (DataWork.FILENAME);
+			if (bInit) {
+				m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet (
+					DataManager.Instance.SPREAD_SHEET,
+					DataManager.Instance.config.Read ("work"));
 			}
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("お仕事データ更新中", 0.0f);
 			}
-			DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_WORK_VERSION));
-			DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
-			DataManager.Instance.AllLoad ();
-			m_eStep = STEP.CHECK_UPDATE;
+
+			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
+				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
+				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+
+				if (0 < DataManager.Instance.dataWork.list.Count) {
+					CsvWork work_master = new CsvWork ();
+					work_master.Input (m_ssdSample);
+					//work_master.Load ("csv/master/InitialCsvWork");
+					foreach (CsvWorkParam param in work_master.list) {
+						DataWorkParam temp = DataManager.Instance.dataWork.SelectOne (string.Format ("work_id = {0}", param.work_id));
+						if (temp.work_id != 0) {
+							temp.Copy (param, temp.status);
+						} else {
+							DataManager.Instance.dataWork.list.Add (new DataWorkParam (param));
+						}
+					}
+					DataManager.Instance.dataWork.Save (DataWork.FILENAME);
+				}
+				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_WORK_VERSION));
+				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+				DataManager.Instance.AllLoad ();
+				m_eStep = STEP.CHECK_UPDATE;
+			}
 			break;
 
 		case STEP.DATAMANAGER_SETUP:
 			if (bInit) {
-				/*
-				GameObject pref = PrefabManager.Instance.PrefabLoadInstance ("test");
-				paramtest script = pref.GetComponent<paramtest> ();
-				Debug.Log (script.list.Count);
-				script.list.Add (new DataItem ());
-				*/
-
 			}
-
 
 			if (SpriteManager.Instance.IsIdle ()) {
 				m_goRoot.SetActive (true);
@@ -353,48 +371,11 @@ public class InitialMain : MonoBehaviour {
 			}
 			break;
 		case STEP.SOUND_LOAD:
-			/*
-			if (bInit) {
-				foreach (MasterAudioCSV data in DataManager.master_audio_list) {
-					if (data.audio_type != 1) {
-						SoundManager.Instance.AddLoadFile (data.filename);
-					}
-				}
-			}
-			if (m_csLoading != null) {
-				m_csLoading.ViewPercent ( 0.0f );
-			}
-			if (SoundManager.Instance.IsIdle ()) {
-				m_btnStart.gameObject.SetActive (true);
-				m_eStep = STEP.IDLE;
-
-				if (ReviewManager.Instance.IsReadyReview ()) {
-					m_eStep = STEP.REVIEW;
-				}
-			}
-			*/
 			m_btnStart.gameObject.SetActive (true);
 			m_eStep = STEP.IDLE;
 
 			if (ReviewManager.Instance.IsReadyReview () && 3 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL)) {
 				m_eStep = STEP.REVIEW;
-			}
-			if ( 5 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL) && !DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR)) {
-				m_eStep = STEP.ATTENTION_DISP_VISITOR;
-			}
-
-			break;
-
-		case STEP.ATTENTION_DISP_VISITOR:
-			if (bInit) {
-				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", m_posDisplay);
-				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
-				m_ojisanCheck.Initialize ("お客さんの表示・非表示の切り替えができるようになりました。\nこの画面お上で切り替えることが出来ます。", true);
-			}
-			if (m_ojisanCheck.IsYes (true)) {
-				Destroy (m_ojisanCheck.gameObject);
-				m_eStep = STEP.IDLE;
-				DataManager.Instance.data_kvs.Write (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR, "disped");
 			}
 			break;
 

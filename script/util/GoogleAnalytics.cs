@@ -11,7 +11,7 @@ public class GoogleAnalytics : GoogleAnalyticsBase<GoogleAnalytics> {
 		propertyID_iOS = "UA-77286676-2";
 
 		bundleID = "jp.everystudio.pocket.zoo";
-		appName = "ポケット動物園";
+		appName = "ポケット肝試し！";
 		appVersion = "1";
 
 		// ハートビート

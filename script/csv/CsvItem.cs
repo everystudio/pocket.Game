@@ -31,8 +31,6 @@ public class CsvItemParam : CsvDataParam {
 	public int m_add_coin;
 	public int m_anim;
 
-
-
 	public int item_id { get{ return m_item_id; } set{ m_item_id = value; } }
 	public int status { get{ return m_status; } set{ m_status= value; } }
 	public string name { get{ return m_name; } set{ m_name = value; } }
@@ -119,6 +117,62 @@ public class CsvItem : CsvData< CsvItemParam>
 		} else {
 			return base.Select(_strWhere);
 		}
+	}
+
+	protected override CsvItemParam makeParam (List<SpreadSheetData> _list, int _iSerial, int _iRow)
+	{
+		int index = 1;
+		SpreadSheetData data_itemid = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_status = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_name = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_category = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_type = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_celltype = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_description = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_needcoin = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_needticket = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_needmoney = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_size = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_cost = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_area = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_revenue = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_revenueinterval = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_revenueup = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_productiontime = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_settinglimit = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_subpartsid = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_openitemid = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_revenueup2 = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_addcoin = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_anim = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+
+		CsvItemParam retParam = new CsvItemParam ();
+
+		retParam.m_item_id = int.Parse (data_itemid.param);
+		retParam.m_status = int.Parse(data_status.param);
+		retParam. m_name = data_name.param;
+		retParam.m_category = int.Parse(data_category.param);
+		retParam.m_type = int.Parse(data_type.param);
+		retParam.m_cell_type = int.Parse(data_celltype.param);
+		retParam. m_description = data_description.param;
+		retParam.m_need_coin = int.Parse(data_needcoin.param);
+		retParam.m_need_ticket = int.Parse(data_needticket.param);
+		retParam.m_need_money = int.Parse(data_needmoney.param);
+		retParam.m_size = int.Parse(data_size.param);
+		retParam.m_cost = int.Parse(data_cost.param);
+		retParam.m_area = int.Parse(data_area.param);
+		retParam.m_revenue = int.Parse(data_revenue.param);
+		retParam.m_revenue_interval = int.Parse(data_revenueinterval.param);
+		retParam.m_revenue_up = int.Parse(data_revenueup.param);
+		retParam.m_production_time = int.Parse(data_productiontime.param);
+		retParam.m_setting_limit = int.Parse(data_settinglimit.param);
+		retParam.m_sub_parts_id = int.Parse(data_subpartsid.param);
+		retParam.m_open_item_id = int.Parse(data_openitemid.param);
+		retParam.m_revenue_up2 = int.Parse(data_revenueup2.param);
+		retParam.m_add_coin = int.Parse(data_addcoin.param);
+		retParam.m_anim = int.Parse(data_anim.param);
+
+		return retParam;
 	}
 
 

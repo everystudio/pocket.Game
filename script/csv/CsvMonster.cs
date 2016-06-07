@@ -65,7 +65,48 @@ public class CsvMonster : CsvData<CsvMonsterParam> {
 	}
 
 
+	protected override CsvMonsterParam makeParam (List<SpreadSheetData> _list, int _iSerial, int _iRow)
+	{
+		int index = 1;
+		SpreadSheetData data_monsterid = SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_name= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_descriptioncell= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_cost= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_fill= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_dust= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_coin= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_ticket= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_revenewcoin= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_revenewexp= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_revenewinterval= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_openworkid= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_descriptionbook= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_size= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_rare= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_status= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
 
+		CsvMonsterParam retParam = new CsvMonsterParam ();
+
+		retParam.m_monster_id = int.Parse(data_monsterid.param);
+		retParam.m_name = data_name.param;
+		retParam.m_description_cell =data_descriptioncell.param;
+		retParam.m_cost = int.Parse(data_cost.param);
+		retParam.m_fill = int.Parse(data_fill.param);
+		retParam.m_dust = int.Parse(data_dust.param);
+		retParam.m_coin = int.Parse(data_coin.param);
+		retParam.m_ticket = int.Parse(data_ticket.param);
+		retParam.m_revenew_coin = int.Parse(data_revenewcoin.param);
+		retParam.m_revenew_exp = int.Parse(data_revenewexp.param);
+		retParam.m_revenew_interval = int.Parse(data_revenewinterval.param);
+		retParam.m_open_work_id = int.Parse(data_openworkid.param);
+		retParam.m_description_book = data_descriptionbook.param;
+		retParam.m_size = int.Parse(data_size.param);
+		retParam.m_rare = int.Parse(data_rare.param);
+		retParam.m_status = int.Parse(data_status.param);
+
+		return retParam;
+
+	}
 
 }
 

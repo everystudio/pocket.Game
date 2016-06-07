@@ -26,6 +26,7 @@ public class DataWorkParam : CsvDataParam{
 	public int m_mission_tweet;
 	public int m_mission_login;
 	public int m_mission_num;
+	public string m_skit_id;
 
 	public int work_id{ get{ return m_work_id;} set{m_work_id = value; } }
 	public int status{ get{ return m_status;} set{m_status = value; } }
@@ -48,6 +49,7 @@ public class DataWorkParam : CsvDataParam{
 	public int mission_tweet{ get{ return m_mission_tweet;} set{m_mission_tweet = value; } }
 	public int mission_login{ get{ return m_mission_login;} set{m_mission_login = value; } }
 	public int mission_num{ get{ return m_mission_num;} set{m_mission_num = value; } }
+	public string skit_id{ get{ return m_skit_id;} set{m_skit_id= value; } }
 
 	public DataWorkParam(){
 	}
@@ -75,6 +77,8 @@ public class DataWorkParam : CsvDataParam{
 		mission_tweet= _work.mission_tweet;
 		mission_login= _work.mission_login;
 		mission_num= _work.mission_num;
+
+		skit_id = _work.skit_id;
 	}
 
 	static public void WorkOpen(){
@@ -264,6 +268,7 @@ public class DataWork : CsvData<DataWorkParam>
 		}
 		return;
 	}
+
 
 }
 

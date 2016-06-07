@@ -5,7 +5,7 @@ using System.IO;
 
 public class DataManager : DataManagerBase <DataManager>{
 
-	public readonly string SPREAD_SHEET = "14HLMZIPB21WrMf80gqsJw-R1BKMLFJt8haok36uSI5o";
+	public readonly string SPREAD_SHEET = "1mwbjeoyZkCs0k0XAOny_gFNJxormS0xoKO1IOPbEOLQ";
 	public readonly string SPREAD_SHEET_CONFIG_SHEET = "od6";
 
 	public readonly string KEY_ITEM_VERSION = "item_version";
