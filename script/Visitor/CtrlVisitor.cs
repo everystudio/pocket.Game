@@ -17,6 +17,11 @@ public class CtrlVisitor : MonoBehaviourEx {
 
 	public bool m_bUp;
 
+	class RoadPosition{
+		public int x;
+		public int y;
+	}
+
 	[SerializeField]
 	private float m_fTimer;
 
@@ -111,22 +116,40 @@ public class CtrlVisitor : MonoBehaviourEx {
 				}
 			}
 			if (m_bUp) {
-				List<DataItemParam > check_list = new List<DataItemParam> ();
+				List<RoadPosition > check_list = new List<RoadPosition> ();
 				int x = m_iPosX + 1;
 				int y = m_iPosY;
+
+				if (DataManager.Instance.IsRoad (x, y)) {
+					RoadPosition temp = new RoadPosition ();
+					temp.x = x;
+					temp.y = y;
+					check_list.Add (temp);
+				}
+				/*
 				DataItemParam param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_ROAD, x, y));
 				if (param.item_id == DefineOld.ITEM_ID_ROAD) {
 					check_list.Add (param);
 				}
+				*/
 				x = m_iPosX;
 				y = m_iPosY + 1;
+				/*
 				param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_ROAD, x, y));
 				if (param.item_id == DefineOld.ITEM_ID_ROAD) {
 					check_list.Add (param);
 				}
+				*/
+				if (DataManager.Instance.IsRoad (x, y)) {
+					RoadPosition temp = new RoadPosition ();
+					temp.x = x;
+					temp.y = y;
+					check_list.Add (temp);
+				}
+
 				if (0 < check_list.Count) {
 					int iIndex = UtilRand.GetRand (check_list.Count);
-					m_iTargetItemSerial = check_list [iIndex].item_serial;
+					//m_iTargetItemSerial = check_list [iIndex].item_serial;
 					m_iTargetX = check_list [iIndex].x;
 					m_iTargetY = check_list [iIndex].y;
 					m_eStep = STEP.MOVE;
@@ -134,49 +157,64 @@ public class CtrlVisitor : MonoBehaviourEx {
 					m_bUp = false;
 				}
 			} else {
-				List<DataItemParam > check_list = new List<DataItemParam> ();
+				List<RoadPosition > check_list = new List<RoadPosition > ();
 				int x = m_iPosX - 1;
 				int y = m_iPosY;
-				DataItemParam param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_ROAD, x, y));
-				if (param.item_id == DefineOld.ITEM_ID_ROAD) {
-					check_list.Add (param);
-				}
-				x = m_iPosX;
+				if (DataManager.Instance.IsRoad (x, y)) {
+					RoadPosition temp = new RoadPosition ();
+					temp.x = x;
+					temp.y = y;
+					check_list.Add (temp);
+				}				x = m_iPosX;
 				y = m_iPosY - 1;
-				param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_ROAD, x, y));
-				if (param.item_id == DefineOld.ITEM_ID_ROAD) {
-					check_list.Add (param);
+				if (DataManager.Instance.IsRoad (x, y)) {
+					RoadPosition temp = new RoadPosition ();
+					temp.x = x;
+					temp.y = y;
+					check_list.Add (temp);
 				}
+
 				if (0 < check_list.Count) {
 					int iIndex = UtilRand.GetRand (check_list.Count);
-					m_iTargetItemSerial = check_list [iIndex].item_serial;
 					m_iTargetX = check_list [iIndex].x;
 					m_iTargetY = check_list [iIndex].y;
 					m_eStep = STEP.MOVE;
 				} else {
 					x = m_iPosX - 2;
 					y = m_iPosY;
-					param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_GATE, x, y));
+					DataItemParam param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_GATE, x, y));
 					if (param.item_id == DefineOld.ITEM_ID_GATE) {
-						check_list.Add (param);
+						RoadPosition temp = new RoadPosition ();
+						temp.x = x;
+						temp.y = y;
+						check_list.Add (temp);
 					}
 					x = m_iPosX - 2;
 					y = m_iPosY - 1;
 					param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_GATE, x, y));
 					if (param.item_id == DefineOld.ITEM_ID_GATE) {
-						check_list.Add (param);
+						RoadPosition temp = new RoadPosition ();
+						temp.x = x;
+						temp.y = y;
+						check_list.Add (temp);
 					}
 					x = m_iPosX;
 					y = m_iPosY - 2;
 					param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_GATE, x, y));
 					if (param.item_id == DefineOld.ITEM_ID_GATE) {
-						check_list.Add (param);
+						RoadPosition temp = new RoadPosition ();
+						temp.x = x;
+						temp.y = y;
+						check_list.Add (temp);
 					}
 					x = m_iPosX - 1;
 					y = m_iPosY - 2;
 					param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_GATE, x, y));
 					if (param.item_id == DefineOld.ITEM_ID_GATE) {
-						check_list.Add (param);
+						RoadPosition temp = new RoadPosition ();
+						temp.x = x;
+						temp.y = y;
+						check_list.Add (temp);
 					}
 					if (0 < check_list.Count) {
 						m_eStep = STEP.END;
@@ -192,8 +230,8 @@ public class CtrlVisitor : MonoBehaviourEx {
 				m_fTimer = 0.0f;
 
 				m_v3StartPosition = myTransform.localPosition;
-				DataItemParam param = DataManager.Instance.m_dataItem.Select (m_iTargetItemSerial);
-				m_v3TargetPosition = getPosition (param.x, param.y);
+				//DataItemParam param = DataManager.Instance.m_dataItem.Select (m_iTargetItemSerial);
+				m_v3TargetPosition = getPosition (m_iTargetX, m_iTargetY);
 				if (!m_bUp) {
 					setDepth (m_iTargetX, m_iTargetY);
 				}

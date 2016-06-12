@@ -95,9 +95,12 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 				Vector3 target = GetMovePos ();
 
 				Vector3 v3Div = gameObject.transform.localPosition - target;
-				Debug.Log (v3Div.sqrMagnitude);
 
-				TweenPosition tp = TweenPosition.Begin (gameObject, 1.0f, target );
+				//Debug.Log (v3Div.magnitude);
+
+				float fSec = v3Div.magnitude / 80.0f;
+
+				TweenPosition tp = TweenPosition.Begin (gameObject, fSec, target);
 				EventDelegate.Set (tp.onFinished, EndTween);
 
 				if ( myTransform.localPosition.x < target.x ) {
@@ -112,7 +115,8 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 				m_eStep = STEP.IDLE;
 			}
 			m_fTimer += Time.deltaTime;
-			if (3.0f < m_fTimer) {
+
+			if (30.0f < m_fTimer) {
 				m_eStep = STEP.IDLE;
 			}
 			break;

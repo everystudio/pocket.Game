@@ -15,12 +15,14 @@ public class CtrlCollectGold : MonoBehaviourEx {
 	public float m_fCheckInterval;
 	public int m_iCollectGold;
 
+	public int m_iSearchIndex;
+
 	public bool m_bInitialize;
 	void Start(){
 		m_bInitialize = false;
 	}
 
-	private void updateCollect(){
+	private IEnumerator updateCollect(){
 		int iCollectGold = 0;
 		int iCollectExp = 0;
 		List<DataItemParam> aaa = DataManager.Instance.m_dataItem.Select (" item_serial != 0 " );
@@ -44,8 +46,7 @@ public class CtrlCollectGold : MonoBehaviourEx {
 		if (0 < iShisyutsu) {
 			DataManager.user.AddGold (-1 * iShisyutsu);
 		}
-
-		return;
+		yield return 0;
 	}
 
 	// Use this for initialization
@@ -54,7 +55,7 @@ public class CtrlCollectGold : MonoBehaviourEx {
 		m_fTimer = 0.0f;
 		m_fCheckInterval = 5.0f;
 		m_btnCollect.TriggerClear ();
-		updateCollect ();
+		StartCoroutine (updateCollect ());
 	}
 	
 	// Update is called once per frame
@@ -65,12 +66,11 @@ public class CtrlCollectGold : MonoBehaviourEx {
 
 		m_fTimer += Time.deltaTime;
 		if (m_fCheckInterval < m_fTimer) {
-			updateCollect ();
+			StartCoroutine (updateCollect ());
 			m_fTimer -= m_fCheckInterval;
 		}
 
 		if (m_btnCollect.ButtonPushed) {
-
 			//Debug.LogError ("here");
 			m_btnCollect.TriggerClear ();
 

@@ -194,6 +194,8 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		m_csvWord.Load ();
 		m_csvTutorial.Load ();
 		m_csvLocalNotification.Load ();
+		RoadLoad ();
+
 	}
 
 	public void DataSave(){
@@ -388,6 +390,26 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		CtrlHelp.ACTION_TYPE eRet = (CtrlHelp.ACTION_TYPE)UtilRand.GetIndex (prob_arr);
 
 		return eRet;
+	}
+
+	public Dictionary<string , string > m_RoadMap = new Dictionary<string , string > ();
+	//public List<string> m_RoadMap = new List<string>();
+	public string _getRoadHash( int _iX , int _iY ){
+		return string.Format ("{0},{1}", _iX, _iY);
+	}
+	public void RoadLoad(){
+		m_RoadMap.Clear ();
+		foreach (DataItemParam item in m_dataItem.list) {
+			if (item.status != 0 && item.item_id == DefineOld.ITEM_ID_ROAD) {
+				string hash = _getRoadHash (item.x, item.y);
+				m_RoadMap.Add (hash,item.item_serial.ToString());
+			}
+		}
+		return;
+	}
+	public bool IsRoad( int _iX , int _iY ){
+		string road_hash = _getRoadHash (_iX, _iY);
+		return m_RoadMap.ContainsKey (road_hash);
 	}
 
 	public string ReviewUrl(){
