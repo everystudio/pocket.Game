@@ -107,6 +107,7 @@ public class CtrlHelp : ButtonBase {
 				if (m_eActionType== ACTION_TYPE.NONE) {
 					m_eActionType = DataManager.Instance.GetHelpActionType ();
 				}
+				Debug.LogError (m_eActionType);
 			}
 			if (ButtonPushed) {
 				m_eStep = STEP.CHECK;

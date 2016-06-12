@@ -40,12 +40,13 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 
 	public Vector3 GetMovePos(){
 
+		float fRound = 0.25f;
 
-		float fX = UtilRand.GetRange (1.0f);
-		float fY = UtilRand.GetRange (1.0f);
+		float fX = UtilRand.GetRange (1.0f-fRound) + fRound;
+		float fY = UtilRand.GetRange (1.0f-fRound) + fRound;
 
-		Vector3 v3X = DefineOld.CELL_X_DIR * fX * m_iSize;
-		Vector3 v3Y = DefineOld.CELL_Y_DIR * fY * m_iSize;
+		Vector3 v3X = (DefineOld.CELL_X_DIR * fX) * m_iSize;
+		Vector3 v3Y = (DefineOld.CELL_Y_DIR * fY) * m_iSize;
 
 		return v3X + v3Y;
 
@@ -92,6 +93,10 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 
 				m_bEndTween = false;
 				Vector3 target = GetMovePos ();
+
+				Vector3 v3Div = gameObject.transform.localPosition - target;
+				Debug.Log (v3Div.sqrMagnitude);
+
 				TweenPosition tp = TweenPosition.Begin (gameObject, 1.0f, target );
 				EventDelegate.Set (tp.onFinished, EndTween);
 

@@ -24,7 +24,7 @@ public class CtrlIconFukidashi : MonoBehaviour {
 			change (_eStatus);
 			m_eStatus = _eStatus;
 		}
-		m_sprIcon.depth = _iDepth;
+		m_sprIcon.depth = _iDepth - DataManager.Instance.DEPTH_MONSTER + DataManager.Instance.DEPTH_MONSTER_FUKIDASHI;
 		return;
 	}
 

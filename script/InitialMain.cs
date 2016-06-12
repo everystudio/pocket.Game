@@ -8,6 +8,7 @@ using Prime31;
 
 public class InitialMain : MonoBehaviour {
 
+	static public bool INITIALIZE_MAIN = false;
 	public bool CONFIG_UPDATE = false;
 	public enum STEP
 	{
@@ -85,7 +86,7 @@ public class InitialMain : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		INITIALIZE_MAIN = true;
 		Application.targetFrameRate = 60;
 		QualitySettings.vSyncCount = 0;
 
@@ -93,8 +94,6 @@ public class InitialMain : MonoBehaviour {
 		m_eStep = STEP.CHECK_CONFIG;
 		m_eStepPre = STEP.MAX;
 
-		//m_SwitchSpriteBack.SetSprite ("garalley_003");
-		m_SwitchSpriteBack.SetSprite ("texture/back/bg001.png");
 		//m_SwitchSpriteBack.SetSprite ("tutorial777");
 
 		//SoundManager.Instance.PlayBGM ("farming" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm");
@@ -114,6 +113,8 @@ public class InitialMain : MonoBehaviour {
 		#endif
 
 		SpriteManager.Instance.LoadAtlas ("atlas/ad001");
+		SpriteManager.Instance.LoadAtlas ("atlas/back001");
+		SpriteManager.Instance.LoadAtlas ("atlas/back002");
 		SpriteManager.Instance.LoadAtlas ("atlas/item001");
 		SpriteManager.Instance.LoadAtlas ("atlas/item002");
 		SpriteManager.Instance.LoadAtlas ("atlas/item003");
@@ -128,6 +129,8 @@ public class InitialMain : MonoBehaviour {
 		SpriteManager.Instance.LoadAtlas ("atlas/ui001");
 		SpriteManager.Instance.LoadAtlas ("atlas/ui002");
 		SpriteManager.Instance.LoadAtlas ("atlas/ui003");
+		//m_SwitchSpriteBack.SetSprite ("garalley_003");
+		m_SwitchSpriteBack.SetSprite ("texture/back/bg001.png");
 
 		bool bDispVisitor = true;
 		if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {

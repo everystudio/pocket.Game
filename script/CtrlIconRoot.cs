@@ -94,7 +94,7 @@ public class CtrlIconRoot : MonoBehaviour {
 	public void SetDepth( int _iDepth ){
 
 		if( m_ctrlIconBase != null ){
-			m_ctrlIconBase.SetDepth (_iDepth);
+			m_ctrlIconBase.SetDepth (_iDepth - DataManager.Instance.DEPTH_ITEM + DataManager.Instance.DEPTH_MONSTER );
 		}
 		return;
 	}

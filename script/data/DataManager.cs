@@ -41,6 +41,15 @@ public class DataManager : DataManagerBase <DataManager>{
 	public readonly string KEY_DISP_VISITOR = "key_disp_visitor";
 	public readonly string KEY_ATTENTION_DISP_VISITOR = "attention_disp_visitor";
 
+
+	public readonly int DEPTH_ROAD 		= 100;
+	public readonly int DEPTH_ITEM 		= 500;
+	public readonly int DEPTH_VISITOR = 500;
+	public readonly int DEPTH_DUST 		= 1000;
+	public readonly int DEPTH_MONSTER	= 1500;
+	public readonly int DEPTH_MONSTER_FUKIDASHI	= 2000;
+
+
 	/*
 	 * 
 
@@ -371,6 +380,10 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		}
 		if (config.HasKey (KEY_HELP_ACTION_TWITTER_PROB)) {
 			prob_arr [(int)CtrlHelp.ACTION_TYPE.TWITTER] = config.ReadInt (KEY_HELP_ACTION_TWITTER_PROB);
+		}
+
+		foreach (int prob in prob_arr) {
+			Debug.LogError (prob);
 		}
 		CtrlHelp.ACTION_TYPE eRet = (CtrlHelp.ACTION_TYPE)UtilRand.GetIndex (prob_arr);
 

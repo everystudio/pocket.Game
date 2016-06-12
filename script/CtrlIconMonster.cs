@@ -32,7 +32,7 @@ public class CtrlIconMonster : CtrlIconBase {
 
 			m_goDust.transform.localPosition += 0.2f * (DefineOld.CELL_X_DIR + DefineOld.CELL_Y_DIR);
 
-			m_goDust.GetComponent<UI2DSprite> ().depth = m_sprIcon.depth-1;
+			m_goDust.GetComponent<UI2DSprite> ().depth = m_sprIcon.depth-DataManager.Instance.DEPTH_MONSTER + DataManager.Instance.DEPTH_DUST;
 		}
 	}
 	override public bool CleanDust(){

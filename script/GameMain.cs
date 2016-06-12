@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NendUnityPlugin.AD;
+using UnityEngine.SceneManagement;
 
 public class GameMain : MonoBehaviour {
 
@@ -128,6 +129,13 @@ public class GameMain : MonoBehaviour {
 		}
 	}
 	private void initialize(){
+
+		if (InitialMain.INITIALIZE_MAIN == false) {
+			SceneManager.LoadScene ("initial");
+
+			return;
+		}
+
 		m_eMoveStatus = STATUS.NONE;
 		m_iMoveTab = 0;
 

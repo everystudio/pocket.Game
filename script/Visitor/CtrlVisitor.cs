@@ -64,7 +64,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 	}
 	private void setDepth( int _iX , int _iY ){
 		int iDepth = 100 - (_iX + _iY);// + (m_dataItemParam.height-1));
-		m_sprChara.depth = iDepth;
+		m_sprChara.depth = iDepth + DataManager.Instance.DEPTH_VISITOR;
 	}
 
 	public bool IsActive(){

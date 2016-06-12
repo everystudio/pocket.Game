@@ -291,6 +291,22 @@ public class CtrlFieldItem : MonoBehaviourEx {
 
 		int iDepth = 100 - (_iX + _iY) - iOffset;// + (m_dataItemParam.height-1));
 
+		// 道路は一番した
+		if (m_dataItemParam.item_id == 0) {
+			iDepth += DataManager.Instance.DEPTH_ROAD-1000;
+		}
+		else if (m_dataItemParam.item_id == -1 ) {
+			iDepth += DataManager.Instance.DEPTH_ROAD-500;
+		}
+		else if( m_dataItemParam.item_id == DefineOld.ITEM_ID_ROAD ){
+			iDepth += DataManager.Instance.DEPTH_ROAD;
+		} else {
+			iDepth += DataManager.Instance.DEPTH_ITEM;
+		}
+
+
+
+
 		if (m_bEditting) {
 			iDepth += 10;		// こんだけ上なら
 		}
@@ -436,11 +452,14 @@ public class CtrlFieldItem : MonoBehaviourEx {
 					}
 					sprList.Sort (CompareByID);
 
-					int iLoop = 2;
+					//int iLoop = 2;
+					/*
 					foreach (UI2DSprite sprite in sprList) {
-						sprite.depth = m_sprItem.depth + iLoop;
+						//sprite.depth = m_sprItem.depth + iLoop;
+						//sprite.depth = DataManager.Instance.DEPTH_MONSTER + iLoop;
 						iLoop += 1;
 					}
+					*/
 				}
 			}
 

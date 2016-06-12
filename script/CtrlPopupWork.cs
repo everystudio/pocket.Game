@@ -32,7 +32,7 @@ public class CtrlPopupWork : MonoBehaviourEx{
 	public float m_fTimer;
 	public float m_fDispWait;
 
-	public UISprite m_sprWhite;
+	public UI2DSprite m_sprWhite;
 	public UtilSwitchSprite m_switchSprite;
 	public UI2DSprite m_sprWorkIcon;
 
@@ -90,7 +90,7 @@ public class CtrlPopupWork : MonoBehaviourEx{
 
 		case STEP.INITIALIZE:
 			if (bInit) {
-				m_switchSprite.SetSprite ("texture/ui/work_clear.png");
+				//m_switchSprite.SetSprite ("texture/ui/work_clear.png");
 			}
 
 			//Debug.LogError (SpriteManager.Instance.IsIdle ());
@@ -126,6 +126,21 @@ public class CtrlPopupWork : MonoBehaviourEx{
 				//m_sprWorkIcon.spriteName = BannerWork.GetSpriteName (m_iPopupWorkId);
 				m_sprWorkIcon.sprite2D = SpriteManager.Instance.Load( BannerWork.GetSpriteName (m_iPopupWorkId) );
 				//m_sprWorkIcon.atlas = AtlasManager.Instance.GetAtlas (m_sprWorkIcon.spriteName);
+				m_sprWorkIcon.width = (int)m_sprWorkIcon.sprite2D.textureRect.width;
+				m_sprWorkIcon.height = (int)m_sprWorkIcon.sprite2D.textureRect.height;
+				float set_size = 128.0f;
+
+				if (m_sprWorkIcon.width < m_sprWorkIcon.height) {
+					float rate = set_size / (float)m_sprWorkIcon.height;
+					m_sprWorkIcon.width = (int)(m_sprWorkIcon.width * rate);
+					m_sprWorkIcon.height = (int)set_size;
+				} else {
+					float rate = set_size / (float)m_sprWorkIcon.width;
+					m_sprWorkIcon.width = (int)set_size;
+					m_sprWorkIcon.height = (int)(m_sprWorkIcon.height * rate);
+				}
+
+
 				DataWorkParam work_data = DataManager.GetWork (m_iPopupWorkId);
 
 				m_lbTitle.text = work_data.title;
