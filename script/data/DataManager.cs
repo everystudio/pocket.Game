@@ -41,6 +41,9 @@ public class DataManager : DataManagerBase <DataManager>{
 	public readonly string KEY_DISP_VISITOR = "key_disp_visitor";
 	public readonly string KEY_ATTENTION_DISP_VISITOR = "attention_disp_visitor";
 
+	public readonly string KEY_COLLECT_GOLD = "collect_gold";
+	public readonly string KEY_COLLECT_EXP = "collect_exp";
+
 
 	public readonly int DEPTH_ROAD 		= 100;
 	public readonly int DEPTH_ITEM 		= 500;
@@ -384,9 +387,6 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 			prob_arr [(int)CtrlHelp.ACTION_TYPE.TWITTER] = config.ReadInt (KEY_HELP_ACTION_TWITTER_PROB);
 		}
 
-		foreach (int prob in prob_arr) {
-			Debug.LogError (prob);
-		}
 		CtrlHelp.ACTION_TYPE eRet = (CtrlHelp.ACTION_TYPE)UtilRand.GetIndex (prob_arr);
 
 		return eRet;
@@ -410,6 +410,28 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 	public bool IsRoad( int _iX , int _iY ){
 		string road_hash = _getRoadHash (_iX, _iY);
 		return m_RoadMap.ContainsKey (road_hash);
+	}
+
+	public bool m_bSymbolRate;
+	public float m_fSymbolRate;
+	public float UpdateSymbolRate(){
+		float fTotalRate = 1.0f;
+		//List<DataItem> symbol_list = GameMain.dbItem.Select (" type = " + ((int)(DefineOld.Item.Type.SYMBOL)).ToString () + " ");
+		List<DataItemParam> symbol_list = DataManager.Instance.m_dataItem.Select ( DefineOld.WHERE_PATTERN.RATE );
+		foreach( DataItemParam symbol in symbol_list ){
+			CsvItemParam csv_symbol_item_data = DataManager.GetItem (symbol.item_id);
+			if ((int)(fTotalRate * 100.0f) < csv_symbol_item_data.revenue_up) {
+				fTotalRate = csv_symbol_item_data.revenue_up * 0.01f;
+			}
+		}
+		m_fSymbolRate = fTotalRate;
+		return fTotalRate;
+	}
+	public float GetSymbolRate(){
+		if (m_bSymbolRate == false) {
+			UpdateSymbolRate ();
+		}
+		return m_fSymbolRate;
 	}
 
 	public string ReviewUrl(){

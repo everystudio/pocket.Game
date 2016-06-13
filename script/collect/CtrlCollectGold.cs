@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
-public class CtrlCollectGold : MonoBehaviourEx {
+public class CtrlCollectGold : Singleton<CtrlCollectGold> {
+
+	public UnityEvent m_eventCollect = new UnityEvent ();
 
 	#region SerializeField
 	[SerializeField]
@@ -14,12 +17,19 @@ public class CtrlCollectGold : MonoBehaviourEx {
 	public float m_fTimer;
 	public float m_fCheckInterval;
 	public int m_iCollectGold;
+	public int m_iCollectExp;
 
 	public int m_iSearchIndex;
 
 	public bool m_bInitialize;
 	void Start(){
 		m_bInitialize = false;
+	}
+
+	public void AddCollect( int _iGold , int _iExp ){
+		m_iCollectGold += _iGold;
+		SetCollectGold (m_iCollectGold);
+		m_iCollectExp += _iExp;
 	}
 
 	private IEnumerator updateCollect(){
@@ -35,7 +45,6 @@ public class CtrlCollectGold : MonoBehaviourEx {
 			iCollectExp += iTempExp;
 		}
 		m_iCollectGold = iCollectGold;
-		m_lbCollectGold.text = string.Format( "{0}G" , iCollectGold );
 
 		// 支出の計算
 		int iShisyutsu = 0;
@@ -48,14 +57,23 @@ public class CtrlCollectGold : MonoBehaviourEx {
 		}
 		yield return 0;
 	}
-
-	// Use this for initialization
-	public void Initialize () {
+	public override void Initialize ()
+	{
 		m_bInitialize = true;
 		m_fTimer = 0.0f;
 		m_fCheckInterval = 5.0f;
 		m_btnCollect.TriggerClear ();
-		StartCoroutine (updateCollect ());
+		//StartCoroutine (updateCollect ());
+		m_iCollectGold = 0;
+		m_iCollectExp = 0;
+		//m_iCollectGold = DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_COLLECT_GOLD);
+		//m_iCollectExp =  DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_COLLECT_EXP);
+		SetCollectGold (m_iCollectGold);
+	}
+
+	public void SetCollectGold( int _iCollectGold ){
+		m_iCollectGold = _iCollectGold;
+		m_lbCollectGold.text = string.Format( "{0}G" , _iCollectGold );
 	}
 	
 	// Update is called once per frame
@@ -66,7 +84,7 @@ public class CtrlCollectGold : MonoBehaviourEx {
 
 		m_fTimer += Time.deltaTime;
 		if (m_fCheckInterval < m_fTimer) {
-			StartCoroutine (updateCollect ());
+			//StartCoroutine (updateCollect ());
 			m_fTimer -= m_fCheckInterval;
 		}
 
@@ -74,7 +92,7 @@ public class CtrlCollectGold : MonoBehaviourEx {
 			//Debug.LogError ("here");
 			m_btnCollect.TriggerClear ();
 
-			m_iCollectGold = 0;
+			//m_iCollectGold = 0;
 
 			int iCollectGold = 0;
 			int iCollectExp = 0;
@@ -88,15 +106,19 @@ public class CtrlCollectGold : MonoBehaviourEx {
 				iCollectExp += iTempExp;
 			}
 
-			m_iCollectGold = iCollectGold;
+			//m_iCollectGold = iCollectGold;
 			if (0 < m_iCollectGold) {
 				SoundManager.Instance.PlaySE ("se_cash", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
 
 				DataManager.user.AddCollect ();
 				DataManager.user.AddGold (m_iCollectGold);
 				DataManager.user.AddSyakkin (-1 * m_iCollectGold);
-				DataManager.user.AddExp (iCollectExp);
-				m_lbCollectGold.text = "0";
+				DataManager.user.AddExp (m_iCollectExp);
+				m_iCollectExp = 0;
+				SetCollectGold (0);
+
+				m_eventCollect.Invoke ();
+
 
 				// ここで仕事のチェックしますか
 				List<DataWorkParam> check_work_list = DataManager.Instance.dataWork.Select (" status = 1 ");

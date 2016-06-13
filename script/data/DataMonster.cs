@@ -58,7 +58,7 @@ public class DataMonsterParam : CsvDataParam{
 		}
 		int iCollectGold = (int)dCount * csvMonster.revenew_coin;
 		int iCollectExp = (int)dCount * csvMonster.revenew_exp;
-		if (_bCollect) {
+		if (0 < dCount  &&_bCollect) {
 			string strNow = TimeManager.StrNow ();
 			Dictionary< string , string > dict = new Dictionary< string , string > ();
 			dict.Add ("collect_time", "\"" + strNow + "\"");

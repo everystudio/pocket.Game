@@ -18,6 +18,10 @@ public class CtrlIconMonster : CtrlIconBase {
 		m_eStepPre = STEP.MAX;
 
 		AnimationIdol (true);
+
+
+
+
 	}
 
 	public GameObject m_goDust;

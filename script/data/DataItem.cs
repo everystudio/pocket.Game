@@ -123,12 +123,6 @@ public class DataItemParam : CsvDataParam{
 
 			iShopCollectGold = (int)dCount * csv_item_data.revenue;
 
-			/*
-			Debug.LogError (collect_time);
-			Debug.LogError (diffSec);
-			Debug.LogError (dCount);
-			Debug.LogError (iShopCollectGold);
-			*/
 			if (_bCollect) {
 				double amari = diffSec % csv_item_data.revenue_interval;
 				string strNow = TimeManager.StrGetTime (-1* (int)amari);

@@ -19,6 +19,8 @@ public class CtrlFieldItem : MonoBehaviourEx {
 	public STEP m_eStepPre;
 	public bool m_bEditting;
 
+	private CollectBase m_collectBase;
+
 	#region Animation
 	private float m_fAnimationTimer;
 	const float ANIMATION_INTERVAL = 1.0f;
@@ -349,6 +351,7 @@ public class CtrlFieldItem : MonoBehaviourEx {
 			m_eStepPre  = m_eStep;
 			bInit = true;
 		}
+
 		switch (m_eStep) {
 		case STEP.INIT:
 
@@ -421,6 +424,11 @@ public class CtrlFieldItem : MonoBehaviourEx {
 
 		case STEP.IDLE:
 			if (bInit) {
+
+				if (m_collectBase == null) {
+					m_collectBase = gameObject.AddComponent<CollectBase> ();
+					m_collectBase.Initialize (m_dataItemParam);
+				}
 
 				m_fAnimationTimer = 0.0f;
 				m_iAnimationNum = m_CsvItemParam.anim;

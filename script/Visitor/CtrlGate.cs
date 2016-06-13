@@ -35,8 +35,20 @@ public class CtrlGate : MonoBehaviour {
 			m_eStep = STEP.MAX;
 		}
 		m_eStepPre = STEP.MAX;
+
+		//InvokeRepeating ("InvokeTest", 1.0f, 1.0f);
 		return;
 	}
+	void InvokeTest(){
+		Debug.LogError ("InvokeTest");
+	}
+
+	public void OnDisable(){
+		CancelInvoke ("InvokeTest");
+		Debug.LogError ("cancel invoke InvokeTest");
+
+	}
+
 	public int m_iVisitorNum;
 
 	List<CtrlVisitor> visitor_list = new List<CtrlVisitor>();

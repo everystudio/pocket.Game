@@ -39,6 +39,8 @@ public class CtrlIconRoot : MonoBehaviour {
 	protected DataMonsterParam m_dataMonster;
 	protected DataStaffParam m_dataStaff;
 
+	private CollectBase m_collectBase;
+
 	public bool Clean(){
 		return m_ctrlIconBase.CleanDust ();
 	}
@@ -79,6 +81,10 @@ public class CtrlIconRoot : MonoBehaviour {
 		m_ctrlIconBase = (CtrlIconBase)script;
 		m_dataMonster = _monster;
 
+		if (m_collectBase == null) {
+			m_collectBase = gameObject.AddComponent<CollectBase> ();
+			m_collectBase.Initialize (_fieldItem.m_dataItemParam.item_serial, _monster);
+		}
 	}
 	public void Initialize( DataStaffParam _staff , CtrlFieldItem _fieldItem  ){
 		m_eIconType = ICON_TYPE.STAFF;
