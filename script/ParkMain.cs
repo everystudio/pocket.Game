@@ -68,7 +68,6 @@ public class ParkMain : PageBase2 {
 		m_eStepPre = STEP.MAX;
 		m_footer.TriggerClearAll ();
 		m_footer.gameObject.SetActive (false);
-
 		if (m_parkMainController != null) {
 			m_parkMainController.enabled = false;
 		}
@@ -154,6 +153,7 @@ public class ParkMain : PageBase2 {
 			if (bInit) {
 				// 念のため
 				m_footer.gameObject.SetActive (false);
+				Debug.LogError( "SETTING_ITEM");
 
 				if (m_parkMainController != null) {
 					m_parkMainController.enabled = false;

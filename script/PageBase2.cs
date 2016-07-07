@@ -158,7 +158,7 @@ public class PageBase2 : MonoBehaviourEx {
 
 	protected CtrlCloseButton makeCloseButton(){
 		GameObject objCloseButton = PrefabManager.Instance.MakeObject ("prefab/PrefCloseButton", gameObject);
-		objCloseButton.transform.localPosition = new Vector3 (0.0f, -427.0f, 0.0f);
+		objCloseButton.transform.localPosition = new Vector3 (0.0f, -290.0f, 0.0f);
 		m_btnClose = objCloseButton.GetComponent<ButtonBase> ();
 		m_btnClose.TriggerClear ();
 
@@ -175,7 +175,7 @@ public class PageBase2 : MonoBehaviourEx {
 	protected int displayAutoUpdate( Tab[] _tabArr ){
 
 		bool bChange = false;
-		if (m_tabParent.ButtonPushed || GameMain.Instance.bSwitchTab ) {
+		if ( (m_tabParent != null && m_tabParent.ButtonPushed) || (GameMain.Instance != null && GameMain.Instance.bSwitchTab) ) {
 
 			if (GameMain.Instance.bSwitchTab) {
 				GameMain.Instance.bSwitchTab = false;
@@ -198,7 +198,7 @@ public class PageBase2 : MonoBehaviourEx {
 				bChange = true;
 				//Debug.Log ("tab:" + m_iTabIndex.ToString ());
 			}
-		} else if (m_iSwitchIndex != m_bannerScrollParen.GetSwitchIndex () ) {
+		} else if ( m_bannerScrollParen != null && m_iSwitchIndex != m_bannerScrollParen.GetSwitchIndex () ) {
 			m_iSwitchIndex = m_bannerScrollParen.GetSwitchIndex ();
 			//Debug.Log ("switch_index:" + m_iSwitchIndex.ToString ());
 			bChange = true;

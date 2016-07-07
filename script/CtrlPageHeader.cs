@@ -38,6 +38,10 @@ public class CtrlPageHeader : ButtonBase {
 			m_sprButton.sprite2D = SpriteManager.Instance.Load( string.Format ("texture/ui/{0}.png", _strButton));
 			m_sprButton.gameObject.SetActive (true);
 		}
+
+		// ちょっといったん非表示にする
+		gameObject.SetActive(false );
+
 		return;
 	}
 

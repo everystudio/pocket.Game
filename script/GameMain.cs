@@ -229,6 +229,14 @@ public class GameMain : MonoBehaviour {
 				AdsManager.Instance.CallInterstitial ();
 			}
 
+			if (m_eStatus == STATUS.PARK) {
+				m_header.gameObject.SetActive (true);
+			} else {
+				m_header.gameObject.SetActive (false);
+			}
+
+
+
 		}
 		return;
 	}

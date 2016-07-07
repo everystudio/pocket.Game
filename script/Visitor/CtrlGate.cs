@@ -43,11 +43,12 @@ public class CtrlGate : MonoBehaviour {
 		Debug.LogError ("InvokeTest");
 	}
 
+	/*
 	public void OnDisable(){
 		CancelInvoke ("InvokeTest");
 		Debug.LogError ("cancel invoke InvokeTest");
-
 	}
+	*/
 
 	public int m_iVisitorNum;
 

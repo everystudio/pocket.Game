@@ -56,10 +56,14 @@ public class AdsManager : Singleton<AdsManager> {
 		}
 		// 最初はでないようにする
 		foreach (GameObject obj in m_goAdNativePanelList) {
-			obj.SetActive (false);
+			if (obj != null) {
+				obj.SetActive (false);
+			}
 		}
 		m_iAdNativePanelIndex = m_goAdNativePanelList.Count-1;
-		m_goAdNativePanelList [m_iAdNativePanelIndex].SetActive (false);
+		if (m_goAdNativePanelList [m_iAdNativePanelIndex] != null) {
+			m_goAdNativePanelList [m_iAdNativePanelIndex].SetActive (false);
+		}
 	}
 
 	#if USE_IMOBILE
@@ -95,7 +99,9 @@ public class AdsManager : Singleton<AdsManager> {
 			m_iAdNativePanelIndex = UtilRand.GetIndex (prob_table);
 			m_iAdNativePanelIndex %= m_goAdNativePanelList.Count;
 		}
-		m_goAdNativePanelList[m_iAdNativePanelIndex].SetActive( _bFlag );
+		if (m_goAdNativePanelList [m_iAdNativePanelIndex] != null) {
+			m_goAdNativePanelList [m_iAdNativePanelIndex].SetActive (_bFlag);
+		}
 		return;
 	}
 

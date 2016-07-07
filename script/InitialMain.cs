@@ -174,11 +174,13 @@ public class InitialMain : MonoBehaviour {
 				CsvConfig config_data = new CsvConfig ();
 				config_data.Input (m_ssdSample);
 
-				// 毎回更新させる
-				DataManager.Instance.config.WriteInt(CsvConfig.KEY_CONFIG_VERSION , 0);
-				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, 0);
-				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION , 0 );
-				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION , 0 );
+				if (CONFIG_UPDATE == true) {
+					// 毎回更新させる
+					DataManager.Instance.config.WriteInt (CsvConfig.KEY_CONFIG_VERSION, 0);
+					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, 0);
+					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, 0);
+					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, 0);
+				}
 
 				if (false == config_data.Read (CsvConfig.KEY_CONFIG_VERSION).Equals (DataManager.Instance.config.Read (CsvConfig.KEY_CONFIG_VERSION)) || CONFIG_UPDATE == true) {
 					config_data.Save (CsvConfig.FILE_NAME);
