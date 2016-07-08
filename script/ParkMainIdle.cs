@@ -43,6 +43,8 @@ public class ParkMainIdle : ParkMainController
 		m_eStep = STEP.IDLE;
 		m_eStepPre = STEP.MAX;
 
+		GameMain.Instance.DispHeader(true);
+
 	}
 	// Update is called once per frame
 	void Update ()

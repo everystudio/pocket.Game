@@ -143,7 +143,7 @@ public class BannerScrollParent : MonoBehaviourEx {
 		_goParent.transform.localPosition = new Vector3 (0.0f, fOffset, 0.0f);
 		_grid.Reposition ();
 		// あんまり良くないけど都合ここで処理を行う
-		if (m_bannerBaseList.Count <= 5) {
+		if (m_bannerBaseList.Count <= 3) {
 			_goParent.GetComponent<UIScrollView> ().enabled = false;
 		}
 

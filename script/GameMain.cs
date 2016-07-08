@@ -230,15 +230,16 @@ public class GameMain : MonoBehaviour {
 			}
 
 			if (m_eStatus == STATUS.PARK) {
-				m_header.gameObject.SetActive (true);
+				//m_header.gameObject.SetActive (true);
 			} else {
 				m_header.gameObject.SetActive (false);
 			}
-
-
-
 		}
 		return;
+	}
+
+	public void DispHeader( bool _bDisp ){
+		m_header.gameObject.SetActive (_bDisp);
 	}
 
 	// Use this for initialization

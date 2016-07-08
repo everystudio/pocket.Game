@@ -158,7 +158,7 @@ public class PageBase2 : MonoBehaviourEx {
 
 	protected CtrlCloseButton makeCloseButton(){
 		GameObject objCloseButton = PrefabManager.Instance.MakeObject ("prefab/PrefCloseButton", gameObject);
-		objCloseButton.transform.localPosition = new Vector3 (0.0f, -290.0f, 0.0f);
+		objCloseButton.transform.localPosition = new Vector3 (0.0f, -295.0f, 0.0f);
 		m_btnClose = objCloseButton.GetComponent<ButtonBase> ();
 		m_btnClose.TriggerClear ();
 

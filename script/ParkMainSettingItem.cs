@@ -50,6 +50,7 @@ public class ParkMainSettingItem : ParkMainController {
 	}
 
 	override protected void initialize(){
+		GameMain.Instance.DispHeader (false);
 
 		bool bBuyAble = true;
 		CtrlFieldItem moveFieldItem = null;
@@ -118,7 +119,7 @@ public class ParkMainSettingItem : ParkMainController {
 
 		if (m_YesNoButtonManager == null) {
 			GameObject goButtonManager = PrefabManager.Instance.MakeObject ("prefab/PrefYesNoButton", gameObject);
-			goButtonManager.transform.localPosition = new Vector3 (0.0f, -400.0f, 0.0f);
+			goButtonManager.transform.localPosition = new Vector3 (0.0f, -274.0f, 0.0f);
 			m_YesNoButtonManager = goButtonManager.GetComponent<ButtonManager> ();
 			m_YesNoButtonManager.ButtonInit ();
 			m_YesNoButtonManager.TriggerClearAll ();
@@ -329,18 +330,18 @@ public class ParkMainSettingItem : ParkMainController {
 				if (InputManager.Info.TouchPoint.x < iWidth) {
 
 					//Debug.Log ("x short");
-					GameMain.ParkRoot.MoveAdd (fDelta, 0.0f);
+					//GameMain.ParkRoot.MoveAdd (fDelta, 0.0f);
 				} else if ( (Screen.width-iWidth) < InputManager.Info.TouchPoint.x) {
 					//Debug.Log ("x high");
-					GameMain.ParkRoot.MoveAdd (fDelta*-1.0f, 0.0f);
+					//GameMain.ParkRoot.MoveAdd (fDelta*-1.0f, 0.0f);
 				} else {
 				}
 				if (InputManager.Info.TouchPoint.y < (int)(Screen.height * 0.3f)) {
 					//Debug.Log ("y short");
-					GameMain.ParkRoot.MoveAdd (0.0f, fDelta);
+					//GameMain.ParkRoot.MoveAdd (0.0f, fDelta);
 				} else if ( ((int)(Screen.height * 0.6f)) < InputManager.Info.TouchPoint.y) {
 					//Debug.Log ("y high");
-					GameMain.ParkRoot.MoveAdd (0.0f, fDelta*-1.0f);
+					//GameMain.ParkRoot.MoveAdd (0.0f, fDelta*-1.0f);
 				} else {
 				}
 
