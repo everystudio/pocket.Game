@@ -51,6 +51,7 @@ public class ParkMainSettingItem : ParkMainController {
 
 	override protected void initialize(){
 		GameMain.Instance.DispHeader (false);
+		AdsManager.Instance.ShowAdBanner (false);
 
 		bool bBuyAble = true;
 		CtrlFieldItem moveFieldItem = null;

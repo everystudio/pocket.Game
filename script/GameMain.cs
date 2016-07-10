@@ -233,6 +233,7 @@ public class GameMain : MonoBehaviour {
 				//m_header.gameObject.SetActive (true);
 			} else {
 				m_header.gameObject.SetActive (false);
+				AdsManager.Instance.ShowAdBanner (false);
 			}
 		}
 		return;

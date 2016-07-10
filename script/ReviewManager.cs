@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ReviewManager : MonoBehaviourEx {
+public class ReviewManager : Singleton<ReviewManager> {
 	public const string KEY_COUNT 	=  "key_review_count_ver2";
 	public const string KEY_STATUS	=  "key_review_status_ver2";
-
+	/*
 	protected static ReviewManager instance = null;
 	public static ReviewManager Instance {
 		get {
@@ -24,6 +24,7 @@ public class ReviewManager : MonoBehaviourEx {
 			return instance;
 		}
 	}
+	*/
 
 	public enum STATUS
 	{
@@ -81,8 +82,9 @@ public class ReviewManager : MonoBehaviourEx {
 	public STATUS m_eStatus;
 	public bool m_bInitialized;
 
-	public void Initialize(){
-		DontDestroyOnLoad(gameObject);
+	public override void Initialize ()
+	{
+		//DontDestroyOnLoad(gameObject);
 		if (m_bInitialized == false) {
 			//Debug.LogError ("ReviewManager.Initialize()");
 			if (false == PlayerPrefs.HasKey (KEY_STATUS)) {

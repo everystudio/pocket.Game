@@ -44,6 +44,8 @@ public class ParkMainIdle : ParkMainController
 		m_eStepPre = STEP.MAX;
 
 		GameMain.Instance.DispHeader(true);
+		AdsManager.Instance.ShowAdBanner (true);
+
 
 	}
 	// Update is called once per frame

@@ -196,6 +196,10 @@ public class TutorialManager : Singleton<TutorialManager> {
 			if (bInit) {
 				m_CurrentData = GetTutorialData (m_iParentTutorialId, m_iChildTutorialId, m_iTutorialIndex);
 
+				// チュートリアル中はバナー広告を非表示
+				// とりあえずコマンド実行時に
+				AdsManager.Instance.ShowAdBanner( false );
+
 				//あんま良くないけどいったんここでインクリメント
 				m_iTutorialIndex += 1;
 
@@ -269,7 +273,7 @@ public class TutorialManager : Singleton<TutorialManager> {
 			if (bInit) {
 				//m_btnHitRect.GetComponent<BoxCollider> ().bounds.center = new Vector3 ((float)m_CurrentData.param1, (float)m_CurrentData.param2, 0.0f);
 				//m_btnHitRect.GetComponent<BoxCollider> ().bounds.size = new Vector3 ((float)m_CurrentData.param3, (float)m_CurrentData.param4, 0.0f);
-				m_btnHitRect.GetComponent<BoxCollider> ().center = new Vector3 ((float)m_CurrentData.param1, (float)m_CurrentData.param2, -100.0f);
+				m_btnHitRect.GetComponent<BoxCollider> ().center = new Vector3 ((float)m_CurrentData.param1, (float)m_CurrentData.param2, -250.0f);
 				m_btnHitRect.GetComponent<BoxCollider> ().size = new Vector3 ((float)m_CurrentData.param3, (float)m_CurrentData.param4, 0.0f);
 				m_btnHitRect.TriggerClear ();
 			}
