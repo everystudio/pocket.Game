@@ -158,12 +158,6 @@ public class CtrlParkRoot : MonoBehaviourEx {
 		for (int x = _ctrlFieldItem.m_dataItemParam.x; x < _ctrlFieldItem.m_dataItemParam.x + _ctrlFieldItem.m_dataItemParam.width; x++) {
 			for (int y = _ctrlFieldItem.m_dataItemParam.y ; y < _ctrlFieldItem.m_dataItemParam.y + _ctrlFieldItem.m_dataItemParam.height; y++) {
 				RemoveFieldItem (x, y);
-				/*
-				CtrlFieldItem script = GetFieldItem (x, y);
-				if (script != null) {
-					script.Remove ();
-				}
-				*/
 			}
 		}
 		_ctrlFieldItem.gameObject.name = "fielditem_" + _ctrlFieldItem.m_dataItemParam.x.ToString () + "_" + _ctrlFieldItem.m_dataItemParam.y.ToString ();

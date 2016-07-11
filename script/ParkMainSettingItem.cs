@@ -326,7 +326,7 @@ public class ParkMainSettingItem : ParkMainController {
 				}
 
 				int iWidth = (int)(Screen.width * 0.05f);
-				float fDelta = 20.0f;
+				//float fDelta = 20.0f;
 
 				if (InputManager.Info.TouchPoint.x < iWidth) {
 
