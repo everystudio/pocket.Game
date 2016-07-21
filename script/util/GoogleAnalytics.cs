@@ -12,7 +12,7 @@ public class GoogleAnalytics : GoogleAnalyticsBase<GoogleAnalytics> {
 
 		bundleID = "jp.everystudio.pocket.zoo";
 		appName = "ポケット動物園";
-		appVersion = "1";
+		appVersion = "2";
 
 		// ハートビート
 		heartbeat ();

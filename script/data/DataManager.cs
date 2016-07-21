@@ -66,6 +66,7 @@ CREATE TABLE new_table (
 
 insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value');
 	*/
+	/*
 	IEnumerator send( string _filename , string _key ,string _strTime  ){
 		string strScreenShotURL= "http://every-studio.com/html/test.php";
 		//string strScreenShotURL= "http://every-studio.com/html/test.php?test_key={0}{1}&test_value={2}";
@@ -112,43 +113,9 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		StartCoroutine (send (DataWork.FILENAME, "datawork" , strTime));
 		StartCoroutine (send (DataKvs.FILE_NAME, "datakvs" , strTime));
 
-		/*
-
-		// We should only read the screen after all rendering is complete
-		yield return new WaitForEndOfFrame();
-
-		// Create a texture the size of the screen, RGB24 format
-		var width = Screen.width;
-		var height = Screen.height;
-		var tex = new Texture2D( width, height, TextureFormat.RGB24, false );
-
-		// Read screen contents into the texture
-		tex.ReadPixels( new Rect(0, 0, width, height), 0, 0 );
-		tex.Apply();
-
-		// Encode texture into PNG
-		var bytes = tex.EncodeToPNG();
-		Destroy( tex );
-
-		// Create a Web Form
-		var form = new WWWForm();
-		form.AddField("frameCount", Time.frameCount.ToString());
-		form.AddBinaryData("file", bytes, "screenShot.png", "image/png");
-
-		// Upload to a cgi script
-		WWW w = new WWW(strScreenShotURL, form);
-		yield return w;
-
-		if (w.error != null){
-			Debug.Log(w.error);
-		}
-		else{
-			Debug.Log("Image Uploaded!");
-		}
-
-		*/
 		Debug.LogError ("upload_test end");
 	}
+	*/
 
 
 	public override void Initialize ()
