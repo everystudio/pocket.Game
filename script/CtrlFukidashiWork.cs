@@ -100,7 +100,7 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 			break;
 		case STEP.WAIT:
 			if (bInit) {
-				m_fDispWait = 5.0f;
+				m_fDispWait = 60.0f;
 				m_fTimer = 0.0f;
 			}
 

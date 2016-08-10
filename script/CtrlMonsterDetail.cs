@@ -89,7 +89,8 @@ public class CtrlMonsterDetail : MonoBehaviour {
 		//UIAtlas atlas = AtlasManager.Instance.GetAtlas (strSpriteName);
 		//m_sprMonster.atlas = atlas;
 		m_sprMonster.sprite2D =  SpriteManager.Instance.Load( strSpriteName );
-
+		m_sprMonster.width =  (int)m_sprMonster.sprite2D.rect.width;
+		m_sprMonster.height = (int)m_sprMonster.sprite2D.rect.height;
 
 	}
 
