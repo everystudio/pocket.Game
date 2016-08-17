@@ -21,6 +21,7 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 	public STEP m_eStepPre;
 	public bool m_bInitialize;
 	public float m_fTimer;
+	public float m_fIdleWait;
 	public float m_fDispWait;
 
 	public int m_iLoopIndex;
@@ -63,11 +64,14 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 			bInit = true;
 		}
 
+
 		switch (m_eStep) {
 		case STEP.IDLE:
 			if (bInit) {
 				m_fTimer = 0.0f;
 				m_bQuickEnd = false;
+
+				m_fIdleWait = 60.0f;
 
 				List<DataWorkParam> osusume_list = DataManager.Instance.dataWork.Select (" status = 1 " );
 				if (0 < osusume_list.Count && m_MessageQueue.Count == 0) {
@@ -81,7 +85,7 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 			}
 			m_fTimer += Time.deltaTime;
 
-			if (m_fDispWait < m_fTimer && 0 < m_MessageQueue.Count && GameMain.Instance.TutorialInputLock == false) {
+			if (m_fIdleWait < m_fTimer && 0 < m_MessageQueue.Count && GameMain.Instance.TutorialInputLock == false) {
 				m_eStep = STEP.OPEN;
 			}
 			break;
@@ -100,7 +104,7 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 			break;
 		case STEP.WAIT:
 			if (bInit) {
-				m_fDispWait = 60.0f;
+				m_fDispWait = 5.0f;
 				m_fTimer = 0.0f;
 			}
 
