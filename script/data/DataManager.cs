@@ -8,9 +8,18 @@ public class DataManager : DataManagerBase <DataManager>{
 	public readonly string SPREAD_SHEET = "1mwbjeoyZkCs0k0XAOny_gFNJxormS0xoKO1IOPbEOLQ";
 	public readonly string SPREAD_SHEET_CONFIG_SHEET = "od6";
 
+	public readonly string KEY_CONFIG_UPDATE= "config_update";
+	public readonly string KEY_ITEM_UPDATE= "item_update";
+	public readonly string KEY_MONSTER_UPDATE= "monster_update";
+	public readonly string KEY_WORK_UPDATE = "work_update";
+	public readonly string KEY_SKIT_UPDATE = "skit_update";
+	public readonly string KEY_WORD_UPDATE = "word_update";	
+
 	public readonly string KEY_ITEM_VERSION = "item_version";
 	public readonly string KEY_MONSTER_VERSION = "monster_version";
 	public readonly string KEY_WORK_VERSION = "work_version";
+	public readonly string KEY_SKIT_VERSION = "skit_version";
+	public readonly string KEY_WORD_VERSION = "word_version";
 
 	public readonly string GA_START = "push_start";
 	public readonly string GA_BOOK_MAIN= "book_main";
@@ -43,6 +52,9 @@ public class DataManager : DataManagerBase <DataManager>{
 
 	public readonly string KEY_COLLECT_GOLD = "collect_gold";
 	public readonly string KEY_COLLECT_EXP = "collect_exp";
+
+	public readonly string FILENAME_SKIT_DATA = "csv/skit";
+	public readonly string FILENAME_WORD_DATA = "csv/word";
 
 
 	public readonly int DEPTH_ROAD 		= 100;
@@ -183,6 +195,11 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		m_csvMonster.Load ();
 		dataMonster.Load (DataMonster.FILENAME);
 		dataStaff.Load (DataStaff.FILENAME);
+
+		word.LoadMulti("csv/word");
+
+		skitData.LoadMulti(FILENAME_SKIT_DATA);
+
 		//Debug.LogError ("here");
 		m_dataItem.Load (DataItem.FILENAME);
 
@@ -243,6 +260,40 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 			}
 		}
 		return new CsvItemParam ();
+	}
+
+	public CsvSkit skitData = new CsvSkit();
+
+	public CsvConfig word = new CsvConfig();
+	public string getWord( string _strKey)
+	{
+		string[] delimiter = { @"\n" };
+		string temp = word.Read(_strKey);
+		//string[] strArr = temp.Split(delimiter,System.StringSplitOptions.RemoveEmptyEntries);
+		string[] strArr = temp.Split(delimiter,System.StringSplitOptions.None);
+
+		string strRet = "";
+
+		if( 1 < strArr.Length)
+		{
+			bool bFirst = true;
+			foreach (string div in strArr)
+			{
+				if(bFirst)
+				{
+					bFirst = false;
+				}else
+				{
+					strRet += "\n";
+				}
+				strRet += div;
+			}
+		}
+		else
+		{
+			strRet = temp;
+		}
+		return strRet;
 	}
 
 	#region For CSV

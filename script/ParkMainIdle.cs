@@ -249,8 +249,7 @@ public class ParkMainIdle : ParkMainController
 
 		case STEP.SHOP:
 			if (bInit) {
-
-				GameObject objShopDetail = PrefabManager.Instance.MakeObject ("prefab/PrefShopDetail", gameObject);
+				GameObject objShopDetail = PrefabManager.Instance.MakeObject ("prefab/PrefShopDetail", GameMain.PanelFront);
 				m_ctrlShopDetail = objShopDetail.GetComponent<CtrlShopDetail> ();
 				m_ctrlShopDetail.Init (m_selectItem , m_parkMain.m_csParkRoot );
 				//m_selectItem;

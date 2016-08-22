@@ -21,6 +21,8 @@ public class InitialMain : MonoBehaviour {
 		UPDATE_ITEM_DATA		,
 		UPDATE_MONSTER_DATA		,
 		UPDATE_WORK_DATA		,
+		UPDATE_SKIT_DATA		,
+		UPDATE_WORD_DATA,
 
 		DATAMANAGER_SETUP		,
 		SOUND_LOAD				,
@@ -83,6 +85,12 @@ public class InitialMain : MonoBehaviour {
 	private ButtonBase m_btnVisitorDisp;
 	[SerializeField]
 	private UILabel m_lbVisitorDisp;
+
+	public bool FORCE_UPDATE_ITEM = false;
+	public bool FORCE_UPDATE_MONSTER = false;
+	public bool FORCE_UPDATE_WORK = false;
+	public bool FORCE_UPDATE_SKIT = false;
+	public bool FORCE_UPDATE_WORD = false;
 
 	// Use this for initialization
 	void Start () {
@@ -174,21 +182,27 @@ public class InitialMain : MonoBehaviour {
 				CsvConfig config_data = new CsvConfig ();
 				config_data.Input (m_ssdSample);
 
+				CONFIG_UPDATE = 0 < config_data.ReadInt(DataManager.Instance.KEY_CONFIG_UPDATE) ? true : false ;
+				FORCE_UPDATE_ITEM = 0 < config_data.ReadInt(DataManager.Instance.KEY_ITEM_UPDATE) ? true : false;
+				FORCE_UPDATE_MONSTER = 0 < config_data.ReadInt(DataManager.Instance.KEY_MONSTER_UPDATE) ? true : false;
+				FORCE_UPDATE_WORK = 0 < config_data.ReadInt(DataManager.Instance.KEY_WORK_UPDATE) ? true : false;
+				FORCE_UPDATE_SKIT = 0 < config_data.ReadInt(DataManager.Instance.KEY_SKIT_UPDATE) ? true : false;
+				FORCE_UPDATE_WORD = 0 < config_data.ReadInt(DataManager.Instance.KEY_WORD_UPDATE) ? true : false;
+
 				if (CONFIG_UPDATE == true) {
 					// 毎回更新させる
 					DataManager.Instance.config.WriteInt (CsvConfig.KEY_CONFIG_VERSION, 0);
+						/*
 					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, 0);
 					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, 0);
 					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, 0);
+					*/
 				}
 
 				if (false == config_data.Read (CsvConfig.KEY_CONFIG_VERSION).Equals (DataManager.Instance.config.Read (CsvConfig.KEY_CONFIG_VERSION)) || CONFIG_UPDATE == true) {
 					config_data.Save (CsvConfig.FILE_NAME);
 					DataManager.Instance.config.Load (CsvConfig.FILE_NAME);
 					m_eStep = STEP.CHECK_UPDATE;
-
-
-
 				}
 			} else if (CommonNetwork.Instance.IsError (m_iNetworkSerial ) ) {
 				m_eStep = STEP.NETWORK_ERROR;
@@ -202,17 +216,37 @@ public class InitialMain : MonoBehaviour {
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("更新データ確認中", 0.0f);
 			}
-
-			if (false == DataManager.Instance.config.Read (FileDownloadManager.KEY_DOWNLOAD_VERSION).Equals (DataManager.Instance.kvs_data.Read (FileDownloadManager.KEY_DOWNLOAD_VERSION))) {
+			if (false == DataManager.Instance.config.Read(FileDownloadManager.KEY_DOWNLOAD_VERSION).Equals(DataManager.Instance.kvs_data.Read(FileDownloadManager.KEY_DOWNLOAD_VERSION)))
+			{
 				m_eStep = STEP.UPDATE_DOWNLOAD;
-			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_ITEM_VERSION).Equals (DataManager.Instance.kvs_data.Read (DataManager.Instance.KEY_ITEM_VERSION))) {
+			}
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_ITEM_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_ITEM_VERSION)) || FORCE_UPDATE_ITEM)
+			{
 				m_eStep = STEP.UPDATE_ITEM_DATA;
-			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_MONSTER_VERSION).Equals (DataManager.Instance.kvs_data.Read (DataManager.Instance.KEY_MONSTER_VERSION))) {
+				FORCE_UPDATE_ITEM = false;
+			}
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_MONSTER_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_MONSTER_VERSION)) || FORCE_UPDATE_MONSTER)
+			{
 				m_eStep = STEP.UPDATE_MONSTER_DATA;
-			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_WORK_VERSION).Equals (DataManager.Instance.kvs_data.Read (DataManager.Instance.KEY_WORK_VERSION))) {
+				FORCE_UPDATE_MONSTER = false;
+			}
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_WORK_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_WORK_VERSION)) || FORCE_UPDATE_WORK)
+			{
 				m_eStep = STEP.UPDATE_WORK_DATA;
-			} else {
-				m_eStep = STEP.DATAMANAGER_SETUP;
+				FORCE_UPDATE_WORK = false;
+			}
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_SKIT_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_SKIT_VERSION)) || FORCE_UPDATE_SKIT)
+			{
+				m_eStep = STEP.UPDATE_SKIT_DATA;
+				FORCE_UPDATE_SKIT = false;
+			}
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_WORD_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_WORD_VERSION)) || FORCE_UPDATE_WORD)
+			{
+				m_eStep = STEP.UPDATE_WORD_DATA;
+				FORCE_UPDATE_WORD = false;
+			}
+			else {
+			m_eStep = STEP.DATAMANAGER_SETUP;
 			}
 			break;
 
@@ -324,42 +358,110 @@ public class InitialMain : MonoBehaviour {
 			}
 			break;
 
-		case STEP.UPDATE_WORK_DATA:
-			if (bInit) {
-				m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet (
-					DataManager.Instance.SPREAD_SHEET,
-					DataManager.Instance.config.Read ("work"));
-			}
-			if (m_csLoading != null) {
-				m_csLoading.ViewPercent ("お仕事データ更新中", 0.0f);
-			}
-
-			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
-				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
-				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
-
-				if (0 < DataManager.Instance.dataWork.list.Count) {
-					CsvWork work_master = new CsvWork ();
-					work_master.Input (m_ssdSample);
-					//work_master.Load ("csv/master/InitialCsvWork");
-					foreach (CsvWorkParam param in work_master.list) {
-						DataWorkParam temp = DataManager.Instance.dataWork.SelectOne (string.Format ("work_id = {0}", param.work_id));
-						if (temp.work_id != 0) {
-							temp.Copy (param, temp.status);
-						} else {
-							DataManager.Instance.dataWork.list.Add (new DataWorkParam (param));
-						}
-					}
-					DataManager.Instance.dataWork.Save (DataWork.FILENAME);
+			case STEP.UPDATE_WORK_DATA:
+				if (bInit)
+				{
+					m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet(
+						DataManager.Instance.SPREAD_SHEET,
+						DataManager.Instance.config.Read("work"));
 				}
-				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_WORK_VERSION));
-				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
-				DataManager.Instance.AllLoad ();
-				m_eStep = STEP.CHECK_UPDATE;
-			}
-			break;
+				if (m_csLoading != null)
+				{
+					m_csLoading.ViewPercent("お仕事データ更新中", 0.0f);
+				}
 
-		case STEP.DATAMANAGER_SETUP:
+				if (CommonNetwork.Instance.IsConnected(m_iNetworkSerial))
+				{
+					TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData(m_iNetworkSerial);
+					m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData(data.m_dictRecievedData);
+
+					Debug.LogError(DataManager.Instance.dataWork.list.Count);
+					//if (0 < DataManager.Instance.dataWork.list.Count)
+					{
+
+						Debug.LogError("work 0");
+						CsvWork work_master = new CsvWork();
+						work_master.Input(m_ssdSample);
+						//work_master.Load ("csv/master/InitialCsvWork");
+						foreach (CsvWorkParam param in work_master.list)
+						{
+							DataWorkParam temp = DataManager.Instance.dataWork.SelectOne(string.Format("work_id = {0}", param.work_id));
+							if (temp.work_id != 0)
+							{
+								temp.Copy(param, temp.status);
+							}
+							else {
+								DataManager.Instance.dataWork.list.Add(new DataWorkParam(param));
+							}
+						}
+						DataManager.Instance.dataWork.Save(DataWork.FILENAME);
+					}
+
+					DataManager.Instance.kvs_data.WriteInt(DataManager.Instance.KEY_WORK_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_WORK_VERSION));
+					DataManager.Instance.kvs_data.Save(DataKvs.FILE_NAME);
+					DataManager.Instance.AllLoad();
+					m_eStep = STEP.CHECK_UPDATE;
+				}
+				break;
+
+			case STEP.UPDATE_SKIT_DATA:
+				if (bInit)
+				{
+					Debug.LogError("step update_skit");
+					m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet(
+						DataManager.Instance.SPREAD_SHEET,
+						DataManager.Instance.config.Read("skit"));
+				}
+				if (m_csLoading != null)
+				{
+					m_csLoading.ViewPercent("スキットデータ更新中", 0.0f);
+				}
+
+				if (CommonNetwork.Instance.IsConnected(m_iNetworkSerial))
+				{
+					TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData(m_iNetworkSerial);
+					m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData(data.m_dictRecievedData);
+
+					DataManager.Instance.skitData.list.Clear();
+					DataManager.Instance.skitData.Input(m_ssdSample);
+					DataManager.Instance.skitData.Save(DataManager.Instance.FILENAME_SKIT_DATA);
+
+					DataManager.Instance.kvs_data.WriteInt(DataManager.Instance.KEY_SKIT_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_SKIT_VERSION));
+					DataManager.Instance.kvs_data.Save(DataKvs.FILE_NAME);
+					DataManager.Instance.AllLoad();
+					m_eStep = STEP.CHECK_UPDATE;
+				}
+				break;
+			case STEP.UPDATE_WORD_DATA:
+				if (bInit)
+				{
+					Debug.LogError("step update_word");
+					m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet(
+						DataManager.Instance.SPREAD_SHEET,
+						DataManager.Instance.config.Read("word"));
+				}
+				if (m_csLoading != null)
+				{
+					m_csLoading.ViewPercent("ワードデータ更新中", 0.0f);
+				}
+
+				if (CommonNetwork.Instance.IsConnected(m_iNetworkSerial))
+				{
+					TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData(m_iNetworkSerial);
+					m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData(data.m_dictRecievedData);
+
+					DataManager.Instance.word.list.Clear();
+					DataManager.Instance.word.Input(m_ssdSample);
+					DataManager.Instance.word.Save(DataManager.Instance.FILENAME_WORD_DATA);
+
+					DataManager.Instance.kvs_data.WriteInt(DataManager.Instance.KEY_WORD_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_WORD_VERSION));
+					DataManager.Instance.kvs_data.Save(DataKvs.FILE_NAME);
+					DataManager.Instance.AllLoad();
+					m_eStep = STEP.CHECK_UPDATE;
+				}
+				break;
+
+			case STEP.DATAMANAGER_SETUP:
 			if (bInit) {
 			}
 

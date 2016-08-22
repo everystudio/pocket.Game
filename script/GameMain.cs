@@ -37,6 +37,18 @@ public class GameMain : MonoBehaviour {
 	}
 
 	[SerializeField]
+	private SkitController m_skitController;
+	static public SkitController skitController
+	{
+		get { return instance.m_skitController; }
+	}
+	public GameObject m_goSkitBack;
+	[SerializeField]
+	private bool m_bSkitPlay;
+	[SerializeField]
+	private string m_strSkitPlayId;
+
+	[SerializeField]
 	private GameObject m_goPanelFront;
 	static public GameObject PanelFront{
 		get{ return Instance.m_goPanelFront; }
@@ -185,6 +197,7 @@ public class GameMain : MonoBehaviour {
 		NONE			= 0,
 		DB_SETUP		,
 		IDLE			,
+		SKIT			,
 		REVIEW			,
 		BACKUP_CHECK	,
 		MAX			,
@@ -196,6 +209,7 @@ public class GameMain : MonoBehaviour {
 	public float m_fBackupIntervalTimer;
 	public CtrlReviewWindow m_reviewWindow;
 
+	public string m_strSkitId;
 
 	public enum STATUS{
 		NONE			= 0,
@@ -299,15 +313,22 @@ public class GameMain : MonoBehaviour {
 				m_fBackupInterval = 10.0f;
 				m_fBackupIntervalTimer = 0.0f;
 			}
-			/*
-			m_fBackupIntervalTimer += Time.deltaTime;
-			if (m_fBackupInterval < m_fBackupIntervalTimer) {
-				m_fBackupIntervalTimer -= m_fBackupInterval;
+				if ( m_bSkitPlay )
+				{
+					m_bSkitPlay = false;
+					m_strSkitId = m_strSkitPlayId;
+					m_eStep = STEP.SKIT;
 
-				m_eStep = STEP.BACKUP_CHECK;
-			}
-			*/
-			if (TutorialManager.Instance.IsTutorial () == false  && ReviewManager.Instance.IsReadyReview()) {
+				}
+				/*
+				m_fBackupIntervalTimer += Time.deltaTime;
+				if (m_fBackupInterval < m_fBackupIntervalTimer) {
+					m_fBackupIntervalTimer -= m_fBackupInterval;
+
+					m_eStep = STEP.BACKUP_CHECK;
+				}
+				*/
+				if (TutorialManager.Instance.IsTutorial () == false  && ReviewManager.Instance.IsReadyReview()) {
 				m_eStep = STEP.REVIEW;
 			}
 			break;
@@ -357,6 +378,22 @@ public class GameMain : MonoBehaviour {
 				}
 				*/
 			break;
+
+			case STEP.SKIT:
+				if( bInit)
+				{
+					// 特になし
+					m_goSkitBack.SetActive(true);
+					skitController.gameObject.SetActive(true);
+					skitController.Initialize(DataManager.Instance.skitData, m_strSkitId );
+				}
+				if (skitController.IsEnd())
+				{
+					m_goSkitBack.SetActive(false);
+					skitController.gameObject.SetActive(false);
+					m_eStep = STEP.IDLE;
+				}
+				break;
 
 		default:
 			break;

@@ -123,13 +123,16 @@ public class CtrlHelp : ButtonBase {
 				}
 				string strAction = "";
 				if (m_eActionType == ACTION_TYPE.MOVIE) {
-					strAction = "動画を見ている間に";
+					strAction = DataManager.Instance.getWord("if_movie");
 				} else {
-					strAction = "私の変わりに広報活動していただけると";
+					//strAction = "私の変わりに広報活動していただけると";
+					strAction = DataManager.Instance.getWord("if_tweet");
 				}
 				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", m_goPanelFront);
 				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
-				m_ojisanCheck.Initialize (string.Format( "{0}\n今いる動物の\n\n【[4169e1]エサやり・お掃除・病気の治療[-]】\n\nを私がやっておきますよ！" , strAction ));
+
+				m_ojisanCheck.Initialize (string.Format(DataManager.Instance.getWord("medical"), strAction ));
+				//m_ojisanCheck.Initialize (string.Format( "{0}\n今いる幽霊の\n\n【[4169e1]エサやり・お掃除・病気の治療[-]】\n\nを私がやっておきますよ！" , strAction ));
 			}
 			if (m_ojisanCheck.IsYes ()) {
 				Destroy (m_ojisanCheck.gameObject);
