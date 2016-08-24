@@ -14,7 +14,8 @@ public class CtrlBookMonster : CtrlMonsterDetail {
 
 		m_lbName.text = master_data.name;
 
-		m_lbUriage.text = UtilString.GetSyuunyuu (master_data.revenew_coin, master_data.revenew_interval);
+		//m_lbUriage.text = UtilString.GetSyuunyuu (master_data.revenew_coin, master_data.revenew_interval);
+		m_lbUriage.text = UtilString.GetExp(master_data.revenew_exp, master_data.revenew_interval);
 		//m_lbUriage.text = master_data.revenew_coin.ToString() + " / " + master_data.revenew_interval.ToString();
 		m_lbExp.text = master_data.revenew_exp.ToString();
 		m_lbCost.text = master_data.cost.ToString();

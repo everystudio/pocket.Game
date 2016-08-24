@@ -74,7 +74,9 @@ public class BannerMonster : BannerBase {
 
 		m_csvMonsterParam = _dataMaster;
 
-		m_lbDifficulty.text = UtilString.GetSyuunyuu (m_csvMonsterParam.revenew_coin, m_csvMonsterParam.revenew_interval);
+		//m_lbDifficulty.text = UtilString.GetSyuunyuu (m_csvMonsterParam.revenew_coin, m_csvMonsterParam.revenew_interval);
+		// 肝試しは獲得経験値を表示
+		m_lbDifficulty.text = UtilString.GetExp(m_csvMonsterParam.revenew_exp, m_csvMonsterParam.revenew_interval);
 
 		m_bAbleUse = DataManager.user.AbleBuy (_dataMaster.coin, _dataMaster.ticket,  m_csvMonsterParam.cost , _iCostNokori , 0 , 0 , ref m_eReason );
 

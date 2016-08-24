@@ -49,6 +49,9 @@ public class CtrlVisitor : MonoBehaviourEx {
 	[SerializeField]
 	private Vector3 m_v3TargetPosition;
 
+	[SerializeField]
+	private CtrlTouchCollectTamashii m_ctrlTouchCollectTamashii;
+
 	private float INTERVAL = 1.0f;
 	private float INTERVAL_ANIMATION = 0.4f;
 

@@ -52,9 +52,9 @@ public class CtrlItemDetailCage : CtrlItemDetailBase {
 
 		int iCollectGold = 0;
 		int iCollectExp= 0;
-
-		m_lbUriageNow.text = string.Format( "{0}G" , m_ctrlFieldItem.m_dataItemParam.GetCollect (false , out iCollectGold , out iCollectExp ) );
-		m_lbUriageMax.text = string.Format( "{0}G" , iUriageMax );
+		m_ctrlFieldItem.m_dataItemParam.GetCollect(false, out iCollectGold, out iCollectExp);
+		m_lbUriageNow.text = string.Format( "{0}魂" , iCollectExp);
+		//m_lbUriageMax.text = string.Format( "{0}G" , iUriageMax );
 	}
 
 	override protected void initialize(){

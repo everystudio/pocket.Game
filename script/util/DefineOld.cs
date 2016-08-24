@@ -408,6 +408,22 @@ public class UtilString{
 			strRet += _iIntervalSec.ToString () + "秒";
 		}
 		return strRet;
+	}
+
+	static public string GetExp( int _iExp , int _iIntervalSec)
+	{
+		string strRet = string.Format("{0}魂/", _iExp);
+		//string strRet2= string.Format("{0}魂/", _iExp);
+
+		if (60 <= _iIntervalSec)
+		{
+			int iMinute = _iIntervalSec / 60;
+			strRet += iMinute.ToString() + "分";
+		}
+		else {
+			strRet += _iIntervalSec.ToString() + "秒";
+		}
+		return strRet;
 
 	}
 
