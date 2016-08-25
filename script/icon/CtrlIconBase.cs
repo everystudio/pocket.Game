@@ -3,12 +3,15 @@ using System.Collections;
 
 abstract public class CtrlIconBase : MonoBehaviourEx {
 
+	public UnityEventInt OnScare = new UnityEventInt();
+
 	public enum STEP
 	{
 		NONE		= 0,
 		IDLE		,
 		MOVE		,
 		EAT			,
+		SCARE		,
 		MAX			,
 	}
 	public STEP m_eStep;
@@ -51,9 +54,16 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 		return v3X + v3Y;
 
 	}
-
+	public void ScareStart()
+	{
+		m_eStep = STEP.SCARE;
+	}
 	abstract public void AnimationIdol(bool _bInit);
 	abstract public void AnimationMove(bool _bInit);
+	virtual public void AnimationScare(bool _bInit)
+	{
+
+	}
 	abstract public void AnimationEat(bool _bInit , int _iMealId );
 	virtual public void createMeal(){
 		Release (m_goMeal);
@@ -135,6 +145,20 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 				Release (m_goMeal);
 			}
 			break;
+
+			case STEP.SCARE:
+				if(bInit)
+				{
+					OnScare.Invoke(m_dataMonster.monster_serial);
+					m_fTimer = 0.0f;
+				}
+				m_fTimer += Time.deltaTime;
+				AnimationScare(bInit);
+				if ( 2.0f < m_fTimer)
+				{
+					m_eStep = STEP.IDLE;
+				}
+				break;
 
 		case STEP.MAX:
 		default:

@@ -19,9 +19,6 @@ public class CtrlIconMonster : CtrlIconBase {
 
 		AnimationIdol (true);
 
-
-
-
 	}
 
 	public GameObject m_goDust;
@@ -169,7 +166,6 @@ public class CtrlIconMonster : CtrlIconBase {
 		m_fAnimationTime += Time.deltaTime;
 		if (m_fAnimationInterval < m_fAnimationTime) {
 			m_fAnimationTime -= m_fAnimationInterval;
-
 
 			m_iAnimationFrame += 1;
 			m_iAnimationFrame %= 2;		// トータル２フレーム
