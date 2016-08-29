@@ -37,6 +37,10 @@ public class CtrlHeaderExp : MonoBehaviour {
 
 	public PopupAnimation m_PopupAnimation;
 
+	private string ExpAto( int _iParam)
+	{
+		return string.Format("{0}魂", _iParam);
+	}
 
 	public void SetExp( int _iLevel , out int _iExpNow , out int _iExpNext ){
 		_iExpNow = 0;
@@ -86,7 +90,7 @@ public class CtrlHeaderExp : MonoBehaviour {
 		m_lbLevel.text = "Lv."+m_iLevel.ToString ();
 		m_fValue = DefineOld.GetValue (m_iTotalExp, m_iLevelExpNow, m_iLevelExpNext);
 		m_slExp.value = m_fValue;
-		m_lbAto.text = (m_iLevelExpNext - m_iTotalExp).ToString ();
+		m_lbAto.text = ExpAto(m_iLevelExpNext - m_iTotalExp);
 		if (m_iLevel == DefineOld.USER_LEVEL_MAX) {
 			m_lbAto.text = "[FF0000]MAX[-]";
 			m_lbAto.transform.localPosition = new Vector3 (m_lbAto.transform.localPosition.x , 37.0f , m_lbAto.transform.localPosition.z );
@@ -117,7 +121,7 @@ public class CtrlHeaderExp : MonoBehaviour {
 				SetExp (m_iLevel, out m_iLevelExpNow, out m_iLevelExpNext);
 				m_fValue = DefineOld.GetValue (m_iTotalExp, m_iLevelExpNow, m_iLevelExpNext);
 				m_slExp.value = m_fValue;
-				m_lbAto.text = (m_iLevelExpNext - m_iTotalExp).ToString ();
+				m_lbAto.text = ExpAto(m_iLevelExpNext - m_iTotalExp);
 
 				if (m_iLevel == DefineOld.USER_LEVEL_MAX) {
 					m_lbAto.text = "[FF0000]MAX[-]";
@@ -152,7 +156,7 @@ public class CtrlHeaderExp : MonoBehaviour {
 				}
 				m_fValue = DefineOld.GetValue (m_iTotalExp, m_iLevelExpNow, m_iLevelExpNext);
 				m_slExp.value = m_fValue;
-				m_lbAto.text = (m_iLevelExpNext - m_iTotalExp).ToString ();
+				m_lbAto.text = ExpAto(m_iLevelExpNext - m_iTotalExp);
 			}
 			break;
 

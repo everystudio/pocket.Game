@@ -129,20 +129,8 @@ public class CtrlVisitor : MonoBehaviourEx {
 					temp.y = y;
 					check_list.Add (temp);
 				}
-				/*
-				DataItemParam param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_ROAD, x, y));
-				if (param.item_id == DefineOld.ITEM_ID_ROAD) {
-					check_list.Add (param);
-				}
-				*/
 				x = m_iPosX;
 				y = m_iPosY + 1;
-				/*
-				param = DataManager.Instance.m_dataItem.SelectOne (string.Format (" item_id = {0} and x = {1} and y = {2} ", DefineOld.ITEM_ID_ROAD, x, y));
-				if (param.item_id == DefineOld.ITEM_ID_ROAD) {
-					check_list.Add (param);
-				}
-				*/
 				if (DataManager.Instance.IsRoad (x, y)) {
 					RoadPosition temp = new RoadPosition ();
 					temp.x = x;
@@ -152,7 +140,6 @@ public class CtrlVisitor : MonoBehaviourEx {
 
 				if (0 < check_list.Count) {
 					int iIndex = UtilRand.GetRand (check_list.Count);
-					//m_iTargetItemSerial = check_list [iIndex].item_serial;
 					m_iTargetX = check_list [iIndex].x;
 					m_iTargetY = check_list [iIndex].y;
 					m_eStep = STEP.MOVE;

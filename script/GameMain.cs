@@ -75,6 +75,11 @@ public class GameMain : MonoBehaviour {
 		set{ m_iPushedBuildingSerial = value; }
 	}
 
+	// 叫んでるモンスターのいる場所から周辺のGRIDを取得する
+	public void Scare( int _iMonsterSerial)
+	{
+
+	}
 
 
 	public void AddFukidashi( int _iWorkId , string _strMessage ){

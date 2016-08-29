@@ -49,14 +49,6 @@ public class CtrlIconMonster : CtrlIconBase {
 			dict.Add ("clean_time", "\"" + TimeManager.StrGetTime () + "\"");
 			DataManager.Instance.dataMonster.Update (m_dataMonster.monster_serial, dict);
 			m_dataMonster = DataManager.Instance.dataMonster.Select (m_dataMonster.monster_serial);
-			/*
-			string strNow = TimeManager.StrNow ();
-			Dictionary< string , string > dict = new Dictionary< string , string > ();
-			dict.Add ("collect_time", "\"" + strNow + "\"");
-			DataManager.Instance.dataMonster.Update (monster_serial, dict );
-			*/
-
-
 		}
 		return bRet;
 	}
@@ -94,30 +86,7 @@ public class CtrlIconMonster : CtrlIconBase {
 			m_dataMonster.GetConditions (ref iCleanLevel, ref iMealLevel);
 			m_iCleanLevel = iCleanLevel;
 			m_iMealLevel = iMealLevel;
-
-			/*
-			double clean_time = TimeManager.Instance.GetDiffNow (m_dataMonster.clean_time).TotalSeconds * -1.0d;
-			double meal_time = TimeManager.Instance.GetDiffNow (m_dataMonster.meal_time).TotalSeconds * -1.0d;
-
-			foreach (CsvTimeData time_data in DataManager.csv_time) {
-				if (time_data.type == 1) {
-					if (clean_time < time_data.delta_time) {
-						if (iCleanLevel < time_data.now) {
-							iCleanLevel = time_data.now;
-						}
-					}
-
-				} else if (time_data.type == 2) {
-					if (meal_time < time_data.delta_time) {
-						if (iMealLevel < time_data.now) {
-							iMealLevel = time_data.now;
-						}
-					}
-				} else {
-				}
-			}
-			*/
-
+			
 			if (iCleanLevel < 1 && m_dataMonster.condition == (int)DefineOld.Monster.CONDITION.FINE ) {
 				Dictionary< string , string > dict = new Dictionary< string , string > ();
 				dict.Add ("condition", ((int)(DefineOld.Monster.CONDITION.SICK)).ToString ()); 
@@ -142,6 +111,13 @@ public class CtrlIconMonster : CtrlIconBase {
 			if (iCleanLevel != 5) {
 				createDust ();
 			}
+
+			// 待機状態の一定確率で叫ぶ
+			if(85 < UtilRand.GetRand(100))
+			{
+				ScareStart();
+			}
+
 		}
 	}
 

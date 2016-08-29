@@ -149,7 +149,8 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 			case STEP.SCARE:
 				if(bInit)
 				{
-					OnScare.Invoke(m_dataMonster.monster_serial);
+					//OnScare.Invoke(m_dataMonster.monster_serial);
+					GameMain.Instance.Scare(m_dataMonster.monster_serial);
 					m_fTimer = 0.0f;
 				}
 				m_fTimer += Time.deltaTime;

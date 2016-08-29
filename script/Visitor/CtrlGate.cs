@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CtrlGate : MonoBehaviour {
+public class CtrlGate : Singleton<CtrlGate> {
 
 	public enum STEP {
 		IDLE		= 0,
@@ -50,9 +50,7 @@ public class CtrlGate : MonoBehaviour {
 	}
 	*/
 
-	public int m_iVisitorNum;
-
-	List<CtrlVisitor> visitor_list = new List<CtrlVisitor>();
+	public List<CtrlVisitor> visitor_list = new List<CtrlVisitor>();
 
 	void Update(){
 

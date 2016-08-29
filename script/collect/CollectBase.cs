@@ -100,8 +100,8 @@ public class CollectBase : MonoBehaviourEx {
 		if (0 < m_csvItemParam.revenue) {
 			// お店自体金額回収
 			double diffSec = TimeManager.Instance.GetDiffNow (m_dataItemParam.collect_time).TotalSeconds * -1;
-			Debug.LogError( m_dataItemParam.collect_time );
-			Debug.LogError( diffSec );
+			//Debug.LogError( m_dataItemParam.collect_time );
+			//Debug.LogError( diffSec );
 			dNokoriSec = m_csvItemParam.revenue_interval - diffSec ;
 
 			if (0 < dNokoriSec) {
