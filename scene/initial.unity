@@ -703,6 +703,8 @@ MonoBehaviour:
   FORCE_UPDATE_ITEM: 0
   FORCE_UPDATE_MONSTER: 0
   FORCE_UPDATE_WORK: 0
+  FORCE_UPDATE_SKIT: 0
+  FORCE_UPDATE_WORD: 0
 --- !u!1 &523562372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,7 +1661,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1372745188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 47, z: 0}
+  m_LocalPosition: {x: 0, y: 27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1695,13 +1697,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 1000
-  mHeight: 500
+  mWidth: 884
+  mHeight: 583
   mDepth: 0
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2
+  aspectRatio: 1.5162951
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -2465,7 +2467,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1942168678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecb14c79234564c198c611529bb207c5, type: 3}
   m_Name: 

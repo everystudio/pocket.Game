@@ -31,6 +31,8 @@ public class CtrlIconRoot : MonoBehaviour {
 	public UI2DSprite m_sprIcon;
 	[SerializeField]
 	public CtrlIconFukidashi m_fukidashi;
+	[SerializeField]
+	public CtrlIconTamashii m_tamashii;
 	#endregion
 
 	public ICON_TYPE m_eIconType;
@@ -39,7 +41,7 @@ public class CtrlIconRoot : MonoBehaviour {
 	protected DataMonsterParam m_dataMonster;
 	protected DataStaffParam m_dataStaff;
 
-	private CollectBase m_collectBase;
+	protected CollectBase m_collectBase;
 
 	public bool Clean(){
 		return m_ctrlIconBase.CleanDust ();
@@ -72,19 +74,22 @@ public class CtrlIconRoot : MonoBehaviour {
 	}
 
 	public void Initialize( DataMonsterParam _monster , CtrlFieldItem _fieldItem ){
+
+		if (m_collectBase == null)
+		{
+			m_collectBase = gameObject.AddComponent<CollectBase>();
+			m_collectBase.Initialize(_fieldItem.m_dataItemParam.item_serial, _monster);
+		}
+
 		m_eIconType = ICON_TYPE.MONSTER;
 		CtrlIconMonster script = gameObject.AddComponent<CtrlIconMonster> ();
 
 		script.m_fukidashi = m_fukidashi;
 		m_iSize = _fieldItem.m_dataItemParam.width;
-		script.Initialize (m_sprIcon , _monster , m_iSize );
+		script.Initialize(m_sprIcon, _monster, m_iSize, m_tamashii, m_collectBase);
 		m_ctrlIconBase = (CtrlIconBase)script;
 		m_dataMonster = _monster;
 
-		if (m_collectBase == null) {
-			m_collectBase = gameObject.AddComponent<CollectBase> ();
-			m_collectBase.Initialize (_fieldItem.m_dataItemParam.item_serial, _monster);
-		}
 	}
 	public void Initialize( DataStaffParam _staff , CtrlFieldItem _fieldItem  ){
 		m_eIconType = ICON_TYPE.STAFF;
@@ -99,8 +104,13 @@ public class CtrlIconRoot : MonoBehaviour {
 
 	public void SetDepth( int _iDepth ){
 
-		if( m_ctrlIconBase != null ){
-			m_ctrlIconBase.SetDepth (_iDepth - DataManager.Instance.DEPTH_ITEM + DataManager.Instance.DEPTH_MONSTER );
+		int iMonsterDepth = _iDepth - DataManager.Instance.DEPTH_ITEM + DataManager.Instance.DEPTH_MONSTER;
+		if ( m_ctrlIconBase != null ){
+			m_ctrlIconBase.SetDepth (iMonsterDepth);
+		}
+		if(m_tamashii != null)
+		{
+			m_tamashii.SetDepth(iMonsterDepth + DataManager.Instance.DEPTH_MONSTER_FUKIDASHI + 1);
 		}
 		return;
 	}

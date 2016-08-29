@@ -49,10 +49,7 @@ public class CtrlCollectGold : Singleton<CtrlCollectGold> {
 	}
 
 	public void AddCollect( int _iGold , int _iExp ){
-		if (0 < _iExp)
-		{
-			setButtonColor(true);
-		}
+		setButtonColor(true);
 		m_iBufGold += _iGold;
 		m_iBufExp += _iExp;
 		return;

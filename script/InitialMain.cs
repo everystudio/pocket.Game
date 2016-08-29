@@ -49,7 +49,8 @@ public class InitialMain : MonoBehaviour {
 	public ButtonBase m_btnBackup;
 	public CtrlOjisanCheck m_ojisanCheck;
 	public UITexture m_texBack;
-	public UtilSwitchSprite m_SwitchSpriteBack;
+	[SerializeField]
+	private UtilSwitchSprite m_SwitchSpriteBack;
 	public List<SpreadSheetData> m_ssdSample;
 
 	public ButtonBase m_btnTutorialReset;

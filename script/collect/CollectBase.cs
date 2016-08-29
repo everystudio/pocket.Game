@@ -15,6 +15,8 @@ public class CollectBase : MonoBehaviourEx {
 
 	CtrlFieldItem m_ctrlFieldItem = null;
 
+	public UnityEventIntInt CollectCharge = new UnityEventIntInt();
+	public UnityEventInt CollectMonster = new UnityEventInt();
 
 	public bool m_bCollectCheck;
 
@@ -33,6 +35,7 @@ public class CollectBase : MonoBehaviourEx {
 				Dictionary< string , string > dict = new Dictionary< string , string > ();
 				dict.Add ("collect_time", "\"" + strNow + "\"");
 				DataManager.Instance.dataMonster.Update (m_dataMonsterParam.monster_serial, dict );
+				CollectMonster.Invoke(m_dataMonsterParam.monster_serial);
 			}
 
 			collectCheck ();
@@ -87,6 +90,8 @@ public class CollectBase : MonoBehaviourEx {
 		}
 
 		CtrlCollectGold.Instance.AddCollect (igold, iexp);
+
+		CollectCharge.Invoke(igold, iexp);
 		m_bCollectCheck = true;
 	}
 

@@ -6,8 +6,24 @@ public class CtrlIconMonster : CtrlIconBase {
 
 	public int m_iMealLevel;
 	public int m_iCleanLevel;
-	public void Initialize( UI2DSprite _sprite , DataMonsterParam _dataMonster , int _iSize ){
 
+	private void CollectCharge(int _iGold , int _iExp )
+	{
+		m_iconTamashii.gameObject.SetActive(true);
+	}
+	private void CollectMonster( int _iMonsterSerial)
+	{
+		m_iconTamashii.gameObject.SetActive(false);
+	}
+
+	protected CtrlIconTamashii m_iconTamashii;
+	protected CollectBase m_collectBase;
+	public void Initialize( UI2DSprite _sprite , DataMonsterParam _dataMonster , int _iSize , CtrlIconTamashii _iconTamashii , CollectBase _collectBase ){
+
+		m_iconTamashii = _iconTamashii;
+		m_collectBase = _collectBase;
+		m_collectBase.CollectCharge.AddListener(CollectCharge);
+		m_collectBase.CollectMonster.AddListener(CollectMonster);
 		SetSize (_iSize);
 
 		myTransform.localPosition = GetMovePos ();
