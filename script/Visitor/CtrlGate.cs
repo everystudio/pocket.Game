@@ -17,10 +17,12 @@ public class CtrlGate : Singleton<CtrlGate> {
 	public float m_fTimer;
 
 	public int m_iCapacity;
+	public int m_iVisitorSerialNew;
 
 	private int m_iX;
 	private int m_iY;
 	public void Initialize(int _iX , int _iY ){
+		m_iVisitorSerialNew = 0;
 		m_iX = _iX;
 		m_iY = _iY;
 		m_iCapacity = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL) / 2 ;
@@ -102,18 +104,19 @@ public class CtrlGate : Singleton<CtrlGate> {
 				int road_serial = check_list [iIndex].item_serial;
 
 				int iVisitorType = 1 + UtilRand.GetRand (5);//ダサい
+					m_iVisitorSerialNew += 1;
 
-				bool bChecked = false;
+					bool bChecked = false;
 				foreach (CtrlVisitor visitor in visitor_list) {
 					if (visitor.IsActive () == false) {
 						bChecked = true;
-						visitor.Initialize (iVisitorType, road_serial);
+							visitor.Initialize(iVisitorType, road_serial, m_iVisitorSerialNew);
 						break;
 					}
 				}
 				if (bChecked == false) {
 					CtrlVisitor visitor = PrefabManager.Instance.MakeScript<CtrlVisitor> ("prefab/PrefVisitor", transform.parent.gameObject);
-					visitor.Initialize (iVisitorType, road_serial);
+					visitor.Initialize (iVisitorType, road_serial, m_iVisitorSerialNew);
 					visitor_list.Add (visitor);
 				}
 			}
@@ -127,6 +130,17 @@ public class CtrlGate : Singleton<CtrlGate> {
 		}
 	}
 
+	public void CollectTamashii(int _iVisitorSerial)
+	{
+		foreach (CtrlVisitor visitor in visitor_list)
+		{
+			if( visitor.IsVisitor(_iVisitorSerial))
+			{
+				visitor.TamashiiCollect(0);
+			}
+
+		}
+	}
 
 
-}
+	}

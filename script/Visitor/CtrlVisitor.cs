@@ -9,11 +9,13 @@ public class CtrlVisitor : MonoBehaviourEx {
 		NONE		= 0,
 		WAIT		,
 		MOVE		,
+		SCARE		,
 		END			,
 		MAX			,
 	}
 	public STEP m_eStep;
 	private STEP m_eStepPre;
+	private STEP m_eStepSave;
 
 	public bool m_bUp;
 
@@ -21,6 +23,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 		public int x;
 		public int y;
 	}
+	public int m_iVisitorSerial;
 
 	[SerializeField]
 	private float m_fTimer;
@@ -59,7 +62,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 	private UI2DSprite m_sprChara;
 
 	private void setSprite (int _iType, int _iFrame){
-		string people = string.Format ("texture/ui/people{0}_{1:D2}.png", _iType, _iFrame);
+		string people = string.Format ("texture/ui/people{0:D3}_{1:D2}.png", _iType, _iFrame);
 		//Debug.Log (people);
 		m_sprChara.sprite2D = SpriteManager.Instance.Load (people);
 		//Debug.Log (m_sprChara.sprite2D);
@@ -73,16 +76,19 @@ public class CtrlVisitor : MonoBehaviourEx {
 	private void setDepth( int _iX , int _iY ){
 		int iDepth = 100 - (_iX + _iY);// + (m_dataItemParam.height-1));
 		m_sprChara.depth = iDepth + DataManager.Instance.DEPTH_VISITOR;
+		m_sprTamashii.depth = iDepth + DataManager.Instance.DEPTH_VISITOR + 5;
 	}
 
 	public bool IsActive(){
 		return m_eStep != STEP.END;
 	}
 
-	public void Initialize( int _iType , int _iItemSerial ){
+	public void Initialize( int _iType , int _iItemSerial , int _iVisitorSerial ){
+		m_iVisitorSerial = _iVisitorSerial;
 		m_iType = _iType;
 		DataItemParam item_param = DataManager.Instance.m_dataItem.Select (_iItemSerial);
-
+		m_sprTamashii.gameObject.SetActive(false);
+		m_sprTamashii.gameObject.name = string.Format("{0}{1}", DataManager.Instance.KEY_VISITOR_TAMASHII , _iVisitorSerial);
 		//Debug.LogError (string.Format ("x={0} y={1}", _iX, _iY));
 		//myTransform.localPosition = (DefineOld.CELL_X_DIR.normalized * DefineOld.CELL_X_LENGTH * item_param.x) + (DefineOld.CELL_Y_DIR.normalized * DefineOld.CELL_Y_LENGTH * item_param.y);
 		m_bUp = true;
@@ -250,7 +256,30 @@ public class CtrlVisitor : MonoBehaviourEx {
 			}
 			myTransform.localPosition = set_position;
 			break;
-		case STEP.END:
+
+			case STEP.SCARE:
+				if (bInit)
+				{
+					//Debug.LogError("scare");
+					//OnScare.Invoke(m_dataMonster.monster_serial);
+					iTween.PunchScale(gameObject, iTween.Hash(
+						"x", 0.5f,
+						"y", 0.5f,
+						"time", 2.5f,
+						"oncomplete", "OnCompleteHandler"));
+					m_bEndITween = false;
+					setSprite(m_iType, 2);
+				}
+				if (m_bEndITween)
+				//if ( 2.0f < m_fTimer)
+				{
+					// 特殊戻し
+					m_eStepPre = m_eStepSave;
+					m_eStep = m_eStepSave;
+				}
+				break;
+
+			case STEP.END:
 			if (bInit) {
 				m_sprChara.gameObject.SetActive (false);
 			}
@@ -260,6 +289,51 @@ public class CtrlVisitor : MonoBehaviourEx {
 			break;
 		}
 	}
+	private bool m_bEndITween;
+	private void OnCompleteHandler()
+	{
+		m_bEndITween = true;
+	}
+
+	private List<int> m_monsterSerialList = new List<int>();
+	private int m_iGetExp;
+
+	public void Scare( int _iMonsterSerial , int _iExp)
+	{
+		foreach( int serial in m_monsterSerialList)
+		{
+			if( serial == _iMonsterSerial)
+			{
+				return;
+			}
+		}
+
+		if (m_eStep != STEP.SCARE)
+		{
+			m_eStepSave = m_eStep;
+		}
+		m_eStep = STEP.SCARE;
+
+		m_monsterSerialList.Add(_iMonsterSerial);
+		m_iGetExp += _iExp;
+		m_sprTamashii.gameObject.SetActive(true);
+		return;
+	}
+
+	public bool IsVisitor( int _iVisitorSerial)
+	{
+		return m_iVisitorSerial == _iVisitorSerial;
+	}
+
+	public void TamashiiCollect(int _iTemp)
+	{
+		// 事情により引数は使わないです
+		DataManager.user.AddExp(m_iGetExp);
+		m_iGetExp = 0;
+		m_sprTamashii.gameObject.SetActive( false);
+	}
+	[SerializeField]
+	private UI2DSprite m_sprTamashii;
 }
 
 

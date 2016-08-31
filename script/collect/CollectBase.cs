@@ -20,31 +20,37 @@ public class CollectBase : MonoBehaviourEx {
 
 	public bool m_bCollectCheck;
 
-	private void Collected(){
+	public void ResetCollectTime()
+	{
+		// リセット処理
+		if (m_dataItemParam != null)
+		{
+			string strNow = TimeManager.StrGetTime();
+			Dictionary<string, string> dict = new Dictionary<string, string>();
+			dict.Add("collect_time", "\"" + strNow + "\"");
+			DataManager.Instance.m_dataItem.Update(m_dataItemParam.item_serial, dict);
+		}
+		if (m_dataMonsterParam != null)
+		{
+			string strNow = TimeManager.StrNow();
+			Dictionary<string, string> dict = new Dictionary<string, string>();
+			dict.Add("collect_time", "\"" + strNow + "\"");
+			DataManager.Instance.dataMonster.Update(m_dataMonsterParam.monster_serial, dict);
+			CollectMonster.Invoke(m_dataMonsterParam.monster_serial);
+		}
+		collectCheck();
+	}
+
+	private void _collected(){
 		if (m_bCollectCheck == true) {
 			m_bCollectCheck = false;
-			// リセット処理
-			if (m_dataItemParam != null) {
-				string strNow = TimeManager.StrGetTime ();
-				Dictionary< string , string > dict = new Dictionary< string , string > ();
-				dict.Add ("collect_time", "\"" + strNow + "\"");
-				DataManager.Instance.m_dataItem.Update (m_dataItemParam.item_serial, dict);
-			}
-			if (m_dataMonsterParam != null) {
-				string strNow = TimeManager.StrNow ();
-				Dictionary< string , string > dict = new Dictionary< string , string > ();
-				dict.Add ("collect_time", "\"" + strNow + "\"");
-				DataManager.Instance.dataMonster.Update (m_dataMonsterParam.monster_serial, dict );
-				CollectMonster.Invoke(m_dataMonsterParam.monster_serial);
-			}
-
-			collectCheck ();
+			ResetCollectTime();
 		}
 	}
 
 	private void initializeCommon(int _iItemSerial){
 		if (m_bInitialized == false) {
-			CtrlCollectGold.Instance.m_eventCollect.AddListener (Collected);
+			CtrlCollectGold.Instance.m_eventCollect.AddListener (_collected);
 		}
 		m_ctrlFieldItem = GameMain.ParkRoot.GetFieldItem (_iItemSerial);
 
@@ -132,8 +138,8 @@ public class CollectBase : MonoBehaviourEx {
 	private bool getCollectMonster( out int _iCollectGold , out int _iCollectExp , out int _iDelay ){
 		double diffSec = TimeManager.Instance.GetDiffNow (m_dataMonsterParam.collect_time).TotalSeconds * -1;
 		//Debug.Log (diffSec.ToString() + ":" + condition.ToString() );
-		Debug.LogError( m_dataMonsterParam.collect_time );
-		Debug.LogError( diffSec );
+		//Debug.LogError( m_dataMonsterParam.collect_time );
+		//Debug.LogError( diffSec );
 		double dNokoriSec = m_csvMonsterParam.revenew_interval - diffSec;
 
 		if (0 < dNokoriSec) {

@@ -18,14 +18,21 @@ public class CtrlIconFukidashi : MonoBehaviour {
 	public STATUS m_eStatus;
 	public STATUS m_eStatusPre;	// いらないかも
 
-	public void SetStatus( STATUS _eStatus , int _iDepth ){
+	public void Initialize()
+	{
+		m_eStatus = STATUS.MAX;
+	}
+	public bool SetStatus( STATUS _eStatus , int _iDepth ){
+
+		bool bRet = false;
 
 		if (m_eStatus != _eStatus) {
+			bRet = true;
 			change (_eStatus);
 			m_eStatus = _eStatus;
 		}
 		m_sprIcon.depth = _iDepth - DataManager.Instance.DEPTH_MONSTER + DataManager.Instance.DEPTH_MONSTER_FUKIDASHI;
-		return;
+		return bRet;
 	}
 
 	private void change( STATUS _eStatus ){

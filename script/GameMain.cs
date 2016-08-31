@@ -76,8 +76,28 @@ public class GameMain : MonoBehaviour {
 	}
 
 	// 叫んでるモンスターのいる場所から周辺のGRIDを取得する
-	public void Scare( int _iMonsterSerial)
+	public void Scare( int _iMonsterSerial , float _fRange , GameObject _gameObject )
 	{
+		DataMonsterParam monsterParam = DataManager.Instance.dataMonster.Select(_iMonsterSerial);
+		CsvMonsterParam csvMonsterParam = DataManager.Instance.m_csvMonster.Select(monsterParam.monster_id);
+		//int iItemSerial = monsterParam.item_serial;
+		//DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(iItemSerial);
+
+		float dist = _fRange;
+		dist *= dist;
+		foreach( CtrlVisitor visitor in CtrlGate.Instance.visitor_list)
+		{
+			if(Vector3.SqrMagnitude(visitor.myTransform.position - _gameObject.transform.position) < dist)
+			{
+				visitor.Scare(_iMonsterSerial, csvMonsterParam.revenew_exp);
+			}
+		}
+
+
+
+
+
+
 
 	}
 
@@ -465,16 +485,18 @@ public class GameMain : MonoBehaviour {
 		_iY = 0;
 
 		//レイを投射してオブジェクトを検出
-		if (Physics.Raycast (ray, out hit, fDistance)) {
-			Debug.Log (hit.collider.gameObject.name);
-			if (hit.collider.gameObject.name.Equals (DataManager.Instance.KEY_TOUCHABLE_FIELD_NAME)) {
-				GameObject objPoint = new GameObject ();
+		if (Physics.Raycast(ray, out hit, fDistance))
+		{
+			Debug.Log(hit.collider.gameObject.name);
+			if (hit.collider.gameObject.name.Equals(DataManager.Instance.KEY_TOUCHABLE_FIELD_NAME))
+			{
+				GameObject objPoint = new GameObject();
 				objPoint.transform.position = hit.point;
 				objPoint.transform.parent = _goRoot.transform;
 
 				// ここの計算式は後で見直します
-				int calc_x = Mathf.FloorToInt ((objPoint.transform.localPosition.x + (objPoint.transform.localPosition.y * 2.0f)) / 160.0f);
-				int calc_y = Mathf.FloorToInt (((objPoint.transform.localPosition.y * 2.0f) - objPoint.transform.localPosition.x) / 160.0f);
+				int calc_x = Mathf.FloorToInt((objPoint.transform.localPosition.x + (objPoint.transform.localPosition.y * 2.0f)) / 160.0f);
+				int calc_y = Mathf.FloorToInt(((objPoint.transform.localPosition.y * 2.0f) - objPoint.transform.localPosition.x) / 160.0f);
 				//Debug.Log ("calc_x=" +  calc_x.ToString () + " calc_y=" +  calc_y.ToString ());
 
 				bRet = true;
@@ -483,7 +505,16 @@ public class GameMain : MonoBehaviour {
 
 				//Debug.LogError (string.Format ("x:{0} y:{1} posx{2} posy{3}", calc_x, calc_y, objPoint.transform.localPosition.x, objPoint.transform.localPosition.y));
 
-				Destroy (objPoint);
+				Destroy(objPoint);
+			}
+			else if (hit.collider.gameObject.name.Contains(DataManager.Instance.KEY_VISITOR_TAMASHII))
+			{
+				int visitorSerial = int.Parse(hit.collider.gameObject.name.Replace(DataManager.Instance.KEY_VISITOR_TAMASHII, ""));
+				CtrlGate.Instance.CollectTamashii(visitorSerial);
+			}
+			else
+			{
+
 			}
 		}
 		return bRet;

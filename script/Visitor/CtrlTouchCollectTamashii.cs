@@ -9,8 +9,14 @@ public class CtrlTouchCollectTamashii : MonoBehaviour {
 
 	public UnityEventInt CollectTamashii = new UnityEventInt();
 
-	public void OnPushed()
+	void OnTriggerEnter(Collider other)
 	{
+		OnPushed();
+	}
+
+	private void OnPushed()
+	{
+		Debug.LogError("pushed tamashii");
 		CollectTamashii.Invoke(m_iTamashii);
 		gameObject.SetActive(false);
 	}

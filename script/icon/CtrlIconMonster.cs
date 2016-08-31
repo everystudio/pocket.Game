@@ -9,6 +9,7 @@ public class CtrlIconMonster : CtrlIconBase {
 
 	private void CollectCharge(int _iGold , int _iExp )
 	{
+		//Debug.LogError(string.Format("exp={0}", _iExp));
 		m_iconTamashii.gameObject.SetActive(true);
 	}
 	private void CollectMonster( int _iMonsterSerial)
@@ -19,6 +20,8 @@ public class CtrlIconMonster : CtrlIconBase {
 	protected CtrlIconTamashii m_iconTamashii;
 	protected CollectBase m_collectBase;
 	public void Initialize( UI2DSprite _sprite , DataMonsterParam _dataMonster , int _iSize , CtrlIconTamashii _iconTamashii , CollectBase _collectBase ){
+
+		m_fukidashi.Initialize();
 
 		m_iconTamashii = _iconTamashii;
 		m_collectBase = _collectBase;
@@ -91,6 +94,7 @@ public class CtrlIconMonster : CtrlIconBase {
 
 	override public void update_idle( bool _bInit ){
 		if (_bInit) {
+			//Debug.LogError("here");
 			// 空腹状態
 			// 新しくする
 			m_dataMonster = DataManager.Instance.dataMonster.Select (m_dataMonster.monster_serial);
@@ -121,7 +125,10 @@ public class CtrlIconMonster : CtrlIconBase {
 			} else if (iMealLevel < 3 ) {
 				m_fukidashi.SetStatus (CtrlIconFukidashi.STATUS.HUNGRY,m_sprIcon.depth);
 			} else {
-				m_fukidashi.SetStatus (CtrlIconFukidashi.STATUS.NONE,m_sprIcon.depth);
+				if( m_fukidashi.SetStatus (CtrlIconFukidashi.STATUS.NONE,m_sprIcon.depth))
+				{
+					m_collectBase.ResetCollectTime();
+				}
 			}
 
 			if (iCleanLevel != 5) {

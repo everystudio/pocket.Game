@@ -151,14 +151,14 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 			case STEP.SCARE:
 				if(bInit)
 				{
-					Debug.LogError("scare");
+					//Debug.LogError("scare");
 					//OnScare.Invoke(m_dataMonster.monster_serial);
 					iTween.PunchScale(gameObject, iTween.Hash(
 						"x", 0.5f,
 						"y", 0.5f,
 						"time", 2.5f,
 						"oncomplete", "OnCompleteHandler"));
-					GameMain.Instance.Scare(m_dataMonster.monster_serial);
+					GameMain.Instance.Scare(m_dataMonster.monster_serial , 0.5f , gameObject );
 					m_fTimer = 0.0f;
 					m_bEndITween = false;
 				}
