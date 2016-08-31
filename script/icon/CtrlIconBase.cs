@@ -114,10 +114,12 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 				EventDelegate.Set (tp.onFinished, EndTween);
 
 				if ( myTransform.localPosition.x < target.x ) {
-					m_sprIcon.transform.localScale = new Vector3( -1.0f , 1.0f , 1.0f );
+						m_sprIcon.flip = UIBasicSprite.Flip.Horizontally;
+						//m_sprIcon.transform.localScale = new Vector3( -1.0f , 1.0f , 1.0f );
 				}
 				else {
-					m_sprIcon.transform.localScale = Vector3.one;
+						m_sprIcon.flip = UIBasicSprite.Flip.Nothing;
+						//m_sprIcon.transform.localScale = Vector3.one;
 				}
 			}
 			AnimationMove (bInit);
@@ -149,13 +151,21 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 			case STEP.SCARE:
 				if(bInit)
 				{
+					Debug.LogError("scare");
 					//OnScare.Invoke(m_dataMonster.monster_serial);
+					iTween.PunchScale(gameObject, iTween.Hash(
+						"x", 0.5f,
+						"y", 0.5f,
+						"time", 2.5f,
+						"oncomplete", "OnCompleteHandler"));
 					GameMain.Instance.Scare(m_dataMonster.monster_serial);
 					m_fTimer = 0.0f;
+					m_bEndITween = false;
 				}
 				m_fTimer += Time.deltaTime;
 				AnimationScare(bInit);
-				if ( 2.0f < m_fTimer)
+				if(m_bEndITween)
+				//if ( 2.0f < m_fTimer)
 				{
 					m_eStep = STEP.IDLE;
 				}
@@ -166,6 +176,12 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 			break;
 		}
 
+	}
+
+	private bool m_bEndITween;
+	private void OnCompleteHandler()
+	{
+		m_bEndITween = true;
 	}
 
 	virtual public bool CleanDust(){

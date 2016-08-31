@@ -204,6 +204,17 @@ public class CtrlIconMonster : CtrlIconBase {
 		return;
 	}
 
+	public override void AnimationScare(bool _bInit)
+	{
+		if(_bInit)
+		{
+			string strName = string.Format("chara{0:D2}_scare", m_dataMonster.monster_id);
+			m_sprIcon.sprite2D = SpriteManager.Instance.Load(string.Format("texture/monster/{0}.png", strName));
+			m_sprIcon.width = (int)m_sprIcon.sprite2D.textureRect.width;// + (int)m_sprIcon.sprite2D.textureRectOffset.x;
+			m_sprIcon.height = (int)m_sprIcon.sprite2D.textureRect.height;// + (int)m_sprIcon.sprite2D.textureRectOffset.y;
+		}
+	}
+
 
 
 }
