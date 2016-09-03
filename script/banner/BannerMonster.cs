@@ -45,10 +45,11 @@ public class BannerMonster : BannerBase {
 	public CsvMonsterParam m_csvMonsterParam;
 	public DataMonsterParam m_dataMonsterParam;
 	public CtrlOjisanCheck m_ojisanCheck;
-
+	
 	public bool m_bGoldLess;
 
-	public void Initialize( CsvMonsterParam _dataMaster , int _iCostNokori ){
+	public void Initialize( CsvMonsterParam _dataMaster , int _iCostNokori, int _iPosDist)
+	{
 		m_bIsUserData = false;
 		m_eStep = STEP.IDLE;
 		m_eStepPre = STEP.MAX;
@@ -78,7 +79,9 @@ public class BannerMonster : BannerBase {
 		// 肝試しは獲得経験値を表示
 		m_lbDifficulty.text = UtilString.GetExp(m_csvMonsterParam.revenew_exp, m_csvMonsterParam.revenew_interval);
 
-		m_bAbleUse = DataManager.user.AbleBuy (_dataMaster.coin, _dataMaster.ticket,  m_csvMonsterParam.cost , _iCostNokori , 0 , 0 , ref m_eReason );
+		m_lbPrizeExp.text = _dataMaster.range.ToString();
+
+		m_bAbleUse = DataManager.user.AbleBuy (_dataMaster.coin, _dataMaster.ticket,  m_csvMonsterParam.cost , _iCostNokori , 0 , 0 , _dataMaster.range , _iPosDist,  ref m_eReason );
 
 		if (0 < GameMain.Instance.TutorialMonster) {
 			if (GameMain.Instance.TutorialMonster == _dataMaster.monster_id) {
@@ -98,9 +101,9 @@ public class BannerMonster : BannerBase {
 
 	}
 
-	public void Initialize( DataMonsterParam _data , int _iCostNokori ){
+	public void Initialize( DataMonsterParam _data , int _iCostNokori , int _iPosDist){
 		CsvMonsterParam master_data = DataManager.Instance.m_csvMonster.Select (_data.monster_id);
-		Initialize (master_data , _iCostNokori);
+		Initialize (master_data , _iCostNokori, _iPosDist);
 
 		//Debug.LogError (_data);
 		m_dataMonsterParam = _data;
@@ -108,7 +111,8 @@ public class BannerMonster : BannerBase {
 
 		//Debug.Log (m_dataMonsterMaster.cost);
 		//Debug.Log (_iCostNokori);
-		m_bAbleUse = DataManager.user.AbleBuy (0, 0, m_csvMonsterParam.cost, _iCostNokori, 0, 0, ref m_eReason);
+
+		m_bAbleUse = DataManager.user.AbleBuy (0, 0, m_csvMonsterParam.cost, _iCostNokori, 0, 0, master_data.range, _iPosDist , ref m_eReason);
 		SetReasonSprite (m_sprReason, m_eReason);
 		if (BannerBase.Mode == BannerBase.MODE.MONSTER_DETAIL) {
 			m_bAbleUse = true;

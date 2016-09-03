@@ -70,6 +70,7 @@ public class BannerBase : MonoBehaviour {
 		GOLD	,
 		TICKET	,
 		COST	,
+		RANGE	,
 		LIMIT	,
 		MAX		,
 	}
@@ -118,6 +119,9 @@ public class BannerBase : MonoBehaviour {
 		case ABLE_BUY_REASON.LIMIT:
 			strRet = "これ以上購入できません";
 			break;
+			case ABLE_BUY_REASON.RANGE:
+				strRet = "no_range";
+				break;
 		default:
 			strRet = "";
 			_sprite.enabled = false;

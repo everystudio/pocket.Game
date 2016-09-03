@@ -344,7 +344,10 @@ public class InitialMain : MonoBehaviour {
 					//monster_master.Load ("csv/master/InitialCsvMonster");
 					foreach (CsvMonsterParam param in monster_master.list) {
 						CsvMonsterParam temp = DataManager.Instance.m_csvMonster.Select (param.monster_id);
-						if (temp.monster_id != 0) {
+
+							Debug.LogError(param.description_book);
+							Debug.LogError(param.range);
+							if (temp.monster_id != 0) {
 							param.status = temp.status;
 						} else {
 							monster_master.list.Add (param);

@@ -83,10 +83,13 @@ public class BannerScrollParent : MonoBehaviourEx {
 
 	public void Display( List<DataMonsterParam> _monsterList , int _iIndex , string _strButton = "" ){
 		BannerBaseClear ();
+		Debug.LogError(GameMain.Instance.m_iSettingItemSerial);
+		DataItemParam dataItemParam = DataManager.Instance.m_dataItem.Select(GameMain.Instance.m_iSettingItemSerial);
+		int item_dist = dataItemParam.x + dataItemParam.y;
 		foreach (DataMonsterParam data in _monsterList) {
 			GameObject objBanner = PrefabManager.Instance.MakeObject ("prefab/PrefBannerMonster" , m_Grid.gameObject );
 			BannerMonster script = objBanner.GetComponent<BannerMonster> ();
-			script.Initialize (data, GameMain.Instance.m_iCostNokori);
+			script.Initialize (data, GameMain.Instance.m_iCostNokori, item_dist);
 			BannerBaseAdd (objBanner);
 		}
 		setSwitchButton (_strButton, m_goScrollViewParent, m_Grid , _iIndex);
@@ -94,10 +97,14 @@ public class BannerScrollParent : MonoBehaviourEx {
 
 	public void Display( List<CsvMonsterParam> _monsterMasterList , int _iIndex , string _strButton = "" ){
 		BannerBaseClear ();
+
+		DataItemParam dataItemParam = DataManager.Instance.m_dataItem.Select(GameMain.Instance.m_iSettingItemSerial);
+		int item_dist = dataItemParam.x + dataItemParam.y;
+
 		foreach (CsvMonsterParam data_master in _monsterMasterList) {
 			GameObject objBanner = PrefabManager.Instance.MakeObject ("prefab/PrefBannerMonster" , m_Grid.gameObject );
 			BannerMonster script = objBanner.GetComponent<BannerMonster> ();
-			script.Initialize (data_master, GameMain.Instance.m_iCostNokori);
+			script.Initialize (data_master, GameMain.Instance.m_iCostNokori, item_dist);
 			BannerBaseAdd (objBanner);
 		}
 		setSwitchButton (_strButton, m_goScrollViewParent, m_Grid , _iIndex);

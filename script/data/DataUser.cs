@@ -87,7 +87,7 @@ public class DataUser {
 	}
 
 
-	public bool AbleBuy( int _iGold , int _iTicket , int _iCost , int _iCostNokori , int _iHave , int _iLimit , ref BannerBase.ABLE_BUY_REASON _eReason ){
+	public bool AbleBuy( int _iGold , int _iTicket , int _iCost , int _iCostNokori , int _iHave , int _iLimit , int _iRange , int _iItemDist , ref BannerBase.ABLE_BUY_REASON _eReason ){
 		bool bRet = true;
 		_eReason = BannerBase.ABLE_BUY_REASON.OKEY;
 
@@ -102,6 +102,11 @@ public class DataUser {
 		if (_iCostNokori < _iCost ) {
 			bRet = false;
 			_eReason = BannerBase.ABLE_BUY_REASON.COST;
+		}
+		if( _iItemDist<= _iRange)
+		{
+			bRet = false;
+			_eReason = BannerBase.ABLE_BUY_REASON.RANGE;
 		}
 
 		if (0 < _iLimit) {
