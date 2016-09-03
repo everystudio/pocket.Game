@@ -22,6 +22,7 @@ public class CtrlPopupWork : MonoBehaviourEx{
 
 		OPEN		,
 		WAIT		,
+		SKIT		,
 		CLOSE		,
 
 		MAX			,
@@ -42,6 +43,8 @@ public class CtrlPopupWork : MonoBehaviourEx{
 	public int m_iLoopIndex;
 
 	public int m_iPopupWorkId;
+
+	private DataWorkParam m_currentWorkParam;
 
 
 	private  Queue<int> m_WorkIdQueue = new Queue<int>(){};
@@ -149,17 +152,28 @@ public class CtrlPopupWork : MonoBehaviourEx{
 				m_lbExp.text = work_data.exp.ToString ();
 
 				string strPrize = "";
-				if (0 < work_data.prize_coin) {
-					strPrize = string.Format ("{0}G", work_data.prize_coin);
-				} else if (0 < work_data.prize_monster) {
-					CsvMonsterParam monster_data = DataManager.GetMonster (work_data.prize_monster);
-					strPrize = string.Format ("{0}", monster_data.name);
-				} else if (0 < work_data.prize_ticket) {
-					strPrize = string.Format ("チケット{0}枚", work_data.prize_ticket);
-				} else {
-					Debug.LogError ("unknown prize");
-				}
+					if (0 < work_data.prize_coin)
+					{
+						strPrize = string.Format("{0}G", work_data.prize_coin);
+					}
+					else if (0 < work_data.prize_monster)
+					{
+						CsvMonsterParam monster_data = DataManager.GetMonster(work_data.prize_monster);
+						strPrize = string.Format("{0}", monster_data.name);
+					}
+					else if (0 < work_data.prize_ticket)
+					{
+						strPrize = string.Format("チケット{0}枚", work_data.prize_ticket);
+					}
+					else if (!work_data.skit_id.Equals(""))
+					{
+						strPrize = string.Format("ストーリー開放");
+					}
+					else {
+						Debug.LogError("unknown prize");
+					}
 				m_lbPrize.text = strPrize;
+					m_currentWorkParam = work_data;
 
 
 				TweenScale ts = TweenScale.Begin (m_switchSprite.gameObject, 0.2f, Vector3.one);
@@ -175,9 +189,27 @@ public class CtrlPopupWork : MonoBehaviourEx{
 			}
 			if (m_btnClose.ButtonPushed) {
 				m_eStep = STEP.CLOSE;
+					if(m_currentWorkParam.skit_id.Equals("") == false)
+					{
+						m_eStep = STEP.SKIT;
+					}
 			} else {
 			}
 			break;
+
+			case STEP.SKIT:
+				if(bInit)
+				{
+					GameMain.skitController.gameObject.SetActive(true);
+					GameMain.skitController.Initialize(DataManager.Instance.skitData, m_currentWorkParam.skit_id);
+				}
+
+				if (GameMain.skitController.IsEnd())
+				{
+					GameMain.skitController.gameObject.SetActive(false);
+					m_eStep = STEP.CLOSE;
+				}
+				break;
 
 		case STEP.CLOSE:
 			if (bInit) {

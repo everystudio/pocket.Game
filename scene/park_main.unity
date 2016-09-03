@@ -1959,7 +1959,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0.3019608, g: 0.13333334, b: 0, a: 1}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 0
   mWidth: 289
   mHeight: 51
@@ -6462,7 +6462,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451608, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11404160, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_Sprite
@@ -6508,15 +6508,14 @@ Prefab:
     - target: {fileID: 11459368, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b1a4880813ae08343bd886287c28e948,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11459368, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22469060, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 72
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22469060, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_SizeDelta.y
@@ -6563,6 +6562,10 @@ Prefab:
     - target: {fileID: 149776, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459368, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
