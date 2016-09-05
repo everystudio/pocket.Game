@@ -15,6 +15,11 @@ public class CtrlItemDetailOffice : CtrlItemDetailBase {
 	[SerializeField]
 	private GameObject m_goRootPosition;
 
+	[SerializeField]
+	private UILabel m_lbRange;
+	[SerializeField]
+	private UILabel m_lbRate;
+
 	#endregion
 
 	List<CtrlFieldItem> m_areaFieldItem = new List<CtrlFieldItem> ();
@@ -35,6 +40,9 @@ public class CtrlItemDetailOffice : CtrlItemDetailBase {
 		CsvItemDetailData item_detail = DataManager.GetItemDetail (m_dataItemParam.item_id, m_dataItemParam.level);
 		m_lbCostMax.text = item_detail.cost.ToString();
 
+		m_lbRange.text = string.Format("効果範囲：{0}", item_detail.area);
+		m_lbRate.text = string.Format("妖怪の叫び範囲：{0}%", item_detail.revenue_rate);
+
 		int iCostNow = 0;
 		int iShisyutsu = 0;
 		List<DataStaffParam> staff_list = DataManager.Instance.dataStaff.Select (" office_serial = " + m_dataItemParam.item_serial.ToString() + " " );
@@ -49,8 +57,8 @@ public class CtrlItemDetailOffice : CtrlItemDetailBase {
 
 		//Debug.Log ("count=" + DataManager.Instance.m_ItemDataList.Count);
 
-		for( int x = m_dataItemParam.x - (master_data.area ) ; x < m_dataItemParam.x + master_data.size + (master_data.area ) ; x++ ){
-			for( int y = m_dataItemParam.y - (master_data.area ) ; y < m_dataItemParam.y + master_data.size + (master_data.area ) ; y++ ){
+		for( int x = m_dataItemParam.x - (item_detail.area ) ; x < m_dataItemParam.x + master_data.size + (item_detail.area ) ; x++ ){
+			for( int y = m_dataItemParam.y - (item_detail.area ) ; y < m_dataItemParam.y + master_data.size + (item_detail.area ) ; y++ ){
 				//Debug.Log ("x=" + x.ToString () + " y=" + y.ToString ());
 
 				//foreach (DataItem data_item in DataManager.Instance.m_ItemDataList) {

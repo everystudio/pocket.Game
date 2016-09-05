@@ -10,6 +10,7 @@ public class CsvItemDetal : MasterTableBase<CsvItemDetailData> {
 public class CsvItemDetailData : MasterBase
 {
 	public int item_id { get; private set; }
+	public int category { get; private set; }
 	public int level { get; private set; }
 	public int need_level { get; private set; }
 	public int coin { get; private set; }

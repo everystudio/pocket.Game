@@ -100,6 +100,8 @@ public class CtrlParkRoot : MonoBehaviourEx {
 
 		m_bInitialized = true;
 		GameMain.Instance.HeaderRefresh (true);
+
+		DataManager.Instance.ReloadScareRate();
 	}
 
 

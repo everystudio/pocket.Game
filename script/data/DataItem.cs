@@ -20,6 +20,8 @@ public class DataItemParam : CsvDataParam{
 	public int m_height;
 	public string m_collect_time;
 	public string m_create_time;
+	public int m_range;
+	public int m_area;
 
 	public int item_serial { get{ return m_item_serial;} set{m_item_serial = value; } }
 	public int item_id { get{ return m_item_id;} set{m_item_id = value; } }
@@ -35,8 +37,11 @@ public class DataItemParam : CsvDataParam{
 	public int height { get{ return m_height;} set{m_height = value; } }
 	public string collect_time { get{ return m_collect_time;} set{m_collect_time = value; } }
 	public string create_time { get{ return m_create_time;} set{m_create_time = value; } }
+	public int range { get { return m_range; } set { m_range = value; } }
+	public int area { get { return m_area; } set { m_area = value; } }
 
 	public DataItemParam(){
+		range = 100;
 	}
 	public DataItemParam Clone(){
 		return (DataItemParam)MemberwiseClone ();
@@ -372,6 +377,8 @@ public class DataItem : CsvData<DataItemParam>{
 		insert_data.height = _itemMaster.size;
 		insert_data.collect_time = strOpenTime;
 		insert_data.create_time = strCreateTime;
+		insert_data.range = 100;
+		insert_data.area = _itemMaster.area;
 
 		DataManager.Instance.m_dataItem.list.Add (insert_data);
 

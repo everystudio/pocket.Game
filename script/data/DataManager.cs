@@ -216,7 +216,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		m_csvTutorial.Load ();
 		m_csvLocalNotification.Load ();
 		RoadLoad ();
-
+		//ReloadScareRate();
 	}
 
 	public void DataSave(){
@@ -440,7 +440,6 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		}
 
 		CtrlHelp.ACTION_TYPE eRet = (CtrlHelp.ACTION_TYPE)UtilRand.GetIndex (prob_arr);
-
 		return eRet;
 	}
 
@@ -462,6 +461,53 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 	public bool IsRoad( int _iX , int _iY ){
 		string road_hash = _getRoadHash (_iX, _iY);
 		return m_RoadMap.ContainsKey (road_hash);
+	}
+
+	public void ReloadScareRate()
+	{
+		List<DataItemParam> list = DataManager.Instance.m_dataItem.Select(" category = 2 and status != 0 ");
+
+		// ここでリセット処理
+		// オフィスとかもやっちゃうけど、レベルから取り直すのでOK。
+		foreach (DataItemParam param in DataManager.Instance.m_dataItem.list)
+		{
+			param.range = 100;
+		}
+
+		foreach (DataItemParam param in list)
+		{
+			CsvItemParam master_data = DataManager.Instance.m_csvItem.Select(param.item_id);
+			CsvItemDetailData item_detail = DataManager.GetItemDetail(param.item_id, param.level);
+			Debug.LogError(item_detail.revenue_rate);
+			for (int x = param.x - (item_detail.area); x < param.x + master_data.size + (item_detail.area); x++)
+			{
+				for (int y = param.y - (item_detail.area); y < param.y + master_data.size + (item_detail.area); y++)
+				{
+					foreach (CtrlFieldItem field_item in GameMain.ParkRoot.m_fieldItemList)
+					{
+						if(field_item.m_dataItemParam.item_id== 0)
+						{
+							continue;
+						}
+						// xyが合ってて、シリアルは別
+						if (field_item.m_dataItemParam.x == x && field_item.m_dataItemParam.y == y && param.item_serial != field_item.m_dataItemParam.item_serial)
+						{
+							Debug.LogError(string.Format("serial={0} item_id={1} range={2} param={3} reve={4}", 
+								field_item.m_dataItemParam.item_serial , 
+								field_item.m_dataItemParam.item_id,
+								field_item.m_dataItemParam.range,
+								param.range,
+								item_detail.revenue_rate));
+							if (field_item.m_dataItemParam.range < item_detail.revenue_rate)
+							{
+								//Debug.LogError(string.Format("update serial={2} range={0} revenue_rate={1}" , param.range , item_detail.revenue_rate , param.item_serial) );
+								field_item.m_dataItemParam.range = item_detail.revenue_rate;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	public bool m_bSymbolRate;

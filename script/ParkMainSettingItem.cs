@@ -53,6 +53,8 @@ public class ParkMainSettingItem : ParkMainController {
 		GameMain.Instance.DispHeader (false);
 		AdsManager.Instance.ShowAdBanner (false);
 
+		m_bIsEnd = false;
+
 		bool bBuyAble = true;
 		CtrlFieldItem moveFieldItem = null;
 		if (m_parkMain.m_eEditMode == ParkMain.EDIT_MODE.NORMAL) {
@@ -431,6 +433,12 @@ public class ParkMainSettingItem : ParkMainController {
 
 			break;
 		case STEP.END:
+				if( bInit)
+				{
+					DataManager.Instance.RoadLoad();
+					DataManager.Instance.ReloadScareRate();
+					m_bIsEnd = true;
+				}
 			break;
 
 		case STEP.MAX:
@@ -440,8 +448,9 @@ public class ParkMainSettingItem : ParkMainController {
 	
 	}
 
+	private bool m_bIsEnd;
 	override public bool IsEnd(){
-		return (m_eStep == STEP.END);
+		return m_bIsEnd;
 	}
 
 }

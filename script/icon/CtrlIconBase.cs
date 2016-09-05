@@ -153,6 +153,10 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 				{
 					//Debug.LogError("scare");
 					//OnScare.Invoke(m_dataMonster.monster_serial);
+
+					DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(m_dataMonster.item_serial);
+
+					//Debug.LogError( string.Format("serial={2} item_id={0} range={1}", itemParam.item_id, itemParam.range , itemParam.item_serial));
 					iTween.PunchScale(gameObject, iTween.Hash(
 						"x", 0.5f,
 						"y", 0.5f,

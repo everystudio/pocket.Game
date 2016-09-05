@@ -59,19 +59,45 @@ abstract public class CtrlItemDetailBuildupBase : CtrlItemDetailBase {
 		m_lbBonusAfter.text = "-";
 
 		foreach (CsvItemDetailData data in DataManager.csv_item_detail) {
-			if (data.item_id == _data.item_id) {
-				if (_data.level == data.level) {
-					m_lbCostNow.text = data.cost.ToString ();
-					m_lbBonusNow.text = string.Format( "{0}%" , data.revenue_rate);
-					m_dataNow = data;
+			if (data.item_id == _data.item_id)
+			{
+				if (data.category == 2)
+				{
+					if (_data.level == data.level)
+					{
+						m_lbCostNow.text = data.area.ToString();
+						m_lbBonusNow.text = string.Format("{0}%", data.revenue_rate);
+						m_dataNow = data;
 
-				} else if (_data.level + 1 == data.level) {
-					m_lbCostAfter.text = data.cost.ToString ();
-					m_lbBonusAfter.text = string.Format ("{0}%", data.revenue_rate);
-					_next = data;
+					}
+					else if (_data.level + 1 == data.level)
+					{
+						m_lbCostAfter.text = data.area.ToString();
+						m_lbBonusAfter.text = string.Format("{0}%", data.revenue_rate);
+						_next = data;
+					}
+					else {
+						;// スルー
+					}
+				}
+				else {
+					if (_data.level == data.level)
+					{
+						m_lbCostNow.text = data.cost.ToString();
+						m_lbBonusNow.text = string.Format("{0}%", data.revenue_rate);
+						m_dataNow = data;
 
-				} else {
-					;// スルー
+					}
+					else if (_data.level + 1 == data.level)
+					{
+						m_lbCostAfter.text = data.cost.ToString();
+						m_lbBonusAfter.text = string.Format("{0}%", data.revenue_rate);
+						_next = data;
+
+					}
+					else {
+						;// スルー
+					}
 				}
 			}
 		}

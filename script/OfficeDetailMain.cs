@@ -26,6 +26,19 @@ public class OfficeDetailMain : PageBase2 {
 			new SearchData( GameMain.TABLE_TYPE.NONE , "" ),
 		} , "OfiiceMes1" , "prefab/PrefItemDetailOffice" ),
 		//} , "prefab/PrefItemDetailDisp" ),
+		new Tab (Tab.TYPE.ITEM_EXTEND, "aaa", "shisetsu2page_tab4", "", new SearchData[1]{
+			new SearchData( GameMain.TABLE_TYPE.NONE , "" ),
+		}  , "OfiiceMes4" , "prefab/PrefItemDetailBuildupOffice" ),
+		new Tab (Tab.TYPE.ITEM_TICKET, "aaa", "shisetsu2page_tab5", "", new SearchData[1]{
+			new SearchData( GameMain.TABLE_TYPE.MONSTER , "@where_key02" ),
+		} , "OfiiceMes5" ),
+		new Tab (Tab.TYPE.ITEM_TICKET, "aaa", "shisetsu2page_tab5", "", new SearchData[1]{
+			new SearchData( GameMain.TABLE_TYPE.MONSTER , "@where_key02" ),
+		} , "OfiiceMes5" ),
+		new Tab (Tab.TYPE.ITEM_TICKET, "aaa", "shisetsu2page_tab5", "", new SearchData[1]{
+			new SearchData( GameMain.TABLE_TYPE.MONSTER , "@where_key02" ),
+		} , "OfiiceMes5" ),
+/*
 		new Tab (Tab.TYPE.ITEM_OFFICE, "aaa", "shisetsu2page_tab2", "", new SearchData[1]{
 			new SearchData( GameMain.TABLE_TYPE.STAFF , "@where_key01" , BannerBase.MODE.STAFF_BACKYARD_CHECK ),
 		} , "OfiiceMes2" ),
@@ -33,12 +46,10 @@ public class OfficeDetailMain : PageBase2 {
 			new SearchData( GameMain.TABLE_TYPE.STAFF_MASTER , " status = 1 " , BannerBase.MODE.STAFF_SET_BUY ),
 			new SearchData( GameMain.TABLE_TYPE.STAFF , " item_serial = 0 " , BannerBase.MODE.STAFF_SET_MINE )
 		} , "OfiiceMes3" ),
-		new Tab (Tab.TYPE.ITEM_EXTEND, "aaa", "shisetsu2page_tab4", "", new SearchData[1]{ 
-			new SearchData( GameMain.TABLE_TYPE.NONE , "" ),
-		}  , "OfiiceMes4" , "prefab/PrefItemDetailBuildupOffice" ),
 		new Tab (Tab.TYPE.ITEM_TICKET, "aaa", "shisetsu2page_tab5", "", new SearchData[1]{ 
 			new SearchData( GameMain.TABLE_TYPE.MONSTER , "@where_key02" ),
 		} , "OfiiceMes5" ),
+		*/
 	};
 
 	public int m_iItemSerial;
