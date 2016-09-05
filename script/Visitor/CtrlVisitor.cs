@@ -84,6 +84,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 	}
 
 	public void Initialize( int _iType , int _iItemSerial , int _iVisitorSerial ){
+		m_monsterSerialList.Clear();
 		m_iVisitorSerial = _iVisitorSerial;
 		m_iType = _iType;
 		DataItemParam item_param = DataManager.Instance.m_dataItem.Select (_iItemSerial);
@@ -295,6 +296,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 		m_bEndITween = true;
 	}
 
+	[SerializeField]
 	private List<int> m_monsterSerialList = new List<int>();
 	private int m_iGetExp;
 

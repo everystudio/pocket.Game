@@ -8,6 +8,18 @@ public class DataManager : DataManagerBase <DataManager>{
 	public readonly string SPREAD_SHEET = "1mwbjeoyZkCs0k0XAOny_gFNJxormS0xoKO1IOPbEOLQ";
 	public readonly string SPREAD_SHEET_CONFIG_SHEET = "od6";
 
+#if UNITY_IPHONE
+	public readonly string KEY_INTERSTENTIAL_START_APIKEY = "interstitial_start_apikey_ios";
+	public readonly string KEY_INTERSTENTIAL_START_STOPID = "interstitial_start_spotid_ios";
+	public readonly string KEY_INTERSTENTIAL_GAME_APIKEY = "interstitial_game_apikey_ios";
+	public readonly string KEY_INTERSTENTIAL_GAME_STOPID = "interstitial_game_spotid_ios";
+#elif UNITY_ANDROID
+	public readonly string KEY_INTERSTENTIAL_START_APIKEY = "interstitial_start_apikey_and";
+	public readonly string KEY_INTERSTENTIAL_START_STOPID = "interstitial_start_spotid_and";
+	public readonly string KEY_INTERSTENTIAL_GAME_APIKEY = "interstitial_game_apikey_and";
+	public readonly string KEY_INTERSTENTIAL_GAME_STOPID = "interstitial_game_spotid_and";
+#endif
+
 	public readonly string KEY_CONFIG_UPDATE= "config_update";
 	public readonly string KEY_ITEM_UPDATE= "item_update";
 	public readonly string KEY_MONSTER_UPDATE= "monster_update";
@@ -220,9 +232,9 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 	}
 
 	public void DataSave(){
-		#if !UNITY_EDITOR
+#if !UNITY_EDITOR
 		Debug.LogError ("save");
-		#endif
+#endif
 		m_dataKvs.Save (DataKvs.FILE_NAME);
 		dataMonster.Save (DataMonster.FILENAME);
 		dataStaff.Save (DataStaff.FILENAME);
@@ -297,7 +309,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		return strRet;
 	}
 
-	#region For CSV
+#region For CSV
 	public CsvItem m_csvItem = new CsvItem();
 	static public List<CsvItemParam> csv_item {
 		get{ 
@@ -492,12 +504,14 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 						// xyが合ってて、シリアルは別
 						if (field_item.m_dataItemParam.x == x && field_item.m_dataItemParam.y == y && param.item_serial != field_item.m_dataItemParam.item_serial)
 						{
+							/*
 							Debug.LogError(string.Format("serial={0} item_id={1} range={2} param={3} reve={4}", 
 								field_item.m_dataItemParam.item_serial , 
 								field_item.m_dataItemParam.item_id,
 								field_item.m_dataItemParam.range,
 								param.range,
 								item_detail.revenue_rate));
+								*/
 							if (field_item.m_dataItemParam.range < item_detail.revenue_rate)
 							{
 								//Debug.LogError(string.Format("update serial={2} range={0} revenue_rate={1}" , param.range , item_detail.revenue_rate , param.item_serial) );
@@ -536,22 +550,22 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 
 		string strRet = "https://play.google.com/store/apps/details?id=jp.everystudio.pocket.zoo";
 
-		#if UNITY_ANDROID
+#if UNITY_ANDROID
 		strRet = "https://play.google.com/store/apps/details?id=jp.everystudio.pocket.zoo";
 		if( config.HasKey( "reviewurl_android")){
 			strRet = config.Read("reviewurl_android");
 		}
-		#elif UNITY_IOS
+#elif UNITY_IOS
 		strRet = "https://itunes.apple.com/us/app/leshii-fang-zhi-jing-yinggemu/id1112070121?l=ja&ls=1&mt=8";
 		if( config.HasKey( "reviewurl_ios")){
 			strRet = config.Read("reviewurl_ios");
 		}
-		#else
-		#endif
+#else
+#endif
 		return strRet;
 	}
 
-	#endregion
+#endregion
 	public float m_fInterval;
 	public const float EDITOR_SAVE_INTERVAL = 10.0f;
 
@@ -563,7 +577,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		} else {
 		}
 	}
-	#if UNITY_EDITOR
+#if UNITY_EDITOR
 	void Update(){
 
 		m_fInterval += Time.deltaTime;
@@ -574,7 +588,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		}
 
 	}
-	#endif
+#endif
 
 }
 

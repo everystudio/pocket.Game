@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 using EveryStudioLibrary;
 using Prime31;
+using NendUnityPlugin.AD;
 
 public class InitialMain : MonoBehaviour {
 
@@ -102,12 +103,12 @@ public class InitialMain : MonoBehaviour {
 		m_eStep = STEP.IDLE;
 		m_eStep = STEP.CHECK_CONFIG;
 		m_eStepPre = STEP.MAX;
-
+		
 		//m_SwitchSpriteBack.SetSprite ("tutorial777");
 
 		//SoundManager.Instance.PlayBGM ("farming" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm");
 		SoundManager.Instance.PlayBGM ( "maoudamashii_5_village01" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
-		#if UNITY_ANDROID
+#if UNITY_ANDROID
 		/*
 		GoogleIAB.enableLogging (true);
 		string key = "your public key from the Android developer portal here";
@@ -119,7 +120,7 @@ public class InitialMain : MonoBehaviour {
 		//key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGLKSb92Imt43S40ArCXfTmQ31c+pFQTM0Dza3j/Tn4cqjwccjQ/jej68GgVyGXGC2gT/EtbcVVA+bHugXmyv73lGBgmQlzBL41WYTKolO8Z6pVWTeHBtsT7RcHKukoKiONZ7NiQ9P5t6CCPBB2sXQOp1y3ryVbv01xXlM+hB6HkkKxrT6lIjTbtiVXCHAJvqPexPbqVIfGjBaXH/oHKxEBxYDaa6PTUsU3OP3MTx63ycTEnEMsQlA1W6ZuTFIa5Jd3cVlfQI7uovEzAbIlUfwcnxVOUWASiYe81eQiD1BMl+JeCRhfd5e8D4n0LOA12rHm1F3fC9ZoIEjpNB+BRhwIDAQAB";
 		GoogleIAB.init( key );
 				*/
-		#endif
+#endif
 
 		SpriteManager.Instance.LoadAtlas ("atlas/ad001");
 		SpriteManager.Instance.LoadAtlas ("atlas/back001");
@@ -151,7 +152,43 @@ public class InitialMain : MonoBehaviour {
 			m_lbVisitorDisp.text = "非表示";
 		}
 	}
-	
+
+	private void loadInterstential()
+	{
+		// 設定ファイルから持ってきてもよかったけど、どうしよ。そうしよ
+#if UNITY_IPHONE
+		string strInterstitialStartApiKey = "46ee0b186cac0cbb2681ab10f6ec1de605e72b14";
+		string strInterstitialStartSpotid = "562605";
+		string strInterstitialGameApiKey = "5ac03f9f1f7b354bfdfb0f423ba6696a694ad27c";
+		string strInterstitialGameSpotid = "554786";
+#elif UNITY_ANDROID
+		string strInterstitialStartApiKey = "5ac03f9f1f7b354bfdfb0f423ba6696a694ad27c";
+		string strInterstitialStartSpotid = "554786";
+		string strInterstitialGameApiKey = "5ac03f9f1f7b354bfdfb0f423ba6696a694ad27c";
+		string strInterstitialGameSpotid = "554786";
+#else
+		string strInterstitialStartApiKey = "";
+#endif
+		if (DataManager.Instance.config.HasKey(DataManager.Instance.KEY_INTERSTENTIAL_START_APIKEY))
+		{
+			strInterstitialStartApiKey = DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_START_APIKEY);
+		}
+		if (DataManager.Instance.config.HasKey(DataManager.Instance.KEY_INTERSTENTIAL_START_STOPID))
+		{
+			strInterstitialStartSpotid = DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_START_STOPID);
+		}
+		if (DataManager.Instance.config.HasKey(DataManager.Instance.KEY_INTERSTENTIAL_GAME_APIKEY))
+		{
+			strInterstitialGameApiKey = DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_GAME_APIKEY);
+		}
+		if (DataManager.Instance.config.HasKey(DataManager.Instance.KEY_INTERSTENTIAL_GAME_STOPID))
+		{
+			strInterstitialGameSpotid = DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_GAME_STOPID);
+		}
+		NendAdInterstitial.Instance.Load(strInterstitialStartApiKey, strInterstitialStartSpotid);
+		NendAdInterstitial.Instance.Load(strInterstitialGameApiKey, strInterstitialGameSpotid);
+	}
+
 	// Update is called once per frame
 	void Update () {
 
@@ -205,7 +242,12 @@ public class InitialMain : MonoBehaviour {
 					DataManager.Instance.config.Load (CsvConfig.FILE_NAME);
 					m_eStep = STEP.CHECK_UPDATE;
 				}
-			} else if (CommonNetwork.Instance.IsError (m_iNetworkSerial ) ) {
+					loadInterstential();
+
+					NendAdInterstitial.Instance.Show(DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_GAME_STOPID));
+
+				}
+				else if (CommonNetwork.Instance.IsError (m_iNetworkSerial ) ) {
 				m_eStep = STEP.NETWORK_ERROR;
 			} else {
 			}

@@ -92,7 +92,11 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 
 		case STEP.OPEN:
 			if (bInit) {
-				string strMessage = m_MessageQueue.Dequeue ();
+
+					// 吹き出しがでるタイミングで広告がひっこむ
+					AdsManager.Instance.ShowAdBanner(false);
+
+					string strMessage = m_MessageQueue.Dequeue ();
 				m_lbMessage.text = strMessage;
 				m_bEndTween = false;
 				TweenScale ts = TweenScale.Begin (gameObject, 0.2f, Vector3.one);
@@ -127,8 +131,11 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 			}
 			if (m_bEndTween) {
 				m_eStep = STEP.IDLE;
-			}
-			break;
+
+					AdsManager.Instance.ShowAdBanner(true);
+
+				}
+				break;
 
 		case STEP.MAX:
 		default:

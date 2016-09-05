@@ -46,7 +46,7 @@ public class AdsManager : Singleton<AdsManager> {
 
 	public void CallInterstitial(){
 		// 通常表示
-		NendAdInterstitial.Instance.Show();
+		NendAdInterstitial.Instance.Show( DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_GAME_STOPID) );
 	}
 
 	public override void Initialize ()
@@ -108,6 +108,7 @@ public class AdsManager : Singleton<AdsManager> {
 	// Use this for initialization
 	void Start () {
 		//Debug.LogError ("AdsManager Start");
+		/*
 		#if UNITY_IPHONE
 		NendAdInterstitial.Instance.Load("46ee0b186cac0cbb2681ab10f6ec1de605e72b14", "562605");
 		#elif UNITY_ANDROID
@@ -115,6 +116,7 @@ public class AdsManager : Singleton<AdsManager> {
 		#else
 		...
 		#endif
+		*/
 	}
 	
 	// Update is called once per frame
