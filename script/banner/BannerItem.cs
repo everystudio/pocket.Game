@@ -72,7 +72,7 @@ public class BannerItem : BannerBase {
 		// 上限確認の為にここで所持数チェック
 		int iHave = DataManager.Instance.m_dataItem.Select (string.Format (" item_id = {0} ", _data.item_id)).Count;
 
-		m_bAbleUse = DataManager.user.AbleBuy (_data.need_coin, _data.need_ticket, 0 , _iCostNokori , iHave , _data.setting_limit , 0 , 0  ,ref m_eReason);
+		m_bAbleUse = DataManager.user.AbleBuy (_data.need_coin, _data.need_ticket, 0 , _iCostNokori , iHave , _data.setting_limit , 0 , 99 ,ref m_eReason);
 		SetReasonSprite (m_sprReason, m_eReason);
 		m_sprIgnoreBlack.gameObject.SetActive (!m_bAbleUse);
 		if ((DefineOld.Item.Category)_data.category == DefineOld.Item.Category.SHOP) {
@@ -115,7 +115,7 @@ public class BannerItem : BannerBase {
 		m_sprBuyBase.gameObject.SetActive (false);
 
 		//m_bAbleUse = DataManager.user.AbleBuy (0 , 0, 0 , _iCostNokori);
-		m_bAbleUse = DataManager.user.AbleBuy (0, 0, 0, 0, 0, 0,0,0, ref m_eReason);
+		m_bAbleUse = DataManager.user.AbleBuy (0, 0, 0, 0, 0, 0,0,99, ref m_eReason);
 
 		//m_lbReason.gameObject.SetActive (!m_bAbleUse);
 		SetReasonSprite (m_sprReason, m_eReason);

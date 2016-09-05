@@ -156,13 +156,15 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 
 					DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(m_dataMonster.item_serial);
 
+					float fEffectRange = 1.0f * ((float)itemParam.range / 100.0f);
+
 					//Debug.LogError( string.Format("serial={2} item_id={0} range={1}", itemParam.item_id, itemParam.range , itemParam.item_serial));
 					iTween.PunchScale(gameObject, iTween.Hash(
 						"x", 0.5f,
 						"y", 0.5f,
 						"time", 2.5f,
 						"oncomplete", "OnCompleteHandler"));
-					GameMain.Instance.Scare(m_dataMonster.monster_serial , 0.5f , gameObject );
+					GameMain.Instance.Scare(m_dataMonster.monster_serial, 0.5f * fEffectRange, gameObject);
 					m_fTimer = 0.0f;
 					m_bEndITween = false;
 				}
