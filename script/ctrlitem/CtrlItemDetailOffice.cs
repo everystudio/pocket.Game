@@ -40,8 +40,8 @@ public class CtrlItemDetailOffice : CtrlItemDetailBase {
 		CsvItemDetailData item_detail = DataManager.GetItemDetail (m_dataItemParam.item_id, m_dataItemParam.level);
 		m_lbCostMax.text = item_detail.cost.ToString();
 
-		m_lbRange.text = string.Format("効果範囲：{0}", item_detail.area);
-		m_lbRate.text = string.Format("妖怪の叫び範囲：{0}%", item_detail.revenue_rate);
+		m_lbRange.text = string.Format("{0}", item_detail.area);
+		m_lbRate.text = string.Format("{0}%", item_detail.revenue_rate);
 
 		int iCostNow = 0;
 		int iShisyutsu = 0;

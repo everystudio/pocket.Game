@@ -119,6 +119,8 @@ public class CtrlPopupWork : MonoBehaviourEx{
 		case STEP.OPEN:
 			if (bInit) {
 
+					AdsManager.Instance.ShowAdBanner(false);
+
 				GameMain.Instance.TutorialInputLock = true;
 				SoundManager.Instance.PlaySE ("se_work_clear" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
 
@@ -226,7 +228,11 @@ public class CtrlPopupWork : MonoBehaviourEx{
 					m_iPopupWorkId = m_WorkIdQueue.Dequeue ();
 					m_eStep = STEP.OPEN;
 				}
-			}
+					else
+					{
+						AdsManager.Instance.ShowAdBanner(true);
+					}
+				}
 			break;
 
 		case STEP.MAX:

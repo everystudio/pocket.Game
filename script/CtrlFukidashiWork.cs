@@ -73,20 +73,28 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 
 				m_fIdleWait = 60.0f;
 
-				List<DataWorkParam> osusume_list = DataManager.Instance.dataWork.Select (" status = 1 " );
-				if (0 < osusume_list.Count && m_MessageQueue.Count == 0) {
-
-					m_bQuickEnd = true;
-
-					int iUseIndex = m_iLoopIndex % osusume_list.Count;
-					AddMessage (osusume_list [iUseIndex].description);
-					m_iLoopIndex += 1;
-				}
 			}
 			m_fTimer += Time.deltaTime;
 
-			if (m_fIdleWait < m_fTimer && 0 < m_MessageQueue.Count && GameMain.Instance.TutorialInputLock == false) {
-				m_eStep = STEP.OPEN;
+				// メッセージが飛び込んできたらすぐ終わらせる
+				if( 0 < m_MessageQueue.Count)
+				{
+					m_fIdleWait = 0.0f;
+				}
+
+			if (m_fIdleWait < m_fTimer && GameMain.Instance.TutorialInputLock == false) {
+					if( 0 < m_MessageQueue.Count)
+					{
+						List<DataWorkParam> osusume_list = DataManager.Instance.dataWork.Select(" status = 1 ");
+						if (0 < osusume_list.Count && m_MessageQueue.Count == 0)
+						{
+							m_bQuickEnd = true;
+							int iUseIndex = m_iLoopIndex % osusume_list.Count;
+							AddMessage(osusume_list[iUseIndex].description);
+							m_iLoopIndex += 1;
+						}
+					}
+					m_eStep = STEP.OPEN;
 			}
 			break;
 
