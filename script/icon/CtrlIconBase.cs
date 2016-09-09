@@ -22,7 +22,8 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 
 	public int m_iSize;
 	public CtrlIconRoot m_iconRoot;
-	public CtrlIconFukidashi m_fukidashi;		// 外部からの代入で利用
+	public CtrlIconFukidashi m_fukidashi;       // 外部からの代入で利用
+	protected CtrlScareEffect m_ctrlScareEffect;
 
 	public float m_fAnimationTime;
 	public float m_fAnimationInterval = 0.032f;
@@ -164,7 +165,11 @@ abstract public class CtrlIconBase : MonoBehaviourEx {
 						"y", 0.5f,
 						"time", 2.5f,
 						"oncomplete", "OnCompleteHandler"));
-					GameMain.Instance.Scare(m_dataMonster.monster_serial, 0.5f * fEffectRange, gameObject);
+					if( m_ctrlScareEffect != null)
+					{
+						GameMain.Instance.Scare(m_dataMonster.monster_serial, 0.5f * fEffectRange, m_ctrlScareEffect.gameObject);
+						m_ctrlScareEffect.Scare( m_sprIcon.depth, itemParam.range, itemParam.range);
+					}
 					m_fTimer = 0.0f;
 					m_bEndITween = false;
 				}

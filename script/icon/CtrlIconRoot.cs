@@ -33,6 +33,8 @@ public class CtrlIconRoot : MonoBehaviour {
 	public CtrlIconFukidashi m_fukidashi;
 	[SerializeField]
 	public CtrlIconTamashii m_tamashii;
+	[SerializeField]
+	protected CtrlScareEffect m_ctrlScareEffect;
 	#endregion
 
 	public ICON_TYPE m_eIconType;
@@ -71,6 +73,8 @@ public class CtrlIconRoot : MonoBehaviour {
 	public void initializeRoot(){
 		m_eStep = STEP.IDLE;
 		m_eStepPre = STEP.MAX;
+
+		m_ctrlScareEffect.Initialize();
 	}
 
 	public void Initialize( DataMonsterParam _monster , CtrlFieldItem _fieldItem ){
@@ -86,7 +90,7 @@ public class CtrlIconRoot : MonoBehaviour {
 
 		script.m_fukidashi = m_fukidashi;
 		m_iSize = _fieldItem.m_dataItemParam.width;
-		script.Initialize(m_sprIcon, _monster, m_iSize, m_tamashii, m_collectBase);
+		script.Initialize(m_sprIcon, _monster, m_iSize, m_tamashii, m_collectBase, m_ctrlScareEffect);
 		m_ctrlIconBase = (CtrlIconBase)script;
 		m_dataMonster = _monster;
 

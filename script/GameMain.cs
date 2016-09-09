@@ -87,7 +87,8 @@ public class GameMain : MonoBehaviour {
 		dist *= dist;
 		foreach( CtrlVisitor visitor in CtrlGate.Instance.visitor_list)
 		{
-			if(Vector3.SqrMagnitude(visitor.myTransform.position - _gameObject.transform.position) < dist)
+
+			if(Vector3.SqrMagnitude(visitor.GetCenterPos() - _gameObject.transform.position) < dist)
 			{
 				visitor.Scare(_iMonsterSerial, csvMonsterParam.revenew_exp);
 			}

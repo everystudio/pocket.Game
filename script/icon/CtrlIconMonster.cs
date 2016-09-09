@@ -19,8 +19,9 @@ public class CtrlIconMonster : CtrlIconBase {
 
 	protected CtrlIconTamashii m_iconTamashii;
 	protected CollectBase m_collectBase;
-	public void Initialize( UI2DSprite _sprite , DataMonsterParam _dataMonster , int _iSize , CtrlIconTamashii _iconTamashii , CollectBase _collectBase ){
-
+	public void Initialize( UI2DSprite _sprite , DataMonsterParam _dataMonster , int _iSize , CtrlIconTamashii _iconTamashii , CollectBase _collectBase , CtrlScareEffect _scareEffect)
+	{
+		m_ctrlScareEffect = _scareEffect;
 		m_fukidashi.Initialize();
 
 		m_iconTamashii = _iconTamashii;
@@ -219,6 +220,8 @@ public class CtrlIconMonster : CtrlIconBase {
 			m_sprIcon.sprite2D = SpriteManager.Instance.Load(string.Format("texture/monster/{0}.png", strName));
 			m_sprIcon.width = (int)m_sprIcon.sprite2D.textureRect.width;// + (int)m_sprIcon.sprite2D.textureRectOffset.x;
 			m_sprIcon.height = (int)m_sprIcon.sprite2D.textureRect.height;// + (int)m_sprIcon.sprite2D.textureRectOffset.y;
+
+			//m_scareEffect.Scare();
 		}
 	}
 

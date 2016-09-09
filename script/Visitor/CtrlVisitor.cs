@@ -16,7 +16,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 	public STEP m_eStep;
 	private STEP m_eStepPre;
 	private STEP m_eStepSave;
-
+	
 	public bool m_bUp;
 
 	class RoadPosition{
@@ -51,6 +51,13 @@ public class CtrlVisitor : MonoBehaviourEx {
 	private Vector3 m_v3StartPosition;
 	[SerializeField]
 	private Vector3 m_v3TargetPosition;
+
+	[SerializeField]
+	private GameObject m_goHitCenter;
+	public Vector3 GetCenterPos()
+	{
+		return m_goHitCenter.transform.position;
+	}
 
 	[SerializeField]
 	private CtrlTouchCollectTamashii m_ctrlTouchCollectTamashii;
