@@ -52,6 +52,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 	[SerializeField]
 	private Vector3 m_v3TargetPosition;
 
+
 	[SerializeField]
 	private GameObject m_goHitCenter;
 	public Vector3 GetCenterPos()
@@ -67,6 +68,8 @@ public class CtrlVisitor : MonoBehaviourEx {
 
 	[SerializeField]
 	private UI2DSprite m_sprChara;
+	[SerializeField]
+	private UILabel m_lbCount;
 
 	private void setSprite (int _iType, int _iFrame){
 		string people = string.Format ("texture/ui/people{0:D3}_{1:D2}.png", _iType, _iFrame);
@@ -84,6 +87,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 		int iDepth = 100 - (_iX + _iY);// + (m_dataItemParam.height-1));
 		m_sprChara.depth = iDepth + DataManager.Instance.DEPTH_VISITOR;
 		m_sprTamashii.depth = iDepth + DataManager.Instance.DEPTH_VISITOR + 5;
+		m_lbCount.depth = m_sprTamashii.depth;
 	}
 
 	public bool IsActive(){
@@ -324,9 +328,26 @@ public class CtrlVisitor : MonoBehaviourEx {
 		m_eStep = STEP.SCARE;
 
 		m_monsterSerialList.Add(_iMonsterSerial);
+		if( m_iGetExp == 0)
+		{
+			OnUpdateCountup(m_iGetExp);
+		}
+		iTween.ValueTo(gameObject, iTween.Hash(
+			"from", m_iGetExp,
+			"to", m_iGetExp + _iExp,
+			"time", 1.0f,
+			"delay", 0.0f,
+			"onupdate", "OnUpdateCountup"
+			));
+
 		m_iGetExp += _iExp;
 		m_sprTamashii.gameObject.SetActive(true);
 		return;
+	}
+
+	private void OnUpdateCountup( int _iValue)
+	{
+		m_lbCount.text = string.Format("×{0}", _iValue);
 	}
 
 	public bool IsVisitor( int _iVisitorSerial)
