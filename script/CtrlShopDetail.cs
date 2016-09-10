@@ -30,6 +30,7 @@ public class CtrlShopDetail : MonoBehaviour {
 
 	public void Init( DataItemParam _dataItem , CtrlParkRoot _parkRoot ){
 
+		AdsManager.Instance.ShowAdBanner(false);
 		m_dataItemParam = _dataItem;
 		m_csParkRoot = _parkRoot;
 		m_iItemSerial = _dataItem.item_serial;
@@ -60,6 +61,8 @@ public class CtrlShopDetail : MonoBehaviour {
 
 		if (m_bIsEnd == false) {
 			if (m_ButtonCollect.ButtonPushed) {
+
+				AdsManager.Instance.ShowAdBanner(true);
 
 				// 消す予定のところに新しい土地を設置する
 				for (int x = m_dataItemParam.x; x < m_dataItemParam.x + m_dataItemParam.width; x++) {
