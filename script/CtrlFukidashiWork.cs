@@ -104,9 +104,13 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 					// 吹き出しがでるタイミングで広告がひっこむ
 					AdsManager.Instance.ShowAdBanner(false);
 
-					string strMessage = m_MessageQueue.Dequeue ();
-				m_lbMessage.text = strMessage;
-				m_bEndTween = false;
+					string strMessage = "";
+					if (0 < m_MessageQueue.Count)
+					{
+						strMessage = m_MessageQueue.Dequeue();
+						m_lbMessage.text = strMessage;
+					}
+					m_bEndTween = false;
 				TweenScale ts = TweenScale.Begin (gameObject, 0.2f, Vector3.one);
 				EventDelegate.Set (ts.onFinished, EndTween);
 			}
