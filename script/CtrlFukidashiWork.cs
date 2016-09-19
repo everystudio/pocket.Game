@@ -28,6 +28,7 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 
 	public bool m_bQuickEnd;
 
+	[SerializeField]
 	private  Queue<string> m_MessageQueue = new Queue<string>(){};
 
 	public void AddMessage( string _strMessage ){
@@ -83,20 +84,22 @@ public class CtrlFukidashiWork : MonoBehaviourEx{
 				}
 
 			if (m_fIdleWait < m_fTimer && GameMain.Instance.TutorialInputLock == false) {
-					if( 0 < m_MessageQueue.Count)
+
+					List<DataWorkParam> osusume_list = DataManager.Instance.dataWork.Select(" status = 1 ");
+					if (0 < osusume_list.Count && m_MessageQueue.Count == 0)
 					{
-						List<DataWorkParam> osusume_list = DataManager.Instance.dataWork.Select(" status = 1 ");
-						if (0 < osusume_list.Count && m_MessageQueue.Count == 0)
-						{
-							m_bQuickEnd = true;
-							int iUseIndex = m_iLoopIndex % osusume_list.Count;
-							AddMessage(osusume_list[iUseIndex].description);
-							m_iLoopIndex += 1;
-						}
+						m_bQuickEnd = true;
+						int iUseIndex = m_iLoopIndex % osusume_list.Count;
+						AddMessage(osusume_list[iUseIndex].description);
+						m_iLoopIndex += 1;
 					}
-					m_eStep = STEP.OPEN;
-			}
-			break;
+
+					if (0 < m_MessageQueue.Count)
+					{
+						m_eStep = STEP.OPEN;
+					}
+				}
+				break;
 
 		case STEP.OPEN:
 			if (bInit) {

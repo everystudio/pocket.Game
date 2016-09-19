@@ -6570,6 +6570,39 @@ Prefab:
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11442422, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b1a4880813ae08343bd886287c28e948,
+        type: 3}
+    - target: {fileID: 22494310, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 235
+      objectReference: {fileID: 0}
+    - target: {fileID: 22494310, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 221
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442422, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22494310, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 22494310, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 155
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471584, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11424444, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
   m_IsPrefabParent: 0
@@ -6975,13 +7008,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 640
+  mWidth: 1136
   mHeight: 50
   mDepth: 6
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 12.8
+  aspectRatio: 22.72
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
