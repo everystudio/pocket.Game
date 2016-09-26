@@ -153,10 +153,10 @@ public class BannerItem : BannerBase {
 		switch (_iItemId) {
 
 		case 30:
-			strRet = "ticket010";
+			strRet = "ticket10";
 			break;
 		case 31:
-			strRet = "ticket055";
+			strRet = "ticket55";
 			break;
 		case 32:
 			strRet = "ticket125";
@@ -320,7 +320,6 @@ public class BannerItem : BannerBase {
 			break;
 
 		case STEP.TICKET_CHECK:
-			/*
 			if (bInit) {
 				string strBuyProductId = DefineOld.GetProductId (m_ItemMaster.item_id , ref m_iTicketNum );
 				PurchasesManager.buyItem (strBuyProductId);
@@ -331,7 +330,7 @@ public class BannerItem : BannerBase {
 					m_eStep = STEP.TICKET_BUY;
 				}
 			}
-			*/
+			/*
 			if (bInit) {
 				DefineOld.GetProductId (m_ItemMaster.item_id , ref m_iTicketNum );
 				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", gameObject.transform.parent.parent.parent.parent.gameObject );
@@ -349,6 +348,7 @@ public class BannerItem : BannerBase {
 				m_eStep = STEP.IDLE;
 			} else {
 			}
+			*/
 			break;
 
 		case STEP.TICKET_BUY:

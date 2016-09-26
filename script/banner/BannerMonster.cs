@@ -152,20 +152,6 @@ public class BannerMonster : BannerBase {
 			strText = _data.ticket.ToString () + "枚";
 		} else {
 		}
-		/*
-		if (0 < _data.need_coin) {
-			strImageName = "list_buy1";
-			strText = _data.need_coin.ToString () + "G";
-		} else if (0 < _data.need_ticket) {
-			strImageName = "list_buy2";
-			strText = _data.need_ticket.ToString () + "枚";
-		} else if (0 < _data.need_money) {
-			strImageName = "list_buy3";
-			strText = _data.need_money.ToString () + "円";
-		} else {
-			Debug.LogError ("no need");
-		}
-		*/
 		m_sprBuyBase.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/ui/{0}.png" , strImageName ));
 		m_lbBuyPrice.text = strText;
 		return;

@@ -17,7 +17,19 @@ public class CtrlIconMonster : CtrlIconBase {
 		m_iconTamashii.gameObject.SetActive(false);
 	}
 
-	protected CtrlIconTamashii m_iconTamashii;
+	public override void createMeal()
+	{
+		Release(m_goMeal);
+
+		CtrlMeal meal = PrefabManager.Instance.MakeScript<CtrlMeal>("prefab/PrefMeal", gameObject);
+
+		CsvMonsterParam csvMonsterParam = DataManager.Instance.m_csvMonster.Select(m_dataMonster.monster_id);
+		meal.Initialize(csvMonsterParam.food_list , m_sprIcon.depth + 1);
+		m_goMeal = meal.gameObject;
+		m_goMeal.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+	}
+
+protected CtrlIconTamashii m_iconTamashii;
 	protected CollectBase m_collectBase;
 	public void Initialize( UI2DSprite _sprite , DataMonsterParam _dataMonster , int _iSize , CtrlIconTamashii _iconTamashii , CollectBase _collectBase , CtrlScareEffect _scareEffect)
 	{
@@ -58,9 +70,13 @@ public class CtrlIconMonster : CtrlIconBase {
 	}
 	override public bool CleanDust(){
 		bool bRet = false;
+
+		DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(m_dataMonster.item_serial);
+		float fEffectRange = 1.0f * ((float)itemParam.range / 100.0f);
+
 		int iCleanLevel = 0;
 		int iMealLevel = 0;
-		m_dataMonster.GetConditions (ref iCleanLevel, ref iMealLevel);
+		m_dataMonster.GetConditions (ref iCleanLevel, ref iMealLevel, fEffectRange);
 		if (m_goDust != null ||  iCleanLevel < 5) {
 			bRet = true;
 			Destroy (m_goDust);
@@ -75,9 +91,11 @@ public class CtrlIconMonster : CtrlIconBase {
 
 	override public bool Meal(){
 		bool bRet = false;
+		DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(m_dataMonster.item_serial);
+		float fEffectRange = 1.0f * ((float)itemParam.range / 100.0f);
 		int iCleanLevel = 0;
 		int iMealLevel = 0;
-		m_dataMonster.GetConditions (ref iCleanLevel, ref iMealLevel);
+		m_dataMonster.GetConditions(ref iCleanLevel, ref iMealLevel, fEffectRange);
 
 		if (iMealLevel < 5) {
 			m_eStep = STEP.EAT;
@@ -100,11 +118,13 @@ public class CtrlIconMonster : CtrlIconBase {
 			// 新しくする
 			m_dataMonster = DataManager.Instance.dataMonster.Select (m_dataMonster.monster_serial);
 
+			DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(m_dataMonster.item_serial);
+			float fEffectRange = 1.0f * ((float)itemParam.range / 100.0f);
 			m_iLocalCondition = -1;
 
 			int iCleanLevel = 0;
 			int iMealLevel = 0;
-			m_dataMonster.GetConditions (ref iCleanLevel, ref iMealLevel);
+			m_dataMonster.GetConditions(ref iCleanLevel, ref iMealLevel, fEffectRange);
 			m_iCleanLevel = iCleanLevel;
 			m_iMealLevel = iMealLevel;
 			

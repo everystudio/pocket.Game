@@ -50,6 +50,15 @@ abstract public class CtrlItemDetailBuildupBase : CtrlItemDetailBase {
 	public CsvItemDetailData m_dataNow;
 	public CsvItemDetailData m_dataNext;
 
+	protected override void close()
+	{
+		if(m_ojisanCheck != null)
+		{
+			Destroy(m_ojisanCheck.gameObject);
+			m_ojisanCheck = null;
+		}
+	}
+
 	virtual protected void dispUpdate( DataItemParam _data , ref CsvItemDetailData _next ){
 		_next = null;
 

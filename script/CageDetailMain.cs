@@ -97,6 +97,11 @@ public class CageDetailMain : PageBase2 {
 
 	}
 
+	protected override void close()
+	{
+
+	}
+
 	public bool m_bDisp;
 
 	// Update is called once per frame

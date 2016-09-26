@@ -490,7 +490,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		{
 			CsvItemParam master_data = DataManager.Instance.m_csvItem.Select(param.item_id);
 			CsvItemDetailData item_detail = DataManager.GetItemDetail(param.item_id, param.level);
-			Debug.LogError(item_detail.revenue_rate);
+			//Debug.LogError(item_detail.revenue_rate);
 			for (int x = param.x - (item_detail.area); x < param.x + master_data.size + (item_detail.area); x++)
 			{
 				for (int y = param.y - (item_detail.area); y < param.y + master_data.size + (item_detail.area); y++)

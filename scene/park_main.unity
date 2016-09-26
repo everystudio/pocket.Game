@@ -1843,6 +1843,7 @@ MonoBehaviour:
     m_need_coin: 0
     m_need_ticket: 0
     m_need_money: 0
+    m_need_money_ios: 0
     m_size: 0
     m_cost: 0
     m_area: 0
@@ -11185,6 +11186,11 @@ MonoBehaviour:
   m_collectGold: {fileID: 517788121}
   m_popupWork: {fileID: 244406505}
   m_fukidashiWork: {fileID: 546178993}
+  ChangeParkScale:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEventFloat, Assembly-CSharp, Version=1.2.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_eStep: 0
   m_fBackupInterval: 0
   m_fBackupIntervalTimer: 0

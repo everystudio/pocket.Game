@@ -186,7 +186,11 @@ public class DataItemParam : CsvDataParam{
 		// 例外?処理
 		CsvItemParam csv_item_data = DataManager.GetItem (item_id);
 		if (0 < csv_item_data.revenue) {
-			int iCount = 3600 / csv_item_data.revenue_interval;
+			int iCount = 0;
+			if (0 < csv_item_data.revenue_interval)
+			{
+				iCount = 3600 / csv_item_data.revenue_interval;
+			}
 			// お店自体金額回収
 
 			iRet = iCount * csv_item_data.revenue;
@@ -399,7 +403,7 @@ public class DataItem : CsvData<DataItemParam>{
 	}
 
 }
-
+/*
 [System.Serializable]
 public class CsvItemParamPre :SODataParam{
 
@@ -561,7 +565,7 @@ public class CsvItemParamPre :SODataParam{
 
 
 }
-
+*/
 
 
 

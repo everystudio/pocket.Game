@@ -67,7 +67,24 @@ public class GameMain : MonoBehaviour {
 	private CtrlFukidashiWork m_fukidashiWork;
 	#endregion
 
-
+	private float m_fParkScale;
+	public float parkScale
+	{
+		set
+		{
+			if (m_fParkScale != value)
+			{
+				m_fParkScale = value;
+				ParkRoot.myTransform.localScale = new Vector3(m_fParkScale, m_fParkScale, m_fParkScale);
+				ChangeParkScale.Invoke(m_fParkScale);
+			}
+		}
+		get
+		{
+			return m_fParkScale;
+		}
+	}
+	public UnityEventFloat ChangeParkScale = new UnityEventFloat();
 
 	private int m_iPushedBuildingSerial;
 	public int BuildingSerial{
@@ -504,7 +521,7 @@ public class GameMain : MonoBehaviour {
 				_iX = calc_x;
 				_iY = calc_y;
 
-				//Debug.LogError (string.Format ("x:{0} y:{1} posx{2} posy{3}", calc_x, calc_y, objPoint.transform.localPosition.x, objPoint.transform.localPosition.y));
+				Debug.LogError (string.Format ("x:{0} y:{1} posx{2} posy{3}", calc_x, calc_y, objPoint.transform.localPosition.x, objPoint.transform.localPosition.y));
 
 				Destroy(objPoint);
 			}
@@ -531,7 +548,7 @@ public class GameMain : MonoBehaviour {
 		_iOffsetX = 0;
 		_iOffsetY = 0;
 
-		//Debug.Log ("x:" + _dataItem.x.ToString () + " y:" + _dataItem.y.ToString () + " w:" + _dataItem.width.ToString () + " h:" + _dataItem.height.ToString ());
+		//Debug.Log ("x:" + _iItemX.ToString () + " y:" + _iItemY.ToString () + " w:" + _iItemWidth.ToString () + " h:" + _iItemHeight.ToString ());
 
 		bool bHit = false;
 		for (int x = _iItemX; x < _iItemX + _iItemWidth; x++) {

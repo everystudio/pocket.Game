@@ -75,13 +75,20 @@ public class DataMonsterParam : CsvDataParam{
 		return (int)iCollectGold;
 	}
 
-	public void GetConditions( ref int _iCleanLevel , ref int _iMealLevel ){
+	public void GetConditions( ref int _iCleanLevel , ref int _iMealLevel , float _fRate ){
 
 		_iCleanLevel = 0;
 		_iMealLevel = 0;
 
 		double d_clean_time = TimeManager.Instance.GetDiffNow (clean_time).TotalSeconds * -1.0d;
 		double d_meal_time = TimeManager.Instance.GetDiffNow (meal_time).TotalSeconds * -1.0d;
+
+		if( 1.0f < _fRate)
+		{
+			//Debug.LogError(_fRate);
+			d_clean_time /= _fRate;
+			d_meal_time /= _fRate;
+		}
 
 		foreach (CsvTimeData time_data in DataManager.csv_time) {
 			if (time_data.type == 1) {

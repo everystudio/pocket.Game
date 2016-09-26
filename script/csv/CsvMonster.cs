@@ -23,6 +23,7 @@ public class CsvMonsterParam : CsvDataParam
 	public int m_rare;
 	public int m_status;
 	public int m_range;
+	public string m_food_list;
 
 	public int monster_id { get{ return m_monster_id; } set{m_monster_id= value;} }
 	public string name { get{ return m_name; } set{m_name= value;} }
@@ -41,6 +42,7 @@ public class CsvMonsterParam : CsvDataParam
 	public int rare { get{ return m_rare; } set{m_rare= value;} }
 	public int status { get { return m_status; } set { m_status = value; } }
 	public int range { get { return m_range; } set { m_range = value; } }
+	public string food_list { get { return m_food_list; } set { m_food_list = value; } }
 
 
 }
@@ -83,6 +85,7 @@ public class CsvMonster : CsvData<CsvMonsterParam> {
 		SpreadSheetData data_rare= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
 		SpreadSheetData data_status= SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
 		SpreadSheetData data_range = SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
+		SpreadSheetData data_food_list = SpreadSheetData.GetSpreadSheet( _list,_iRow , index++ );
 
 
 		CsvMonsterParam retParam = new CsvMonsterParam ();
@@ -104,6 +107,7 @@ public class CsvMonster : CsvData<CsvMonsterParam> {
 		retParam.m_rare = int.Parse(data_rare.param);
 		retParam.m_status = int.Parse(data_status.param);
 		retParam.m_range = int.Parse(data_range.param);
+		retParam.m_food_list = data_food_list.param;
 
 		return retParam;
 

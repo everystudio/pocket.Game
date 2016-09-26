@@ -17,6 +17,7 @@ public class CsvItemParam : CsvDataParam {
 	public int m_need_coin;
 	public int m_need_ticket;
 	public int m_need_money;
+	public int m_need_money_ios;
 	public int m_size;
 	public int m_cost;
 	public int m_area;
@@ -40,7 +41,21 @@ public class CsvItemParam : CsvDataParam {
 	public string description { get{ return m_description; } set{ m_description = value; } }
 	public int need_coin { get{ return m_need_coin; } set{ m_need_coin = value; } }
 	public int need_ticket { get{ return m_need_ticket; } set{ m_need_ticket = value; } }
-	public int need_money { get{ return m_need_money; } set{ m_need_money = value; } }
+
+	// アクセスするのはこっち
+	public int need_money {
+		get {
+#if UNITY_ANDROID
+			return m_need_money;
+#elif UNITY_IOS
+			return m_need_money_ios;
+#endif
+		}
+		set {
+			m_need_money = value;
+		}
+	}
+	public int need_money_ios { get{ return m_need_money_ios; } set{ m_need_money_ios = value; } }
 	public int size { get{ return m_size; } set{ m_size = value; } }
 	public int cost { get{ return m_cost; } set{ m_cost = value; } }
 	public int area { get{ return m_area; } set{ m_area = value; } }
@@ -67,6 +82,7 @@ public class CsvItemParam : CsvDataParam {
 		need_coin = _data.need_coin;
 		need_ticket = _data.need_ticket;
 		need_money = _data.need_money;
+		need_money_ios = _data.need_money_ios;
 		size = _data.size;
 		cost = _data.cost;
 		area = _data.area;
@@ -131,7 +147,8 @@ public class CsvItem : CsvData< CsvItemParam>
 		SpreadSheetData data_description = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
 		SpreadSheetData data_needcoin = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
 		SpreadSheetData data_needticket = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
-		SpreadSheetData data_needmoney = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_needmoney = SpreadSheetData.GetSpreadSheet(_list, _iRow, index++);
+		SpreadSheetData data_needmoney_ios = SpreadSheetData.GetSpreadSheet(_list, _iRow, index++);
 		SpreadSheetData data_size = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
 		SpreadSheetData data_cost = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
 		SpreadSheetData data_area = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
@@ -158,6 +175,7 @@ public class CsvItem : CsvData< CsvItemParam>
 		retParam.m_need_coin = int.Parse(data_needcoin.param);
 		retParam.m_need_ticket = int.Parse(data_needticket.param);
 		retParam.m_need_money = int.Parse(data_needmoney.param);
+		retParam.m_need_money_ios = int.Parse(data_needmoney_ios.param);
 		retParam.m_size = int.Parse(data_size.param);
 		retParam.m_cost = int.Parse(data_cost.param);
 		retParam.m_area = int.Parse(data_area.param);

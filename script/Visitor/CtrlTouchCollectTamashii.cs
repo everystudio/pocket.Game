@@ -3,7 +3,7 @@
 using System.Collections;
 
 
-public class CtrlTouchCollectTamashii : MonoBehaviour {
+public class CtrlTouchCollectTamashii : MonoBehaviourEx {
 
 	private int m_iTamashii;
 
@@ -16,7 +16,7 @@ public class CtrlTouchCollectTamashii : MonoBehaviour {
 
 	private void OnPushed()
 	{
-		Debug.LogError("pushed tamashii");
+		//Debug.LogError("pushed tamashii");
 		CollectTamashii.Invoke(m_iTamashii);
 		gameObject.SetActive(false);
 	}
@@ -27,13 +27,20 @@ public class CtrlTouchCollectTamashii : MonoBehaviour {
 		gameObject.SetActive(true);
 	}
 
+	private void ChangeScale( float _fScale)
+	{
+		if(_fScale < 0.0f )
+		{
+			_fScale = 1.0f;
+		}
+		float fScale = 1.0f / _fScale;
+		//fScale = 10.0f;
+		myTransform.localScale = new Vector3(fScale, fScale, fScale);
+	}
+
 	// Use this for initialization
-	void Start () {
-	
+	void Awake () {
+		GameMain.Instance.ChangeParkScale.AddListener(ChangeScale);	
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

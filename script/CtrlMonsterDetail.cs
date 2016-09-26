@@ -59,10 +59,13 @@ public class CtrlMonsterDetail : MonoBehaviour {
 		m_eStepPre = STEP.MAX;
 		m_bIsEnd = false;
 
+		DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(m_dataMonster.item_serial);
+		float fEffectRange = 1.0f * ((float)itemParam.range / 100.0f);
+
 		m_dataMonster = DataManager.Instance.dataMonster.Select (_iSerial);
 		int iCleanLevel = 0;
 		int iMealLevel = 0;
-		m_dataMonster.GetConditions (ref iCleanLevel, ref iMealLevel);
+		m_dataMonster.GetConditions (ref iCleanLevel, ref iMealLevel , fEffectRange);
 		m_dispHungry.Set (iMealLevel);
 
 		CsvMonsterParam master_data = DataManager.Instance.m_csvMonster.Select (m_dataMonster.monster_id);

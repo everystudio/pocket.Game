@@ -95,55 +95,75 @@ public class ParkMainIdle : ParkMainController
 
 				if (GameMain.GetGrid (InputManager.Instance.Info.TouchPoint, out iGridX, out iGridY)) {
 
-					int iSelectSerial = 0;
+						int iSelectSerial = 0;
 
-					if (0 < GameMain.Instance.BuildingSerial) {
-						iSelectSerial = GameMain.Instance.BuildingSerial;
-						GameMain.Instance.BuildingSerial = 0;
-					} else {
-						foreach (DataItemParam data_item in DataManager.Instance.m_ItemDataList) {
-							if (GameMain.GridHit (iGridX, iGridY, data_item)) {
-								iSelectSerial = data_item.item_serial;
+						Debug.LogError(iGridX);
+						Debug.LogError(iGridY);
+
+						if (0 < GameMain.Instance.BuildingSerial)
+						{
+							iSelectSerial = GameMain.Instance.BuildingSerial;
+							GameMain.Instance.BuildingSerial = 0;
+						}
+						else {
+							foreach (DataItemParam data_item in DataManager.Instance.m_ItemDataList)
+							{
+								//Debug.LogError(string.Format("serial={0} x={1} y={2}", data_item.item_serial, data_item.x, data_item.y));
+								if (GameMain.GridHit(iGridX, iGridY, data_item))
+								{
+									iSelectSerial = data_item.item_serial;
+								}
 							}
 						}
-					}
 
 					if (0 < iSelectSerial) {
-						//Debug.Log ("hit:serial=" + iSelectSerial.ToString ());
+						Debug.Log ("hit:serial=" + iSelectSerial.ToString ());
 
 						GameMain.Instance.m_iSettingItemSerial = iSelectSerial;
 						m_selectItem = DataManager.Instance.m_dataItem.Select (iSelectSerial);
 						int iCategory = m_selectItem.category;
-						if (iCategory == (int)DefineOld.Item.Category.SHOP) {
-							SoundManager.Instance.PlaySE (SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
-							CtrlFieldItem field_item = GameMain.ParkRoot.GetFieldItem (iSelectSerial);
-							if (field_item.IsReady ()) {
-								m_iNokoriTime = field_item.GetNokoriTime ();
-								m_eStep = STEP.SPEED_BUILD_CHECK;
-							} else {
-								m_eStep = STEP.SHOP;
+							if (iCategory == (int)DefineOld.Item.Category.SHOP)
+							{
+								SoundManager.Instance.PlaySE(SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+								CtrlFieldItem field_item = GameMain.ParkRoot.GetFieldItem(iSelectSerial);
+								if (field_item.IsReady())
+								{
+									m_iNokoriTime = field_item.GetNokoriTime();
+									m_eStep = STEP.SPEED_BUILD_CHECK;
+								}
+								else {
+									m_eStep = STEP.SHOP;
+								}
 							}
-						} else if (iCategory == (int)DefineOld.Item.Category.CAGE) {
-							SoundManager.Instance.PlaySE (SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
-							CtrlFieldItem field_item = GameMain.ParkRoot.GetFieldItem (iSelectSerial);
-							if (field_item.IsReady ()) {
-								m_iNokoriTime = field_item.GetNokoriTime ();
-								m_eStep = STEP.SPEED_BUILD_CHECK;
-							} else {
-								GameMain.Instance.SetStatus (GameMain.STATUS.CAGE_DETAIL);
-							}
+							else if (iCategory == (int)DefineOld.Item.Category.CAGE)
+							{
+								SoundManager.Instance.PlaySE(SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+								CtrlFieldItem field_item = GameMain.ParkRoot.GetFieldItem(iSelectSerial);
+								if (field_item.IsReady())
+								{
+									m_iNokoriTime = field_item.GetNokoriTime();
+									m_eStep = STEP.SPEED_BUILD_CHECK;
+								}
+								else {
+									GameMain.Instance.SetStatus(GameMain.STATUS.CAGE_DETAIL);
+								}
 
-						} else if (iCategory == (int)DefineOld.Item.Category.OFFICE) {
-							SoundManager.Instance.PlaySE (SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
-							CtrlFieldItem field_item = GameMain.ParkRoot.GetFieldItem (iSelectSerial);
-							if (field_item.IsReady ()) {
-								m_iNokoriTime = field_item.GetNokoriTime ();
-								m_eStep = STEP.SPEED_BUILD_CHECK;
-							} else {
-								GameMain.Instance.SetStatus (GameMain.STATUS.OFFICE_DETAIL);
 							}
-						} else {
-						}
+							else if (iCategory == (int)DefineOld.Item.Category.OFFICE)
+							{
+								SoundManager.Instance.PlaySE(SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+								CtrlFieldItem field_item = GameMain.ParkRoot.GetFieldItem(iSelectSerial);
+								if (field_item.IsReady())
+								{
+									m_iNokoriTime = field_item.GetNokoriTime();
+									m_eStep = STEP.SPEED_BUILD_CHECK;
+								}
+								else {
+									GameMain.Instance.SetStatus(GameMain.STATUS.OFFICE_DETAIL);
+								}
+							}
+							else {
+							}
 						break;
 					}
 				}
@@ -237,12 +257,15 @@ public class ParkMainIdle : ParkMainController
 				float fRate = GameMain.ParkRoot.myTransform.localScale.x;
 				fRate += m_fPinchValue;
 
-				if (fRate < 0.5f) {
-					fRate = 0.5f;
+				if (fRate < 0.45f) {
+					fRate = 0.45f;
 				} else if (2.0f < fRate) {
 					fRate = 2.0f;
 				}
-				GameMain.ParkRoot.myTransform.localScale = new Vector3 (fRate, fRate, fRate);
+					GameMain.Instance.parkScale = fRate;
+
+
+				//GameMain.ParkRoot.myTransform.localScale = new Vector3 (fRate, fRate, fRate);
 
 			}
 			break;
