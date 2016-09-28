@@ -178,36 +178,6 @@ public class DefineOld : MonoBehaviour {
 	static public int ITEM_ID_ROAD = 15;
 	static public int ITEM_ID_GATE = 999;
 
-	static public string GetProductId( int _iItemId , ref int _iTicketNum ){
-		string strRet = "";
-		_iTicketNum = 0;
-		switch (_iItemId) {
-		case 30:
-			_iTicketNum = 10;
-			strRet = PurchasesManager.TICKET_010;
-			break;
-		case 31:
-			_iTicketNum = 55;
-			strRet = PurchasesManager.TICKET_055;
-			break;
-		case 32:
-			_iTicketNum = 125;
-			strRet = PurchasesManager.TICKET_125;
-			break;
-		case 33:
-			_iTicketNum = 350;
-			strRet = PurchasesManager.TICKET_350;
-			break;
-		case 34:
-			_iTicketNum = 800;
-			strRet = PurchasesManager.TICKET_800;
-			break;
-		default:
-			break;
-		}
-		return strRet;
-	}
-
 	static public readonly Vector3 CELL_X_DIR = new Vector3 (80.0f, 40.0f, 0.0f);
 	static public readonly Vector3 CELL_Y_DIR = new Vector3 (-80.0f, 40.0f, 0.0f);
 	static private float cell_x_length = 0.0f;

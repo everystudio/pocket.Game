@@ -320,36 +320,47 @@ public class BannerItem : BannerBase {
 			break;
 
 		case STEP.TICKET_CHECK:
-			if (bInit) {
-				string strBuyProductId = DefineOld.GetProductId (m_ItemMaster.item_id , ref m_iTicketNum );
-				PurchasesManager.buyItem (strBuyProductId);
-			}
-			if (PurchasesManager.Instance.IsPurchased ()) {
-				m_eStep = STEP.IDLE;
-				if (PurchasesManager.Instance.Status == PurchasesManager.STATUS.SUCCESS) {
-					m_eStep = STEP.TICKET_BUY;
+				if (bInit) {
+					string strBuyProductId = DataManager.Instance.GetProductId (m_ItemMaster.item_id , ref m_iTicketNum );
+					CompleteProject.Purchase.Instance.BuyProductID(strBuyProductId);
+					//PurchasesManager.buyItem (strBuyProductId);
 				}
-			}
-			/*
-			if (bInit) {
-				DefineOld.GetProductId (m_ItemMaster.item_id , ref m_iTicketNum );
-				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", gameObject.transform.parent.parent.parent.parent.gameObject );
-				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
-				//m_ojisanCheck.Initialize ( string.Format("ゴールドををチケットに\n変換します\nよろしいですか"  ));
-				m_ojisanCheck.Initialize ( string.Format("ゴールドををチケットに\n変換します\n\n{0}枚→ {1}枚\nよろしいですか" , DataManager.user.m_iTicket ,DataManager.user.m_iTicket+m_iTicketNum ));
-			}
-			if (m_ojisanCheck.IsYes ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
-				Destroy (m_ojisanCheck.gameObject);
-				m_eStep = STEP.TICKET_BUY;
-			} else if (m_ojisanCheck.IsNo ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
-				Destroy (m_ojisanCheck.gameObject);
-				m_eStep = STEP.IDLE;
-			} else {
-			}
-			*/
-			break;
+				if (CompleteProject.Purchase.Instance.Status != CompleteProject.Purchase.STATUS.BUYING)
+				{
+					m_eStep = STEP.IDLE;
+					if (CompleteProject.Purchase.Instance.Status == CompleteProject.Purchase.STATUS.SUCCESS)
+					{
+						m_eStep = STEP.TICKET_BUY;
+					}
+				}
+				/*
+				if (PurchasesManager.Instance.IsPurchased ()) {
+					m_eStep = STEP.IDLE;
+					if (PurchasesManager.Instance.Status == PurchasesManager.STATUS.SUCCESS) {
+						m_eStep = STEP.TICKET_BUY;
+					}
+				}
+				*/
+				/*
+				if (bInit) {
+					DefineOld.GetProductId (m_ItemMaster.item_id , ref m_iTicketNum );
+					GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", gameObject.transform.parent.parent.parent.parent.gameObject );
+					m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
+					//m_ojisanCheck.Initialize ( string.Format("ゴールドををチケットに\n変換します\nよろしいですか"  ));
+					m_ojisanCheck.Initialize ( string.Format("ゴールドををチケットに\n変換します\n\n{0}枚→ {1}枚\nよろしいですか" , DataManager.user.m_iTicket ,DataManager.user.m_iTicket+m_iTicketNum ));
+				}
+				if (m_ojisanCheck.IsYes ()) {
+					SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+					Destroy (m_ojisanCheck.gameObject);
+					m_eStep = STEP.TICKET_BUY;
+				} else if (m_ojisanCheck.IsNo ()) {
+					SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+					Destroy (m_ojisanCheck.gameObject);
+					m_eStep = STEP.IDLE;
+				} else {
+				}
+				*/
+				break;
 
 		case STEP.TICKET_BUY:
 			Debug.Log (string.Format ("add ticket num:{0}" , m_iTicketNum ));

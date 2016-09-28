@@ -20,6 +20,44 @@ public class DataManager : DataManagerBase <DataManager>{
 	public readonly string KEY_INTERSTENTIAL_GAME_STOPID = "interstitial_game_spotid_and";
 #endif
 
+	// PRODUCT_ID
+	public readonly string PRODUCT_ID_TICKET_010 = "ticket.010";
+	public readonly string PRODUCT_ID_TICKET_055 = "ticket.055";
+	public readonly string PRODUCT_ID_TICKET_125 = "ticket.125";
+	public readonly string PRODUCT_ID_TICKET_350 = "ticket.350";
+	public readonly string PRODUCT_ID_TICKET_800 = "ticket.800";
+	public string GetProductId(int _iItemId, ref int _iTicketNum)
+	{
+		string strRet = "";
+		_iTicketNum = 0;
+		switch (_iItemId)
+		{
+			case 30:
+				_iTicketNum = 10;
+				strRet = PRODUCT_ID_TICKET_010;
+				break;
+			case 31:
+				_iTicketNum = 55;
+				strRet = PRODUCT_ID_TICKET_055;
+				break;
+			case 32:
+				_iTicketNum = 125;
+				strRet = PRODUCT_ID_TICKET_125;
+				break;
+			case 33:
+				_iTicketNum = 350;
+				strRet = PRODUCT_ID_TICKET_350;
+				break;
+			case 34:
+				_iTicketNum = 800;
+				strRet = PRODUCT_ID_TICKET_800;
+				break;
+			default:
+				break;
+		}
+		return strRet;
+	}
+
 	public readonly string KEY_CONFIG_UPDATE= "config_update";
 	public readonly string KEY_ITEM_UPDATE= "item_update";
 	public readonly string KEY_MONSTER_UPDATE= "monster_update";

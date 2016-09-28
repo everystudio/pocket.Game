@@ -68,7 +68,7 @@ public class PurchasesManager : MonoBehaviour {
 		#if UNITY_IPHONE
 		//IOSInAppPurchaseManager.Instance.BuyProduct(productId);
 		#elif UNITY_ANDROID
-		GoogleIAB.purchaseProduct( productId);
+		//GoogleIAB.purchaseProduct( productId);
 		#endif
 	}
 
@@ -97,7 +97,7 @@ public class PurchasesManager : MonoBehaviour {
 			IOSInAppPurchaseManager.instance.LoadStore ();
 			*/
 			#elif UNITY_ANDROID
-
+			/*
 			GoogleIABManager.billingSupportedEvent += billingSupportedEvent;
 			GoogleIABManager.billingNotSupportedEvent += billingNotSupportedEvent;
 			GoogleIABManager.queryInventorySucceededEvent += queryInventorySucceededEvent;
@@ -108,6 +108,7 @@ public class PurchasesManager : MonoBehaviour {
 			GoogleIABManager.consumePurchaseSucceededEvent += consumePurchaseSucceededEvent;
 			GoogleIABManager.consumePurchaseFailedEvent += consumePurchaseFailedEvent;
 			GoogleIAB.enableLogging (true);
+			*/
 			string key = "your public key from the Android developer portal here";
 			// jp.app.bokunozoo
 			key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsqFXrg2t62dru/VFQYyxd2m1kORBbrAGxDxiSAkh3ybaXJtJWNcej/YAxKx7Orrtfq+pU965U2FnU3K54xddts2UGCI9O6TSU0AoKbwFYj+okfF21firsEqZd4aYtVYQ471flWj3ZEG9u2YpIzjGykUQadsxO4Y/OcRbdUn9289Mc0JAbdepmN9yRnvgBJWKZF/c0mBrM4ISfF5TVip2Tp+BXACqblOb+TQZjOB0OeVPxYpdy5k3eJTcQuwiLmYxgpEBL3tIT7grxVROgk8YYncncaZR7Q/wWlsFgFTNMRaF2bPI8apLiA7eIyKv5zbmhbE7YLBXUvkuoHbAqDQrLQIDAQAB";
@@ -118,7 +119,7 @@ public class PurchasesManager : MonoBehaviour {
 			Debug.Log( key );
 			//下はテスト用
 			//key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGLKSb92Imt43S40ArCXfTmQ31c+pFQTM0Dza3j/Tn4cqjwccjQ/jej68GgVyGXGC2gT/EtbcVVA+bHugXmyv73lGBgmQlzBL41WYTKolO8Z6pVWTeHBtsT7RcHKukoKiONZ7NiQ9P5t6CCPBB2sXQOp1y3ryVbv01xXlM+hB6HkkKxrT6lIjTbtiVXCHAJvqPexPbqVIfGjBaXH/oHKxEBxYDaa6PTUsU3OP3MTx63ycTEnEMsQlA1W6ZuTFIa5Jd3cVlfQI7uovEzAbIlUfwcnxVOUWASiYe81eQiD1BMl+JeCRhfd5e8D4n0LOA12rHm1F3fC9ZoIEjpNB+BRhwIDAQAB";
-			GoogleIAB.init( key );
+			//GoogleIAB.init( key );
 
 			#endif
 
@@ -184,13 +185,14 @@ public class PurchasesManager : MonoBehaviour {
 		Debug.Log( "billingNotSupportedEvent: " + error );
 	}
 
-
+	/*
 	void queryInventorySucceededEvent( List<GooglePurchase> purchases, List<GoogleSkuInfo> skus )
 	{
 		Debug.Log( string.Format( "queryInventorySucceededEvent. total purchases: {0}, total skus: {1}", purchases.Count, skus.Count ) );
 		Prime31.Utils.logObject( purchases );
 		Prime31.Utils.logObject( skus );
 	}
+	*/
 
 
 	void queryInventoryFailedEvent( string error )
@@ -204,7 +206,7 @@ public class PurchasesManager : MonoBehaviour {
 		Debug.Log( "purchaseCompleteAwaitingVerificationEvent. purchaseData: " + purchaseData + ", signature: " + signature );
 	}
 
-
+	/*
 	void purchaseSucceededEvent( GooglePurchase purchase )
 	{
 		Debug.Log( "purchaseSucceededEvent: " + purchase );
@@ -212,6 +214,7 @@ public class PurchasesManager : MonoBehaviour {
 		GoogleIAB.consumeProduct(purchase.productId);
 
 	}
+	*/
 
 
 	void purchaseFailedEvent( string error, int response )
@@ -223,13 +226,14 @@ public class PurchasesManager : MonoBehaviour {
 
 	}
 
-
+	/*
 	void consumePurchaseSucceededEvent( GooglePurchase purchase )
 	{
 		Debug.Log( "consumePurchaseSucceededEvent: " + purchase );
 		instance.m_eStatus = STATUS.SUCCESS;
 		m_bPurchased = true;
 	}
+	*/
 
 
 	void consumePurchaseFailedEvent( string error )
