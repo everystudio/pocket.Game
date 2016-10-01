@@ -146,9 +146,9 @@ public class CtrlHelp : ButtonBase {
 				} else {
 				
 					// WebブラウザのTwitter投稿画面を開く
-					string strMessage = "かわいい動物に会える！自分だけの動物園を作ろう！\n楽しい放置シミュレーションゲーム、【ポケット動物園】 #ポケット動物園";
+					string strMessage = string.Format(DataManager.Instance.getWord("twitter_default"), DataManager.Instance.getWord("game_title"), DataManager.Instance.getWord("twitter_tag"));
 					#if UNITY_ANDROID
-					if( DataManager.Instance.config.HasKey( DataManager.Instance.KEY_SHARE_MESSAGE_ANDROID )){
+						if ( DataManager.Instance.config.HasKey( DataManager.Instance.KEY_SHARE_MESSAGE_ANDROID )){
 						strMessage = DataManager.Instance.config.Read( DataManager.Instance.KEY_SHARE_MESSAGE_ANDROID);
 					}
 					#elif UNITY_IPHONE
@@ -198,7 +198,7 @@ public class CtrlHelp : ButtonBase {
 				}
 				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", m_goPanelFront);
 				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
-				m_ojisanCheck.Initialize ("ふぅ、お仕事終わらせましたよ\n引き続き園内の見回り\nお願いしますね！" , true );
+				m_ojisanCheck.Initialize (DataManager.Instance.getWord("work_finish_all"), true );
 			}
 			if (m_ojisanCheck.IsYes ()) {
 				Destroy (m_ojisanCheck.gameObject);
@@ -213,7 +213,7 @@ public class CtrlHelp : ButtonBase {
 				}
 				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", m_goPanelFront);
 				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
-				m_ojisanCheck.Initialize ("すいません、少し時間が足りませんでした\nエサやりとお掃除は済ませたので\n【[4169e1]病気の治療[-]】はお願いしますね" , true );
+				m_ojisanCheck.Initialize (DataManager.Instance.getWord("work_finish_half"), true );
 			}
 			if (m_ojisanCheck.IsYes ()) {
 				Destroy (m_ojisanCheck.gameObject);

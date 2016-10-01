@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using NendUnityPlugin.AD;
@@ -42,7 +43,10 @@ public class AdsManager : Singleton<AdsManager> {
 	public static readonly string IMOBILE_SID_ICON = "760610";
 	public static readonly string IMOBILE_SID_BANNER = "760609";
 	public static readonly string IMOBILE_SID_RECT = "412437";
-	#endif
+#endif
+
+	[SerializeField]
+	private Image m_imgBannerDummy;
 
 	public void CallInterstitial(){
 		// 通常表示
@@ -51,6 +55,12 @@ public class AdsManager : Singleton<AdsManager> {
 
 	public override void Initialize ()
 	{
+		m_imgBannerDummy = GameObject.Find("DummyBannerAds").GetComponent<Image>();
+#if UNITY_EDITOR
+		m_imgBannerDummy.gameObject.SetActive(true);
+#else
+		m_imgBannerDummy.gameObject.SetActive(false);
+#endif
 		if (m_nendAdBanner == null) {
 			m_nendAdBanner = m_goAdBanner.GetComponent<NendAdBanner> ();
 		}
@@ -66,15 +76,34 @@ public class AdsManager : Singleton<AdsManager> {
 		}
 	}
 
-	#if USE_IMOBILE
+#if USE_IMOBILE
 	private int m_iIMobileBannerId = 0;
-	#endif
-	public void ShowAdBanner( bool _bFlag ){
+#endif
 
+	public int m_iShowBannerLock;
+	public void ShowAdBanner( bool _bFlag ){
 		if (_bFlag) {
-			m_nendAdBanner.Show ();
+			if (0 < m_iShowBannerLock)
+			{
+				m_iShowBannerLock -= 1;
+			}
+			if (m_iShowBannerLock == 0)
+			{
+				m_nendAdBanner.Show();
+#if UNITY_EDITOR
+				m_imgBannerDummy.gameObject.SetActive(true);
+#endif
+			}
 		} else {
+			if(m_iShowBannerLock < 0)
+			{
+				m_iShowBannerLock = 0;
+			}
+			m_iShowBannerLock += 1;
 			m_nendAdBanner.Hide ();
+#if UNITY_EDITOR
+			m_imgBannerDummy.gameObject.SetActive(false);
+#endif
 		}
 	}
 

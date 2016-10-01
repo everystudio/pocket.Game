@@ -49,6 +49,15 @@ public class CtrlMonsterDetail : MonoBehaviour {
 	private CtrlOjisanCheck m_ojisanCheck;
 
 
+	void OnDestroy()
+	{
+		if (m_ojisanCheck != null)
+		{
+			Destroy(m_ojisanCheck.gameObject);
+			m_ojisanCheck = null;
+		}
+	}
+
 	private bool m_bIsEnd;
 	public bool IsEnd(){
 		return m_bIsEnd;
@@ -59,10 +68,10 @@ public class CtrlMonsterDetail : MonoBehaviour {
 		m_eStepPre = STEP.MAX;
 		m_bIsEnd = false;
 
+		m_dataMonster = DataManager.Instance.dataMonster.Select(_iSerial);
 		DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(m_dataMonster.item_serial);
 		float fEffectRange = 1.0f * ((float)itemParam.range / 100.0f);
 
-		m_dataMonster = DataManager.Instance.dataMonster.Select (_iSerial);
 		int iCleanLevel = 0;
 		int iMealLevel = 0;
 		m_dataMonster.GetConditions (ref iCleanLevel, ref iMealLevel , fEffectRange);
@@ -135,7 +144,7 @@ public class CtrlMonsterDetail : MonoBehaviour {
 			if (bInit) {
 				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", gameObject);
 				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
-				m_ojisanCheck.Initialize ("この動物を\n待機室へ\n移動させます。");
+				m_ojisanCheck.Initialize (DataManager.Instance.getWord("monster_wait"));
 			}
 			if (m_ojisanCheck.IsYes ()) {
 

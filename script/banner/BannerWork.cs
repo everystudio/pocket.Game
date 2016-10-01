@@ -160,10 +160,9 @@ public class BannerWork : BannerBase {
 
 				string strDisp = "";
 				if ( monster_data.coin <= DataManager.user.m_iGold ) {
-					strDisp = string.Format("本当に購入しますか?\n({0}G)\n\n{1}G→[FFD900]{2}G[-]" , monster_data.coin , DataManager.user.m_iGold , DataManager.user.m_iGold - monster_data.coin );
-					//strDisp = string.Format("こちらの動物を\n購入しますか({0}G)\n\n{1}G→{2}G" , monster_data.coin , DataManager.user.m_iGold , DataManager.user.m_iGold - monster_data.coin );
+					strDisp = string.Format(DataManager.Instance.getWord("monster_buy_check"), monster_data.coin , DataManager.user.m_iGold , DataManager.user.m_iGold - monster_data.coin );
 				} else {
-					strDisp = string.Format("こちらの動物を\n購入しますか\n\n購入には[FF0000]{0}G[-]必要です\n[FF0000]{1}G[-]不足しています" , monster_data.coin,monster_data.coin - DataManager.user.m_iGold);
+					strDisp = string.Format(DataManager.Instance.getWord("monster_buy_less"), monster_data.coin,monster_data.coin - DataManager.user.m_iGold);
 					m_ojisanCheck.YesOrNo.EnableButtonYes (false);
 				}
 
@@ -186,7 +185,7 @@ public class BannerWork : BannerBase {
 			if (bInit) {
 				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", gameObject.transform.parent.parent.parent.parent.gameObject);
 				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
-				string strDisp = "購入完了しました\n檻から設置を\n行ってください\n";
+				string strDisp = DataManager.Instance.getWord("work_buy_monster");
 				m_ojisanCheck.Initialize (strDisp, true);
 
 				/*				

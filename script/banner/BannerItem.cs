@@ -258,7 +258,7 @@ public class BannerItem : BannerBase {
 			if (bInit) {
 				GameObject objOjisan = PrefabManager.Instance.MakeObject ("prefab/PrefOjisanCheck", gameObject.transform.parent.parent.parent.parent.gameObject );
 				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
-				m_ojisanCheck.Initialize ("動物園を\n拡張します\n\nよろしいですか");
+				m_ojisanCheck.Initialize (DataManager.Instance.getWord("extend"));
 			}
 			if (m_ojisanCheck.IsYes ()) {
 				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");

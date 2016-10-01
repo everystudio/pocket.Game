@@ -48,6 +48,22 @@ public class BannerMonster : BannerBase {
 	
 	public bool m_bGoldLess;
 
+	void OnDestroy()
+	{
+		if (m_ojisanCheck != null)
+		{
+			Destroy(m_ojisanCheck.gameObject);
+			m_ojisanCheck = null;
+		}
+		if (m_monsterDetail != null)
+		{
+			Destroy(m_monsterDetail.gameObject);
+			m_monsterDetail = null;
+		}
+
+		
+	}
+
 	public void Initialize( CsvMonsterParam _dataMaster , int _iCostNokori, int _iPosDist)
 	{
 		m_bIsUserData = false;
@@ -289,10 +305,10 @@ public class BannerMonster : BannerBase {
 				int iCost = monster.revenew_coin * (int)(600.0f / (float)monster.revenew_interval);
 
 				m_bGoldLess = false;
-				string strText = string.Format ("こちらの動物を\n治療しますか\n\n治療費:{0}G\n\n{1}G → [FFD900]{2}[-]G", iCost , DataManager.user.m_iGold , DataManager.user.m_iGold -iCost );
+				string strText = string.Format (DataManager.Instance.getWord("sick_cure"), iCost , DataManager.user.m_iGold , DataManager.user.m_iGold -iCost );
 				if (DataManager.user.m_iGold < iCost) {
 					m_bGoldLess = true;
-					strText = string.Format ("こちらの動物を\n治療しますか\n治療費:{0}G\n\n[FFD900]GOLDが足りません[-]", iCost);
+					strText = string.Format (DataManager.Instance.getWord("sick_cure_less"), iCost);
 				}
 
 				m_ojisanCheck = objOjisan.GetComponent<CtrlOjisanCheck> ();
