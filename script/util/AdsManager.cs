@@ -59,7 +59,9 @@ public class AdsManager : Singleton<AdsManager> {
 #if UNITY_EDITOR
 		m_imgBannerDummy.gameObject.SetActive(true);
 #else
-		m_imgBannerDummy.gameObject.SetActive(false);
+		if( m_imgBannerDummy != null ){
+			m_imgBannerDummy.gameObject.SetActive(false);
+		}
 #endif
 		if (m_nendAdBanner == null) {
 			m_nendAdBanner = m_goAdBanner.GetComponent<NendAdBanner> ();
