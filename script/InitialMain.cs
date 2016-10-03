@@ -201,11 +201,13 @@ public class InitialMain : MonoBehaviour {
 		switch (m_eStep) {
 
 		case STEP.CHECK_CONFIG:
-			if (bInit) {
-				m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet (
-					DataManager.Instance.SPREAD_SHEET,
-					DataManager.Instance.SPREAD_SHEET_CONFIG_SHEET);
-			}
+				if (bInit)
+				{
+					m_iNetworkSerial = CommonNetwork.Instance.RecieveSpreadSheet(
+						DataManager.Instance.SPREAD_SHEET,
+						DataManager.Instance.SPREAD_SHEET_CONFIG_SHEET);
+				}
+
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("ネットワーク接続中", 0.0f);
 			}
@@ -243,8 +245,6 @@ public class InitialMain : MonoBehaviour {
 					m_eStep = STEP.CHECK_UPDATE;
 				}
 					loadInterstential();
-
-					NendAdInterstitial.Instance.Show(DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_GAME_STOPID));
 
 				}
 				else if (CommonNetwork.Instance.IsError (m_iNetworkSerial ) ) {
@@ -549,8 +549,9 @@ public class InitialMain : MonoBehaviour {
 			if (bInit) {
 				m_btnStart.TriggerClear ();
 				m_btnBackup.TriggerClear ();
-			}
-			if (m_btnStart.ButtonPushed) {
+					NendAdInterstitial.Instance.Show(DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_START_STOPID));
+				}
+				if (m_btnStart.ButtonPushed) {
 				m_eStep = STEP.DB_SETUP;
 				SoundManager.Instance.PlaySE ("se_cleanup" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
 
@@ -683,8 +684,8 @@ public class InitialMain : MonoBehaviour {
 		case STEP.INPUT_WAIT:
 			if (bInit) {
 				m_btnStart.TriggerClear ();
-			}
-			if (true) {
+				}
+				if (true) {
 
 				// とりあえず全部調べる
 				List<DataWorkParam> cleared_work_list = m_dbWork.Select ( string.Format(" status = {0} " , (int)DefineOld.Work.STATUS.CLEARD ));

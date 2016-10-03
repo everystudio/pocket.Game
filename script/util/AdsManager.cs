@@ -52,16 +52,23 @@ public class AdsManager : Singleton<AdsManager> {
 		// 通常表示
 		NendAdInterstitial.Instance.Show( DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_GAME_STOPID) );
 	}
+	
 
 	public override void Initialize ()
 	{
-		m_imgBannerDummy = GameObject.Find("DummyBannerAds").GetComponent<Image>();
 #if UNITY_EDITOR
+		if (m_imgBannerDummy == null)
+		{
+			m_imgBannerDummy = GameObject.Find("CanvasNendAd").GetComponent<ImageHolder>().image;
+		}
 		m_imgBannerDummy.gameObject.SetActive(true);
 #else
-		if( m_imgBannerDummy != null ){
-			m_imgBannerDummy.gameObject.SetActive(false);
+		/*
+		//if( m_imgBannerDummy != null )
+		{
+			//m_imgBannerDummy.gameObject.SetActive(false);
 		}
+		*/
 #endif
 		if (m_nendAdBanner == null) {
 			m_nendAdBanner = m_goAdBanner.GetComponent<NendAdBanner> ();
