@@ -31,6 +31,7 @@ public class CsvItemParam : CsvDataParam {
 	public int m_revenue_up2;
 	public int m_add_coin;
 	public int m_anim;
+	public int m_skit_id;
 
 	public int item_id { get{ return m_item_id; } set{ m_item_id = value; } }
 	public int status { get{ return m_status; } set{ m_status= value; } }
@@ -68,7 +69,8 @@ public class CsvItemParam : CsvDataParam {
 	public int open_item_id { get{ return m_open_item_id; } set{ m_open_item_id = value; } }
 	public int revenue_up2 { get{ return m_revenue_up2; } set{ m_revenue_up2 = value; } }
 	public int add_coin { get{ return m_add_coin; } set{ m_add_coin = value; } }
-	public int anim { get{ return m_anim; } set{ m_anim = value; } }
+	public int anim { get { return m_anim; } set { m_anim = value; } }
+	public int skit_id{ get { return m_skit_id; } set { m_skit_id = value; } }
 
 
 	public void Copy( CsvItemParam _data ){
@@ -97,6 +99,7 @@ public class CsvItemParam : CsvDataParam {
 		add_coin = _data.add_coin;
 		item_id = _data.item_id;
 		anim = _data.anim;
+		skit_id = _data.skit_id;
 
 	}
 
@@ -162,6 +165,7 @@ public class CsvItem : CsvData< CsvItemParam>
 		SpreadSheetData data_revenueup2 = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
 		SpreadSheetData data_addcoin = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
 		SpreadSheetData data_anim = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
+		SpreadSheetData data_skit_id = SpreadSheetData.GetSpreadSheet( _list, _iRow , index++);
 
 		CsvItemParam retParam = new CsvItemParam ();
 
@@ -189,6 +193,9 @@ public class CsvItem : CsvData< CsvItemParam>
 		retParam.m_revenue_up2 = int.Parse(data_revenueup2.param);
 		retParam.m_add_coin = int.Parse(data_addcoin.param);
 		retParam.m_anim = int.Parse(data_anim.param);
+		retParam.m_skit_id = int.Parse(data_skit_id.param);
+
+		//Debug.LogError(retParam.name);
 
 		return retParam;
 	}

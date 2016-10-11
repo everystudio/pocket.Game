@@ -229,6 +229,17 @@ public class InitialMain : MonoBehaviour {
 				FORCE_UPDATE_SKIT = 0 < config_data.ReadInt(DataManager.Instance.KEY_SKIT_UPDATE) ? true : false;
 				FORCE_UPDATE_WORD = 0 < config_data.ReadInt(DataManager.Instance.KEY_WORD_UPDATE) ? true : false;
 
+					if( DataManager.Instance.data_kvs.HasKey("startup") == false)
+					{
+						CONFIG_UPDATE = true;
+						FORCE_UPDATE_ITEM = true;
+						FORCE_UPDATE_MONSTER = true;
+						FORCE_UPDATE_WORK = true;
+						FORCE_UPDATE_SKIT = true;
+						FORCE_UPDATE_WORD = true;
+						DataManager.Instance.data_kvs.WriteString("startup", "startuped");
+					}
+
 				if (CONFIG_UPDATE == true) {
 					// 毎回更新させる
 					DataManager.Instance.config.WriteInt (CsvConfig.KEY_CONFIG_VERSION, 0);
@@ -346,20 +357,32 @@ public class InitialMain : MonoBehaviour {
 				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
 				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
 
-				if (0 < DataManager.Instance.m_csvItem.list.Count) {
-					CsvItem item_master = new CsvItem ();
-					item_master.Input (m_ssdSample);
-					//item_master.Load ("csv/master/InitialCsvItem");
-					foreach (CsvItemParam param in item_master.list) {
-						CsvItemParam temp = DataManager.Instance.m_csvItem.Select (param.item_id);
-						if (temp.item_id != 0) {
-							param.status = temp.status;
-						} else {
-							item_master.list.Add (param);
-						}
+					CsvItem item_master = new CsvItem();
+					item_master.Input(m_ssdSample);
+
+					if(0 == DataManager.Instance.m_csvItem.list.Count)
+					{
+						item_master.Save(CsvItem.FilePath);
+						DataManager.Instance.AllLoad();
 					}
-					item_master.Save (CsvItem.FilePath);
-				}
+
+					//if (0 < DataManager.Instance.m_csvItem.list.Count)
+					{
+						//item_master.Load ("csv/master/InitialCsvItem");
+
+						foreach (CsvItemParam param in item_master.list)
+						{
+							CsvItemParam temp = DataManager.Instance.m_csvItem.Select(param.item_id);
+							if (temp.item_id != 0)
+							{
+								param.status = temp.status;
+							}
+							else {
+								item_master.list.Add(param);
+							}
+						}
+						item_master.Save(CsvItem.FilePath);
+					}
 				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_ITEM_VERSION));
 				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
 				DataManager.Instance.AllLoad ();
@@ -379,24 +402,33 @@ public class InitialMain : MonoBehaviour {
 			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
 				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
 				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
-
-				if (0 < DataManager.Instance.m_csvMonster.list.Count) {
-					CsvMonster monster_master = new CsvMonster ();
-					monster_master.Input (m_ssdSample);
-					//monster_master.Load ("csv/master/InitialCsvMonster");
-					foreach (CsvMonsterParam param in monster_master.list) {
-						CsvMonsterParam temp = DataManager.Instance.m_csvMonster.Select (param.monster_id);
-
-							Debug.LogError(param.description_book);
-							Debug.LogError(param.range);
-							if (temp.monster_id != 0) {
-							param.status = temp.status;
-						} else {
-							monster_master.list.Add (param);
-						}
+					CsvMonster monster_master = new CsvMonster();
+					monster_master.Input(m_ssdSample);
+					if (0 == DataManager.Instance.m_csvMonster.list.Count)
+					{
+						monster_master.Save(CsvMonster.FilePath);
+						DataManager.Instance.AllLoad();
 					}
-					monster_master.Save (CsvMonster.FilePath);
-				}
+
+					if (0 < DataManager.Instance.m_csvMonster.list.Count)
+					{
+						//monster_master.Load ("csv/master/InitialCsvMonster");
+						foreach (CsvMonsterParam param in monster_master.list)
+						{
+							CsvMonsterParam temp = DataManager.Instance.m_csvMonster.Select(param.monster_id);
+
+							//Debug.LogError(param.description_book);
+							//Debug.LogError(param.range);
+							if (temp.monster_id != 0)
+							{
+								param.status = temp.status;
+							}
+							else {
+								monster_master.list.Add(param);
+							}
+						}
+						monster_master.Save(CsvMonster.FilePath);
+					}
 				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_MONSTER_VERSION));
 				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
 				DataManager.Instance.AllLoad ();
@@ -582,7 +614,7 @@ public class InitialMain : MonoBehaviour {
 			}
 			if (true) {
 				//if (m_tkKvsOpen.Completed) {
-
+				/*
 				if (DataManager.Instance.m_csvItem.list.Count == 0) {
 					CsvItem initial_csv_item = new CsvItem ();
 					initial_csv_item.Load ("csv/master/InitialCsvItem");
@@ -597,6 +629,7 @@ public class InitialMain : MonoBehaviour {
 						DataManager.Instance.m_csvMonster.list.Add (param);
 					}
 				}
+				*/
 
 				if (DataManager.Instance.m_dataItem.list.Count == 0) {
 					DataManager.Instance.data_kvs.WriteInt (DefineOld.USER_SYAKKIN,300000000);
@@ -620,8 +653,8 @@ public class InitialMain : MonoBehaviour {
 				List<DataWorkParam> data_work_list = m_dbWork.All;
 				if (data_work_list.Count == 0) {
 					CsvWork initial_csv_work = new CsvWork ();
-					initial_csv_work.Load ("csv/master/InitialCsvWork");
-
+					initial_csv_work.Load();
+					//initial_csv_work.Load ("csv/master/InitialCsvWork");
 					foreach (CsvWorkParam csv_work_data in initial_csv_work.list) {
 						DataWorkParam data = new DataWorkParam (csv_work_data);
 						// 最初に出現していいのはappear_work_id== 0とlevel<=1のものだけ
