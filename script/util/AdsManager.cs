@@ -91,6 +91,7 @@ public class AdsManager : Singleton<AdsManager> {
 
 	public int m_iShowBannerLock;
 	public void ShowAdBanner( bool _bFlag ){
+
 		if (_bFlag) {
 			if (0 < m_iShowBannerLock)
 			{
@@ -114,6 +115,9 @@ public class AdsManager : Singleton<AdsManager> {
 			m_imgBannerDummy.gameObject.SetActive(false);
 #endif
 		}
+
+		Debug.LogError(string.Format("ShowAdBanner:{0} Lock{1}", _bFlag, m_iShowBannerLock));
+
 	}
 
 #if USE_IMOBILE
