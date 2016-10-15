@@ -38,7 +38,7 @@ public class CtrlItemDetailCage : CtrlItemDetailBase {
 
 	void dispRefresh(){
 		//Debug.LogError ("dispRefresh");
-		int iUriageMax = m_ctrlFieldItem.m_dataItemParam.GetUriagePerHour ();
+		m_ctrlFieldItem.m_dataItemParam.GetUriagePerHour ();
 		/*
 		List<DataMonster > monster_list = GameMain.dbMonster.Select ( " item_serial = " + m_ctrlFieldItem.m_dataItemParam.item_serial.ToString() );
 		int iUriageMax = 0;

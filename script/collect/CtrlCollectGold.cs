@@ -78,10 +78,10 @@ public class CtrlCollectGold : Singleton<CtrlCollectGold> {
 
 		if (m_btnCollect.ButtonPushed) {
 			m_btnCollect.TriggerClear ();
-			int iCollectGold = 0;
-			int iCollectExp = 0;
-			iCollectGold = m_iBufGold;
-			iCollectExp = m_iBufExp;
+			//int iCollectGold = 0;
+			//int iCollectExp = 0;
+			//iCollectGold = m_iBufGold;
+			//iCollectExp = m_iBufExp;
 			if (0 < m_iBufGold) {
 				SoundManager.Instance.PlaySE ("se_cash", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
 
