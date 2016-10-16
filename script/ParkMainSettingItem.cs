@@ -184,7 +184,7 @@ public class ParkMainSettingItem : ParkMainController {
 		{
 			if( 0 < item.m_dataItemParam.item_id && item.m_dataItemParam.item_id != DefineOld.ITEM_ID_ROAD)
 			{
-				item.TweenAlphaAll(item.gameObject, 0.3f, 0.75f);
+				item.TweenAlphaAll(item.gameObject, 0.3f, 0.5f);
 			}
 		}
 
