@@ -857,7 +857,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3014
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -3291,6 +3291,7 @@ MonoBehaviour:
   movement: 1
   dragEffect: 2
   restrictWithinPanel: 1
+  constrainOnDrag: 0
   disableDragIfFits: 0
   smoothDragStart: 1
   iOSDragEmulation: 1
@@ -6556,11 +6557,11 @@ Prefab:
     - target: {fileID: 11404160, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300006, guid: ef4328efe3e76264aa4a12a2d678059c,
+      objectReference: {fileID: 21300406, guid: 911697bd0d748df4ab7ca0f2d030bf9f,
         type: 3}
     - target: {fileID: 11404160, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_Type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22409282, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -6963,7 +6964,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3005
+  startingRenderQueue: 3003
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -12920,6 +12921,7 @@ MonoBehaviour:
   movement: 0
   dragEffect: 2
   restrictWithinPanel: 1
+  constrainOnDrag: 0
   disableDragIfFits: 0
   smoothDragStart: 1
   iOSDragEmulation: 1
@@ -12970,7 +12972,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3012
+  startingRenderQueue: 3005
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
