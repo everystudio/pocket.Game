@@ -585,7 +585,7 @@ public class InitialMain : MonoBehaviour {
 				}
 				if (m_btnStart.ButtonPushed) {
 				m_eStep = STEP.DB_SETUP;
-				SoundManager.Instance.PlaySE ("se_cleanup" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE ("se_cleanup" , DataManager.Instance.SOUND_PATH);
 
 				GoogleAnalytics.Instance.Log ("push_start");
 
@@ -756,11 +756,11 @@ public class InitialMain : MonoBehaviour {
 				m_ojisanCheck.Initialize ("自動保存されたデータ\nを利用して\nバックアップを行います\n\nよろしいですか");
 			}
 			if (m_ojisanCheck.IsYes ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , DataManager.Instance.SOUND_PATH);
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.DB_BACKUP;
 			} else if (m_ojisanCheck.IsNo ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , DataManager.Instance.SOUND_PATH);
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.IDLE;
 			} else {

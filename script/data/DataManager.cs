@@ -5,7 +5,7 @@ using System.IO;
 
 public class DataManager : DataManagerBase <DataManager>{
 
-	public readonly string SOUND_PATH = "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/5_4/se";
+	public readonly string SOUND_PATH = "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/5_4/pocket/se";
 
 
 	public readonly string SPREAD_SHEET = "1mwbjeoyZkCs0k0XAOny_gFNJxormS0xoKO1IOPbEOLQ";

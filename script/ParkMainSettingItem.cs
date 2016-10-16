@@ -233,7 +233,7 @@ public class ParkMainSettingItem : ParkMainController {
 						m_eStep = STEP.SETTING;
 
 						// わけあってこっちから鳴らします
-						SoundManager.Instance.PlaySE (SoundName.SET_ITEM, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+						SoundManager.Instance.PlaySE (SoundName.SET_ITEM, DataManager.Instance.SOUND_PATH);
 
 					} else {
 						;// エラー音
@@ -433,7 +433,7 @@ public class ParkMainSettingItem : ParkMainController {
 				m_iEditItemY = return_data_item.y;
 				m_eStep = STEP.SETTING;
 
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL, DataManager.Instance.SOUND_PATH);
 			} else {
 				Destroy (m_editItem.gameObject);
 				m_eStep = STEP.END;
@@ -444,13 +444,14 @@ public class ParkMainSettingItem : ParkMainController {
 		case STEP.END:
 				if( bInit)
 				{
-					Debug.LogError("Reload");
+					//Debug.LogError("Reload");
 					DataManager.Instance.RoadLoad();
 					DataManager.Instance.ReloadScareRate();
 					foreach (CtrlFieldItem item in GameMain.ParkRoot.m_fieldItemList)
 					{
 						item.TweenAlphaAll(item.gameObject,0.3f, 1.0f);
 					}
+					AdsManager.Instance.ShowAdBanner(true);
 
 					m_bIsEnd = true;
 				}

@@ -105,12 +105,12 @@ public class CtrlShopDetail : MonoBehaviour {
 
 				AdsManager.Instance.ShowAdBanner(true);
 				m_bIsEnd = true;
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL , DataManager.Instance.SOUND_PATH);
 
 			} else if (m_ButtonClose.ButtonPushed) {
 
 				AdsManager.Instance.ShowAdBanner(true); m_bIsEnd = true;
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL, DataManager.Instance.SOUND_PATH);
 
 			} else {
 			}

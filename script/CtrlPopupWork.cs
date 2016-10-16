@@ -122,7 +122,7 @@ public class CtrlPopupWork : MonoBehaviourEx{
 					AdsManager.Instance.ShowAdBanner(false);
 
 				GameMain.Instance.TutorialInputLock = true;
-				SoundManager.Instance.PlaySE ("se_work_clear" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE ("se_work_clear" , DataManager.Instance.SOUND_PATH);
 
 				m_goHit.SetActive (true);
 				m_sprWhite.gameObject.SetActive (true);

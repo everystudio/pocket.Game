@@ -64,7 +64,7 @@ public class DebugRoot : MonoBehaviour {
 	void Update () {
 
 		if (m_btnOnOff.ButtonPushed) {
-			SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+			SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 			m_btnOnOff.TriggerClear ();
 			m_bMenuDisp = !m_bMenuDisp;
 			dispMenu (m_bMenuDisp);

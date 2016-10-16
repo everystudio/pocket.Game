@@ -10,12 +10,15 @@ public class SoundName {
 
 	static public readonly string BUTTON_PUSH = "btn_normal";
 	static public readonly string BUTTON_CANCEL	= "btn_cancel";
-	static public readonly string BUTTON_SELECT	= "select_button";
+	static public readonly string BUTTON_SELECT	= "btn_normal";
 	static public readonly string TAB_CHANGE	= "tabchange";
 	static public readonly string BUILDUP = "buildup";
 	static public readonly string SET_ANIMAL = "setanimal";
 	static public readonly string SET_ITEM = "setins";
 	static public readonly string FOOD_DROP = "fooddrop";
+	static public readonly string BUTTON_EATING = "se_eating";
+	static public readonly string CASH = "se_cash";
+	
 
 
 }

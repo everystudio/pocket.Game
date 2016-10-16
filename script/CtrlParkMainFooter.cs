@@ -30,7 +30,7 @@ public class CtrlParkMainFooter : MonoBehaviourEx {
 			//Debug.Log (m_PageButton.Index);
 			m_PageButton.TriggerClearAll ();
 
-			SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+			SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , DataManager.Instance.SOUND_PATH);
 
 			GameMain.STATUS status = GameMain.STATUS.NONE;
 			switch (m_PageButton.Index) {

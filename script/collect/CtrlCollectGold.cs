@@ -83,7 +83,7 @@ public class CtrlCollectGold : Singleton<CtrlCollectGold> {
 			//iCollectGold = m_iBufGold;
 			//iCollectExp = m_iBufExp;
 			if (0 < m_iBufGold) {
-				SoundManager.Instance.PlaySE ("se_cash", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.CASH, DataManager.Instance.SOUND_PATH);
 
 				DataManager.user.AddCollect ();
 				DataManager.user.AddGold (m_iBufGold);

@@ -245,7 +245,7 @@ public class BannerItem : BannerBase {
 						break;
 					default:
 						GameMain.Instance.PreSettingItemId = 0;
-						SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+						SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH );
 						GameMain.Instance.SettingItem (m_iItemId, m_iItemSerial);
 						GameMain.Instance.SetStatus (GameMain.STATUS.PARK);
 						break;
@@ -261,11 +261,11 @@ public class BannerItem : BannerBase {
 				m_ojisanCheck.Initialize (DataManager.Instance.getWord("extend"));
 			}
 			if (m_ojisanCheck.IsYes ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.EXPAND_BUY;
 			} else if (m_ojisanCheck.IsNo ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.IDLE;
 			} else {
@@ -350,11 +350,11 @@ public class BannerItem : BannerBase {
 					m_ojisanCheck.Initialize ( string.Format("ゴールドををチケットに\n変換します\n\n{0}枚→ {1}枚\nよろしいですか" , DataManager.user.m_iTicket ,DataManager.user.m_iTicket+m_iTicketNum ));
 				}
 				if (m_ojisanCheck.IsYes ()) {
-					SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+					SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 					Destroy (m_ojisanCheck.gameObject);
 					m_eStep = STEP.TICKET_BUY;
 				} else if (m_ojisanCheck.IsNo ()) {
-					SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+					SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 					Destroy (m_ojisanCheck.gameObject);
 					m_eStep = STEP.IDLE;
 				} else {
@@ -377,11 +377,11 @@ public class BannerItem : BannerBase {
 				m_ojisanCheck.Initialize ( string.Format("チケットをゴールドに\n変換します\n\n{0}G→ {1}G\nよろしいですか" , DataManager.user.m_iGold ,DataManager.user.m_iGold+m_ItemMaster.add_coin ));
 			}
 			if (m_ojisanCheck.IsYes ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.GOLD_BUY;
 			} else if (m_ojisanCheck.IsNo ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.IDLE;
 			} else {

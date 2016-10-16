@@ -359,7 +359,8 @@ public class CtrlVisitor : MonoBehaviourEx {
 
 	public void TamashiiCollect(int _iTemp)
 	{
-		// 事情により引数は使わないです
+		SoundManager.Instance.PlaySE("cursor_01", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/5_4/se/cursor");
+		  // 事情により引数は使わないです
 		DataManager.user.AddExp(m_iGetExp);
 		m_iGetExp = 0;
 		m_sprTamashii.gameObject.SetActive( false);

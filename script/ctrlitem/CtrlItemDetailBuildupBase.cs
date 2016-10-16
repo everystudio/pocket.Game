@@ -157,7 +157,7 @@ abstract public class CtrlItemDetailBuildupBase : CtrlItemDetailBase {
 			}
 			if (m_btnBuildup.ButtonPushed || GameMain.Instance.TutorialBuildup) {
 				m_btnBuildup.TriggerClear ();
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , DataManager.Instance.SOUND_PATH);
 				// お金が足りるなら確認
 
 				if (m_dataNext.coin <= DataManager.user.m_iGold || GameMain.Instance.TutorialBuildup) {
@@ -179,11 +179,11 @@ abstract public class CtrlItemDetailBuildupBase : CtrlItemDetailBase {
 			}
 			if (m_ojisanCheck.IsYes ()) {
 				Destroy (m_ojisanCheck.gameObject);
-				SoundManager.Instance.PlaySE (SoundName.BUILDUP , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUILDUP , DataManager.Instance.SOUND_PATH);
 				m_eStep = STEP.BUILDUP;
 			} else if (m_ojisanCheck.IsNo ()) {
 				Destroy (m_ojisanCheck.gameObject);
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , DataManager.Instance.SOUND_PATH);
 				m_eStep = STEP.IDLE;
 			} else {
 			}
@@ -199,7 +199,7 @@ abstract public class CtrlItemDetailBuildupBase : CtrlItemDetailBase {
 			}
 			if (m_ojisanCheck.IsYes ()) {
 				Destroy (m_ojisanCheck.gameObject);
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , DataManager.Instance.SOUND_PATH);
 				m_eStep = STEP.IDLE;
 			}
 			break;

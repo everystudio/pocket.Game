@@ -170,11 +170,11 @@ public class BannerWork : BannerBase {
 			}
 			if (m_ojisanCheck.IsYes ()) {
 				Destroy (m_ojisanCheck.gameObject);
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 				m_eStep = STEP.MONSTER_BUY;
 			} else if (m_ojisanCheck.IsNo ()) {
 				Destroy (m_ojisanCheck.gameObject);
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 				m_eStep = STEP.IDLE;
 			} else {
 			}
