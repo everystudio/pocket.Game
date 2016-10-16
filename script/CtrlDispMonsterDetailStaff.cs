@@ -21,11 +21,39 @@ public class CtrlDispMonsterDetailStaff : MonoBehaviour {
 		return;
 	}
 
+	// 肝試し用
+	public void Initialize( int _iOfficeSerial)
+	{
+		DataItemParam dataItem = DataManager.Instance.m_dataItem.Select(_iOfficeSerial);
+		CsvItemParam officeParam = DataManager.Instance.m_csvItem.Select(dataItem.item_id);
+
+		if(officeParam.category == 2)
+		{
+			string strFilename = CsvItem.GetFilename(officeParam.item_id, 1);
+			Debug.LogError(strFilename);
+			m_sprOffice.gameObject.SetActive(true);
+			m_sprOffice.sprite2D = SpriteManager.Instance.Load(strFilename);
+			m_lbSpot.gameObject.SetActive(false);
+		}
+		else
+		{
+			m_sprOffice.gameObject.SetActive(false);
+			m_lbSpot.gameObject.SetActive(true);
+		}
+
+	}
+
+
 	#region SerializeField
 	[SerializeField]
 	private CtrlDispMonsterDetailStaffSub m_staffClean;
 	[SerializeField]
 	private CtrlDispMonsterDetailStaffSub m_staffMeal;
+	[SerializeField]
+	private UI2DSprite m_sprOffice;
+	[SerializeField]
+	private UILabel m_lbSpot;
+
 	#endregion
 
 	// Update is called once per frame

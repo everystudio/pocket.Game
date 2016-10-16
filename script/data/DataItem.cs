@@ -22,6 +22,7 @@ public class DataItemParam : CsvDataParam{
 	public string m_create_time;
 	public int m_range;
 	public int m_area;
+	public int m_office_serial;
 
 	public int item_serial { get{ return m_item_serial;} set{m_item_serial = value; } }
 	public int item_id { get{ return m_item_id;} set{m_item_id = value; } }
@@ -39,6 +40,7 @@ public class DataItemParam : CsvDataParam{
 	public string create_time { get{ return m_create_time;} set{m_create_time = value; } }
 	public int range { get { return m_range; } set { m_range = value; } }
 	public int area { get { return m_area; } set { m_area = value; } }
+	public int office_serial { get { return m_office_serial; } set { m_office_serial = value; } }
 
 	public DataItemParam(){
 		range = 100;

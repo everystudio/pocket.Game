@@ -110,6 +110,19 @@ public class CsvItemParam : CsvDataParam {
 [System.Serializable]
 public class CsvItem : CsvData< CsvItemParam>
 {
+	static public string GetItemName(int _iItemId , int _iIndex=0)
+	{
+		string strName = "item" + string.Format("{0:D2}_{1:D2}", _iItemId, _iIndex);
+		return strName;
+	}
+	static public string GetFilename(int _iItemId, int _iIndex = 0)
+	{
+		string strRet = GetItemName(_iItemId, _iIndex);
+
+		strRet = string.Format("texture/item/{0}.png", strRet);
+
+		return strRet;
+	}
 
 	public const string FilePath = "csv/item";
 

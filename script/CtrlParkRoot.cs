@@ -118,14 +118,38 @@ public class CtrlParkRoot : MonoBehaviourEx {
 	}
 
 
-	public CtrlFieldItem GetFieldItem( int _iSerial ){
-		foreach (CtrlFieldItem item in m_fieldItemList) {
-			if (item.m_dataItemParam.item_serial == _iSerial) {
+	public CtrlFieldItem GetFieldItem(int _iSerial)
+	{
+		foreach (CtrlFieldItem item in m_fieldItemList)
+		{
+			if (item.m_dataItemParam.item_serial == _iSerial)
+			{
 				return item;
 			}
 		}
 		return null;
 	}
+	public CtrlFieldItem GetFieldItem2(int _iSerial)
+	{
+		Debug.LogError(_iSerial);
+		CtrlFieldItem ret = null;
+		foreach (CtrlFieldItem item in m_fieldItemList)
+		{
+			if (item.m_dataItemParam.item_serial != 0)
+			{
+				Debug.LogError(string.Format("item_serial={0} office={1}", item.m_dataItemParam.item_serial,item.m_dataItemParam.office_serial));
+				if (item.m_dataItemParam.item_serial == _iSerial)
+				{
+					Debug.LogError("hit ");
+					ret = item;
+				}
+			}
+		}
+		return ret;
+	}
+
+
+
 
 	public CtrlFieldItem GetFieldItem( int _iX , int _iY ){
 		foreach (CtrlFieldItem item in m_fieldItemList) {

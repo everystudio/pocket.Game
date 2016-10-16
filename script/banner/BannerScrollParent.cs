@@ -72,7 +72,7 @@ public class BannerScrollParent : MonoBehaviourEx {
 		BannerBaseClear ();
 		foreach (DataItemParam data in _itemList) {
 
-			Debug.LogError (string.Format ("serial:{0} item_id:{1}", data.item_serial, data.item_id));
+			//Debug.LogError (string.Format ("serial:{0} item_id:{1}", data.item_serial, data.item_id));
 			GameObject objBanner = PrefabManager.Instance.MakeObject ("prefab/PrefBannerItem" , m_Grid.gameObject );
 			BannerItem script = objBanner.GetComponent<BannerItem> ();
 			script.Initialize (data, GameMain.Instance.m_iCostNokori);
@@ -83,7 +83,7 @@ public class BannerScrollParent : MonoBehaviourEx {
 
 	public void Display( List<DataMonsterParam> _monsterList , int _iIndex , string _strButton = "" ){
 		BannerBaseClear ();
-		Debug.LogError(GameMain.Instance.m_iSettingItemSerial);
+		//Debug.LogError(GameMain.Instance.m_iSettingItemSerial);
 		DataItemParam dataItemParam = DataManager.Instance.m_dataItem.Select(GameMain.Instance.m_iSettingItemSerial);
 		int item_dist = dataItemParam.x + dataItemParam.y;
 		foreach (DataMonsterParam data in _monsterList) {

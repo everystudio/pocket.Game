@@ -101,6 +101,8 @@ public class CtrlVisitor : MonoBehaviourEx {
 		DataItemParam item_param = DataManager.Instance.m_dataItem.Select (_iItemSerial);
 		m_sprTamashii.gameObject.SetActive(false);
 		m_sprTamashii.gameObject.name = string.Format("{0}{1}", DataManager.Instance.KEY_VISITOR_TAMASHII , _iVisitorSerial);
+		// 初期値として与える
+		m_ctrlTouchCollectTamashii.SetSclaleFromFieldScale(GameMain.Instance.parkScale);
 		//Debug.LogError (string.Format ("x={0} y={1}", _iX, _iY));
 		//myTransform.localPosition = (DefineOld.CELL_X_DIR.normalized * DefineOld.CELL_X_LENGTH * item_param.x) + (DefineOld.CELL_Y_DIR.normalized * DefineOld.CELL_Y_LENGTH * item_param.y);
 		m_bUp = true;

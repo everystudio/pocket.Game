@@ -116,7 +116,7 @@ public class AdsManager : Singleton<AdsManager> {
 #endif
 		}
 
-		Debug.LogError(string.Format("ShowAdBanner:{0} Lock{1}", _bFlag, m_iShowBannerLock));
+		//Debug.LogError(string.Format("ShowAdBanner:{0} Lock{1}", _bFlag, m_iShowBannerLock));
 
 	}
 

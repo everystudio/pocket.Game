@@ -5,6 +5,9 @@ using System.IO;
 
 public class DataManager : DataManagerBase <DataManager>{
 
+	public readonly string SOUND_PATH = "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/5_4/se";
+
+
 	public readonly string SPREAD_SHEET = "1mwbjeoyZkCs0k0XAOny_gFNJxormS0xoKO1IOPbEOLQ";
 	public readonly string SPREAD_SHEET_CONFIG_SHEET = "od6";
 
@@ -521,7 +524,18 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		// オフィスとかもやっちゃうけど、レベルから取り直すのでOK。
 		foreach (DataItemParam param in DataManager.Instance.m_dataItem.list)
 		{
+			//Debug.LogError(string.Format("serial={0} office={1}", param.item_serial, param.office_serial));
 			param.range = 100;
+			param.office_serial = 0;
+		}
+		//Debug.LogError("-----------------------");
+		foreach (CtrlFieldItem field_item in GameMain.ParkRoot.m_fieldItemList)
+		{
+			if (field_item.m_dataItemParam.item_id != 0 && 0 < field_item.m_dataItemParam.item_serial)
+			{
+				field_item.m_dataItemParam.range = 100;
+				//Debug.LogError(string.Format("serial={0} office={1}", field_item.m_dataItemParam.item_serial, field_item.m_dataItemParam.office_serial));
+			}
 		}
 
 		foreach (DataItemParam param in list)
@@ -529,6 +543,8 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 			CsvItemParam master_data = DataManager.Instance.m_csvItem.Select(param.item_id);
 			CsvItemDetailData item_detail = DataManager.GetItemDetail(param.item_id, param.level);
 			//Debug.LogError(item_detail.revenue_rate);
+			//Debug.LogError(string.Format("item_detail.area={0}", item_detail.area));
+
 			for (int x = param.x - (item_detail.area); x < param.x + master_data.size + (item_detail.area); x++)
 			{
 				for (int y = param.y - (item_detail.area); y < param.y + master_data.size + (item_detail.area); y++)
@@ -550,10 +566,20 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 								param.range,
 								item_detail.revenue_rate));
 								*/
-							if (field_item.m_dataItemParam.range < item_detail.revenue_rate)
+
+							if (field_item.m_dataItemParam.category == 1)
 							{
-								//Debug.LogError(string.Format("update serial={2} range={0} revenue_rate={1}" , param.range , item_detail.revenue_rate , param.item_serial) );
-								field_item.m_dataItemParam.range = item_detail.revenue_rate;
+								if (field_item.m_dataItemParam.range < item_detail.revenue_rate)
+								{
+									//Debug.LogError(string.Format("update item_serial={3} office_serial={2} range={0} p.range={8} revenue_rate={1} x={4} y={5} p.x={6} p.y={7}", param.range , item_detail.revenue_rate , param.item_serial, field_item.m_dataItemParam.item_serial, field_item.m_dataItemParam.x, field_item.m_dataItemParam.y, param.x, param.y, field_item.m_dataItemParam.range) );
+									field_item.m_dataItemParam.range = item_detail.revenue_rate;
+									field_item.m_dataItemParam.office_serial = param.item_serial;
+								}
+								else
+								{
+									//Debug.LogError(string.Format("ignore item_serial={3} office_serial={2} range={0} p.range={8} revenue_rate={1} x={4} y={5} p.x={6} p.y={7}", param.range, item_detail.revenue_rate, param.item_serial, field_item.m_dataItemParam.item_serial, field_item.m_dataItemParam.x, field_item.m_dataItemParam.y, param.x, param.y, field_item.m_dataItemParam.range));
+
+								}
 							}
 						}
 					}

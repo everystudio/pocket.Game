@@ -97,8 +97,8 @@ public class ParkMainIdle : ParkMainController
 
 						int iSelectSerial = 0;
 
-						Debug.LogError(iGridX);
-						Debug.LogError(iGridY);
+						//Debug.LogError(iGridX);
+						//Debug.LogError(iGridY);
 
 						if (0 < GameMain.Instance.BuildingSerial)
 						{
@@ -117,7 +117,7 @@ public class ParkMainIdle : ParkMainController
 						}
 
 					if (0 < iSelectSerial) {
-						Debug.Log ("hit:serial=" + iSelectSerial.ToString ());
+						//Debug.Log ("hit:serial=" + iSelectSerial.ToString ());
 
 						GameMain.Instance.m_iSettingItemSerial = iSelectSerial;
 						m_selectItem = DataManager.Instance.m_dataItem.Select (iSelectSerial);

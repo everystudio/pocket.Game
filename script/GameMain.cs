@@ -67,7 +67,7 @@ public class GameMain : MonoBehaviour {
 	private CtrlFukidashiWork m_fukidashiWork;
 	#endregion
 
-	private float m_fParkScale;
+	private float m_fParkScale = 1.0f;
 	public float parkScale
 	{
 		set
@@ -505,7 +505,7 @@ public class GameMain : MonoBehaviour {
 		//レイを投射してオブジェクトを検出
 		if (Physics.Raycast(ray, out hit, fDistance))
 		{
-			Debug.Log(hit.collider.gameObject.name);
+			//Debug.Log(hit.collider.gameObject.name);
 			if (hit.collider.gameObject.name.Equals(DataManager.Instance.KEY_TOUCHABLE_FIELD_NAME))
 			{
 				GameObject objPoint = new GameObject();
@@ -521,7 +521,7 @@ public class GameMain : MonoBehaviour {
 				_iX = calc_x;
 				_iY = calc_y;
 
-				Debug.LogError (string.Format ("x:{0} y:{1} posx{2} posy{3}", calc_x, calc_y, objPoint.transform.localPosition.x, objPoint.transform.localPosition.y));
+				//Debug.LogError (string.Format ("x:{0} y:{1} posx{2} posy{3}", calc_x, calc_y, objPoint.transform.localPosition.x, objPoint.transform.localPosition.y));
 
 				Destroy(objPoint);
 			}

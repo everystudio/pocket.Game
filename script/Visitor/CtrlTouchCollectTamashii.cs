@@ -27,15 +27,21 @@ public class CtrlTouchCollectTamashii : MonoBehaviourEx {
 		gameObject.SetActive(true);
 	}
 
-	private void ChangeScale( float _fScale)
+	public void SetSclaleFromFieldScale(float _fFieldScale)
 	{
-		if(_fScale < 0.0f )
+		if (_fFieldScale <= 0.0f)
 		{
-			_fScale = 1.0f;
+			_fFieldScale = 1.0f;
 		}
-		float fScale = 1.0f / _fScale;
+		float fScale = 1.0f / _fFieldScale;
 		//fScale = 10.0f;
 		myTransform.localScale = new Vector3(fScale, fScale, fScale);
+
+	}
+
+	private void ChangeScale( float _fScale)
+	{
+		SetSclaleFromFieldScale(_fScale);
 	}
 
 	// Use this for initialization

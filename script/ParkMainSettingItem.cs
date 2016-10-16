@@ -444,6 +444,7 @@ public class ParkMainSettingItem : ParkMainController {
 		case STEP.END:
 				if( bInit)
 				{
+					Debug.LogError("Reload");
 					DataManager.Instance.RoadLoad();
 					DataManager.Instance.ReloadScareRate();
 					foreach (CtrlFieldItem item in GameMain.ParkRoot.m_fieldItemList)

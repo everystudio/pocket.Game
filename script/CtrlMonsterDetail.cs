@@ -63,14 +63,39 @@ public class CtrlMonsterDetail : MonoBehaviour {
 		return m_bIsEnd;
 	}
 
-	public void Initialize( int _iSerial ){
+	public void Initialize(int _iSerial) {
 		m_eStep = STEP.IDLE;
 		m_eStepPre = STEP.MAX;
 		m_bIsEnd = false;
-
+		//Debug.LogError(string.Format("monster_serial={0}", _iSerial));
 		m_dataMonster = DataManager.Instance.dataMonster.Select(_iSerial);
+		//Debug.LogError(string.Format("monster>item_serial={0}", m_dataMonster.item_serial));
 		DataItemParam itemParam = DataManager.Instance.m_dataItem.Select(m_dataMonster.item_serial);
+		//Debug.LogError(string.Format("itemParam>office={0}", itemParam.office_serial));
+		//Debug.LogError(string.Format("itemParam>range={0}", itemParam.range));
+
+
+		foreach (CtrlFieldItem tfield_item in GameMain.ParkRoot.m_fieldItemList)
+		{
+			if (tfield_item.m_dataItemParam.category == 1)
+			{
+				//Debug.LogError("CtrlFieldItem item_serial={0} office_serial={1}",tfield_item.m_dataItemParam.item_serial, tfield_item.m_dataItemParam.office_serial));
+				//Debug.LogError(string.Format("CtrlFieldItem item_serial={0} office_serial={1}",tfield_item.m_dataItemParam.item_serial, tfield_item.m_dataItemParam.office_serial));
+				if( tfield_item.m_dataItemParam.item_serial == m_dataMonster.item_serial)
+				{
+					itemParam = tfield_item.m_dataItemParam;
+				}
+
+			}
+		}
 		float fEffectRange = 1.0f * ((float)itemParam.range / 100.0f);
+
+		/*
+		Debug.LogError(string.Format("Office={0}", itemParam.office_serial));
+		CtrlFieldItem field_item = GameMain.ParkRoot.GetFieldItem(itemParam.office_serial);
+		DataItemParam tempItemParam = GameMain.ParkRoot.GetFieldItem(itemParam.office_serial).m_dataItemParam;
+		Debug.LogError(string.Format("Office={0}", tempItemParam.office_serial));
+		*/
 
 		int iCleanLevel = 0;
 		int iMealLevel = 0;
@@ -79,10 +104,9 @@ public class CtrlMonsterDetail : MonoBehaviour {
 
 		CsvMonsterParam master_data = DataManager.Instance.m_csvMonster.Select (m_dataMonster.monster_id);
 
-		List<DataStaffParam> staff_list = DataManager.Instance.dataStaff.Select (string.Format (" item_serial = {0}", m_dataMonster.item_serial));
-
-		m_ctrlDispMonsterDetailStaff.Initialize (staff_list);
-
+		//List<DataStaffParam> staff_list = DataManager.Instance.dataStaff.Select (string.Format (" item_serial = {0}", m_dataMonster.item_serial));
+		//m_ctrlDispMonsterDetailStaff.Initialize (staff_list);
+		m_ctrlDispMonsterDetailStaff.Initialize(itemParam.office_serial);
 
 		m_lbName.text = master_data.name;
 
