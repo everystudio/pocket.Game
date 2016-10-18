@@ -413,8 +413,10 @@ public class ParkMainSettingItem : ParkMainController {
 			if (m_editItem.m_dataItemParam.item_id == DefineOld.ITEM_ID_ROAD && m_parkMain.m_eEditMode == ParkMain.EDIT_MODE.NORMAL) {
 				Debug.Log (m_editItem.m_dataItemParam.item_id);
 
-				// ここでやり直し
-				initialize ();
+					// ここでやり直し
+					// フラグの関係でここで一度立て直させる
+					AdsManager.Instance.ShowAdBanner(true);
+					initialize();
 
 			} else {
 				m_eStep = STEP.END;
