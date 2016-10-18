@@ -118,6 +118,7 @@ public class CtrlHelp : ButtonBase {
 			if (bInit) {
 				if (m_eActionType == ACTION_TYPE.MOVIE) {
 					if (UnityAdsSupporter.Instance.IsReady () == false) {
+							Debug.LogError("unityads not ready");
 						m_eActionType = ACTION_TYPE.TWITTER;
 					}
 				}
