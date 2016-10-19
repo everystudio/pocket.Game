@@ -44,7 +44,7 @@ public class CtrlPopupWork : MonoBehaviourEx{
 
 	public int m_iPopupWorkId;
 
-	private DataWorkParam m_currentWorkParam;
+	public DataWorkParam m_currentWorkParam;
 
 
 	private  Queue<int> m_WorkIdQueue = new Queue<int>(){};
@@ -191,7 +191,7 @@ public class CtrlPopupWork : MonoBehaviourEx{
 			}
 			if (m_btnClose.ButtonPushed) {
 				m_eStep = STEP.CLOSE;
-					if(m_currentWorkParam.skit_id.Equals("") == false)
+					if(m_currentWorkParam.skit_id.Equals("0") == false)
 					{
 						m_eStep = STEP.SKIT;
 					}
@@ -208,6 +208,8 @@ public class CtrlPopupWork : MonoBehaviourEx{
 
 				if (GameMain.skitController.IsEnd())
 				{
+					Sprite sprite = null;
+					GameMain.skitController.SetCharacter(2, "empty.png", ref sprite);
 					GameMain.skitController.gameObject.SetActive(false);
 					m_eStep = STEP.CLOSE;
 				}

@@ -432,6 +432,10 @@ public class GameMain : MonoBehaviour {
 				}
 				if (skitController.IsEnd())
 				{
+
+					Sprite sprite = null;
+					GameMain.skitController.SetCharacter(2, "empty.png", ref sprite);
+
 					m_goSkitBack.SetActive(false);
 					skitController.gameObject.SetActive(false);
 					m_eStep = STEP.IDLE;

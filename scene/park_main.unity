@@ -2149,6 +2149,28 @@ MonoBehaviour:
   m_btnClose: {fileID: 999904647}
   m_iLoopIndex: 0
   m_iPopupWorkId: 0
+  m_currentWorkParam:
+    m_work_id: 0
+    m_status: 0
+    m_title: 
+    m_description: 
+    m_type: 0
+    m_level: 0
+    m_appear_work_id: 0
+    m_exp: 0
+    m_difficulty: 
+    m_prize_ticket: 0
+    m_prize_coin: 0
+    m_prize_monster: 0
+    m_mission_level: 0
+    m_mission_monster: 0
+    m_mission_staff: 0
+    m_mission_item: 0
+    m_mission_collect: 0
+    m_mission_tweet: 0
+    m_mission_login: 0
+    m_mission_num: 0
+    m_skit_id: 
 --- !u!114 &244406506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3824,7 +3846,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 496903197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -278, y: 12, z: 0}
+  m_LocalPosition: {x: -290.7, y: 25.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -3860,7 +3882,7 @@ MonoBehaviour:
     absolute: 0
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 3
+  mPivot: 0
   mWidth: 549
   mHeight: 60
   mDepth: 3006

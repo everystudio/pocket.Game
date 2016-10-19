@@ -177,7 +177,7 @@ public class BannerItem : BannerBase {
 			strRet = "coin125000";
 			break;
 		case 38:
-			strRet = "coin550000";
+			strRet = "coin500000";
 			break;
 
 		default:

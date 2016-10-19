@@ -68,6 +68,8 @@ public class CollectBase : MonoBehaviourEx {
 		initializeCommon ( _iItemSerial );
 		m_dataMonsterParam = _monster;
 		m_csvMonsterParam = DataManager.GetMonster (_monster.monster_id);
+
+		//Invoke("collectCheck", 3);
 		collectCheck();
 	}
 
