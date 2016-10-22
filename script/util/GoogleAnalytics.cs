@@ -7,12 +7,12 @@ public class GoogleAnalytics : GoogleAnalyticsBase<GoogleAnalytics> {
 	{
 		base.Initialize ();
 		propertyID_Common = "UA-77286676-7";
-		propertyID_Android = "UA-77286676-1";
-		propertyID_iOS = "UA-77286676-2";
+		propertyID_Android = "UA-77286676-17";
+		propertyID_iOS = "UA-77286676-16";
 
-		bundleID = "jp.everystudio.pocket.zoo";
+		bundleID = "jp.everystudio.pocket.kimodameshi";
 		appName = "ポケット肝試し！";
-		appVersion = "1";
+		appVersion = "3";
 
 		// ハートビート
 		heartbeat ();
