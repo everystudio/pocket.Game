@@ -51,6 +51,7 @@ public class CtrlCollectGold : Singleton<CtrlCollectGold> {
 	public void AddCollect( int _iGold , int _iExp ){
 		setButtonColor(true);
 		m_iBufGold += _iGold;
+		m_lbCollectGold.text = string.Format("{0}G", m_iBufGold);
 		m_iBufExp += _iExp;
 		return;
 	}
@@ -62,6 +63,8 @@ public class CtrlCollectGold : Singleton<CtrlCollectGold> {
 		m_fCheckInterval = 5.0f;
 		m_btnCollect.TriggerClear ();
 		m_iBufGold = 0;
+		m_lbCollectGold.text = string.Format("{0}G", m_iBufGold);
+
 		m_iBufExp = 0;
 		setButtonColor(false);
 	}
@@ -105,6 +108,8 @@ public class CtrlCollectGold : Singleton<CtrlCollectGold> {
 			}
 			m_iBufGold = 0;
 			m_iBufExp = 0;
+			m_lbCollectGold.text = string.Format("{0}G", m_iBufGold);
+
 			setButtonColor(false);
 
 		}
