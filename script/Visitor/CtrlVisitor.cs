@@ -101,6 +101,9 @@ public class CtrlVisitor : MonoBehaviourEx {
 		DataItemParam item_param = DataManager.Instance.m_dataItem.Select (_iItemSerial);
 		m_sprTamashii.gameObject.SetActive(false);
 		m_sprTamashii.gameObject.name = string.Format("{0}{1}", DataManager.Instance.KEY_VISITOR_TAMASHII , _iVisitorSerial);
+		// リセット処理追加
+		m_iGetExp = 0;
+		m_lbCount.text = "";
 		// 初期値として与える
 		m_ctrlTouchCollectTamashii.SetSclaleFromFieldScale(GameMain.Instance.parkScale);
 		//Debug.LogError (string.Format ("x={0} y={1}", _iX, _iY));
