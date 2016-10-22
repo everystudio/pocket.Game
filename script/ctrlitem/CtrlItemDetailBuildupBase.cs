@@ -115,6 +115,8 @@ abstract public class CtrlItemDetailBuildupBase : CtrlItemDetailBase {
 		if (_next != null) {
 			//m_lbMain.text = GetMainText ();
 			m_sprMain.sprite2D = SpriteManager.Instance.Load( string.Format("texture/ui/{0}.png" , GetMainText () ));
+			m_sprMain.width = (int)m_sprMain.sprite2D.rect.width;
+			m_sprMain.height = (int)m_sprMain.sprite2D.rect.height;
 			m_goUnder.SetActive (true);
 			m_lbNeedGold.text = string.Format ("{0}G", m_dataNext.coin);
 			m_lbGetExp.text = m_dataNext.get_exp.ToString ();
@@ -123,6 +125,8 @@ abstract public class CtrlItemDetailBuildupBase : CtrlItemDetailBase {
 			//m_lbMain.text = "増強☆完了";
 			m_sprMain.sprite2D =  SpriteManager.Instance.Load( string.Format("texture/ui/empower_done.png" , GetMainText () ));
 			// やっぱ表示はする
+			m_sprMain.width = (int)m_sprMain.sprite2D.rect.width;
+			m_sprMain.height = (int)m_sprMain.sprite2D.rect.height;
 			m_goUnder.SetActive (true);
 			m_btnBuildup.gameObject.SetActive (false);
 			m_lbNeedGold.text = "-";
