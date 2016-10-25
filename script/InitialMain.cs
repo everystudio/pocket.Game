@@ -563,6 +563,8 @@ public class InitialMain : MonoBehaviour {
 
 		case STEP.REVIEW:
 			if (bInit) {
+
+					AdsManager.Instance.ShowAdBanner(false);
 				GameObject obj = PrefabManager.Instance.MakeObject ("prefab/CtrlReviewWindow", m_goRoot.transform.parent.gameObject);
 				m_reviewWindow = obj.GetComponent<CtrlReviewWindow> ();
 				m_reviewWindow.Initialize ();
@@ -571,8 +573,9 @@ public class InitialMain : MonoBehaviour {
 
 			}
 			if (m_reviewWindow.IsEnd ()) {
+					AdsManager.Instance.ShowAdBanner(true);
 				m_goRoot.SetActive (true);
-				Destroy (m_reviewWindow.gameObject);;
+					Destroy (m_reviewWindow.gameObject);;
 				m_eStep = STEP.IDLE;
 			}
 			break;

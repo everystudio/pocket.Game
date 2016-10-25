@@ -51,15 +51,20 @@ public class ReviewManager : Singleton<ReviewManager> {
 
 	public void Reviewed( REPLY _eReply ){
 		Debug.Log (_eReply);
+		string strReviewURL = DataManager.Instance.ReviewUrl();
 		switch (_eReply) {
 		case REPLY.REVIEWED:
 			m_eStatus = STATUS.REVIEWED;
+				Application.OpenURL(strReviewURL);
+
+				/*
 			#if UNITY_ANDROID
-			Application.OpenURL ("https://play.google.com/store/apps/details?id=jp.everystudio.pocket.zoo");
+				Application.OpenURL ("https://play.google.com/store/apps/details?id=jp.everystudio.pocket.zoo");
 			#else
 			Application.OpenURL ("https://itunes.apple.com/us/app/leshii-fang-zhi-jing-yinggemu/id1112070121?mt=8");
 			#endif
 			//Application.OpenURL ("itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1052503169");
+			*/
 			break;
 		case REPLY.RETRY:
 			m_iReviewIntervalCount = 0;
