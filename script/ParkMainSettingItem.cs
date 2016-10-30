@@ -376,9 +376,14 @@ public class ParkMainSettingItem : ParkMainController {
 				//Debug.LogError (string.Format ("setting serial:{0}", GameMain.Instance.m_iSettingItemSerial));
 				DataManager.Instance.m_dataItem.Update (GameMain.Instance.m_iSettingItemSerial, (int)DefineOld.Item.Status.SETTING, m_iEditItemX, m_iEditItemY);
 			} else {
+
 				GameMain.Instance.m_iSettingItemSerial = DataManager.Instance.m_dataItem.Insert (m_editItemMaster, (int)DefineOld.Item.Status.SETTING, m_iEditItemX, m_iEditItemY);
 
-				CsvItemParam item_data = DataManager.GetItem (m_editItemMaster.item_id);
+					m_editItem.m_dataItemParam = DataManager.Instance.m_dataItem.Get(GameMain.Instance.m_iSettingItemSerial);
+					Debug.LogError(GameMain.Instance.m_iSettingItemSerial);
+					Debug.LogError(m_editItem.m_dataItemParam.item_serial);
+
+					CsvItemParam item_data = DataManager.GetItem (m_editItemMaster.item_id);
 				if (0 < item_data.need_coin) {
 					DataManager.user.AddGold (-1 * item_data.need_coin);
 				} else if (0 < item_data.need_ticket) {

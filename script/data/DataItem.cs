@@ -266,7 +266,18 @@ public class DataItem : CsvData<DataItemParam>{
 		}
 		return new DataItemParam ();
 	}
+	public DataItemParam Get( int _iSerial)
+	{
+		foreach (DataItemParam param in list)
+		{
+			if (param.item_serial == _iSerial)
+			{
+				return param;
+			}
+		}
+		return new DataItemParam();
 
+	}
 
 	public List<DataItemParam> Select( DefineOld.WHERE_PATTERN _ePattern , List<int> _iList = null ){
 
@@ -357,9 +368,19 @@ public class DataItem : CsvData<DataItemParam>{
 
 	public void Update( int _iSerial , Dictionary<string , string > _dict , bool _bDebugLog = true){
 		//Debug.LogError (string.Format ("serial={0} ", _iSerial));
+		bool bHit = false;
 		foreach (DataItemParam data in list) {
 			if (data.item_serial == _iSerial) {
 				data.Set (_dict);
+				bHit = true;
+			}
+		}
+
+		if (bHit == false)
+		{
+			foreach (DataItemParam data in list)
+			{
+				Debug.LogError(string.Format("serial:{0} item_id:{1}", data.item_serial, data.item_id));
 			}
 		}
 		return;

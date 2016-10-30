@@ -51,6 +51,8 @@ protected CtrlIconTamashii m_iconTamashii;
 
 		AnimationIdol (true);
 
+		gameObject.name = string.Format("monSerial={0}_itemSerial={1}", _dataMonster.monster_serial, _dataMonster.item_serial);
+
 	}
 
 	public GameObject m_goDust;

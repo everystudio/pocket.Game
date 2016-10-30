@@ -100,6 +100,11 @@ public class InitialMain : MonoBehaviour {
 		Application.targetFrameRate = 60;
 		QualitySettings.vSyncCount = 0;
 
+		Screen.autorotateToPortrait = false;
+		Screen.autorotateToLandscapeLeft = true;
+		Screen.autorotateToLandscapeRight = true;
+		Screen.autorotateToPortraitUpsideDown = false;
+
 		m_eStep = STEP.IDLE;
 		m_eStep = STEP.CHECK_CONFIG;
 		m_eStepPre = STEP.MAX;

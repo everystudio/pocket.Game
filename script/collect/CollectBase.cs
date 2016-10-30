@@ -28,6 +28,7 @@ public class CollectBase : MonoBehaviourEx {
 			string strNow = TimeManager.StrGetTime();
 			Dictionary<string, string> dict = new Dictionary<string, string>();
 			dict.Add("collect_time", "\"" + strNow + "\"");
+			//Debug.LogError(m_dataItemParam.item_serial);
 			DataManager.Instance.m_dataItem.Update(m_dataItemParam.item_serial, dict);
 		}
 		if (m_dataMonsterParam != null)
@@ -96,7 +97,7 @@ public class CollectBase : MonoBehaviourEx {
 			igold += igold / 2;
 			iexp += iexp / 2;
 		}
-
+		//Debug.LogError(string.Format("add_collect:name={0} gold={1} exp={2}", gameObject.name , igold,iexp));
 		CtrlCollectGold.Instance.AddCollect (igold, iexp);
 
 		CollectCharge.Invoke(igold, iexp);
@@ -116,6 +117,7 @@ public class CollectBase : MonoBehaviourEx {
 			//Debug.LogError( m_dataItemParam.collect_time );
 			//Debug.LogError( diffSec );
 			dNokoriSec = m_csvItemParam.revenue_interval - diffSec ;
+			//Debug.LogError(dNokoriSec);
 
 			if (0 < dNokoriSec) {
 			} else {

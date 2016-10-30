@@ -189,7 +189,6 @@ public class CtrlFieldItem : MonoBehaviourEx {
 
 		m_CsvItemParam = master;
 
-
 		SetPos (_iX, _iY);
 
 		return;
@@ -199,7 +198,7 @@ public class CtrlFieldItem : MonoBehaviourEx {
 		m_bEditting = false;
 		m_eStep = STEP.INIT;
 
-		m_dataItemParam = DataManager.Instance.m_dataItem.Select (_iSerial);
+		m_dataItemParam = DataManager.Instance.m_dataItem.Get (_iSerial);
 
 		//Debug.LogError (string.Format ("serial:{0} x:{1} y:{2}", _iSerial, m_dataItemParam.x, m_dataItemParam.y));
 		SetPos (m_dataItemParam.x, m_dataItemParam.y);
