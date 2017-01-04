@@ -453,13 +453,13 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		}
 	}
 	public CsvWordData m_csvWord = new CsvWordData();
-	static public List<CsvWordParam> csv_word {
+	static public List<CsvWordDataParam> csv_word {
 		get{ 
 			return Instance.m_csvWord.All;
 		}
 	}
 	public string GetWord( string _strKey ){
-		foreach (CsvWordParam data in csv_word) {
+		foreach (CsvWordDataParam data in csv_word) {
 			if (_strKey.Equals (data.key) == true) {
 				return data.word;
 			}

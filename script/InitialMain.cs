@@ -223,7 +223,7 @@ public class InitialMain : MonoBehaviour {
 				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
 				Debug.Log (data.m_strData);
 				//Debug.Log (data.m_dictRecievedData);
-				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+				m_ssdSample = SpreadSheetData.ConvertSpreadSheetData (data.m_dictRecievedData);
 				CsvConfig config_data = new CsvConfig ();
 				config_data.Input (m_ssdSample);
 
@@ -321,7 +321,7 @@ public class InitialMain : MonoBehaviour {
 
 			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
 				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
-				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+				m_ssdSample = SpreadSheetData.ConvertSpreadSheetData (data.m_dictRecievedData);
 				CsvDownload download_list = new CsvDownload();
 				download_list.Input (m_ssdSample);
 				download_list.Save (FileDownloadManager.FILENAME_DOWNLOAD_LIST);
@@ -360,7 +360,7 @@ public class InitialMain : MonoBehaviour {
 
 			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
 				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
-				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+				m_ssdSample = SpreadSheetData.ConvertSpreadSheetData (data.m_dictRecievedData);
 
 					CsvItem item_master = new CsvItem();
 					item_master.Input(m_ssdSample);
@@ -406,7 +406,7 @@ public class InitialMain : MonoBehaviour {
 
 			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
 				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
-				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+				m_ssdSample = SpreadSheetData.ConvertSpreadSheetData (data.m_dictRecievedData);
 					CsvMonster monster_master = new CsvMonster();
 					monster_master.Input(m_ssdSample);
 					if (0 == DataManager.Instance.m_csvMonster.list.Count)
@@ -456,7 +456,7 @@ public class InitialMain : MonoBehaviour {
 				if (CommonNetwork.Instance.IsConnected(m_iNetworkSerial))
 				{
 					TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData(m_iNetworkSerial);
-					m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData(data.m_dictRecievedData);
+					m_ssdSample = SpreadSheetData.ConvertSpreadSheetData(data.m_dictRecievedData);
 
 					Debug.LogError(DataManager.Instance.dataWork.list.Count);
 					//if (0 < DataManager.Instance.dataWork.list.Count)
@@ -503,7 +503,7 @@ public class InitialMain : MonoBehaviour {
 				if (CommonNetwork.Instance.IsConnected(m_iNetworkSerial))
 				{
 					TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData(m_iNetworkSerial);
-					m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData(data.m_dictRecievedData);
+					m_ssdSample = SpreadSheetData.ConvertSpreadSheetData(data.m_dictRecievedData);
 
 					DataManager.Instance.skitData.list.Clear();
 					DataManager.Instance.skitData.Input(m_ssdSample);
@@ -531,7 +531,7 @@ public class InitialMain : MonoBehaviour {
 				if (CommonNetwork.Instance.IsConnected(m_iNetworkSerial))
 				{
 					TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData(m_iNetworkSerial);
-					m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData(data.m_dictRecievedData);
+					m_ssdSample = SpreadSheetData.ConvertSpreadSheetData(data.m_dictRecievedData);
 
 					DataManager.Instance.word.list.Clear();
 					DataManager.Instance.word.Input(m_ssdSample);
