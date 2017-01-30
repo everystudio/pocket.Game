@@ -25,6 +25,45 @@ public class CtrlParkMainFooter : MonoBehaviourEx {
 	[SerializeField]
 	private ButtonBase m_CollectButton;
 
+	public void OnPushedBook()
+	{
+		pushed(0);
+	}
+	public void OnPushedWork()
+	{
+		pushed(1);
+	}
+	public void OnPushedItem()
+	{
+		pushed(2);
+	}
+	private void pushed(int _iIndex)
+	{
+		SoundManager.Instance.PlaySE(SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
+		GameMain.STATUS status = GameMain.STATUS.NONE;
+		switch (_iIndex)
+		{
+			case 0:
+				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_BOOK), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				status = GameMain.STATUS.BOOK;
+				break;
+			case 1:
+				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_WORK), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				status = GameMain.STATUS.WORK;
+				break;
+			case 2:
+				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_SHOP), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				status = GameMain.STATUS.ITEM;
+				break;
+			default:
+				break;
+		}
+		GameMain.Instance.SetStatus(status);
+		return;
+	}
+
+	/*
+	// いったん消しておきます
 	void Update(){
 		if (m_PageButton.ButtonPushed) {
 			//Debug.Log (m_PageButton.Index);
@@ -52,18 +91,10 @@ public class CtrlParkMainFooter : MonoBehaviourEx {
 			default:
 				break;
 			}
-
-
 			m_PageButton.TriggerClearAll ();
 			GameMain.Instance.SetStatus (status);
 		}
-
-		/*
-		if (m_CollectButton.ButtonPushed) {
-			m_CollectButton.TriggerClear ();
-			Debug.Log ("collect start");
-		}
-		*/
 	}
+	*/
 
 }

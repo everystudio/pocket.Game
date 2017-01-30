@@ -101,7 +101,10 @@ public class AdsManager : Singleton<AdsManager> {
 			{
 				m_nendAdBanner.Show();
 #if UNITY_EDITOR
-				m_imgBannerDummy.gameObject.SetActive(true);
+				if (m_imgBannerDummy != null && m_imgBannerDummy != null)
+				{
+					m_imgBannerDummy.gameObject.SetActive(true);
+				}
 #endif
 			}
 		} else {
@@ -112,7 +115,13 @@ public class AdsManager : Singleton<AdsManager> {
 			m_iShowBannerLock += 1;
 			m_nendAdBanner.Hide ();
 #if UNITY_EDITOR
-			m_imgBannerDummy.gameObject.SetActive(false);
+			if (m_imgBannerDummy != null)
+			{
+				if (m_imgBannerDummy.gameObject != null)
+				{
+					m_imgBannerDummy.gameObject.SetActive(false);
+				}
+			}
 #endif
 		}
 

@@ -575,7 +575,7 @@ public class InitialMain : MonoBehaviour {
 				m_reviewWindow.Initialize ();
 
 				m_goRoot.SetActive (false);
-
+					Debug.LogError("here");
 			}
 			if (m_reviewWindow.IsEnd ()) {
 					AdsManager.Instance.ShowAdBanner(true);
