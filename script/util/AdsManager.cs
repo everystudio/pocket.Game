@@ -2,13 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using NendUnityPlugin.AD;
+using GoogleMobileAds.Api;
 
 public class AdsManager : Singleton<AdsManager> {
 
-	[SerializeField]
-	private GameObject m_goAdIcon;
-	[SerializeField]
-	private GameObject m_goAdBanner;
 	[SerializeField]
 	private List<GameObject> m_goAdNativePanelList;
 	private int m_iAdNativePanelIndex;
@@ -17,13 +14,13 @@ public class AdsManager : Singleton<AdsManager> {
 	//private NendAdIcon m_nendAdIcon;
 	//private bool m_bIsIcon = true;
 	#endif
-	private NendAdBanner m_nendAdBanner;
+	private BannerView m_nendAdBanner = null;
 
 
-	#if UNITY_IPHONE
+#if UNITY_IPHONE
 	public const string ASSET_BUNDLE_PREFIX             = "iphone";
 	public const string ASSET_BUNDLES_ROOT              = "AssetBundles/iOS";
-	#elif UNITY_ANDROID
+#elif UNITY_ANDROID
 	public const string ASSET_BUNDLE_PREFIX             = "android";
 	public const string ASSET_BUNDLES_ROOT              = "AssetBundles/Android";
 	#endif
@@ -31,28 +28,27 @@ public class AdsManager : Singleton<AdsManager> {
 	public static readonly int START_GOLD = 300;
 	#if UNITY_IPHONE
 	//iOS
-	public static readonly string IMOBILE_PID = "34367";
-	public static readonly string IMOBILE_MID = "215443";
-	public static readonly string IMOBILE_SID_ICON = "371577";		// 使ってないけどね
-	public static readonly string IMOBILE_SID_BANNER = "622054";
-	//public static readonly string IMOBILE_SID_RECT = "391442";
 	#elif UNITY_ANDROID
-	public static readonly string IMOBILE_PID = "34367";
-	public static readonly string IMOBILE_MID = "247749";
-	public static readonly string IMOBILE_SID_ICON = "760610";
-	public static readonly string IMOBILE_SID_BANNER = "760609";
-	public static readonly string IMOBILE_SID_RECT = "412437";
 	#endif
-
-	public void CallInterstitial(){
-		// 通常表示
-		NendAdInterstitial.Instance.Show();
-	}
 
 	public override void Initialize ()
 	{
+#if UNITY_EDITOR
+		string adUnitId1 = "unused";
+#elif UNITY_ANDROID
+        string adUnitId1 = "ca-app-pub-5869235725006697/9734731566";
+#elif UNITY_IPHONE
+        string adUnitId1 = "ca-app-pub-5869235725006697/5679303963";
+#else
+        string adUnitId1 = "unexpected_platform";
+#endif
 		if (m_nendAdBanner == null) {
-			m_nendAdBanner = m_goAdBanner.GetComponent<NendAdBanner> ();
+			BannerView bannerView1 = new BannerView(adUnitId1, AdSize.Banner, AdPosition.Top);
+			// Create an empty ad request.
+			AdRequest request1 = new AdRequest.Builder().Build();
+			// Load the banner with the request.
+			bannerView1.LoadAd(request1);
+			m_nendAdBanner = bannerView1;
 		}
 		// 最初はでないようにする
 		foreach (GameObject obj in m_goAdNativePanelList) {
@@ -98,19 +94,49 @@ public class AdsManager : Singleton<AdsManager> {
 		m_goAdNativePanelList[m_iAdNativePanelIndex].SetActive( _bFlag );
 		return;
 	}
-
 	// Use this for initialization
 	void Start () {
-		//Debug.LogError ("AdsManager Start");
-		#if UNITY_IPHONE
-		NendAdInterstitial.Instance.Load("46ee0b186cac0cbb2681ab10f6ec1de605e72b14", "562605");
-		#elif UNITY_ANDROID
-		NendAdInterstitial.Instance.Load("5ac03f9f1f7b354bfdfb0f423ba6696a694ad27c", "554786");
-		#else
-		...
-		#endif
 	}
-	
+
+	private InterstitialAd interstitial;
+	public void CallInterstitial()
+	{
+		// 通常表示
+#if UNITY_ANDROID
+		string adUnitId = "ca-app-pub-5869235725006697/4202570763";
+#elif UNITY_IPHONE
+		string adUnitId = "ca-app-pub-5869235725006697/7156037168";
+#endif
+
+		// Create an interstitial.
+		interstitial = new InterstitialAd(adUnitId);
+		// Create an empty ad request.
+		AdRequest request = new AdRequest.Builder()
+			.AddTestDevice(AdRequest.TestDeviceSimulator)       // Simulator.
+				.AddTestDevice("0123456789ABCDEF0123456789ABCDEF")
+				.Build();
+
+		// Load the interstitial with the request.
+		interstitial.LoadAd(request);
+		interstitial.OnAdLoaded += ViewInterstitial_OnAdLoaded;
+		interstitial.OnAdFailedToLoad += ViewInterstitial_OnAdFailedToLoad;
+		interstitial.OnAdClosed += ViewInterstitial_OnAdClosed;
+	}
+
+	private void ViewInterstitial_OnAdLoaded(object sender, System.EventArgs e)
+	{
+		InterstitialAd inter = (InterstitialAd)sender;
+		inter.Show();
+	}
+	private void ViewInterstitial_OnAdFailedToLoad(object sender, System.EventArgs e)
+	{
+		Debug.LogError("fail");
+	}
+	private void ViewInterstitial_OnAdClosed(object sender, System.EventArgs e)
+	{
+		InterstitialAd inter = (InterstitialAd)sender;
+		inter.Destroy();
+	}
 	// Update is called once per frame
 	void Update () {
 	

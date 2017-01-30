@@ -1,19 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
-SceneSettings:
+OcclusionCullingSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
-  m_PVSObjectsArray: []
-  m_PVSPortalsArray: []
+  serializedVersion: 2
   m_OcclusionBakeSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 6
+  serializedVersion: 7
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -37,12 +37,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 6
+  serializedVersion: 7
   m_GIWorkflowMode: 0
-  m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -53,17 +53,22 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 3
+    serializedVersion: 4
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
     m_TextureHeight: 1024
+    m_AO: 0
     m_AOMaxDistance: 1
-    m_Padding: 2
     m_CompAOExponent: 0
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
     m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
+    m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
   m_LightingDataAsset: {fileID: 0}
@@ -74,28 +79,29 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
+    agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    accuratePlacement: 0
     minRegionArea: 2
-    cellSize: 0.16666667
     manualCellSize: 0
+    cellSize: 0.16666667
+    accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &35827630
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 105914, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 35827631}
-  - 114: {fileID: 35827634}
-  - 114: {fileID: 35827633}
-  - 114: {fileID: 35827632}
+  - component: {fileID: 35827631}
+  - component: {fileID: 35827634}
+  - component: {fileID: 35827633}
+  - component: {fileID: 35827632}
   m_Layer: 8
   m_Name: lb_level
   m_TagString: Untagged
@@ -115,6 +121,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &35827632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +202,7 @@ MonoBehaviour:
   mWidth: 290
   mHeight: 30
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -213,7 +221,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 0.88965523, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -235,10 +242,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 125622, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 181772187}
-  - 114: {fileID: 184786206}
+  - component: {fileID: 181772187}
+  - component: {fileID: 184786206}
   m_Layer: 8
   m_Name: rootHeader
   m_TagString: Untagged
@@ -251,10 +258,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 184094, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 55843879}
-  - 114: {fileID: 55843880}
+  - component: {fileID: 55843879}
+  - component: {fileID: 55843880}
   m_Layer: 8
   m_Name: rootExpBar
   m_TagString: Untagged
@@ -276,6 +283,7 @@ Transform:
   - {fileID: 179627268}
   m_Father: {fileID: 181772187}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &55843880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,10 +312,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 144088, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 65961216}
-  - 114: {fileID: 65961215}
+  - component: {fileID: 65961216}
+  - component: {fileID: 65961215}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -349,6 +357,7 @@ MonoBehaviour:
   mWidth: 88
   mHeight: 50
   mDepth: 501
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -367,7 +376,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -396,17 +404,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1993739007}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &68744907
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 68744911}
-  - 223: {fileID: 68744910}
-  - 114: {fileID: 68744909}
-  - 114: {fileID: 68744908}
+  - component: {fileID: 68744911}
+  - component: {fileID: 68744910}
+  - component: {fileID: 68744909}
+  - component: {fileID: 68744908}
   m_Layer: 5
   m_Name: CanvasNendAd
   m_TagString: Untagged
@@ -466,6 +475,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -482,7 +492,8 @@ RectTransform:
   - {fileID: 1371154837}
   - {fileID: 1751081427}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -493,12 +504,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 83011632}
-  - 222: {fileID: 83011634}
-  - 114: {fileID: 83011633}
-  - 114: {fileID: 83011636}
+  - component: {fileID: 83011632}
+  - component: {fileID: 83011634}
+  - component: {fileID: 83011633}
+  - component: {fileID: 83011636}
   m_Layer: 0
   m_Name: ShortText
   m_TagString: Untagged
@@ -518,6 +529,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 682405197}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: -21.7, y: -0.000027418137}
@@ -543,7 +555,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -579,10 +591,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 119161589}
-  - 114: {fileID: 119161588}
+  - component: {fileID: 119161589}
+  - component: {fileID: 119161588}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -601,8 +613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14681d33daaab43d98b1c91f21764083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_goAdIcon: {fileID: 0}
-  m_goAdBanner: {fileID: 564414013}
   m_goAdNativePanelList:
   - {fileID: 1751081426}
   - {fileID: 1371154836}
@@ -617,18 +627,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &133999127
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 195120, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 133999128}
-  - 114: {fileID: 133999131}
-  - 114: {fileID: 133999130}
-  - 114: {fileID: 133999129}
+  - component: {fileID: 133999128}
+  - component: {fileID: 133999131}
+  - component: {fileID: 133999130}
+  - component: {fileID: 133999129}
   m_Layer: 8
   m_Name: lb_shisyutsu_per_hour
   m_TagString: Untagged
@@ -648,6 +659,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &133999129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,6 +740,7 @@ MonoBehaviour:
   mWidth: 290
   mHeight: 30
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -746,7 +759,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 0.88965523, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -768,10 +780,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 137475323}
-  - 114: {fileID: 137475324}
+  - component: {fileID: 137475323}
+  - component: {fileID: 137475324}
   m_Layer: 8
   m_Name: DetailPanel
   m_TagString: Untagged
@@ -791,6 +803,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 969380800}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &137475324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,6 +834,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -842,13 +857,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 162376, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 139842030}
-  - 114: {fileID: 139842034}
-  - 65: {fileID: 139842033}
-  - 114: {fileID: 139842032}
-  - 114: {fileID: 139842031}
+  - component: {fileID: 139842030}
+  - component: {fileID: 139842034}
+  - component: {fileID: 139842033}
+  - component: {fileID: 139842032}
+  - component: {fileID: 139842031}
   m_Layer: 8
   m_Name: sprHelp
   m_TagString: Untagged
@@ -868,6 +883,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1287120967}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &139842031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +926,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &139842033
@@ -958,6 +979,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 3004
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -976,7 +998,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300228, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -987,11 +1008,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 149898293}
-  - 114: {fileID: 149898294}
-  - 114: {fileID: 149898295}
+  - component: {fileID: 149898293}
+  - component: {fileID: 149898294}
+  - component: {fileID: 149898295}
   m_Layer: 8
   m_Name: PanelPark
   m_TagString: Untagged
@@ -1014,6 +1035,7 @@ Transform:
   - {fileID: 1287120967}
   m_Father: {fileID: 284385265}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &149898294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +1066,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -1093,9 +1117,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 153005962}
+  - component: {fileID: 153005962}
   m_Layer: 8
   m_Name: objRoot
   m_TagString: Untagged
@@ -1117,15 +1141,16 @@ Transform:
   - {fileID: 763402670}
   m_Father: {fileID: 969380800}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &179627267
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 158406, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 179627268}
-  - 114: {fileID: 179627269}
+  - component: {fileID: 179627268}
+  - component: {fileID: 179627269}
   m_Layer: 8
   m_Name: barInside
   m_TagString: Untagged
@@ -1145,6 +1170,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 55843879}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &179627269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,6 +1204,7 @@ MonoBehaviour:
   mWidth: 374
   mHeight: 8
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1196,7 +1223,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300002, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -1207,10 +1233,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 152182, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 180743472}
-  - 114: {fileID: 180743473}
+  - component: {fileID: 180743472}
+  - component: {fileID: 180743473}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -1230,6 +1256,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1078516935}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &180743473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1291,7 @@ MonoBehaviour:
   mWidth: 300
   mHeight: 40
   mDepth: 501
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1282,7 +1310,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -1321,6 +1348,7 @@ Transform:
   - {fileID: 55843879}
   m_Father: {fileID: 1464941436}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &184786206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,11 +1384,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 187008078}
-  - 65: {fileID: 187008080}
-  - 114: {fileID: 187008079}
+  - component: {fileID: 187008078}
+  - component: {fileID: 187008080}
+  - component: {fileID: 187008079}
   m_Layer: 8
   m_Name: HitRectBlock
   m_TagString: Untagged
@@ -1380,6 +1408,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1885772495}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &187008079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,6 +1442,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1450,13 +1480,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 134300, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 192021953}
-  - 114: {fileID: 192021958}
-  - 65: {fileID: 192021956}
-  - 114: {fileID: 192021954}
-  - 114: {fileID: 192021955}
+  - component: {fileID: 192021953}
+  - component: {fileID: 192021958}
+  - component: {fileID: 192021956}
+  - component: {fileID: 192021954}
+  - component: {fileID: 192021955}
   m_Layer: 8
   m_Name: sprWork
   m_TagString: Untagged
@@ -1478,6 +1508,7 @@ Transform:
   - {fileID: 1190562340}
   m_Father: {fileID: 603099151}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &192021954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1490,6 +1521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &192021955
@@ -1568,6 +1604,7 @@ MonoBehaviour:
   mWidth: 89
   mHeight: 99
   mDepth: 3001
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1586,7 +1623,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300024, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -1597,11 +1633,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 206654375}
-  - 114: {fileID: 206654376}
-  - 114: {fileID: 206654374}
+  - component: {fileID: 206654375}
+  - component: {fileID: 206654376}
+  - component: {fileID: 206654374}
   m_Layer: 8
   m_Name: PanelWork
   m_TagString: Untagged
@@ -1642,6 +1678,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 284385265}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &206654376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,6 +1709,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -1693,10 +1732,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 177128, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 215573948}
-  - 114: {fileID: 215573949}
+  - component: {fileID: 215573948}
+  - component: {fileID: 215573949}
   m_Layer: 8
   m_Name: DebugRoot
   m_TagString: Untagged
@@ -1716,6 +1755,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &215573949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1738,11 +1778,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 223819590}
-  - 114: {fileID: 223819592}
-  - 114: {fileID: 223819591}
+  - component: {fileID: 223819590}
+  - component: {fileID: 223819592}
+  - component: {fileID: 223819591}
   m_Layer: 8
   m_Name: PanelCageDetail
   m_TagString: Untagged
@@ -1763,6 +1803,7 @@ Transform:
   - {fileID: 679546590}
   m_Father: {fileID: 284385265}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &223819591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1856,6 +1897,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -1877,10 +1920,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 113228, guid: 00c8592fdb9f34624a8dd0d5feef25cf, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 236687308}
-  - 114: {fileID: 236687309}
+  - component: {fileID: 236687308}
+  - component: {fileID: 236687309}
   m_Layer: 8
   m_Name: lbDescription
   m_TagString: Untagged
@@ -1900,6 +1943,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1183366427}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &236687309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1934,6 +1978,7 @@ MonoBehaviour:
   mWidth: 289
   mHeight: 51
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1952,7 +1997,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -1974,11 +2018,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 244406504}
-  - 114: {fileID: 244406506}
-  - 114: {fileID: 244406505}
+  - component: {fileID: 244406504}
+  - component: {fileID: 244406506}
+  - component: {fileID: 244406505}
   m_Layer: 8
   m_Name: PopupWork
   m_TagString: Untagged
@@ -2002,6 +2046,7 @@ Transform:
   - {fileID: 999904644}
   m_Father: {fileID: 284385265}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &244406505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2060,6 +2105,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -2081,13 +2128,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 192806, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 257234072}
-  - 114: {fileID: 257234076}
-  - 114: {fileID: 257234075}
-  - 65: {fileID: 257234074}
-  - 114: {fileID: 257234073}
+  - component: {fileID: 257234072}
+  - component: {fileID: 257234076}
+  - component: {fileID: 257234075}
+  - component: {fileID: 257234074}
+  - component: {fileID: 257234073}
   m_Layer: 8
   m_Name: btnMinus
   m_TagString: Untagged
@@ -2108,6 +2155,7 @@ Transform:
   - {fileID: 1514617451}
   m_Father: {fileID: 942458557}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &257234073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,6 +2168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &257234074
@@ -2198,6 +2251,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 60
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2216,7 +2270,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300010, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 0}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -2227,12 +2280,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 195754, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 272047450}
-  - 114: {fileID: 272047453}
-  - 114: {fileID: 272047452}
-  - 114: {fileID: 272047451}
+  - component: {fileID: 272047450}
+  - component: {fileID: 272047453}
+  - component: {fileID: 272047452}
+  - component: {fileID: 272047451}
   m_Layer: 8
   m_Name: lb_syakkin
   m_TagString: Untagged
@@ -2252,6 +2305,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &272047451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2332,6 +2386,7 @@ MonoBehaviour:
   mWidth: 590
   mHeight: 30
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2350,7 +2405,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 0.88965523, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -2372,10 +2426,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 279875147}
-  - 81: {fileID: 279875146}
+  - component: {fileID: 279875147}
+  - component: {fileID: 279875146}
   m_Layer: 0
   m_Name: AudioListener
   m_TagString: Untagged
@@ -2402,17 +2456,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &280246937
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 101840, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 280246938}
-  - 114: {fileID: 280246941}
-  - 114: {fileID: 280246940}
-  - 114: {fileID: 280246939}
+  - component: {fileID: 280246938}
+  - component: {fileID: 280246941}
+  - component: {fileID: 280246940}
+  - component: {fileID: 280246939}
   m_Layer: 8
   m_Name: lb_uriage_per_hour
   m_TagString: Untagged
@@ -2432,6 +2487,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &280246939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2512,6 +2568,7 @@ MonoBehaviour:
   mWidth: 290
   mHeight: 30
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2530,7 +2587,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 0.88965523, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -2552,11 +2608,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 284385265}
-  - 20: {fileID: 284385267}
-  - 114: {fileID: 284385266}
+  - component: {fileID: 284385265}
+  - component: {fileID: 284385267}
+  - component: {fileID: 284385266}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
@@ -2587,6 +2643,7 @@ Transform:
   - {fileID: 1915396965}
   m_Father: {fileID: 884717184}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &284385266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2668,11 +2725,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 163886, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 315689101}
-  - 114: {fileID: 315689103}
-  - 65: {fileID: 315689102}
+  - component: {fileID: 315689101}
+  - component: {fileID: 315689103}
+  - component: {fileID: 315689102}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -2692,6 +2749,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 929567193}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &315689102
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2739,6 +2797,7 @@ MonoBehaviour:
   mWidth: 1000
   mHeight: 2000
   mDepth: 499
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2764,10 +2823,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 326656963}
-  - 114: {fileID: 326656964}
+  - component: {fileID: 326656963}
+  - component: {fileID: 326656964}
   m_Layer: 8
   m_Name: posItemkBannerGrid
   m_TagString: Untagged
@@ -2787,6 +2846,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448517949}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &326656964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2813,11 +2873,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 154248, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 362030371}
-  - 65: {fileID: 362030373}
-  - 114: {fileID: 362030374}
+  - component: {fileID: 362030371}
+  - component: {fileID: 362030373}
+  - component: {fileID: 362030374}
   m_Layer: 8
   m_Name: sprWhite
   m_TagString: Untagged
@@ -2837,6 +2897,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 244406504}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &362030373
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2882,6 +2943,7 @@ MonoBehaviour:
   mWidth: 700
   mHeight: 2000
   mDepth: -2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2900,7 +2962,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300196, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -2911,10 +2972,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 154248, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 396210729}
-  - 114: {fileID: 396210730}
+  - component: {fileID: 396210729}
+  - component: {fileID: 396210730}
   m_Layer: 8
   m_Name: sprWhite
   m_TagString: Untagged
@@ -2934,6 +2995,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1915396965}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &396210730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2968,6 +3030,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 100
   mDepth: -2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2993,10 +3056,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 110842, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 403527691}
-  - 114: {fileID: 546178993}
+  - component: {fileID: 403527691}
+  - component: {fileID: 546178993}
   m_Layer: 8
   m_Name: PrefFukidashiWork
   m_TagString: Untagged
@@ -3017,17 +3080,18 @@ Transform:
   - {fileID: 1161582587}
   m_Father: {fileID: 192021953}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &408222612
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 408222613}
-  - 222: {fileID: 408222615}
-  - 114: {fileID: 408222614}
-  - 114: {fileID: 408222616}
+  - component: {fileID: 408222613}
+  - component: {fileID: 408222615}
+  - component: {fileID: 408222614}
+  - component: {fileID: 408222616}
   m_Layer: 5
   m_Name: PRShortText
   m_TagString: Untagged
@@ -3047,6 +3111,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 682405197}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.000015735626}
@@ -3110,11 +3175,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 448517949}
-  - 114: {fileID: 448517951}
-  - 114: {fileID: 448517950}
+  - component: {fileID: 448517949}
+  - component: {fileID: 448517951}
+  - component: {fileID: 448517950}
   m_Layer: 8
   m_Name: ItemBannerScrollView
   m_TagString: Untagged
@@ -3135,6 +3200,7 @@ Transform:
   - {fileID: 326656963}
   m_Father: {fileID: 1955532046}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &448517950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3149,6 +3215,7 @@ MonoBehaviour:
   movement: 1
   dragEffect: 2
   restrictWithinPanel: 1
+  constrainOnDrag: 0
   disableDragIfFits: 0
   smoothDragStart: 1
   iOSDragEmulation: 1
@@ -3193,6 +3260,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -3214,10 +3283,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 449722968}
-  - 114: {fileID: 449722970}
+  - component: {fileID: 449722968}
+  - component: {fileID: 449722970}
   m_Layer: 8
   m_Name: sprWorkIcon
   m_TagString: Untagged
@@ -3237,6 +3306,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1183366427}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &449722970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3270,6 +3340,7 @@ MonoBehaviour:
   mWidth: 128
   mHeight: 128
   mDepth: 6
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -3288,7 +3359,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300000, guid: 002e04793f31949738d552a84de44df0, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -3299,10 +3369,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 178820, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 456549765}
-  - 114: {fileID: 456549766}
+  - component: {fileID: 456549765}
+  - component: {fileID: 456549766}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -3322,6 +3392,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1796801780}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &456549766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3356,6 +3427,7 @@ MonoBehaviour:
   mWidth: 81
   mHeight: 50
   mDepth: 501
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -3374,7 +3446,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -3396,13 +3467,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 461489630}
-  - 114: {fileID: 461489632}
-  - 114: {fileID: 461489631}
-  - 114: {fileID: 461489634}
-  - 114: {fileID: 461489633}
+  - component: {fileID: 461489630}
+  - component: {fileID: 461489632}
+  - component: {fileID: 461489631}
+  - component: {fileID: 461489634}
+  - component: {fileID: 461489633}
   m_Layer: 8
   m_Name: 2D Sprite (3)
   m_TagString: Untagged
@@ -3422,6 +3493,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481395061}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &461489631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3441,6 +3513,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 461489632}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &461489632
 MonoBehaviour:
@@ -3475,6 +3548,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -3493,7 +3567,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 0}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -3533,11 +3606,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 481395061}
-  - 114: {fileID: 481395062}
-  - 114: {fileID: 481395063}
+  - component: {fileID: 481395061}
+  - component: {fileID: 481395062}
+  - component: {fileID: 481395063}
   m_Layer: 8
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -3566,6 +3639,7 @@ Transform:
   - {fileID: 2040282754}
   m_Father: {fileID: 284385265}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &481395062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3637,6 +3711,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -3658,10 +3734,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 111352, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 496903198}
-  - 114: {fileID: 496903199}
+  - component: {fileID: 496903198}
+  - component: {fileID: 496903199}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -3681,6 +3757,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1161582587}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &496903199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3715,6 +3792,7 @@ MonoBehaviour:
   mWidth: 549
   mHeight: 60
   mDepth: 3006
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -3733,7 +3811,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 2, y: 2}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -3762,21 +3839,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec6a2ec076e648b392ecc3167242ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_eventCollect:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_lbCollectGold: {fileID: 1122062257}
   m_btnCollect: {fileID: 1673620447}
   m_fTimer: 0
   m_fCheckInterval: 0
   m_iCollectGold: 0
+  m_iCollectExp: 0
+  m_iSearchIndex: 0
   m_bInitialize: 0
 --- !u!1 &529567714
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 529567716}
-  - 108: {fileID: 529567715}
+  - component: {fileID: 529567716}
+  - component: {fileID: 529567715}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -3791,7 +3875,7 @@ Light:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 529567714}
   m_Enabled: 1
-  serializedVersion: 6
+  serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
@@ -3801,6 +3885,7 @@ Light:
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
+    m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
@@ -3813,10 +3898,10 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
 --- !u!4 &529567716
 Transform:
   m_ObjectHideFlags: 0
@@ -3829,6 +3914,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &546178993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3849,74 +3935,17 @@ MonoBehaviour:
   m_fDispWait: 0
   m_iLoopIndex: 0
   m_bQuickEnd: 0
---- !u!1 &564414013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 564414015}
-  - 114: {fileID: 564414014}
-  m_Layer: 0
-  m_Name: NendAdBanner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &564414014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 564414013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a098066be788a47d1852a19c97c43ddd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  account:
-    android:
-      apiKey: beb4ad9cf0c30063c81257ee389236f064b8a3d4
-      spotID: 554784
-    iOS:
-      apiKey: 1b54ca9818ca21f1e7b2c02c0398afa65830bcfa
-      spotID: 562603
-  automaticDisplay: 1
-  outputLog: 0
-  adjustSize: 1
-  size: 0
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  gravity: 2000000008000000
-  margin:
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
---- !u!4 &564414015
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 564414013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.034652684, y: 0.068490386, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
 --- !u!1 &565458656
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 187914, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 565458657}
-  - 114: {fileID: 565458660}
-  - 114: {fileID: 565458659}
-  - 114: {fileID: 565458658}
+  - component: {fileID: 565458657}
+  - component: {fileID: 565458660}
+  - component: {fileID: 565458659}
+  - component: {fileID: 565458658}
   m_Layer: 8
   m_Name: lb_ticket
   m_TagString: Untagged
@@ -3936,6 +3965,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &565458658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4016,6 +4046,7 @@ MonoBehaviour:
   mWidth: 290
   mHeight: 30
   mDepth: 4
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -4034,7 +4065,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 0.88965523, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -4056,10 +4086,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 173476, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 574322443}
-  - 114: {fileID: 574322444}
+  - component: {fileID: 574322443}
+  - component: {fileID: 574322444}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -4079,6 +4109,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1752485498}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &574322444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4113,6 +4144,7 @@ MonoBehaviour:
   mWidth: 88
   mHeight: 50
   mDepth: 501
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -4131,7 +4163,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -4153,11 +4184,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 107824, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1218842824}
-  - 114: {fileID: 787117833}
-  - 114: {fileID: 586138234}
+  - component: {fileID: 1218842824}
+  - component: {fileID: 787117833}
+  - component: {fileID: 586138234}
   m_Layer: 8
   m_Name: rootFooter
   m_TagString: Untagged
@@ -4177,6 +4208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03936343dda724beebf5aa51e3fdda07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
   m_csButtonList:
@@ -4188,9 +4224,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 590391825}
+  - component: {fileID: 590391825}
   m_Layer: 8
   m_Name: RectMonster
   m_TagString: Untagged
@@ -4212,15 +4248,16 @@ Transform:
   - {fileID: 788319852}
   m_Father: {fileID: 481395061}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &597229818
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 118272, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 597229819}
-  - 114: {fileID: 597229821}
+  - component: {fileID: 597229819}
+  - component: {fileID: 597229821}
   m_Layer: 8
   m_Name: sprCollect
   m_TagString: Untagged
@@ -4241,6 +4278,7 @@ Transform:
   - {fileID: 1122062256}
   m_Father: {fileID: 889917566}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &597229821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4274,6 +4312,7 @@ MonoBehaviour:
   mWidth: 263
   mHeight: 52
   mDepth: 3008
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -4292,7 +4331,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300192, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -4303,10 +4341,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 163918, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 603099151}
-  - 114: {fileID: 603099152}
+  - component: {fileID: 603099151}
+  - component: {fileID: 603099152}
   m_Layer: 8
   m_Name: GridIcon
   m_TagString: Untagged
@@ -4329,6 +4367,7 @@ Transform:
   - {fileID: 805373401}
   m_Father: {fileID: 1218842824}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &603099152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4356,11 +4395,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 620066676}
-  - 114: {fileID: 620066675}
-  - 114: {fileID: 620066674}
+  - component: {fileID: 620066676}
+  - component: {fileID: 620066675}
+  - component: {fileID: 620066674}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4411,17 +4450,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625393759
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 625393760}
-  - 222: {fileID: 625393762}
-  - 114: {fileID: 625393761}
+  - component: {fileID: 625393760}
+  - component: {fileID: 625393762}
+  - component: {fileID: 625393761}
   m_Layer: 0
   m_Name: AdImage
   m_TagString: Untagged
@@ -4441,6 +4481,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1751081427}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0000076294, y: 8.1}
@@ -4483,10 +4524,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 679546590}
-  - 114: {fileID: 679546591}
+  - component: {fileID: 679546590}
+  - component: {fileID: 679546591}
   m_Layer: 8
   m_Name: 2D Sprite
   m_TagString: Untagged
@@ -4506,6 +4547,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 223819590}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &679546591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4539,6 +4581,7 @@ MonoBehaviour:
   mWidth: 594
   mHeight: 304
   mDepth: 300
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -4557,7 +4600,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300004, guid: ef4328efe3e76264aa4a12a2d678059c, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -4568,12 +4610,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 682405197}
-  - 222: {fileID: 682405200}
-  - 114: {fileID: 682405199}
-  - 114: {fileID: 682405198}
+  - component: {fileID: 682405197}
+  - component: {fileID: 682405200}
+  - component: {fileID: 682405199}
+  - component: {fileID: 682405198}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -4595,6 +4637,7 @@ RectTransform:
   - {fileID: 408222613}
   m_Father: {fileID: 1751081427}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000015259, y: -35.1}
@@ -4650,13 +4693,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 683206645}
-  - 65: {fileID: 683206648}
-  - 114: {fileID: 683206647}
-  - 114: {fileID: 683206646}
-  - 114: {fileID: 683206649}
+  - component: {fileID: 683206645}
+  - component: {fileID: 683206648}
+  - component: {fileID: 683206647}
+  - component: {fileID: 683206646}
+  - component: {fileID: 683206649}
   m_Layer: 8
   m_Name: HitRectCheck
   m_TagString: Untagged
@@ -4676,6 +4719,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481395061}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &683206646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4687,6 +4731,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &683206647
@@ -4749,6 +4798,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -4774,11 +4824,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 683602833}
-  - 114: {fileID: 683602835}
-  - 114: {fileID: 683602834}
+  - component: {fileID: 683602833}
+  - component: {fileID: 683602835}
+  - component: {fileID: 683602834}
   m_Layer: 8
   m_Name: PanelOfficeDetail
   m_TagString: Untagged
@@ -4798,6 +4848,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 284385265}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &683602834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4865,6 +4916,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -4886,10 +4939,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 707536357}
-  - 114: {fileID: 707536358}
+  - component: {fileID: 707536357}
+  - component: {fileID: 707536358}
   m_Layer: 0
   m_Name: NendAdNative
   m_TagString: Untagged
@@ -4908,7 +4961,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &707536358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4928,29 +4982,31 @@ MonoBehaviour:
       apiKey: c0e1850ab796bf2a5be672715b7ca9780621b5f9
       spotID: 586657
   loadWhenActivated: 1
+  enableAutoReload: 0
+  reloadInterval: 0
   views:
   - {fileID: 1371154840}
   AdLoaded:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdFailedToReceive:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewFailedToLoadEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewFailedToLoadEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   type: 0
 --- !u!1 &711463181
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 711463182}
-  - 114: {fileID: 711463183}
-  - 65: {fileID: 711463184}
+  - component: {fileID: 711463182}
+  - component: {fileID: 711463183}
+  - component: {fileID: 711463184}
   m_Layer: 8
   m_Name: parkRootTouchable
   m_TagString: Untagged
@@ -4970,6 +5026,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 149898293}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &711463183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4999,13 +5056,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 102024, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 754884818}
-  - 114: {fileID: 754884823}
-  - 65: {fileID: 754884821}
-  - 114: {fileID: 754884819}
-  - 114: {fileID: 754884820}
+  - component: {fileID: 754884818}
+  - component: {fileID: 754884823}
+  - component: {fileID: 754884821}
+  - component: {fileID: 754884819}
+  - component: {fileID: 754884820}
   m_Layer: 8
   m_Name: sprBook
   m_TagString: Untagged
@@ -5025,6 +5082,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 603099151}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &754884819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5037,6 +5095,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &754884820
@@ -5115,6 +5178,7 @@ MonoBehaviour:
   mWidth: 94
   mHeight: 100
   mDepth: 3000
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -5133,7 +5197,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300018, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -5144,11 +5207,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 763402670}
-  - 114: {fileID: 763402672}
-  - 114: {fileID: 763402671}
+  - component: {fileID: 763402670}
+  - component: {fileID: 763402672}
+  - component: {fileID: 763402671}
   m_Layer: 8
   m_Name: 2D Sprite
   m_TagString: Untagged
@@ -5168,6 +5231,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 153005962}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &763402671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5187,6 +5251,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 763402672}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &763402672
 MonoBehaviour:
@@ -5221,6 +5286,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 1136
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -5239,7 +5305,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300006, guid: 74d384de79f28554cafd246fd5472cc9, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -5250,11 +5315,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 785162587}
-  - 222: {fileID: 785162589}
-  - 114: {fileID: 785162588}
+  - component: {fileID: 785162587}
+  - component: {fileID: 785162589}
+  - component: {fileID: 785162588}
   m_Layer: 0
   m_Name: AdImage
   m_TagString: Untagged
@@ -5274,6 +5339,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1371154837}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -29.800049, y: -5.275036}
@@ -5330,11 +5396,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 788319852}
-  - 65: {fileID: 788319854}
-  - 114: {fileID: 788319853}
+  - component: {fileID: 788319852}
+  - component: {fileID: 788319854}
+  - component: {fileID: 788319853}
   m_Layer: 8
   m_Name: HitRectBlock (1)
   m_TagString: Untagged
@@ -5354,6 +5420,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 590391825}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &788319853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5387,6 +5454,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -5424,13 +5492,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 162376, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 805373401}
-  - 114: {fileID: 805373406}
-  - 65: {fileID: 805373404}
-  - 114: {fileID: 805373402}
-  - 114: {fileID: 805373403}
+  - component: {fileID: 805373401}
+  - component: {fileID: 805373406}
+  - component: {fileID: 805373404}
+  - component: {fileID: 805373402}
+  - component: {fileID: 805373403}
   m_Layer: 8
   m_Name: sprItem
   m_TagString: Untagged
@@ -5450,6 +5518,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 603099151}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &805373402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5462,6 +5531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &805373403
@@ -5540,6 +5614,7 @@ MonoBehaviour:
   mWidth: 78
   mHeight: 100
   mDepth: 3002
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -5558,7 +5633,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300022, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -5569,11 +5643,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 884003530}
-  - 114: {fileID: 884003529}
-  - 114: {fileID: 884003528}
+  - component: {fileID: 884003530}
+  - component: {fileID: 884003529}
+  - component: {fileID: 884003528}
   m_Layer: 0
   m_Name: PrefabManager
   m_TagString: Untagged
@@ -5642,17 +5716,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &884717180
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 884717184}
-  - 114: {fileID: 884717183}
-  - 114: {fileID: 884717182}
-  - 54: {fileID: 884717181}
+  - component: {fileID: 884717184}
+  - component: {fileID: 884717183}
+  - component: {fileID: 884717182}
+  - component: {fileID: 884717181}
   m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
@@ -5705,6 +5780,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -5754,16 +5831,17 @@ Transform:
   - {fileID: 284385265}
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &889917565
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 192520, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 889917566}
-  - 114: {fileID: 889917567}
-  - 114: {fileID: 517788121}
+  - component: {fileID: 889917566}
+  - component: {fileID: 889917567}
+  - component: {fileID: 517788121}
   m_Layer: 8
   m_Name: GridCollect
   m_TagString: Untagged
@@ -5785,6 +5863,7 @@ Transform:
   - {fileID: 1673620446}
   m_Father: {fileID: 1218842824}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &889917567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5812,9 +5891,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 926574100}
+  - component: {fileID: 926574100}
   m_Layer: 8
   m_Name: RectAll
   m_TagString: Untagged
@@ -5835,14 +5914,15 @@ Transform:
   - {fileID: 1037281883}
   m_Father: {fileID: 481395061}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &929567192
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 152600, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 929567193}
+  - component: {fileID: 929567193}
   m_Layer: 8
   m_Name: goMenu
   m_TagString: Untagged
@@ -5864,15 +5944,16 @@ Transform:
   - {fileID: 315689101}
   m_Father: {fileID: 1595745500}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940705131
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 940705133}
-  - 114: {fileID: 940705132}
+  - component: {fileID: 940705133}
+  - component: {fileID: 940705132}
   m_Layer: 0
   m_Name: NendAdNative2
   m_TagString: Untagged
@@ -5899,6 +5980,8 @@ MonoBehaviour:
       apiKey: e0fe20042fb28eac7ac33d51ac8f859c6e1624c5
       spotID: 596875
   loadWhenActivated: 1
+  enableAutoReload: 0
+  reloadInterval: 0
   views:
   - {fileID: 1751081428}
   AdLoaded:
@@ -5915,13 +5998,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdFailedToReceive:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewFailedToLoadEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewFailedToLoadEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   type: 1
 --- !u!4 &940705133
 Transform:
@@ -5934,16 +6017,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &942458556
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 161438, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 942458557}
-  - 114: {fileID: 942458558}
+  - component: {fileID: 942458557}
+  - component: {fileID: 942458558}
   m_Layer: 8
   m_Name: goTicket
   m_TagString: Untagged
@@ -5968,6 +6052,7 @@ Transform:
   - {fileID: 1811602616}
   m_Father: {fileID: 1993545320}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &942458558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5991,10 +6076,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 122712, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 949949788}
-  - 114: {fileID: 949949789}
+  - component: {fileID: 949949788}
+  - component: {fileID: 949949789}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -6014,6 +6099,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1527487017}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &949949789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6048,6 +6134,7 @@ MonoBehaviour:
   mWidth: 182
   mHeight: 36
   mDepth: 5001
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -6066,7 +6153,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -6088,10 +6174,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 950659570}
-  - 114: {fileID: 950659571}
+  - component: {fileID: 950659570}
+  - component: {fileID: 950659571}
   m_Layer: 8
   m_Name: sprWorkIcon
   m_TagString: Untagged
@@ -6111,6 +6197,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1654194261}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &950659571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6144,6 +6231,7 @@ MonoBehaviour:
   mWidth: 128
   mHeight: 128
   mDepth: 6
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -6169,10 +6257,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 959224507}
-  - 114: {fileID: 959224508}
+  - component: {fileID: 959224507}
+  - component: {fileID: 959224508}
   m_Layer: 8
   m_Name: sprBackGround
   m_TagString: Untagged
@@ -6192,6 +6280,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 153005962}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &959224508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6225,6 +6314,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 1136
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -6250,13 +6340,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 968394834}
-  - 114: {fileID: 968394833}
-  - 114: {fileID: 968394832}
-  - 114: {fileID: 968394836}
-  - 114: {fileID: 968394835}
+  - component: {fileID: 968394834}
+  - component: {fileID: 968394833}
+  - component: {fileID: 968394832}
+  - component: {fileID: 968394836}
+  - component: {fileID: 968394835}
   m_Layer: 8
   m_Name: 2D Sprite (2)
   m_TagString: Untagged
@@ -6283,6 +6373,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 968394833}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &968394833
 MonoBehaviour:
@@ -6317,6 +6408,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -6335,7 +6427,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 0}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -6353,6 +6444,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481395061}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &968394835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6387,11 +6479,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 969380800}
-  - 114: {fileID: 969380801}
-  - 114: {fileID: 969380799}
+  - component: {fileID: 969380800}
+  - component: {fileID: 969380801}
+  - component: {fileID: 969380799}
   m_Layer: 8
   m_Name: PanelBook
   m_TagString: Untagged
@@ -6441,6 +6533,7 @@ Transform:
   - {fileID: 137475323}
   m_Father: {fileID: 284385265}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &969380801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6471,6 +6564,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -6492,13 +6587,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 999904644}
-  - 114: {fileID: 999904649}
-  - 114: {fileID: 999904647}
-  - 65: {fileID: 999904645}
-  - 114: {fileID: 999904646}
+  - component: {fileID: 999904644}
+  - component: {fileID: 999904649}
+  - component: {fileID: 999904647}
+  - component: {fileID: 999904645}
+  - component: {fileID: 999904646}
   m_Layer: 8
   m_Name: sprClose
   m_TagString: Untagged
@@ -6518,6 +6613,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 244406504}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &999904645
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6570,6 +6666,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &999904649
@@ -6605,6 +6706,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 50
   mDepth: 6
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -6623,7 +6725,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300020, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 0}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -6634,11 +6735,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1037281883}
-  - 65: {fileID: 1037281884}
-  - 114: {fileID: 1037281885}
+  - component: {fileID: 1037281883}
+  - component: {fileID: 1037281884}
+  - component: {fileID: 1037281885}
   m_Layer: 8
   m_Name: HitRectBlock
   m_TagString: Untagged
@@ -6658,6 +6759,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 926574100}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1037281884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6703,6 +6805,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -6728,11 +6831,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1048473872}
-  - 65: {fileID: 1048473874}
-  - 114: {fileID: 1048473873}
+  - component: {fileID: 1048473872}
+  - component: {fileID: 1048473874}
+  - component: {fileID: 1048473873}
   m_Layer: 8
   m_Name: HitRectBlock
   m_TagString: Untagged
@@ -6752,6 +6855,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1223608086}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1048473873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6785,6 +6889,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -6822,10 +6927,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 146648, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1052343011}
-  - 114: {fileID: 1052343012}
+  - component: {fileID: 1052343011}
+  - component: {fileID: 1052343012}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -6845,6 +6950,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1811602616}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1052343012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6879,6 +6985,7 @@ MonoBehaviour:
   mWidth: 88
   mHeight: 50
   mDepth: 501
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -6897,7 +7004,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -6919,13 +7025,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 177628, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1078516935}
-  - 114: {fileID: 1078516939}
-  - 114: {fileID: 1078516938}
-  - 114: {fileID: 1078516937}
-  - 65: {fileID: 1078516936}
+  - component: {fileID: 1078516935}
+  - component: {fileID: 1078516939}
+  - component: {fileID: 1078516938}
+  - component: {fileID: 1078516937}
+  - component: {fileID: 1078516936}
   m_Layer: 8
   m_Name: sprButton
   m_TagString: Untagged
@@ -6946,6 +7052,7 @@ Transform:
   - {fileID: 180743472}
   m_Father: {fileID: 1595745500}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1078516936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6971,6 +7078,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &1078516938
@@ -7036,6 +7148,7 @@ MonoBehaviour:
   mWidth: 280
   mHeight: 100
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -7054,7 +7167,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300010, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 0}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -7065,10 +7177,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 158132, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1122062256}
-  - 114: {fileID: 1122062257}
+  - component: {fileID: 1122062256}
+  - component: {fileID: 1122062257}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -7088,6 +7200,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 597229819}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1122062257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7122,6 +7235,7 @@ MonoBehaviour:
   mWidth: 248
   mHeight: 50
   mDepth: 3009
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -7140,7 +7254,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -7169,16 +7282,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1464941436}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1139179038
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1139179039}
-  - 114: {fileID: 1139179040}
-  - 114: {fileID: 1139179041}
+  - component: {fileID: 1139179039}
+  - component: {fileID: 1139179040}
+  - component: {fileID: 1139179041}
   m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
@@ -7198,6 +7312,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2030784585}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1139179040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7237,10 +7352,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 154248, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1161582587}
-  - 114: {fileID: 1161582589}
+  - component: {fileID: 1161582587}
+  - component: {fileID: 1161582589}
   m_Layer: 8
   m_Name: sprFukidashi
   m_TagString: Untagged
@@ -7261,6 +7376,7 @@ Transform:
   - {fileID: 496903198}
   m_Father: {fileID: 403527691}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1161582589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7294,6 +7410,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 100
   mDepth: 3005
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -7312,7 +7429,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300196, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -7323,11 +7439,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1178034197}
-  - 222: {fileID: 1178034199}
-  - 114: {fileID: 1178034198}
+  - component: {fileID: 1178034197}
+  - component: {fileID: 1178034199}
+  - component: {fileID: 1178034198}
   m_Layer: 0
   m_Name: Action
   m_TagString: Untagged
@@ -7347,6 +7463,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1371154837}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 51.54998, y: -49.1}
@@ -7372,7 +7489,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -7396,13 +7513,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1183366427}
-  - 114: {fileID: 1183366431}
-  - 114: {fileID: 1183366430}
-  - 114: {fileID: 1183366429}
-  - 114: {fileID: 1183366428}
+  - component: {fileID: 1183366427}
+  - component: {fileID: 1183366431}
+  - component: {fileID: 1183366430}
+  - component: {fileID: 1183366429}
+  - component: {fileID: 1183366428}
   m_Layer: 8
   m_Name: 2D Sprite (1)
   m_TagString: Untagged
@@ -7428,6 +7545,7 @@ Transform:
   - {fileID: 449722968}
   m_Father: {fileID: 244406504}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1183366428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7476,6 +7594,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 1183366431}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &1183366431
 MonoBehaviour:
@@ -7510,6 +7629,7 @@ MonoBehaviour:
   mWidth: 449
   mHeight: 283
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -7528,7 +7648,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300018, guid: ef4328efe3e76264aa4a12a2d678059c, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -7539,10 +7658,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 187800, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1187922020}
-  - 114: {fileID: 1187922021}
+  - component: {fileID: 1187922020}
+  - component: {fileID: 1187922021}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -7562,6 +7681,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1410758923}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1187922021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7596,6 +7716,7 @@ MonoBehaviour:
   mWidth: 182
   mHeight: 36
   mDepth: 5001
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -7614,7 +7735,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -7636,11 +7756,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1190562340}
-  - 114: {fileID: 1190562341}
-  - 114: {fileID: 1190562342}
+  - component: {fileID: 1190562340}
+  - component: {fileID: 1190562341}
+  - component: {fileID: 1190562342}
   m_Layer: 8
   m_Name: sprNew
   m_TagString: Untagged
@@ -7660,6 +7780,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 192021953}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1190562341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7693,6 +7814,7 @@ MonoBehaviour:
   mWidth: 60
   mHeight: 22
   mDepth: 304
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -7741,14 +7863,15 @@ Transform:
   - {fileID: 1595745500}
   m_Father: {fileID: 149898293}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223608085
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1223608086}
+  - component: {fileID: 1223608086}
   m_Layer: 8
   m_Name: RectAll
   m_TagString: Untagged
@@ -7769,60 +7892,19 @@ Transform:
   - {fileID: 1048473872}
   m_Father: {fileID: 1915396965}
   m_RootOrder: 1
---- !u!1001 &1253358387
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-  m_IsPrefabParent: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1282910080
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1282910081}
-  - 114: {fileID: 1282910083}
-  - 114: {fileID: 1282910082}
-  - 114: {fileID: 1282910085}
-  - 114: {fileID: 1282910084}
+  - component: {fileID: 1282910081}
+  - component: {fileID: 1282910083}
+  - component: {fileID: 1282910082}
+  - component: {fileID: 1282910085}
+  - component: {fileID: 1282910084}
   m_Layer: 8
   m_Name: 2D Sprite (5)
   m_TagString: Untagged
@@ -7842,6 +7924,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481395061}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1282910082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7861,6 +7944,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 1282910083}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &1282910083
 MonoBehaviour:
@@ -7895,6 +7979,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -7913,7 +7998,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 0}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -7953,10 +8037,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1287120967}
-  - 114: {fileID: 1287120968}
+  - component: {fileID: 1287120967}
+  - component: {fileID: 1287120968}
   m_Layer: 8
   m_Name: CtrlHelp
   m_TagString: Untagged
@@ -7977,6 +8061,7 @@ Transform:
   - {fileID: 139842030}
   m_Father: {fileID: 149898293}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1287120968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7988,6 +8073,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8f17a3c0bb45843bd9bd123f684dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
   m_eStep: 0
@@ -8032,7 +8122,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 443638, guid: b4bd056bd975b4bf2be46cfc07b74a4f, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4bd056bd975b4bf2be46cfc07b74a4f, type: 2}
@@ -8042,11 +8132,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1337042546}
-  - 65: {fileID: 1337042548}
-  - 114: {fileID: 1337042547}
+  - component: {fileID: 1337042546}
+  - component: {fileID: 1337042548}
+  - component: {fileID: 1337042547}
   m_Layer: 8
   m_Name: HitRectBlock
   m_TagString: Untagged
@@ -8066,6 +8156,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 590391825}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1337042547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8099,6 +8190,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -8140,11 +8232,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .71433109
+      value: 0.7143311
       objectReference: {fileID: 0}
     - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .56574291
+      value: 0.5657429
       objectReference: {fileID: 0}
     - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8168,7 +8260,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d57506c3698648c983111c20600f560, type: 2}
@@ -8178,12 +8270,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 101890, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1357085669}
-  - 114: {fileID: 1357085672}
-  - 114: {fileID: 1357085671}
-  - 114: {fileID: 1357085670}
+  - component: {fileID: 1357085669}
+  - component: {fileID: 1357085672}
+  - component: {fileID: 1357085671}
+  - component: {fileID: 1357085670}
   m_Layer: 8
   m_Name: lb_level_next_exp
   m_TagString: Untagged
@@ -8203,6 +8295,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1357085670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8283,6 +8376,7 @@ MonoBehaviour:
   mWidth: 290
   mHeight: 30
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -8301,7 +8395,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 0.88965523, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -8323,13 +8416,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1358871094}
-  - 20: {fileID: 1358871093}
-  - 92: {fileID: 1358871092}
-  - 124: {fileID: 1358871091}
-  - 81: {fileID: 1358871090}
+  - component: {fileID: 1358871094}
+  - component: {fileID: 1358871093}
+  - component: {fileID: 1358871092}
+  - component: {fileID: 1358871091}
+  - component: {fileID: 1358871090}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8404,18 +8497,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1371154836
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1371154837}
-  - 222: {fileID: 1371154839}
-  - 114: {fileID: 1371154838}
-  - 114: {fileID: 1371154841}
-  - 114: {fileID: 1371154840}
+  - component: {fileID: 1371154837}
+  - component: {fileID: 1371154839}
+  - component: {fileID: 1371154838}
+  - component: {fileID: 1371154841}
+  - component: {fileID: 1371154840}
   m_Layer: 5
   m_Name: PanelNendAdNativeView1
   m_TagString: Untagged
@@ -8439,6 +8533,7 @@ RectTransform:
   - {fileID: 1178034197}
   m_Father: {fileID: 68744911}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -96.04999, y: -212.65}
@@ -8503,18 +8598,18 @@ MonoBehaviour:
   AdShown:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdFailedToShow:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdClicked:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &1371154841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8532,10 +8627,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 181936, guid: 00c8592fdb9f34624a8dd0d5feef25cf, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1373898661}
-  - 114: {fileID: 1373898662}
+  - component: {fileID: 1373898661}
+  - component: {fileID: 1373898662}
   m_Layer: 8
   m_Name: lbTitle (2)
   m_TagString: Untagged
@@ -8555,6 +8650,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1183366427}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1373898662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8589,6 +8685,7 @@ MonoBehaviour:
   mWidth: 447
   mHeight: 31
   mDepth: 5
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -8607,7 +8704,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 2, y: 2}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -8629,10 +8725,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 186942, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1410758923}
-  - 114: {fileID: 1410758924}
+  - component: {fileID: 1410758923}
+  - component: {fileID: 1410758924}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -8653,6 +8749,7 @@ Transform:
   - {fileID: 1187922020}
   m_Father: {fileID: 2060670090}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1410758924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8687,6 +8784,7 @@ MonoBehaviour:
   mWidth: 300
   mHeight: 60
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -8712,10 +8810,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 113228, guid: 00c8592fdb9f34624a8dd0d5feef25cf, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1416781160}
-  - 114: {fileID: 1416781161}
+  - component: {fileID: 1416781160}
+  - component: {fileID: 1416781161}
   m_Layer: 8
   m_Name: lbExp
   m_TagString: Untagged
@@ -8735,6 +8833,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1183366427}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1416781161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8769,6 +8868,7 @@ MonoBehaviour:
   mWidth: 171
   mHeight: 51
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -8787,7 +8887,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -8809,11 +8908,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1443202215}
-  - 222: {fileID: 1443202217}
-  - 114: {fileID: 1443202216}
+  - component: {fileID: 1443202215}
+  - component: {fileID: 1443202217}
+  - component: {fileID: 1443202216}
   m_Layer: 0
   m_Name: PrText
   m_TagString: Untagged
@@ -8833,6 +8932,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1751081427}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 7.8, y: 59.25}
@@ -8858,7 +8958,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
@@ -8882,11 +8982,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1454144949}
-  - 222: {fileID: 1454144951}
-  - 114: {fileID: 1454144950}
+  - component: {fileID: 1454144949}
+  - component: {fileID: 1454144951}
+  - component: {fileID: 1454144950}
   m_Layer: 0
   m_Name: PrText
   m_TagString: Untagged
@@ -8906,6 +9006,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1371154837}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 43.1, y: 38.125}
@@ -8931,7 +9032,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -8955,10 +9056,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1464941436}
-  - 114: {fileID: 1464941437}
+  - component: {fileID: 1464941436}
+  - component: {fileID: 1464941437}
   m_Layer: 8
   m_Name: PanelFront
   m_TagString: Untagged
@@ -8981,6 +9082,7 @@ Transform:
   - {fileID: 1131698006}
   m_Father: {fileID: 284385265}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1464941437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9011,6 +9113,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -9032,10 +9136,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100492, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1514617451}
-  - 114: {fileID: 1514617452}
+  - component: {fileID: 1514617451}
+  - component: {fileID: 1514617452}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -9055,6 +9159,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 257234072}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1514617452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9089,6 +9194,7 @@ MonoBehaviour:
   mWidth: 88
   mHeight: 50
   mDepth: 501
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9107,7 +9213,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -9129,10 +9234,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 179054, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1527487017}
-  - 114: {fileID: 1527487018}
+  - component: {fileID: 1527487017}
+  - component: {fileID: 1527487018}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -9153,6 +9258,7 @@ Transform:
   - {fileID: 949949788}
   m_Father: {fileID: 942458557}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1527487018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9187,6 +9293,7 @@ MonoBehaviour:
   mWidth: 300
   mHeight: 60
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9212,13 +9319,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1571836121}
-  - 114: {fileID: 1571836125}
-  - 114: {fileID: 1571836124}
-  - 65: {fileID: 1571836123}
-  - 114: {fileID: 1571836122}
+  - component: {fileID: 1571836121}
+  - component: {fileID: 1571836125}
+  - component: {fileID: 1571836124}
+  - component: {fileID: 1571836123}
+  - component: {fileID: 1571836122}
   m_Layer: 8
   m_Name: sprClose
   m_TagString: Untagged
@@ -9238,6 +9345,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1915396965}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1571836122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9290,6 +9398,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &1571836125
@@ -9325,6 +9438,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 50
   mDepth: 6
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9350,10 +9464,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 169570, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1577987490}
-  - 114: {fileID: 1577987491}
+  - component: {fileID: 1577987490}
+  - component: {fileID: 1577987491}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -9373,6 +9487,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1681935820}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1577987491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9407,6 +9522,7 @@ MonoBehaviour:
   mWidth: 81
   mHeight: 50
   mDepth: 501
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9425,7 +9541,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -9447,10 +9562,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 132440, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1588477808}
-  - 114: {fileID: 1588477809}
+  - component: {fileID: 1588477808}
+  - component: {fileID: 1588477809}
   m_Layer: 8
   m_Name: lbTitle
   m_TagString: Untagged
@@ -9470,6 +9585,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 942458557}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1588477809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9504,6 +9620,7 @@ MonoBehaviour:
   mWidth: 182
   mHeight: 36
   mDepth: 504
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9522,7 +9639,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -9544,9 +9660,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1595745500}
+  - component: {fileID: 1595745500}
   m_Layer: 8
   m_Name: dispDebugRoot
   m_TagString: Untagged
@@ -9568,16 +9684,17 @@ Transform:
   - {fileID: 929567193}
   m_Father: {fileID: 1218842824}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1600735886
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1600735887}
-  - 114: {fileID: 1600735890}
-  - 114: {fileID: 1600735888}
+  - component: {fileID: 1600735887}
+  - component: {fileID: 1600735890}
+  - component: {fileID: 1600735888}
   m_Layer: 8
   m_Name: sprLevelUp
   m_TagString: Untagged
@@ -9597,6 +9714,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1464941436}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1600735888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9643,6 +9761,7 @@ MonoBehaviour:
   mWidth: 227
   mHeight: 84
   mDepth: 5
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9661,7 +9780,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300170, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -9672,10 +9790,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 191638, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1613720108}
-  - 114: {fileID: 1613720110}
+  - component: {fileID: 1613720108}
+  - component: {fileID: 1613720110}
   m_Layer: 8
   m_Name: back
   m_TagString: Untagged
@@ -9695,6 +9813,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1613720110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9728,6 +9847,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 150
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9746,7 +9866,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300194, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -9757,13 +9876,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1654194261}
-  - 114: {fileID: 1654194265}
-  - 114: {fileID: 1654194264}
-  - 114: {fileID: 1654194263}
-  - 114: {fileID: 1654194262}
+  - component: {fileID: 1654194261}
+  - component: {fileID: 1654194265}
+  - component: {fileID: 1654194264}
+  - component: {fileID: 1654194263}
+  - component: {fileID: 1654194262}
   m_Layer: 8
   m_Name: 2D Sprite (1)
   m_TagString: Untagged
@@ -9784,6 +9903,7 @@ Transform:
   - {fileID: 950659570}
   m_Father: {fileID: 1915396965}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1654194262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9832,6 +9952,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 1654194265}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &1654194265
 MonoBehaviour:
@@ -9866,6 +9987,7 @@ MonoBehaviour:
   mWidth: 449
   mHeight: 283
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9884,7 +10006,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 0}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -9895,10 +10016,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 125792, guid: 00c8592fdb9f34624a8dd0d5feef25cf, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1659017315}
-  - 114: {fileID: 1659017316}
+  - component: {fileID: 1659017315}
+  - component: {fileID: 1659017316}
   m_Layer: 8
   m_Name: lbTitle
   m_TagString: Untagged
@@ -9918,6 +10039,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1183366427}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1659017316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9952,6 +10074,7 @@ MonoBehaviour:
   mWidth: 447
   mHeight: 31
   mDepth: 5
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -9970,7 +10093,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 2, y: 2}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -9992,13 +10114,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 110502, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1673620446}
-  - 114: {fileID: 1673620451}
-  - 114: {fileID: 1673620449}
-  - 65: {fileID: 1673620448}
-  - 114: {fileID: 1673620447}
+  - component: {fileID: 1673620446}
+  - component: {fileID: 1673620451}
+  - component: {fileID: 1673620449}
+  - component: {fileID: 1673620448}
+  - component: {fileID: 1673620447}
   m_Layer: 8
   m_Name: sprGetMoney
   m_TagString: Untagged
@@ -10018,6 +10140,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 889917566}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1673620447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10030,6 +10153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &1673620448
@@ -10108,6 +10236,7 @@ MonoBehaviour:
   mWidth: 260
   mHeight: 50
   mDepth: 3007
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -10126,7 +10255,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300038, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -10137,13 +10265,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 105212, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1681935820}
-  - 114: {fileID: 1681935824}
-  - 114: {fileID: 1681935823}
-  - 65: {fileID: 1681935822}
-  - 114: {fileID: 1681935821}
+  - component: {fileID: 1681935820}
+  - component: {fileID: 1681935824}
+  - component: {fileID: 1681935823}
+  - component: {fileID: 1681935822}
+  - component: {fileID: 1681935821}
   m_Layer: 8
   m_Name: btnPlus
   m_TagString: Untagged
@@ -10164,6 +10292,7 @@ Transform:
   - {fileID: 1577987490}
   m_Father: {fileID: 942458557}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1681935821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10176,6 +10305,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &1681935822
@@ -10254,6 +10388,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 60
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -10272,7 +10407,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300010, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 0}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -10283,13 +10417,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1720107955}
-  - 114: {fileID: 1720107957}
-  - 114: {fileID: 1720107956}
-  - 114: {fileID: 1720107959}
-  - 114: {fileID: 1720107958}
+  - component: {fileID: 1720107955}
+  - component: {fileID: 1720107957}
+  - component: {fileID: 1720107956}
+  - component: {fileID: 1720107959}
+  - component: {fileID: 1720107958}
   m_Layer: 8
   m_Name: 2D Sprite (1)
   m_TagString: Untagged
@@ -10309,6 +10443,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481395061}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1720107956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10328,6 +10463,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 1720107957}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &1720107957
 MonoBehaviour:
@@ -10362,6 +10498,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -10380,7 +10517,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 0}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -10420,13 +10556,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1732215148}
-  - 114: {fileID: 1732215150}
-  - 114: {fileID: 1732215149}
-  - 114: {fileID: 1732215152}
-  - 114: {fileID: 1732215151}
+  - component: {fileID: 1732215148}
+  - component: {fileID: 1732215150}
+  - component: {fileID: 1732215149}
+  - component: {fileID: 1732215152}
+  - component: {fileID: 1732215151}
   m_Layer: 8
   m_Name: 2D Sprite (4)
   m_TagString: Untagged
@@ -10446,6 +10582,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481395061}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1732215149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10465,6 +10602,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 1732215150}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &1732215150
 MonoBehaviour:
@@ -10499,6 +10637,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -10517,7 +10656,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 0}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -10557,10 +10695,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1742562994}
-  - 114: {fileID: 1742562993}
+  - component: {fileID: 1742562994}
+  - component: {fileID: 1742562993}
   m_Layer: 0
   m_Name: GameMain
   m_TagString: Untagged
@@ -10632,20 +10770,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1751081426
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1751081427}
-  - 222: {fileID: 1751081431}
-  - 114: {fileID: 1751081430}
-  - 114: {fileID: 1751081429}
-  - 114: {fileID: 1751081428}
-  - 114: {fileID: 1751081432}
-  - 114: {fileID: 1751081433}
+  - component: {fileID: 1751081427}
+  - component: {fileID: 1751081431}
+  - component: {fileID: 1751081430}
+  - component: {fileID: 1751081429}
+  - component: {fileID: 1751081428}
+  - component: {fileID: 1751081432}
+  - component: {fileID: 1751081433}
   m_Layer: 5
   m_Name: PanelNendAdNativeView2
   m_TagString: Untagged
@@ -10668,6 +10807,7 @@ RectTransform:
   - {fileID: 682405197}
   m_Father: {fileID: 68744911}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -76, y: -223}
@@ -10699,18 +10839,18 @@ MonoBehaviour:
   AdShown:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdFailedToShow:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdClicked:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &1751081429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10775,6 +10915,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 0}
   m_spriteImage: {fileID: 1751081430}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!114 &1751081433
 MonoBehaviour:
@@ -10793,13 +10934,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 163926, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1752485498}
-  - 114: {fileID: 1752485502}
-  - 114: {fileID: 1752485499}
-  - 114: {fileID: 1752485501}
-  - 65: {fileID: 1752485500}
+  - component: {fileID: 1752485498}
+  - component: {fileID: 1752485502}
+  - component: {fileID: 1752485499}
+  - component: {fileID: 1752485501}
+  - component: {fileID: 1752485500}
   m_Layer: 8
   m_Name: btnRate
   m_TagString: Untagged
@@ -10820,6 +10961,7 @@ Transform:
   - {fileID: 574322443}
   m_Father: {fileID: 2060670090}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1752485499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10832,6 +10974,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &1752485500
@@ -10910,6 +11057,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 60
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -10928,7 +11076,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300010, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 0}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -10939,12 +11086,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 170232, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1791186282}
-  - 114: {fileID: 1791186285}
-  - 114: {fileID: 1791186284}
-  - 114: {fileID: 1791186283}
+  - component: {fileID: 1791186282}
+  - component: {fileID: 1791186285}
+  - component: {fileID: 1791186284}
+  - component: {fileID: 1791186283}
   m_Layer: 8
   m_Name: lb_shojikin
   m_TagString: Untagged
@@ -10964,6 +11111,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1791186283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11044,6 +11192,7 @@ MonoBehaviour:
   mWidth: 290
   mHeight: 30
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -11062,7 +11211,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 0.88965523, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -11084,13 +11232,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 164462, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1796801780}
-  - 114: {fileID: 1796801784}
-  - 114: {fileID: 1796801783}
-  - 65: {fileID: 1796801782}
-  - 114: {fileID: 1796801781}
+  - component: {fileID: 1796801780}
+  - component: {fileID: 1796801784}
+  - component: {fileID: 1796801783}
+  - component: {fileID: 1796801782}
+  - component: {fileID: 1796801781}
   m_Layer: 8
   m_Name: btnPlus
   m_TagString: Untagged
@@ -11111,6 +11259,7 @@ Transform:
   - {fileID: 456549765}
   m_Father: {fileID: 2060670090}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1796801781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11123,6 +11272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &1796801782
@@ -11201,6 +11355,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 60
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -11219,7 +11374,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300010, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 0}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -11230,13 +11384,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 136438, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1811602616}
-  - 114: {fileID: 1811602620}
-  - 114: {fileID: 1811602619}
-  - 65: {fileID: 1811602618}
-  - 114: {fileID: 1811602617}
+  - component: {fileID: 1811602616}
+  - component: {fileID: 1811602620}
+  - component: {fileID: 1811602619}
+  - component: {fileID: 1811602618}
+  - component: {fileID: 1811602617}
   m_Layer: 8
   m_Name: btnRate
   m_TagString: Untagged
@@ -11257,6 +11411,7 @@ Transform:
   - {fileID: 1052343011}
   m_Father: {fileID: 942458557}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1811602617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11269,6 +11424,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &1811602618
@@ -11347,6 +11507,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 60
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -11365,7 +11526,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300010, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 0}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -11376,10 +11536,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 107052, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1840404414}
-  - 114: {fileID: 1840404415}
+  - component: {fileID: 1840404414}
+  - component: {fileID: 1840404415}
   m_Layer: 8
   m_Name: barFrame
   m_TagString: Untagged
@@ -11399,6 +11559,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 55843879}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1840404415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11432,6 +11593,7 @@ MonoBehaviour:
   mWidth: 374
   mHeight: 8
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -11450,7 +11612,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300000, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -11461,10 +11622,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1854305631}
-  - 114: {fileID: 1854305633}
+  - component: {fileID: 1854305631}
+  - component: {fileID: 1854305633}
   m_Layer: 8
   m_Name: sprBackGround
   m_TagString: Untagged
@@ -11484,6 +11645,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 284385265}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1854305633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11517,6 +11679,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 1136
   mDepth: -100
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -11535,7 +11698,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300004, guid: 74d384de79f28554cafd246fd5472cc9, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -11546,9 +11708,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1885772495}
+  - component: {fileID: 1885772495}
   m_Layer: 8
   m_Name: RectAll
   m_TagString: Untagged
@@ -11569,16 +11731,17 @@ Transform:
   - {fileID: 187008078}
   m_Father: {fileID: 244406504}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915396964
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1915396965}
-  - 114: {fileID: 1915396967}
-  - 114: {fileID: 1915396966}
+  - component: {fileID: 1915396965}
+  - component: {fileID: 1915396967}
+  - component: {fileID: 1915396966}
   m_Layer: 8
   m_Name: Debit
   m_TagString: Untagged
@@ -11602,6 +11765,7 @@ Transform:
   - {fileID: 1571836121}
   m_Father: {fileID: 284385265}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1915396966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11655,6 +11819,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -11676,10 +11842,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 113228, guid: 00c8592fdb9f34624a8dd0d5feef25cf, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1930067570}
-  - 114: {fileID: 1930067571}
+  - component: {fileID: 1930067570}
+  - component: {fileID: 1930067571}
   m_Layer: 8
   m_Name: lbPrize
   m_TagString: Untagged
@@ -11699,6 +11865,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1183366427}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1930067571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11733,6 +11900,7 @@ MonoBehaviour:
   mWidth: 171
   mHeight: 51
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -11751,7 +11919,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -11773,11 +11940,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1955532046}
-  - 114: {fileID: 1955532047}
-  - 114: {fileID: 1955532045}
+  - component: {fileID: 1955532046}
+  - component: {fileID: 1955532047}
+  - component: {fileID: 1955532045}
   m_Layer: 8
   m_Name: PanelItem
   m_TagString: Untagged
@@ -11818,6 +11985,7 @@ Transform:
   - {fileID: 448517949}
   m_Father: {fileID: 284385265}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1955532047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11848,6 +12016,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -11869,10 +12039,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 141096, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1993545320}
-  - 114: {fileID: 1993545321}
+  - component: {fileID: 1993545320}
+  - component: {fileID: 1993545321}
   m_Layer: 8
   m_Name: Menu
   m_TagString: Untagged
@@ -11894,6 +12064,7 @@ Transform:
   - {fileID: 942458557}
   m_Father: {fileID: 929567193}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1993545321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11921,13 +12092,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 104584, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1993739007}
-  - 114: {fileID: 1993739011}
-  - 114: {fileID: 1993739010}
-  - 65: {fileID: 1993739009}
-  - 114: {fileID: 1993739008}
+  - component: {fileID: 1993739007}
+  - component: {fileID: 1993739011}
+  - component: {fileID: 1993739010}
+  - component: {fileID: 1993739009}
+  - component: {fileID: 1993739008}
   m_Layer: 8
   m_Name: btnMinus
   m_TagString: Untagged
@@ -11948,6 +12119,7 @@ Transform:
   - {fileID: 65961216}
   m_Father: {fileID: 2060670090}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1993739008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11960,6 +12132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &1993739009
@@ -12038,6 +12215,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 60
   mDepth: 500
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -12056,7 +12234,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300010, guid: 911697bd0d748df4ab7ca0f2d030bf9f, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 0}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -12067,10 +12244,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 139710, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2023106390}
-  - 114: {fileID: 2023106391}
+  - component: {fileID: 2023106390}
+  - component: {fileID: 2023106391}
   m_Layer: 8
   m_Name: lbTitle
   m_TagString: Untagged
@@ -12090,6 +12267,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2060670090}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2023106391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12124,6 +12302,7 @@ MonoBehaviour:
   mWidth: 182
   mHeight: 36
   mDepth: 504
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -12142,7 +12321,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -12164,13 +12342,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2030784585}
-  - 114: {fileID: 2030784587}
-  - 114: {fileID: 2030784586}
-  - 114: {fileID: 2030784588}
-  - 114: {fileID: 2030784590}
+  - component: {fileID: 2030784585}
+  - component: {fileID: 2030784587}
+  - component: {fileID: 2030784586}
+  - component: {fileID: 2030784588}
+  - component: {fileID: 2030784590}
   m_Layer: 8
   m_Name: ScrollViewBookPage
   m_TagString: Untagged
@@ -12191,6 +12369,7 @@ Transform:
   - {fileID: 1139179039}
   m_Father: {fileID: 969380800}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2030784586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12205,6 +12384,7 @@ MonoBehaviour:
   movement: 0
   dragEffect: 2
   restrictWithinPanel: 1
+  constrainOnDrag: 0
   disableDragIfFits: 0
   smoothDragStart: 1
   iOSDragEmulation: 1
@@ -12249,6 +12429,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -12296,10 +12478,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 154248, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2040282754}
-  - 114: {fileID: 2040282755}
+  - component: {fileID: 2040282754}
+  - component: {fileID: 2040282755}
   m_Layer: 8
   m_Name: sprFukidashi (1)
   m_TagString: Untagged
@@ -12319,6 +12501,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481395061}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2040282755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12353,6 +12536,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 100
   mDepth: -2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -12378,10 +12562,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 170832, guid: 625450627f1864e249aa8689578806c0, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2060670090}
-  - 114: {fileID: 2060670091}
+  - component: {fileID: 2060670090}
+  - component: {fileID: 2060670091}
   m_Layer: 8
   m_Name: goGold
   m_TagString: Untagged
@@ -12406,6 +12590,7 @@ Transform:
   - {fileID: 1752485498}
   m_Father: {fileID: 1993545320}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2060670091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12429,9 +12614,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 196254, guid: d9b1e22b9239f8c489861bae104898c8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1131698006}
+  - component: {fileID: 1131698006}
   m_Layer: 8
   m_Name: sidebar
   m_TagString: Untagged
@@ -12444,11 +12629,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2101418936}
-  - 222: {fileID: 2101418938}
-  - 114: {fileID: 2101418937}
+  - component: {fileID: 2101418936}
+  - component: {fileID: 2101418938}
+  - component: {fileID: 2101418937}
   m_Layer: 0
   m_Name: ShortText
   m_TagString: Untagged
@@ -12468,6 +12653,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1371154837}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 47.69995, y: -5.2750273}
@@ -12493,7 +12679,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -12517,12 +12703,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 186672, guid: d14e8a3506c514ec3a2f1f6a45e0a264, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2102530055}
-  - 114: {fileID: 2102530058}
-  - 114: {fileID: 2102530057}
-  - 114: {fileID: 2102530056}
+  - component: {fileID: 2102530055}
+  - component: {fileID: 2102530058}
+  - component: {fileID: 2102530057}
+  - component: {fileID: 2102530056}
   m_Layer: 8
   m_Name: lb_made
   m_TagString: Untagged
@@ -12542,6 +12728,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 181772187}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2102530056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12622,6 +12809,7 @@ MonoBehaviour:
   mWidth: 290
   mHeight: 30
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -12640,7 +12828,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 0.88965523, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -12662,10 +12849,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2110508784}
-  - 114: {fileID: 2110508783}
+  - component: {fileID: 2110508784}
+  - component: {fileID: 2110508783}
   m_Layer: 0
   m_Name: EasyTouch
   m_TagString: Untagged
@@ -12738,3 +12925,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

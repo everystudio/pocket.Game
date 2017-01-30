@@ -21,6 +21,25 @@ public class DeleteDatabases : EditorWindow {
 		w.minSize = new Vector2( 200.0f , fHeight );
 	}
 
+
+	[MenuItem("Tools/Tutorial Reset")]
+	static void ResetTutorial()
+	{
+		int iStartIndex = 1;
+		PlayerPrefs.SetInt(DefineOld.KEY_TUTORIAL_PARENT_ID, iStartIndex);
+		PlayerPrefs.Save();
+
+	}
+
+	[MenuItem("Tools/Tutorial Finish")]
+	static void FinishTutorial()
+	{
+		int iEndIndex = 0;
+		PlayerPrefs.SetInt(DefineOld.KEY_TUTORIAL_PARENT_ID, iEndIndex);
+		PlayerPrefs.Save();
+
+	}
+
 	// ディレクトリ以下に存在するファイルを取得
 	static string[] filename_search(){
 

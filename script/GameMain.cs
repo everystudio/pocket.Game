@@ -298,7 +298,7 @@ public class GameMain : MonoBehaviour {
 			}
 			*/
 			if (TutorialManager.Instance.IsTutorial () == false  && ReviewManager.Instance.IsReadyReview()) {
-				m_eStep = STEP.REVIEW;
+				//m_eStep = STEP.REVIEW;
 			}
 			break;
 

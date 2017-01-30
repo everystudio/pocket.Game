@@ -376,9 +376,12 @@ public class InitialMain : MonoBehaviour {
 			m_btnStart.gameObject.SetActive (true);
 			m_eStep = STEP.IDLE;
 
+				/*
+				タイトル画面からはレビュー催促はいかない
 			if (ReviewManager.Instance.IsReadyReview () && 3 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL)) {
 				m_eStep = STEP.REVIEW;
 			}
+			*/
 			if ( 5 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL) && !DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR)) {
 				m_eStep = STEP.ATTENTION_DISP_VISITOR;
 			}
