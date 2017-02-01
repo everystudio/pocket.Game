@@ -39,6 +39,7 @@ public class CtrlParkMainFooter : MonoBehaviourEx {
 	}
 	private void pushed(int _iIndex)
 	{
+		UIAssistant.main.ShowPage("None");
 		SoundManager.Instance.PlaySE(SoundName.BUTTON_PUSH, DataManager.Instance.SOUND_PATH);
 		GameMain.STATUS status = GameMain.STATUS.NONE;
 		switch (_iIndex)

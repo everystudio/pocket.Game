@@ -46,6 +46,7 @@ public class ParkMainIdle : ParkMainController
 		GameMain.Instance.DispHeader(true);
 		AdsManager.Instance.ShowAdBanner (true);
 
+		UIAssistant.main.ShowPage("MainMenu");
 
 	}
 	// Update is called once per frame

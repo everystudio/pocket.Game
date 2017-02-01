@@ -668,7 +668,7 @@ RectTransform:
   - {fileID: 1751081427}
   - {fileID: 183967776}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_goAdIcon: {fileID: 0}
-  m_goAdBanner: {fileID: 564414013}
+  m_goAdBanner: {fileID: 0}
   m_goAdNativePanelList:
   - {fileID: 1751081426}
   - {fileID: 1371154836}
@@ -819,7 +819,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &119369900
 GameObject:
@@ -5265,64 +5265,6 @@ MonoBehaviour:
   m_fDispWait: 0
   m_iLoopIndex: 0
   m_bQuickEnd: 0
---- !u!1 &564414013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 564414015}
-  - component: {fileID: 564414014}
-  m_Layer: 0
-  m_Name: NendAdBanner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &564414014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 564414013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a098066be788a47d1852a19c97c43ddd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  account:
-    android:
-      apiKey: d59ca8baa2d48e926427176bad01ce5fd34fbbf7
-      spotID: 650030
-    iOS:
-      apiKey: 1df2e6426eb0587b0aa6fd421a149bb7b5b64f85
-      spotID: 650022
-  automaticDisplay: 1
-  outputLog: 0
-  adjustSize: 1
-  size: 0
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  gravity: 0100000008000000
-  margin:
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
---- !u!4 &564414015
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 564414013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.034652684, y: 0.068490386, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &565458656
 GameObject:
   m_ObjectHideFlags: 0
@@ -6162,7 +6104,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625393759
 GameObject:
@@ -6464,6 +6406,12 @@ MonoBehaviour:
   mFixedAspect: 0
   mPixelSize: 1
   nextSprite: {fileID: 0}
+--- !u!114 &673427928 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012698402644, guid: cc9340974238ba749bf41af59d9c80e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 2088773584}
+  m_Script: {fileID: 11500000, guid: d9ee96c79cde0d6458a8efa8428f7682, type: 3}
 --- !u!1 &679546589
 GameObject:
   m_ObjectHideFlags: 0
@@ -6928,10 +6876,19 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d71ce238a218b914dab303c3ce29f712, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &702127480 stripped
+--- !u!4 &702127480
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 702127479}
+  m_GameObject: {fileID: 1646381887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2075616700}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &707536356
 GameObject:
   m_ObjectHideFlags: 0
@@ -6959,7 +6916,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &707536358
 MonoBehaviour:
@@ -6980,18 +6937,20 @@ MonoBehaviour:
       apiKey: c0e1850ab796bf2a5be672715b7ca9780621b5f9
       spotID: 586657
   loadWhenActivated: 1
+  enableAutoReload: 0
+  reloadInterval: 0
   views:
   - {fileID: 1371154840}
   AdLoaded:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdFailedToReceive:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewFailedToLoadEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewFailedToLoadEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   type: 0
 --- !u!1 &711463181
 GameObject:
@@ -7899,7 +7858,7 @@ Transform:
   m_LocalScale: {x: 0.003125, y: 0.003125, z: 0.003125}
   m_Children:
   - {fileID: 284385265}
-  - {fileID: 702127480}
+  - {fileID: 2075616700}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8203,6 +8162,8 @@ MonoBehaviour:
       apiKey: f2371c92e032813bf8edae801b51fc1e90bb7821
       spotID: 650028
   loadWhenActivated: 1
+  enableAutoReload: 0
+  reloadInterval: 0
   views:
   - {fileID: 1751081428}
   AdLoaded:
@@ -8219,13 +8180,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdFailedToReceive:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewFailedToLoadEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewFailedToLoadEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   type: 1
 --- !u!4 &940705133
 Transform:
@@ -8238,7 +8199,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &942458556
 GameObject:
@@ -8593,7 +8554,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22459336, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 22459336, guid: 9b70676653ea7054f9a399786fe5a303, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -11474,48 +11435,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!1001 &1253358387
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3ef986836d33149a3be0a07501a488f0, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1282910080
 GameObject:
   m_ObjectHideFlags: 0
@@ -12471,18 +12390,18 @@ MonoBehaviour:
   AdShown:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdFailedToShow:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdClicked:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &1371154841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14014,6 +13933,73 @@ MonoBehaviour:
   mFixedAspect: 0
   mPixelSize: 1
   nextSprite: {fileID: 0}
+--- !u!1 &1604232070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1604232072}
+  - component: {fileID: 1604232071}
+  m_Layer: 5
+  m_Name: UIAssistant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1604232071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604232070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52034841e9aa56048a8b240900f20fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UImodules:
+  - {fileID: 501691146}
+  panels:
+  - {fileID: 673427928}
+  - {fileID: 1223960302}
+  pages:
+  - name: MainMenu
+    panels:
+    - {fileID: 1223960302}
+    ignoring_panels: []
+    soundtrack: '-'
+    default_page: 1
+    setTimeScale: 1
+    timeScale: 1
+  - name: None
+    panels:
+    - {fileID: 673427928}
+    ignoring_panels: []
+    soundtrack: '-'
+    default_page: 0
+    setTimeScale: 1
+    timeScale: 1
+--- !u!224 &1604232072
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604232070}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7911503, y: 0.7911503, z: 0.7911503}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 461.98557, y: 259.74838}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1613720107
 GameObject:
   m_ObjectHideFlags: 0
@@ -14355,6 +14341,21 @@ MonoBehaviour:
   mFixedAspect: 0
   mPixelSize: 1
   nextSprite: {fileID: 0}
+--- !u!1 &1646381887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 702127479}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 702127480}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1654194260
 GameObject:
   m_ObjectHideFlags: 0
@@ -15537,18 +15538,18 @@ MonoBehaviour:
   AdShown:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdFailedToShow:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
   AdClicked:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: NendUnityPlugin.AD.Native.Events.NativeAdViewEvent, Assembly-CSharp,
+      Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &1751081429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18284,6 +18285,35 @@ MonoBehaviour:
   mSortingOrder: 0
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
+--- !u!1 &2075616699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 702127479}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2075616700}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2075616700
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 702127479}
+  m_GameObject: {fileID: 2075616699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 702127480}
+  m_Father: {fileID: 884717184}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2077585740
 GameObject:
   m_ObjectHideFlags: 0
@@ -18399,7 +18429,7 @@ Prefab:
     - target: {fileID: 224000010252507766, guid: cc9340974238ba749bf41af59d9c80e8,
         type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 224000010252507766, guid: cc9340974238ba749bf41af59d9c80e8,
         type: 2}
@@ -18532,6 +18562,10 @@ Prefab:
       value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 1000011280126212, guid: cc9340974238ba749bf41af59d9c80e8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012059536176, guid: cc9340974238ba749bf41af59d9c80e8, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
