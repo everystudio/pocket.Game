@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 #if UNITY_ANDROID
-using Prime31;
+//using Prime31;
 #endif
 
 public class PurchasesManager : MonoBehaviour {

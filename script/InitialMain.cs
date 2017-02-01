@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using EveryStudioLibrary;
-using Prime31;
+//using Prime31;
 using NendUnityPlugin.AD;
 
 public class InitialMain : MonoBehaviour {
