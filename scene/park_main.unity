@@ -4225,7 +4225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &419130287
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6930,7 +6930,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &702127480 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 488038, guid: d71ce238a218b914dab303c3ce29f712, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 702127479}
 --- !u!1 &707536356
 GameObject:
