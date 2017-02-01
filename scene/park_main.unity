@@ -422,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &68744908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4949,7 +4949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &707536357
 Transform:
   m_ObjectHideFlags: 0
@@ -5960,7 +5960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &940705132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12881,6 +12881,7 @@ MonoBehaviour:
   minTwistAngle: 0.1
   doubleTapDetection: 0
   doubleTapTime: 0.3
+  alwaysSendSwipe: 0
   enable2FingersGesture: 1
   enableTwist: 1
   enablePinch: 1

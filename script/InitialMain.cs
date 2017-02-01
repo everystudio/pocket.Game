@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using EveryStudioLibrary;
-using Prime31;
 
 public class InitialMain : MonoBehaviour {
 
@@ -130,7 +129,7 @@ public class InitialMain : MonoBehaviour {
 		SpriteManager.Instance.LoadAtlas ("atlas/ui002");
 		SpriteManager.Instance.LoadAtlas ("atlas/ui003");
 		//m_SwitchSpriteBack.SetSprite ("garalley_003");
-		m_SwitchSpriteBack.SetSprite ("texture/back/bg001.png");
+		//m_SwitchSpriteBack.SetSprite ("texture/back/bg001.png");
 
 		bool bDispVisitor = true;
 		if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {

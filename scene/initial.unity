@@ -1,19 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
-SceneSettings:
+OcclusionCullingSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
-  m_PVSObjectsArray: []
-  m_PVSPortalsArray: []
+  serializedVersion: 2
   m_OcclusionBakeSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 6
+  serializedVersion: 7
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -37,12 +37,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 6
+  serializedVersion: 7
   m_GIWorkflowMode: 0
-  m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -53,17 +53,22 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 3
+    serializedVersion: 4
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
     m_TextureHeight: 1024
+    m_AO: 0
     m_AOMaxDistance: 1
-    m_Padding: 2
     m_CompAOExponent: 0
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
     m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
+    m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
   m_LightingDataAsset: {fileID: 0}
@@ -74,63 +79,18 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
+    agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    accuratePlacement: 0
     minRegionArea: 2
-    cellSize: 0.16666667
     manualCellSize: 0
+    cellSize: 0.16666667
+    accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &40863123
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: .71433109
-      objectReference: {fileID: 0}
-    - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: .56574291
-      objectReference: {fileID: 0}
-    - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 488556, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 146618, guid: 3d57506c3698648c983111c20600f560, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3d57506c3698648c983111c20600f560, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &86661950
 Prefab:
   m_ObjectHideFlags: 0
@@ -182,13 +142,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 104630455}
-  - 20: {fileID: 104630454}
-  - 92: {fileID: 104630453}
-  - 124: {fileID: 104630452}
-  - 81: {fileID: 104630451}
+  - component: {fileID: 104630455}
+  - component: {fileID: 104630454}
+  - component: {fileID: 104630453}
+  - component: {fileID: 104630452}
+  - component: {fileID: 104630451}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -263,6 +223,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &294054364
 Prefab:
   m_ObjectHideFlags: 0
@@ -300,7 +261,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 443638, guid: b4bd056bd975b4bf2be46cfc07b74a4f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4bd056bd975b4bf2be46cfc07b74a4f, type: 2}
@@ -310,13 +271,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 331186948}
-  - 114: {fileID: 331186949}
-  - 65: {fileID: 331186951}
-  - 114: {fileID: 331186950}
-  - 114: {fileID: 331186952}
+  - component: {fileID: 331186948}
+  - component: {fileID: 331186949}
+  - component: {fileID: 331186951}
+  - component: {fileID: 331186950}
+  - component: {fileID: 331186952}
   m_Layer: 8
   m_Name: btnStart
   m_TagString: Untagged
@@ -336,6 +297,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2101767892}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &331186949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +331,7 @@ MonoBehaviour:
   mWidth: 465
   mHeight: 80
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -387,7 +350,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300000, guid: b3a9c059299d206448dbc37de9a57627, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -445,6 +407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!1 &360038181
@@ -452,10 +419,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 360038183}
-  - 114: {fileID: 360038182}
+  - component: {fileID: 360038183}
+  - component: {fileID: 360038182}
   m_Layer: 8
   m_Name: Panel
   m_TagString: Untagged
@@ -493,13 +460,15 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -527,15 +496,16 @@ Transform:
   - {fileID: 1438702530}
   m_Father: {fileID: 730434247}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472444121
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 472444122}
-  - 114: {fileID: 472444123}
+  - component: {fileID: 472444122}
+  - component: {fileID: 472444123}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -555,6 +525,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1424594374}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &472444123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +559,7 @@ MonoBehaviour:
   mWidth: 210
   mHeight: 80
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -606,7 +578,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 0, g: 0, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -628,10 +599,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 483076993}
-  - 114: {fileID: 483076994}
+  - component: {fileID: 483076993}
+  - component: {fileID: 483076994}
   m_Layer: 0
   m_Name: MainSystem
   m_TagString: Untagged
@@ -651,6 +622,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &483076994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,10 +658,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 523562373}
-  - 114: {fileID: 523562374}
+  - component: {fileID: 523562373}
+  - component: {fileID: 523562374}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -709,6 +681,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2101767892}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &523562374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,6 +715,7 @@ MonoBehaviour:
   mWidth: 367
   mHeight: 30
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -760,7 +734,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -782,10 +755,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 538343413}
-  - 114: {fileID: 538343414}
+  - component: {fileID: 538343413}
+  - component: {fileID: 538343414}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -805,6 +778,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282962867}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &538343414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,6 +812,7 @@ MonoBehaviour:
   mWidth: 524
   mHeight: 64
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -856,7 +831,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -873,18 +847,47 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!1 &650472631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1396411947}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 650472632}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &650472632
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1396411947}
+  m_GameObject: {fileID: 650472631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1396411948}
+  m_Father: {fileID: 730434247}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &688685844
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 688685845}
-  - 114: {fileID: 688685849}
-  - 65: {fileID: 688685848}
-  - 114: {fileID: 688685847}
-  - 114: {fileID: 688685846}
+  - component: {fileID: 688685845}
+  - component: {fileID: 688685849}
+  - component: {fileID: 688685848}
+  - component: {fileID: 688685847}
+  - component: {fileID: 688685846}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -904,6 +907,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1411071180}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &688685846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,6 +934,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!65 &688685848
@@ -977,6 +986,7 @@ MonoBehaviour:
   mWidth: 273
   mHeight: 89
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -995,7 +1005,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -1017,12 +1026,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 730434247}
-  - 114: {fileID: 730434250}
-  - 114: {fileID: 730434249}
-  - 54: {fileID: 730434248}
+  - component: {fileID: 730434247}
+  - component: {fileID: 730434250}
+  - component: {fileID: 730434249}
+  - component: {fileID: 730434248}
   m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
@@ -1042,10 +1051,11 @@ Transform:
   m_Children:
   - {fileID: 1359648427}
   - {fileID: 360038183}
-  - {fileID: 2093439476}
-  - {fileID: 1396411948}
+  - {fileID: 1595023093}
+  - {fileID: 650472632}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &730434248
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1091,6 +1101,8 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 1
   alwaysOnScreen: 0
@@ -1132,13 +1144,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 829097331}
-  - 114: {fileID: 829097335}
-  - 65: {fileID: 829097334}
-  - 114: {fileID: 829097333}
-  - 114: {fileID: 829097332}
+  - component: {fileID: 829097331}
+  - component: {fileID: 829097335}
+  - component: {fileID: 829097334}
+  - component: {fileID: 829097333}
+  - component: {fileID: 829097332}
   m_Layer: 8
   m_Name: btnCacheClear
   m_TagString: Untagged
@@ -1159,6 +1171,7 @@ Transform:
   - {fileID: 1188395237}
   m_Father: {fileID: 2101767892}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &829097332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,6 +1183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &829097333
@@ -1246,6 +1264,7 @@ MonoBehaviour:
   mWidth: 200
   mHeight: 80
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1271,10 +1290,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 853350101}
-  - 114: {fileID: 853350102}
+  - component: {fileID: 853350101}
+  - component: {fileID: 853350102}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -1294,6 +1313,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1195654174}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &853350102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,6 +1347,7 @@ MonoBehaviour:
   mWidth: 549
   mHeight: 464
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1345,7 +1366,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -1367,10 +1387,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1188395237}
-  - 114: {fileID: 1188395238}
+  - component: {fileID: 1188395237}
+  - component: {fileID: 1188395238}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -1390,6 +1410,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 829097331}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1188395238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,6 +1444,7 @@ MonoBehaviour:
   mWidth: 210
   mHeight: 80
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1441,7 +1463,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 0, g: 0, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -1463,13 +1484,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1195654174}
-  - 114: {fileID: 1195654178}
-  - 114: {fileID: 1195654177}
-  - 114: {fileID: 1195654176}
-  - 65: {fileID: 1195654175}
+  - component: {fileID: 1195654174}
+  - component: {fileID: 1195654178}
+  - component: {fileID: 1195654177}
+  - component: {fileID: 1195654176}
+  - component: {fileID: 1195654175}
   m_Layer: 8
   m_Name: NetworkError
   m_TagString: Untagged
@@ -1490,6 +1511,7 @@ Transform:
   - {fileID: 853350101}
   m_Father: {fileID: 360038183}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1195654175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1528,6 +1550,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &1195654178
@@ -1563,6 +1590,7 @@ MonoBehaviour:
   mWidth: 660
   mHeight: 1156
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1581,7 +1609,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300000, guid: ca473c4adc23ac04cb244bb7b7729c5b, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 10, y: 10, z: 10, w: 10}
   mFixedAspect: 0
@@ -1592,10 +1619,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1282962867}
-  - 114: {fileID: 1282962868}
+  - component: {fileID: 1282962867}
+  - component: {fileID: 1282962868}
   m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
@@ -1617,6 +1644,7 @@ Transform:
   - {fileID: 1528826474}
   m_Father: {fileID: 360038183}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1282962868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1636,11 +1664,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1359648427}
-  - 20: {fileID: 1359648429}
-  - 114: {fileID: 1359648428}
+  - component: {fileID: 1359648427}
+  - component: {fileID: 1359648429}
+  - component: {fileID: 1359648428}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
@@ -1660,6 +1688,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 730434247}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1359648428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1741,10 +1770,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1372745189}
-  - 114: {fileID: 1372745191}
+  - component: {fileID: 1372745189}
+  - component: {fileID: 1372745191}
   m_Layer: 8
   m_Name: background
   m_TagString: Untagged
@@ -1764,6 +1793,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2101767892}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1372745191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1797,6 +1827,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 793
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1815,7 +1846,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300000, guid: 65b3addd0b9306641b7eaee37e28f229, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -1867,18 +1897,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 655db91981b21724bb8a413d8213e4c6, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1396411948 stripped
+--- !u!4 &1396411948
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 454594, guid: 655db91981b21724bb8a413d8213e4c6, type: 2}
   m_PrefabInternal: {fileID: 1396411947}
+  m_GameObject: {fileID: 1811828430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 650472632}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1411071179
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1411071180}
+  - component: {fileID: 1411071180}
   m_Layer: 8
   m_Name: VisitorDisp
   m_TagString: Untagged
@@ -1900,18 +1939,19 @@ Transform:
   - {fileID: 2145918818}
   m_Father: {fileID: 2101767892}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1424594369
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1424594374}
-  - 114: {fileID: 1424594373}
-  - 65: {fileID: 1424594372}
-  - 114: {fileID: 1424594371}
-  - 114: {fileID: 1424594370}
+  - component: {fileID: 1424594374}
+  - component: {fileID: 1424594373}
+  - component: {fileID: 1424594372}
+  - component: {fileID: 1424594371}
+  - component: {fileID: 1424594370}
   m_Layer: 8
   m_Name: btnBackup
   m_TagString: Untagged
@@ -1930,6 +1970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &1424594371
@@ -2006,6 +2051,7 @@ MonoBehaviour:
   mWidth: 200
   mHeight: 80
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2039,18 +2085,19 @@ Transform:
   - {fileID: 472444122}
   m_Father: {fileID: 2101767892}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438702529
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1438702530}
-  - 114: {fileID: 1438702534}
-  - 65: {fileID: 1438702532}
-  - 114: {fileID: 1438702531}
-  - 114: {fileID: 1438702533}
+  - component: {fileID: 1438702530}
+  - component: {fileID: 1438702534}
+  - component: {fileID: 1438702532}
+  - component: {fileID: 1438702531}
+  - component: {fileID: 1438702533}
   m_Layer: 8
   m_Name: 2D Sprite
   m_TagString: Untagged
@@ -2070,6 +2117,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 360038183}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1438702531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2122,6 +2170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff2c22c240d1a247821f5690c833b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &1438702534
@@ -2157,6 +2210,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2175,7 +2229,6 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mSprite: {fileID: 21300000, guid: 949f10131a4957d44a16fcfb09104e5d, type: 3}
-  mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -2228,11 +2281,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1528826474}
-  - 114: {fileID: 1528826475}
-  - 114: {fileID: 1528826476}
+  - component: {fileID: 1528826474}
+  - component: {fileID: 1528826475}
+  - component: {fileID: 1528826476}
   m_Layer: 8
   m_Name: Label (1)
   m_TagString: Untagged
@@ -2252,6 +2305,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282962867}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1528826475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,6 +2339,7 @@ MonoBehaviour:
   mWidth: 210
   mHeight: 40
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2303,7 +2358,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -2336,18 +2390,62 @@ MonoBehaviour:
   m_fDeltaY: 0
   m_fSpeed: 2
   m_v3Save: {x: 0, y: 0, z: 0}
+--- !u!1 &1595023092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1445556715}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1595023093}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1595023093
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1445556715}
+  m_GameObject: {fileID: 1595023092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2093439476}
+  m_Father: {fileID: 730434247}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1811828430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1396411947}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1396411948}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1824028278
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1824028279}
-  - 114: {fileID: 1824028283}
-  - 65: {fileID: 1824028282}
-  - 114: {fileID: 1824028281}
-  - 114: {fileID: 1824028280}
+  - component: {fileID: 1824028279}
+  - component: {fileID: 1824028283}
+  - component: {fileID: 1824028282}
+  - component: {fileID: 1824028281}
+  - component: {fileID: 1824028280}
   m_Layer: 8
   m_Name: btnTutorialReset
   m_TagString: Untagged
@@ -2368,6 +2466,7 @@ Transform:
   - {fileID: 1844082518}
   m_Father: {fileID: 2101767892}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1824028280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2379,6 +2478,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd161639bec4b77b23c230ae3ca388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_intIndex: 0
   m_bButtonClicked: 0
 --- !u!114 &1824028281
@@ -2455,6 +2559,7 @@ MonoBehaviour:
   mWidth: 200
   mHeight: 80
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2480,10 +2585,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1844082518}
-  - 114: {fileID: 1844082519}
+  - component: {fileID: 1844082518}
+  - component: {fileID: 1844082519}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -2503,6 +2608,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1824028279}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1844082519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2536,6 +2642,7 @@ MonoBehaviour:
   mWidth: 210
   mHeight: 80
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2554,7 +2661,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 0, g: 0, b: 0, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -2576,12 +2682,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1942168679}
-  - 114: {fileID: 1942168681}
-  - 114: {fileID: 1942168680}
-  - 212: {fileID: 1942168682}
+  - component: {fileID: 1942168679}
+  - component: {fileID: 1942168681}
+  - component: {fileID: 1942168680}
+  - component: {fileID: 1942168682}
   m_Layer: 8
   m_Name: BackTexture
   m_TagString: Untagged
@@ -2601,6 +2707,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 360038183}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1942168680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2634,6 +2741,7 @@ MonoBehaviour:
   mWidth: 640
   mHeight: 1136
   mDepth: -1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2651,8 +2759,7 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
-  mSprite: {fileID: 0}
-  mMat: {fileID: 0}
+  mSprite: {fileID: 21300000, guid: 28091e7665c28294b88dd3fc8f60f3c6, type: 3}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -2664,7 +2771,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1942168678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecb14c79234564c198c611529bb207c5, type: 3}
   m_Name: 
@@ -2677,6 +2784,7 @@ MonoBehaviour:
   m_sprite: {fileID: 0}
   m_sprite2D: {fileID: 1942168680}
   m_spriteImage: {fileID: 0}
+  m_sprRenderer: {fileID: 0}
   m_strSpriteName: 
 --- !u!212 &1942168682
 SpriteRenderer:
@@ -2687,17 +2795,22 @@ SpriteRenderer:
   m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -2708,18 +2821,42 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!4 &2093439476 stripped
+--- !u!1 &1982550846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1445556715}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2093439476}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2093439476
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 444026, guid: fcf60675fb31b894ab8da2af32128694, type: 2}
   m_PrefabInternal: {fileID: 1445556715}
+  m_GameObject: {fileID: 1982550846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1595023093}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2101767891
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2101767892}
+  - component: {fileID: 2101767892}
   m_Layer: 8
   m_Name: dispDelay
   m_TagString: Untagged
@@ -2746,15 +2883,16 @@ Transform:
   - {fileID: 1411071180}
   m_Father: {fileID: 360038183}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145918817
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2145918818}
-  - 114: {fileID: 2145918819}
+  - component: {fileID: 2145918818}
+  - component: {fileID: 2145918819}
   m_Layer: 8
   m_Name: Label (1)
   m_TagString: Untagged
@@ -2774,6 +2912,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1411071180}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2145918819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2807,6 +2946,7 @@ MonoBehaviour:
   mWidth: 273
   mHeight: 89
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2825,7 +2965,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}

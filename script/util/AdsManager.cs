@@ -43,7 +43,7 @@ public class AdsManager : Singleton<AdsManager> {
         string adUnitId1 = "unexpected_platform";
 #endif
 		if (m_nendAdBanner == null) {
-			BannerView bannerView1 = new BannerView(adUnitId1, AdSize.Banner, AdPosition.Top);
+			BannerView bannerView1 = new BannerView(adUnitId1, AdSize.Banner, AdPosition.Bottom);
 			// Create an empty ad request.
 			AdRequest request1 = new AdRequest.Builder().Build();
 			// Load the banner with the request.
@@ -96,10 +96,20 @@ public class AdsManager : Singleton<AdsManager> {
 	}
 	// Use this for initialization
 	void Start () {
+		InterstitialLoad();
 	}
 
+	private bool m_bInterstitialLoaded = false;
 	private InterstitialAd interstitial;
 	public void CallInterstitial()
+	{
+		if (m_bInterstitialLoaded == true)
+		{
+			interstitial.OnAdClosed += ViewInterstitial_OnAdClosed;
+			interstitial.Show();
+		}
+	}
+	private void InterstitialLoad()
 	{
 		// 通常表示
 #if UNITY_ANDROID
@@ -107,7 +117,7 @@ public class AdsManager : Singleton<AdsManager> {
 #elif UNITY_IPHONE
 		string adUnitId = "ca-app-pub-5869235725006697/7156037168";
 #endif
-
+		m_bInterstitialLoaded = false;
 		// Create an interstitial.
 		interstitial = new InterstitialAd(adUnitId);
 		// Create an empty ad request.
@@ -120,13 +130,12 @@ public class AdsManager : Singleton<AdsManager> {
 		interstitial.LoadAd(request);
 		interstitial.OnAdLoaded += ViewInterstitial_OnAdLoaded;
 		interstitial.OnAdFailedToLoad += ViewInterstitial_OnAdFailedToLoad;
-		interstitial.OnAdClosed += ViewInterstitial_OnAdClosed;
+
 	}
 
 	private void ViewInterstitial_OnAdLoaded(object sender, System.EventArgs e)
 	{
-		InterstitialAd inter = (InterstitialAd)sender;
-		inter.Show();
+		m_bInterstitialLoaded = true;
 	}
 	private void ViewInterstitial_OnAdFailedToLoad(object sender, System.EventArgs e)
 	{
@@ -136,6 +145,7 @@ public class AdsManager : Singleton<AdsManager> {
 	{
 		InterstitialAd inter = (InterstitialAd)sender;
 		inter.Destroy();
+		InterstitialLoad();
 	}
 	// Update is called once per frame
 	void Update () {

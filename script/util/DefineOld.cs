@@ -181,6 +181,9 @@ public class DefineOld : MonoBehaviour {
 	static public string GetProductId( int _iItemId , ref int _iTicketNum ){
 		string strRet = "";
 		_iTicketNum = 0;
+		/*
+		string strRet = "";
+		_iTicketNum = 0;
 		switch (_iItemId) {
 		case 30:
 			_iTicketNum = 10;
@@ -205,6 +208,7 @@ public class DefineOld : MonoBehaviour {
 		default:
 			break;
 		}
+		*/
 		return strRet;
 	}
 
