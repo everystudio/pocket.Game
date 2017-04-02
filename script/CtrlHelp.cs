@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-using UnityEngine.Advertisements;
 
 public class CtrlHelp : ButtonBase {
 
@@ -117,11 +116,9 @@ public class CtrlHelp : ButtonBase {
 		case STEP.CHECK:
 			if (bInit) {
 				if (m_eActionType == ACTION_TYPE.MOVIE) {
-					if (UnityAdsSupporter.Instance.IsReady () == false) {
 						m_eActionType = ACTION_TYPE.TWITTER;
 					}
-				}
-				string strAction = "";
+					string strAction = "";
 				if (m_eActionType == ACTION_TYPE.MOVIE) {
 					strAction = "動画を見ている間に";
 				} else {
@@ -135,11 +132,7 @@ public class CtrlHelp : ButtonBase {
 				Destroy (m_ojisanCheck.gameObject);
 
 				if (m_eActionType == ACTION_TYPE.MOVIE) {
-					if (UnityAdsSupporter.Instance.ShowRewardedAd ()) {
-						m_eStep = STEP.MOVIE;
-					} else {
 						m_eStep = STEP.IDLE;
-					}
 				} else {
 				
 					// WebブラウザのTwitter投稿画面を開く
@@ -166,7 +159,8 @@ public class CtrlHelp : ButtonBase {
 			break;
 
 		case STEP.MOVIE:
-			ShowResult result = ShowResult.Finished;
+			//ShowResult result = ShowResult.Finished;
+				/*
 			if (UnityAdsSupporter.Instance.IsShowed (out result)) {
 				switch (result) {
 				case ShowResult.Finished:
@@ -180,9 +174,11 @@ public class CtrlHelp : ButtonBase {
 					m_eStep = STEP.RESULT_FAIL;
 					break;
 				}
-				DataManager.Instance.data_kvs.Write (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME, TimeManager.StrGetTime ());
 			}
-			break;
+			*/
+				m_eStep = STEP.RESULT_SUCCESS;
+				DataManager.Instance.data_kvs.Write(DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME, TimeManager.StrGetTime());
+				break;
 
 		case STEP.RESULT_SUCCESS:
 			if (bInit) {

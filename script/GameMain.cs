@@ -145,7 +145,7 @@ public class GameMain : MonoBehaviour {
 		#elif UNITY_IOS
 		strUnityAdsAppId = DataManager.Instance.config.Read( DataManager.Instance.KEY_UNITYADS_APP_ID_IOS );
 		#endif
-		UnityAdsSupporter.Instance.Initialize (strUnityAdsAppId);
+		//UnityAdsSupporter.Instance.Initialize (strUnityAdsAppId);
 
 		if (m_bInitialized == false) {
 			int iWidth = PlayerPrefs.GetInt (DefineOld.USER_WIDTH);
