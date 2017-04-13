@@ -125,7 +125,7 @@ public class BannerBase : MonoBehaviour {
 		}
 
 		if (strRet.Equals ("") == false) {
-			_sprite.sprite2D = SpriteManager.Instance.Load (string.Format ("texture/ui/{0}.png", strRet));
+			_sprite.sprite2D = SpriteManager.Instance.LoadSprite(string.Format ("texture/ui/{0}.png", strRet));
 		}
 
 		return strRet;

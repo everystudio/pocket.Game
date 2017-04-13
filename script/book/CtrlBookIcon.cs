@@ -25,7 +25,7 @@ public class CtrlBookIcon : ButtonBase {
 		m_lbName.text = m_monsterData.name;
 
 		//m_sprMonster.atlas = AtlasManager.Instance.GetAtlas (strMonster);
-		m_sprMonster.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/monster/chara{0:D2}.png", m_monsterData.monster_id));
+		m_sprMonster.sprite2D = SpriteManager.Instance.LoadSprite( string.Format( "texture/monster/chara{0:D2}.png", m_monsterData.monster_id));
 
 		List<DataMonsterParam> datamonster_list = DataManager.Instance.dataMonster.Select (string.Format (" monster_id = {0}", m_monsterData.monster_id));
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class CtrlDispMonsterDetailStaffSub : MonoBehaviour {
 
 	public void Initialize( string _strStaff ){
-		m_sprChara.sprite2D = SpriteManager.Instance.Load (string.Format ("texture/staff/{0}.png", _strStaff));
+		m_sprChara.sprite2D = SpriteManager.Instance.LoadSprite(string.Format ("texture/staff/{0}.png", _strStaff));
 
 		m_sprChara.width =  (int)m_sprChara.sprite2D.rect.width;
 		m_sprChara.height = (int)m_sprChara.sprite2D.rect.height;

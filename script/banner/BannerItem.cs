@@ -64,7 +64,7 @@ public class BannerItem : BannerBase {
 		string strIcon = GetSpriteName (_data);
 		//UIAtlas atlas = AtlasManager.Instance.GetAtlas (strIcon);
 		//m_sprIcon.atlas = atlas;
-		m_sprIcon.sprite2D = SpriteManager.Instance.Load( strIcon );
+		m_sprIcon.sprite2D = SpriteManager.Instance.LoadSprite( strIcon );
 		SpriteIconAdjust (m_sprIcon);
 
 		SetPrice (_data);
@@ -78,12 +78,12 @@ public class BannerItem : BannerBase {
 		if ((DefineOld.Item.Category)_data.category == DefineOld.Item.Category.SHOP) {
 			m_lbPrize.text = _data.size.ToString();
 			m_lbPrizeExp.text = "";
-			m_sprBackground.sprite2D= SpriteManager.Instance.Load (string.Format ("texture/ui/list_item_2.png"));
+			m_sprBackground.sprite2D= SpriteManager.Instance.LoadSprite(string.Format ("texture/ui/list_item_2.png"));
 			m_lbDifficulty.text = UtilString.GetSyuunyuu( m_ItemMaster.revenue , m_ItemMaster.revenue_interval );
 		} else if ((DefineOld.Item.Category)_data.category == DefineOld.Item.Category.EXPAND || 
 			(DefineOld.Item.Category)_data.category == DefineOld.Item.Category.GOLD ||
 			(DefineOld.Item.Category)_data.category == DefineOld.Item.Category.TICKET ) {
-			m_sprBackground.sprite2D= SpriteManager.Instance.Load (string.Format ("texture/ui/list_item_4.png"));
+			m_sprBackground.sprite2D= SpriteManager.Instance.LoadSprite(string.Format ("texture/ui/list_item_4.png"));
 			m_lbPrize.text = "";
 			m_lbPrizeExp.text = "";
 			m_lbDifficulty.text = "";
@@ -140,7 +140,7 @@ public class BannerItem : BannerBase {
 		} else {
 			Debug.LogError ("no need");
 		}
-		m_sprBuyBase.sprite2D = SpriteManager.Instance.Load (string.Format ("texture/ui/{0}.png", strImageName));
+		m_sprBuyBase.sprite2D = SpriteManager.Instance.LoadSprite(string.Format ("texture/ui/{0}.png", strImageName));
 		m_lbBuyPrice.text = strText;
 		return;
 	}

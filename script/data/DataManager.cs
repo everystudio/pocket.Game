@@ -145,7 +145,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 
 	public void AllLoad(){
 		config.Load (CsvConfig.FILE_NAME);
-		kvs_data.Load( DataKvs.FILE_NAME );
+		user_data.Load( DataKvs.FILE_NAME );
 		m_csvItem.Load ();
 		m_csvMonster.Load ();
 		dataMonster.Load (DataMonster.FILENAME);
@@ -314,14 +314,14 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 			return Instance.m_csvTime.All;
 		}
 	}
-	public CsvWordData m_csvWord = new CsvWordData();
-	static public List<CsvWordParam> csv_word {
+	public pocket.CsvWordData m_csvWord = new pocket.CsvWordData();
+	static public List<pocket.CsvWordParam> csv_word {
 		get{ 
 			return Instance.m_csvWord.All;
 		}
 	}
 	public string GetWord( string _strKey ){
-		foreach (CsvWordParam data in csv_word) {
+		foreach (pocket.CsvWordParam data in csv_word) {
 			if (_strKey.Equals (data.key) == true) {
 				return data.word;
 			}

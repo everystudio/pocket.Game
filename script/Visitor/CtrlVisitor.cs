@@ -58,7 +58,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 	private void setSprite (int _iType, int _iFrame){
 		string people = string.Format ("texture/ui/people{0}_{1:D2}.png", _iType, _iFrame);
 		//Debug.Log (people);
-		m_sprChara.sprite2D = SpriteManager.Instance.Load (people);
+		m_sprChara.sprite2D = SpriteManager.Instance.LoadSprite(people);
 		//Debug.Log (m_sprChara.sprite2D);
 		m_sprChara.width = (int)m_sprChara.sprite2D.textureRect.width;
 		m_sprChara.height = (int)m_sprChara.sprite2D.textureRect.height;

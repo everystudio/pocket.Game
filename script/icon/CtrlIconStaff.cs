@@ -52,7 +52,7 @@ public class CtrlIconStaff : CtrlIconBase {
 			string strName = "staff_icon" + m_dataStaff.staff_id.ToString ();
 			//m_sprIcon.atlas = AtlasManager.Instance.GetAtlas (strName);
 			//m_sprIcon.spriteName = strName;
-			m_sprIcon.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/staff/{0}.png" , strName ));
+			m_sprIcon.sprite2D = SpriteManager.Instance.LoadSprite( string.Format( "texture/staff/{0}.png" , strName ));
 			m_sprIcon.width = (int)m_sprIcon.sprite2D.textureRect.width;
 			m_sprIcon.height = (int)m_sprIcon.sprite2D.textureRect.height;
 		}
@@ -77,7 +77,7 @@ public class CtrlIconStaff : CtrlIconBase {
 			if (m_iAnimationFrame == 1) {
 				strName += "_2";
 			}
-			m_sprIcon.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/staff/{0}.png" , strName ));
+			m_sprIcon.sprite2D = SpriteManager.Instance.LoadSprite( string.Format( "texture/staff/{0}.png" , strName ));
 			m_sprIcon.width = (int)m_sprIcon.sprite2D.textureRect.width;
 			m_sprIcon.height = (int)m_sprIcon.sprite2D.textureRect.height;
 		}

@@ -43,7 +43,7 @@ public class CtrlShopDetail : MonoBehaviour {
 		m_lbExp.text = "";
 		m_lbDescription.text = master_data.description;
 
-		m_sprItem.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/item/item{0:D2}_01.png" ,_dataItem.item_id ));
+		m_sprItem.sprite2D = SpriteManager.Instance.LoadSprite( string.Format( "texture/item/item{0:D2}_01.png" ,_dataItem.item_id ));
 		m_sprItem.width = (int)m_sprItem.sprite2D.textureRect.width;
 		m_sprItem.height = (int)m_sprItem.sprite2D.textureRect.height;
 

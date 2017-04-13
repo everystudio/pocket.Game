@@ -124,7 +124,7 @@ public class CtrlPopupWork : MonoBehaviourEx{
 				m_btnClose.gameObject.SetActive (true);
 
 				//m_sprWorkIcon.spriteName = BannerWork.GetSpriteName (m_iPopupWorkId);
-				m_sprWorkIcon.sprite2D = SpriteManager.Instance.Load( BannerWork.GetSpriteName (m_iPopupWorkId) );
+				m_sprWorkIcon.sprite2D = SpriteManager.Instance.LoadSprite( BannerWork.GetSpriteName (m_iPopupWorkId) );
 				//m_sprWorkIcon.atlas = AtlasManager.Instance.GetAtlas (m_sprWorkIcon.spriteName);
 				m_sprWorkIcon.width = (int)m_sprWorkIcon.sprite2D.textureRect.width;
 				m_sprWorkIcon.height = (int)m_sprWorkIcon.sprite2D.textureRect.height;

@@ -378,14 +378,14 @@ public class GameMain : MonoBehaviour {
 		foreach (DataItemParam item in item_list) {
 			iUriagePerHour += item.GetUriagePerHour ();
 		}
-		DataManager.Instance.kvs_data.WriteInt (DefineOld.USER_URIAGE_PAR_HOUR, iUriagePerHour);
+		DataManager.Instance.user_data.WriteInt (DefineOld.USER_URIAGE_PAR_HOUR, iUriagePerHour);
 
 		// 一時間あたりの支出
 		int iShisyutsuHour = 0;
 		foreach (DataItemParam item in item_list) {
 			iShisyutsuHour += item.GetShiSyutsuPerHour ();
 		}
-		DataManager.Instance.kvs_data.WriteInt (DefineOld.USER_SHISYUTU_PAR_HOUR, iShisyutsuHour);
+		DataManager.Instance.user_data.WriteInt (DefineOld.USER_SHISYUTU_PAR_HOUR, iShisyutsuHour);
 
 		m_header.RefleshNum (_bForce);
 	}

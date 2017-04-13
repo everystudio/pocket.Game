@@ -51,7 +51,7 @@ public class CtrlIconFukidashi : MonoBehaviour {
 			break;
 		}
 
-		m_sprIcon.sprite2D = SpriteManager.Instance.Load (string.Format ("texture/ui/{0}.png", strName));
+		m_sprIcon.sprite2D = SpriteManager.Instance.LoadSprite(string.Format ("texture/ui/{0}.png", strName));
 		m_sprIcon.enabled = bDisp;
 
 	}

@@ -187,7 +187,7 @@ public class CageDetailMain : PageBase2 {
 			foreach (DataItemParam item in item_list) {
 				iUriagePerHour += item.GetUriagePerHour ();
 			}
-			DataManager.Instance.kvs_data.WriteInt (DefineOld.USER_URIAGE_PAR_HOUR, iUriagePerHour);
+			DataManager.Instance.user_data.WriteInt (DefineOld.USER_URIAGE_PAR_HOUR, iUriagePerHour);
 
 			// 仕事の確認
 			DataWork.WorkCheck ();

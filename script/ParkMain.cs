@@ -63,7 +63,7 @@ public class ParkMain : PageBase2 {
 	// 警告つぶしとりあえず宣言
 	protected override void initialize(){
 
-		m_sprBackground.sprite2D = SpriteManager.Instance.Load ("texture/back/bg_main.png");
+		m_sprBackground.sprite2D = SpriteManager.Instance.LoadSprite("texture/back/bg_main.png");
 		m_eStep = STEP.SETUP_DB;
 		m_eStepPre = STEP.MAX;
 		m_footer.TriggerClearAll ();
@@ -77,7 +77,7 @@ public class ParkMain : PageBase2 {
 
 	}
 	protected override void close(){
-		m_sprBackground.sprite2D = SpriteManager.Instance.Load ("texture/back/bg_table.png");
+		m_sprBackground.sprite2D = SpriteManager.Instance.LoadSprite("texture/back/bg_table.png");
 		AdsManager.Instance.ShowIcon ( false);
 		//Debug.LogError ("close");
 

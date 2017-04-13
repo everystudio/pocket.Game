@@ -27,7 +27,7 @@ public class CtrlPageHeader : ButtonBase {
 		// とりあえずプリセット
 		myTransform.localPosition = new Vector3 (0.0f, 360.0f, 0.0f);
 
-		m_sprBackGround.sprite2D = SpriteManager.Instance.Load( string.Format("texture/ui/{0}.png" , _strImage));
+		m_sprBackGround.sprite2D = SpriteManager.Instance.LoadSprite( string.Format("texture/ui/{0}.png" , _strImage));
 
 		//SetString ("-------");			// 多分表示されない
 		SetKeyWord (_strWordKey);
@@ -35,7 +35,7 @@ public class CtrlPageHeader : ButtonBase {
 		if (_strButton.Equals ("") == true) {
 			m_sprButton.gameObject.SetActive (false);
 		} else {
-			m_sprButton.sprite2D = SpriteManager.Instance.Load( string.Format ("texture/ui/{0}.png", _strButton));
+			m_sprButton.sprite2D = SpriteManager.Instance.LoadSprite( string.Format ("texture/ui/{0}.png", _strButton));
 			m_sprButton.gameObject.SetActive (true);
 		}
 		return;

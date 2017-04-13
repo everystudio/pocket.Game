@@ -75,7 +75,7 @@ public class BannerWork : BannerBase {
 		string strIcon = GetSpriteName (_data);
 		//UIAtlas atlas = AtlasManager.Instance.GetAtlas (strIcon);
 		//m_sprIcon.atlas = atlas;
-		m_sprIcon.sprite2D = SpriteManager.Instance.Load( strIcon );
+		m_sprIcon.sprite2D = SpriteManager.Instance.LoadSprite( strIcon );
 		SpriteIconAdjust (m_sprIcon);
 
 

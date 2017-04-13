@@ -66,8 +66,8 @@ public class CtrlCollectGold : Singleton<CtrlCollectGold> {
 		//StartCoroutine (updateCollect ());
 		m_iCollectGold = 0;
 		m_iCollectExp = 0;
-		//m_iCollectGold = DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_COLLECT_GOLD);
-		//m_iCollectExp =  DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_COLLECT_EXP);
+		//m_iCollectGold = DataManager.Instance.user_data.ReadInt (DataManager.Instance.KEY_COLLECT_GOLD);
+		//m_iCollectExp =  DataManager.Instance.user_data.ReadInt (DataManager.Instance.KEY_COLLECT_EXP);
 		SetCollectGold (m_iCollectGold);
 	}
 

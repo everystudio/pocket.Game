@@ -62,7 +62,7 @@ public class InitialMain : MonoBehaviour {
 	#region DB関係
 	DataKvs m_dbKvs{
 		get{ 
-			return DataManager.Instance.kvs_data;
+			return DataManager.Instance.user_data;
 		}
 	}
 	DataWork m_dbWork {
@@ -97,7 +97,7 @@ public class InitialMain : MonoBehaviour {
 
 		//SoundManager.Instance.PlayBGM ("farming" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm");
 		SoundManager.Instance.PlayBGM ( "maoudamashii_5_village01" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
-		#if UNITY_ANDROID
+#if UNITY_ANDROID
 		/*
 		GoogleIAB.enableLogging (true);
 		string key = "your public key from the Android developer portal here";
@@ -109,8 +109,9 @@ public class InitialMain : MonoBehaviour {
 		//key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGLKSb92Imt43S40ArCXfTmQ31c+pFQTM0Dza3j/Tn4cqjwccjQ/jej68GgVyGXGC2gT/EtbcVVA+bHugXmyv73lGBgmQlzBL41WYTKolO8Z6pVWTeHBtsT7RcHKukoKiONZ7NiQ9P5t6CCPBB2sXQOp1y3ryVbv01xXlM+hB6HkkKxrT6lIjTbtiVXCHAJvqPexPbqVIfGjBaXH/oHKxEBxYDaa6PTUsU3OP3MTx63ycTEnEMsQlA1W6ZuTFIa5Jd3cVlfQI7uovEzAbIlUfwcnxVOUWASiYe81eQiD1BMl+JeCRhfd5e8D4n0LOA12rHm1F3fC9ZoIEjpNB+BRhwIDAQAB";
 		GoogleIAB.init( key );
 				*/
-		#endif
+#endif
 
+		Debug.LogError("atlas load");
 		SpriteManager.Instance.LoadAtlas ("atlas/ad001");
 		SpriteManager.Instance.LoadAtlas ("atlas/back001");
 		SpriteManager.Instance.LoadAtlas ("atlas/back002");
@@ -132,8 +133,8 @@ public class InitialMain : MonoBehaviour {
 		//m_SwitchSpriteBack.SetSprite ("texture/back/bg001.png");
 
 		bool bDispVisitor = true;
-		if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
-			if (DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
+		if (DataManager.Instance.user_data.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
+			if (DataManager.Instance.user_data.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
 				bDispVisitor = false;
 			}
 		}
@@ -156,8 +157,8 @@ public class InitialMain : MonoBehaviour {
 			m_btnVisitorDisp.TriggerClear ();
 			SoundManager.Instance.PlaySE( SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
 			int set_disp_visitor = 0;
-			if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
-				if (DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
+			if (DataManager.Instance.user_data.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
+				if (DataManager.Instance.user_data.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
 					set_disp_visitor = 1;
 				}
 			}
@@ -167,7 +168,7 @@ public class InitialMain : MonoBehaviour {
 			} else {
 				m_lbVisitorDisp.text = "表示";
 			}
-			DataManager.Instance.data_kvs.WriteInt ( DataManager.Instance.KEY_DISP_VISITOR , set_disp_visitor);
+			DataManager.Instance.user_data.WriteInt ( DataManager.Instance.KEY_DISP_VISITOR , set_disp_visitor);
 		}
 
 		switch (m_eStep) {
@@ -187,10 +188,14 @@ public class InitialMain : MonoBehaviour {
 				m_eStep = STEP.DATAMANAGER_SETUP;
 				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
 				Debug.Log (data.m_strData);
-				//Debug.Log (data.m_dictRecievedData);
-				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+					//Debug.Log (data.m_dictRecievedData);
+					//m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+
+
 				CsvConfig config_data = new CsvConfig ();
-				config_data.Input (m_ssdSample);
+					config_data.Input(SpreadSheetData.ConvertSpreadSheetData(data.m_dictRecievedData));
+
+					//config_data.Input (m_ssdSample);
 				if (false == config_data.Read (CsvConfig.KEY_CONFIG_VERSION).Equals (DataManager.Instance.config.Read (CsvConfig.KEY_CONFIG_VERSION)) || CONFIG_UPDATE == true) {
 					config_data.Save (CsvConfig.FILE_NAME);
 					DataManager.Instance.config.Load (CsvConfig.FILE_NAME);
@@ -209,13 +214,13 @@ public class InitialMain : MonoBehaviour {
 				m_csLoading.ViewPercent ("更新データ確認中", 0.0f);
 			}
 
-			if (false == DataManager.Instance.config.Read (FileDownloadManager.KEY_DOWNLOAD_VERSION).Equals (DataManager.Instance.kvs_data.Read (FileDownloadManager.KEY_DOWNLOAD_VERSION))) {
+			if (false == DataManager.Instance.config.Read (FileDownloadManager.KEY_DOWNLOAD_VERSION).Equals (DataManager.Instance.user_data.Read (FileDownloadManager.KEY_DOWNLOAD_VERSION))) {
 				m_eStep = STEP.UPDATE_DOWNLOAD;
-			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_ITEM_VERSION).Equals (DataManager.Instance.kvs_data.Read (DataManager.Instance.KEY_ITEM_VERSION))) {
+			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_ITEM_VERSION).Equals (DataManager.Instance.user_data.Read (DataManager.Instance.KEY_ITEM_VERSION))) {
 				m_eStep = STEP.UPDATE_ITEM_DATA;
-			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_MONSTER_VERSION).Equals (DataManager.Instance.kvs_data.Read (DataManager.Instance.KEY_MONSTER_VERSION))) {
+			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_MONSTER_VERSION).Equals (DataManager.Instance.user_data.Read (DataManager.Instance.KEY_MONSTER_VERSION))) {
 				m_eStep = STEP.UPDATE_MONSTER_DATA;
-			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_WORK_VERSION).Equals (DataManager.Instance.kvs_data.Read (DataManager.Instance.KEY_WORK_VERSION))) {
+			} else if (false == DataManager.Instance.config.Read (DataManager.Instance.KEY_WORK_VERSION).Equals (DataManager.Instance.user_data.Read (DataManager.Instance.KEY_WORK_VERSION))) {
 				m_eStep = STEP.UPDATE_WORK_DATA;
 			} else {
 				m_eStep = STEP.DATAMANAGER_SETUP;
@@ -234,9 +239,9 @@ public class InitialMain : MonoBehaviour {
 
 			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
 				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
-				m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
+				//m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
 				CsvDownload download_list = new CsvDownload();
-				download_list.Input (m_ssdSample);
+				download_list.Input (SpreadSheetData.ConvertSpreadSheetData(data.m_dictRecievedData));
 				download_list.Save (FileDownloadManager.FILENAME_DOWNLOAD_LIST);
 				m_eStep = STEP.DATA_DOWNLOAD;
 			}
@@ -255,8 +260,8 @@ public class InitialMain : MonoBehaviour {
 
 			if (FileDownloadManager.Instance.IsIdle ()) {
 				m_eStep = STEP.CHECK_UPDATE;
-				DataManager.Instance.kvs_data.WriteInt (FileDownloadManager.KEY_DOWNLOAD_VERSION, DataManager.Instance.config.ReadInt (FileDownloadManager.KEY_DOWNLOAD_VERSION));
-				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+				DataManager.Instance.user_data.WriteInt (FileDownloadManager.KEY_DOWNLOAD_VERSION, DataManager.Instance.config.ReadInt (FileDownloadManager.KEY_DOWNLOAD_VERSION));
+				DataManager.Instance.user_data.Save (DataKvs.FILE_NAME);
 				DataManager.Instance.AllLoad ();
 			}
 			break;
@@ -279,8 +284,8 @@ public class InitialMain : MonoBehaviour {
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("アイテムデータ更新中", 0.0f);
 			}
-			DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_ITEM_VERSION));
-			DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+			DataManager.Instance.user_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_ITEM_VERSION));
+			DataManager.Instance.user_data.Save (DataKvs.FILE_NAME);
 			DataManager.Instance.AllLoad ();
 			m_eStep = STEP.CHECK_UPDATE;
 			break;
@@ -301,8 +306,8 @@ public class InitialMain : MonoBehaviour {
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("キャラデータ更新中", 0.0f);
 			}
-			DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_MONSTER_VERSION));
-			DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+			DataManager.Instance.user_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_MONSTER_VERSION));
+			DataManager.Instance.user_data.Save (DataKvs.FILE_NAME);
 			DataManager.Instance.AllLoad ();
 			m_eStep = STEP.CHECK_UPDATE;
 			break;
@@ -324,8 +329,8 @@ public class InitialMain : MonoBehaviour {
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("お仕事データ更新中", 0.0f);
 			}
-			DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_WORK_VERSION));
-			DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+			DataManager.Instance.user_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_WORK_VERSION));
+			DataManager.Instance.user_data.Save (DataKvs.FILE_NAME);
 			DataManager.Instance.AllLoad ();
 			m_eStep = STEP.CHECK_UPDATE;
 			break;
@@ -377,11 +382,11 @@ public class InitialMain : MonoBehaviour {
 
 				/*
 				タイトル画面からはレビュー催促はいかない
-			if (ReviewManager.Instance.IsReadyReview () && 3 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL)) {
+			if (ReviewManager.Instance.IsReadyReview () && 3 < DataManager.Instance.user_data.ReadInt (DefineOld.USER_LEVEL)) {
 				m_eStep = STEP.REVIEW;
 			}
 			*/
-			if ( 5 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL) && !DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR)) {
+			if ( 5 < DataManager.Instance.user_data.ReadInt (DefineOld.USER_LEVEL) && !DataManager.Instance.user_data.HasKey (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR)) {
 				m_eStep = STEP.ATTENTION_DISP_VISITOR;
 			}
 
@@ -396,7 +401,7 @@ public class InitialMain : MonoBehaviour {
 			if (m_ojisanCheck.IsYes (true)) {
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.IDLE;
-				DataManager.Instance.data_kvs.Write (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR, "disped");
+				DataManager.Instance.user_data.Write (DataManager.Instance.KEY_ATTENTION_DISP_VISITOR, "disped");
 			}
 			break;
 
@@ -469,9 +474,9 @@ public class InitialMain : MonoBehaviour {
 				}
 
 				if (DataManager.Instance.m_dataItem.list.Count == 0) {
-					DataManager.Instance.data_kvs.WriteInt (DefineOld.USER_SYAKKIN,300000000);
-					DataManager.Instance.data_kvs.WriteInt (DefineOld.USER_TICKET,5);
-					DataManager.Instance.data_kvs.WriteInt (DefineOld.USER_SYOJIKIN,10000);
+					DataManager.Instance.user_data.WriteInt (DefineOld.USER_SYAKKIN,300000000);
+					DataManager.Instance.user_data.WriteInt (DefineOld.USER_TICKET,5);
+					DataManager.Instance.user_data.WriteInt (DefineOld.USER_SYOJIKIN,10000);
 
 					DataItem initial_data_item = new DataItem ();
 					initial_data_item.Load ("csv/master/InitialDataItem");
@@ -570,6 +575,7 @@ public class InitialMain : MonoBehaviour {
 
 				}
 				m_btnStart.TriggerClear ();
+					Debug.LogError("scene");
 				SceneManager.LoadScene ("park_main");
 				//Application.LoadLevel ("park_main");
 			}

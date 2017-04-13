@@ -79,14 +79,14 @@ abstract public class CtrlItemDetailBuildupBase : CtrlItemDetailBase {
 		m_lbMain.transform.localPosition = new Vector3 (0.0f, 150.0f, 0.0f);
 		if (_next != null) {
 			//m_lbMain.text = GetMainText ();
-			m_sprMain.sprite2D = SpriteManager.Instance.Load( string.Format("texture/ui/{0}.png" , GetMainText () ));
+			m_sprMain.sprite2D = SpriteManager.Instance.LoadSprite( string.Format("texture/ui/{0}.png" , GetMainText () ));
 			m_goUnder.SetActive (true);
 			m_lbNeedGold.text = string.Format ("{0}G", m_dataNext.coin);
 			m_lbGetExp.text = m_dataNext.get_exp.ToString ();
 			m_btnBuildup.gameObject.SetActive (true);
 		} else {
 			//m_lbMain.text = "増強☆完了";
-			m_sprMain.sprite2D =  SpriteManager.Instance.Load( string.Format("texture/ui/empower_done.png" , GetMainText () ));
+			m_sprMain.sprite2D =  SpriteManager.Instance.LoadSprite( string.Format("texture/ui/empower_done.png" , GetMainText () ));
 			// やっぱ表示はする
 			m_goUnder.SetActive (true);
 			m_btnBuildup.gameObject.SetActive (false);

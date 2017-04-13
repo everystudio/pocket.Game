@@ -84,7 +84,7 @@ public class DataWorkParam : CsvDataParam{
 
 		List<DataWorkParam> list_work = DataManager.Instance.dataWork.Select ( string.Format( " status = {0} and appear_work_id = 0 " , (int)DefineOld.Work.STATUS.NONE ));
 		foreach (DataWorkParam appear_work in list_work) {
-			if (appear_work.level <= DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL)) {
+			if (appear_work.level <= DataManager.Instance.user_data.ReadInt (DefineOld.USER_LEVEL)) {
 				DataManager.Instance.dataWork.Update ( appear_work.work_id , dict_appear );
 
 				// NEWの表示を出す
@@ -145,7 +145,7 @@ public class DataWorkParam : CsvDataParam{
 		bool bRet = false;
 
 		if (0 < mission_level) {
-			int iLevel = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL);
+			int iLevel = DataManager.Instance.user_data.ReadInt (DefineOld.USER_LEVEL);
 
 			//Debug.LogError (mission_level);
 			if (mission_level <= iLevel) {
@@ -182,7 +182,7 @@ public class DataWorkParam : CsvDataParam{
 				bRet = true;
 			}
 		} else if (0 < mission_collect) {
-			int collect_count = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_COLLECT_COUNT);
+			int collect_count = DataManager.Instance.user_data.ReadInt (DefineOld.USER_COLLECT_COUNT);
 
 			//Debug.LogError (string.Format ("here:{0}", collect_count));
 			// 注意！ここはmission_numじゃないです
@@ -190,12 +190,12 @@ public class DataWorkParam : CsvDataParam{
 				bRet = true;
 			}
 		} else if (0 < mission_tweet) {
-			int tweet_count = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_TWEET_COUNT);
+			int tweet_count = DataManager.Instance.user_data.ReadInt (DefineOld.USER_TWEET_COUNT);
 			if (mission_tweet < tweet_count) {
 				bRet = true;
 			}
 		} else if (0 < mission_login) {
-			int login_count = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LOGIN_COUNT);
+			int login_count = DataManager.Instance.user_data.ReadInt (DefineOld.USER_LOGIN_COUNT);
 			if (mission_login < login_count) {
 				bRet = true;
 			}

@@ -64,7 +64,7 @@ public class BannerMonster : BannerBase {
 		string strIcon = GetSpriteName (_dataMaster);
 		//UIAtlas atlas = AtlasManager.Instance.GetAtlas (strIcon);
 		//m_sprIcon.atlas = atlas;
-		m_sprIcon.sprite2D = SpriteManager.Instance.Load( strIcon );
+		m_sprIcon.sprite2D = SpriteManager.Instance.LoadSprite( strIcon );
 		SpriteIconAdjust (m_sprIcon);
 
 		SetPrice (_dataMaster);
@@ -160,7 +160,7 @@ public class BannerMonster : BannerBase {
 			Debug.LogError ("no need");
 		}
 		*/
-		m_sprBuyBase.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/ui/{0}.png" , strImageName ));
+		m_sprBuyBase.sprite2D = SpriteManager.Instance.LoadSprite( string.Format( "texture/ui/{0}.png" , strImageName ));
 		m_lbBuyPrice.text = strText;
 		return;
 	}

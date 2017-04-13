@@ -145,7 +145,7 @@ public class CtrlFieldItem : MonoBehaviourEx {
 		//UISpriteData spriteData = _spr.GetAtlasSprite ();
 		string strLoadImage = string.Format ("texture/item/{0}.png", _strName);
 		//Debug.LogError (strLoadImage);
-		_spr.sprite2D = SpriteManager.Instance.Load (strLoadImage);
+		_spr.sprite2D = SpriteManager.Instance.LoadSprite(strLoadImage);
 
 		_spr.width =  (int)_spr.sprite2D.rect.width;
 		_spr.height = (int)_spr.sprite2D.rect.height;
