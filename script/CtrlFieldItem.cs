@@ -134,9 +134,7 @@ public class CtrlFieldItem : MonoBehaviourEx {
 		// リストからも除外
 		Debug.Log (iIndex);
 		m_iconRootList.RemoveAt (iIndex);
-
 	}
-
 
 	private void change_sprite( UI2DSprite _spr , string _strName ){
 		//_spr.atlas = AtlasManager.Instance.GetAtlas (_strName);

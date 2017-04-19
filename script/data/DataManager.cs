@@ -30,6 +30,15 @@ public class DataManager : DataManagerBase <DataManager>{
 	public readonly string KEY_BGM_BOOK = "bgm_book";
 	public readonly string KEY_BGM_WORK = "bgm_work";
 	public readonly string KEY_BGM_SHOP = "bgm_shop";
+	public static string GetBgmKakucho()
+	{
+#if UNITY_ANDROID
+		return ".unity3d.android";
+#elif UNITY_IOS
+		return ".unity3d.iphone";
+#endif
+		return "";
+	}
 
 	public readonly string KEY_HELP_ACTION_MOVIE_PROB = "key_help_action_movie_prob";
 	public readonly string KEY_HELP_ACTION_TWITTER_PROB = "key_help_action_twitter_prob";
@@ -169,9 +178,9 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 	}
 
 	public void DataSave(){
-		#if !UNITY_EDITOR
+#if !UNITY_EDITOR
 		Debug.LogError ("save");
-		#endif
+#endif
 		m_dataKvs.Save (DataKvs.FILE_NAME);
 		dataMonster.Save (DataMonster.FILENAME);
 		dataStaff.Save (DataStaff.FILENAME);
@@ -212,7 +221,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		return new CsvItemParam ();
 	}
 
-	#region For CSV
+#region For CSV
 	public CsvItem m_csvItem = new CsvItem();
 	static public List<CsvItemParam> csv_item {
 		get{ 
@@ -405,22 +414,22 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 
 		string strRet = "https://play.google.com/store/apps/details?id=jp.everystudio.pocket.zoo";
 
-		#if UNITY_ANDROID
+#if UNITY_ANDROID
 		strRet = "https://play.google.com/store/apps/details?id=jp.everystudio.pocket.zoo";
 		if( config.HasKey( "reviewurl_android")){
 			strRet = config.Read("reviewurl_android");
 		}
-		#elif UNITY_IOS
+#elif UNITY_IOS
 		strRet = "https://itunes.apple.com/us/app/leshii-fang-zhi-jing-yinggemu/id1112070121?l=ja&ls=1&mt=8";
 		if( config.HasKey( "reviewurl_ios")){
 			strRet = config.Read("reviewurl_ios");
 		}
-		#else
-		#endif
+#else
+#endif
 		return strRet;
 	}
 
-	#endregion
+#endregion
 	public float m_fInterval;
 	public const float EDITOR_SAVE_INTERVAL = 10.0f;
 
@@ -432,7 +441,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		} else {
 		}
 	}
-	#if UNITY_EDITOR
+#if UNITY_EDITOR
 	void Update(){
 
 		m_fInterval += Time.deltaTime;
@@ -443,7 +452,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		}
 
 	}
-	#endif
+#endif
 
 }
 

@@ -196,7 +196,7 @@ public class CtrlIconMonster : CtrlIconBase {
 		m_fEatSoundTimer += Time.deltaTime;
 		if (1.0f < m_fEatSoundTimer) {
 			m_fEatSoundTimer -= 1.0f;
-			SoundManager.Instance.PlaySE ("se_eating" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+			SoundManager.Instance.PlaySE ("se_eating" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 		}
 
 		m_fAnimationTime += Time.deltaTime;

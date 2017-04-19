@@ -27,6 +27,10 @@ public class CtrlLoading : MonoBehaviour {
 		for (int i = 0; i < m_iLoopCount % 4; i++) {
 			strTemp += "・";
 		}
+		if( 0.0f < _fProgress)
+		{
+			strTemp = "";
+		}
 		m_lbLoading.text = string.Format ("{0}{1}", _strMessage, strTemp);
 
 

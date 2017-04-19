@@ -126,7 +126,7 @@ public class CtrlItemDetailCage : CtrlItemDetailBase {
 			GameMain.Instance.SwitchClean = 0;
 			m_btnClean.TriggerClear ();
 			if (m_ctrlFieldItem.Clean ()) {
-				SoundManager.Instance.PlaySE ("se_cleanup" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE ("se_cleanup" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 				m_effClean.Popup ();
 			}
 		}
@@ -134,7 +134,7 @@ public class CtrlItemDetailCage : CtrlItemDetailBase {
 			GameMain.Instance.SwitchFood = 0;
 			m_btnMeal.TriggerClear ();
 			if (m_ctrlFieldItem.Meal ()) {
-				SoundManager.Instance.PlaySE ("se_eat" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE ("se_eat" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 				m_effMeal.Popup ();
 			}
 		}

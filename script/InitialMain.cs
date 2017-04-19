@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System;
 using EveryStudioLibrary;
 
-public class InitialMain : MonoBehaviour {
+public class InitialMain : StartupBase
+{
 
 	static public bool INITIALIZE_MAIN = false;
 	public bool CONFIG_UPDATE = false;
@@ -27,6 +28,8 @@ public class InitialMain : MonoBehaviour {
 		REVIEW					,
 
 		IDLE					,
+		IDLE1					,
+		IDLE2					,
 		DB_SETUP				,
 		INPUT_WAIT				,
 
@@ -96,7 +99,7 @@ public class InitialMain : MonoBehaviour {
 		//m_SwitchSpriteBack.SetSprite ("tutorial777");
 
 		//SoundManager.Instance.PlayBGM ("farming" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm");
-		SoundManager.Instance.PlayBGM ( "maoudamashii_5_village01" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+		SoundManager.Instance.PlayBGM ( "maoudamashii_5_village01", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm" );
 #if UNITY_ANDROID
 		/*
 		GoogleIAB.enableLogging (true);
@@ -110,7 +113,7 @@ public class InitialMain : MonoBehaviour {
 		GoogleIAB.init( key );
 				*/
 #endif
-
+		/*
 		Debug.LogError("atlas load");
 		SpriteManager.Instance.LoadAtlas ("atlas/ad001");
 		SpriteManager.Instance.LoadAtlas ("atlas/back001");
@@ -129,6 +132,7 @@ public class InitialMain : MonoBehaviour {
 		SpriteManager.Instance.LoadAtlas ("atlas/ui001");
 		SpriteManager.Instance.LoadAtlas ("atlas/ui002");
 		SpriteManager.Instance.LoadAtlas ("atlas/ui003");
+		*/
 		//m_SwitchSpriteBack.SetSprite ("garalley_003");
 		//m_SwitchSpriteBack.SetSprite ("texture/back/bg001.png");
 
@@ -155,7 +159,7 @@ public class InitialMain : MonoBehaviour {
 
 		if (m_btnVisitorDisp.ButtonPushed) {
 			m_btnVisitorDisp.TriggerClear ();
-			SoundManager.Instance.PlaySE( SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+			SoundManager.Instance.PlaySE( SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 			int set_disp_visitor = 0;
 			if (DataManager.Instance.user_data.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
 				if (DataManager.Instance.user_data.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
@@ -377,7 +381,6 @@ public class InitialMain : MonoBehaviour {
 				}
 			}
 			*/
-			m_btnStart.gameObject.SetActive (true);
 			m_eStep = STEP.IDLE;
 
 				/*
@@ -421,35 +424,48 @@ public class InitialMain : MonoBehaviour {
 			}
 			break;
 
-		case STEP.IDLE:
-			if (bInit) {
-				m_btnStart.TriggerClear ();
-				m_btnBackup.TriggerClear ();
-			}
-			if (m_btnStart.ButtonPushed) {
-				m_eStep = STEP.DB_SETUP;
-				SoundManager.Instance.PlaySE ("se_cleanup" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
-
-				GoogleAnalytics.Instance.Log ("push_start");
-
-				/*
-				PlayerPrefs.SetInt (DefineOld.USER_WIDTH, 45);
-				PlayerPrefs.SetInt (DefineOld.USER_HEIGHT, 45);
-				PlayerPrefs.Save ();
-				*/
-
-			} else if (m_btnBackup.ButtonPushed) {
-
-				string backupDB = System.IO.Path.Combine (Application.persistentDataPath, DefineOld.DB_NAME_DOUBTSUEN_BK );
-				if (System.IO.File.Exists (backupDB) == false ) {
-					m_eStep = STEP.DB_BACKUP_NOEXIST;
-				} else {
-					m_eStep = STEP.DB_BACKUP_CHECK;
+			case STEP.IDLE:
+				if( bInit)
+				{
+					AssetBundleManager.Instance.Initialize("https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/", 1);
+					StartCoroutine("assetbundleDownload");
+					m_bIsDownloadEnd = false;
 				}
-			} else {
-			}
 
-			break;
+				if( m_bIsDownloadEnd)
+				{
+					m_eStep = STEP.IDLE1;
+				}
+				break;
+
+			case STEP.IDLE1:
+				if( bInit)
+				{
+					m_bSceneLoaded = false;
+					StartCoroutine("standbyMainScene");
+				}
+				if (m_bSceneLoaded)
+				{
+					m_eStep = STEP.IDLE2;
+				}
+				break;
+
+			case STEP.IDLE2:
+				if (bInit)
+				{
+					m_btnStart.gameObject.SetActive(true);
+					m_btnStart.TriggerClear();
+					m_btnBackup.TriggerClear();
+				}
+				if (m_btnStart.ButtonPushed)
+				{
+					m_eStep = STEP.DB_SETUP;
+					SoundManager.Instance.PlaySE("se_cleanup", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
+					GoogleAnalytics.Instance.Log("push_start");
+				}
+				else {
+				}
+				break;
 
 		case STEP.DB_SETUP:
 			//Debug.LogError (STEP.DB_SETUP); 
@@ -457,7 +473,6 @@ public class InitialMain : MonoBehaviour {
 			}
 			if (true) {
 				//if (m_tkKvsOpen.Completed) {
-
 				if (DataManager.Instance.m_csvItem.list.Count == 0) {
 					CsvItem initial_csv_item = new CsvItem ();
 					initial_csv_item.Load ("csv/master/InitialCsvItem");
@@ -507,53 +522,8 @@ public class InitialMain : MonoBehaviour {
 					}
 					m_dbWork.Save (DataWork.FILENAME);
 				}
-				/*
-				List<DataMonsterParam> data_monster_list = DataManager.Instance.dataMonster.list;
-				//Debug.LogError( string.Format( "data_monster_list.Count:{0}" , data_monster_list.Count ));
-				if (data_monster_list.Count == 0) {
-					DataMonsterParam monster = new DataMonsterParam ();
-					monster.monster_serial = 1;
-					monster.monster_id = 1;
-					monster.item_serial = 12;
-					monster.condition = (int)DefineOld.Monster.CONDITION.FINE;
-					monster.collect_time = TimeManager.StrNow ();
-
-					string strHungry = TimeManager.StrGetTime (-1 * 60 * 30);
-					monster.meal_time = strHungry;
-					monster.clean_time = strHungry;
-					m_dbMonster.Replace (monster);
-				}
-				*/
-
-				/*
-				List<CsvMonsterParam> data_monster_master_list = DataManager.Instance.m_csvMonster.list;
-				if (data_monster_master_list.Count == 0) {
-					var csvMonsterMaster = new CsvMonster ();
-					csvMonsterMaster.Load ();
-					foreach (CsvMonsterData csv_monster_master_data in csvMonsterMaster.All) {
-						DataMonster.Replace (csv_monster_master_data);
-					}
-				}
-				*/
-
-				/*
-				//マスターデータの生成用ですが、状況的にこれはおこらないようにする
-				//List<CsvItemParam> data_item_master = m_dbItemMaster.SelectAll ();
-				List<CsvItemParam> data_item_master = DataManager.Instance.m_csvItem.list;
-				//Debug.LogError (string.Format ("count:{0}", data_item_master.Count));
-				if (data_item_master.Count == 0) {
-					foreach (CsvItemParam csv_item_data in csvItem.All) {
-						CsvItemParam data = new CsvItemParam (csv_item_data);
-						if (data.open_item_id == 0) {
-							data.status = 1;
-						}
-						m_dbItemMaster.Replace (data);
-					}
-				}
-				*/
 				m_eStep = STEP.INPUT_WAIT;
 			}
-
 			break;
 
 		case STEP.INPUT_WAIT:
@@ -576,9 +546,10 @@ public class InitialMain : MonoBehaviour {
 				}
 				m_btnStart.TriggerClear ();
 					Debug.LogError("scene");
-				SceneManager.LoadScene ("park_main");
+					m_asyncMainScene.allowSceneActivation = true;
+				//SceneManager.LoadScene ("park_main");
 				//Application.LoadLevel ("park_main");
-			}
+				}
 			break;
 
 		case STEP.DB_BACKUP_NOEXIST:
@@ -599,11 +570,11 @@ public class InitialMain : MonoBehaviour {
 				m_ojisanCheck.Initialize ("自動保存されたデータ\nを利用して\nバックアップを行います\n\nよろしいですか");
 			}
 			if (m_ojisanCheck.IsYes ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.DB_BACKUP;
 			} else if (m_ojisanCheck.IsNo ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.IDLE;
 			} else {
@@ -658,9 +629,85 @@ public class InitialMain : MonoBehaviour {
 		if (m_btnCacheClear.ButtonPushed) {
 			Caching.CleanCache();
 			m_btnCacheClear.TriggerClear ();
-		}
-	
+		}	
 	}
+
+	protected override void DownloadProgress(float _fProgress, int _iFileIndex, int _iFileNum)
+	{
+		//base.DownloadProgress(_fProgress, _iFileIndex, _iFileNum);
+		m_csLoading.ViewPercent(string.Format("データチェック中：{0:0.0}%", 100.0f * _fProgress) , 1.0f );
+	}
+	protected override void DownloadCompleted()
+	{
+		base.DownloadCompleted();
+		m_bIsDownloadEnd = true;
+	}
+
+	protected override void LoadSceneProgress(float _fProgress)
+	{
+		m_csLoading.ViewPercent(string.Format("データ展開中：{0:0.0}%", 100.0f * _fProgress), 1.0f);
+		//base.LoadSceneProgress(_fProgress);
+	}
+
+
+	IEnumerator assetbundleDownload()
+	{
+		yield return AssetBundleManager.Instance.DownloadAssetBundle( new string[] { "scene_main" }, ((float progress, int fileIndex, bool isComplete, string error) =>
+		{
+			// エラー処理
+			if (error != null)
+			{
+				DownloadError();
+			}
+			// 進捗処理
+			else if (isComplete)
+			{
+				DownloadCompleted();
+			}
+			else {
+				DownloadProgress(progress, fileIndex, GetLoadAssetbundleNames().Length);
+			}
+		}));
+	}
+
+
+	public IEnumerator standbyMainScene()
+	{
+		Debug.LogError("activateMainScene start");
+		yield return AssetBundleManager.Instance.LoadAssetBundle(GetSceneAssetBundleName(), ((bool isSuccess, string error) => {
+			if (isSuccess)
+			{
+				Debug.Log("ロード成功");
+			}
+			else {
+				Debug.Log("ロード失敗 : " + error);
+			}
+		}));
+		Debug.LogError("activateMainScene end");
+
+		LoadSceneStart();
+		//		yield return SceneManager.LoadSceneAsync("main");
+		m_asyncMainScene = SceneManager.LoadSceneAsync(GetNextSceneName());
+
+		m_asyncMainScene.allowSceneActivation = false;
+		while (m_asyncMainScene.progress < 0.9f)
+		{
+			LoadSceneProgress(m_asyncMainScene.progress);
+			yield return new WaitForEndOfFrame();
+		}
+		Debug.Log("Scene Loaded");
+
+		LoadSceneCompleted();
+
+		yield return new WaitForSeconds(0.5f);
+
+		m_bSceneLoaded = true;
+
+	}
+	private bool m_bIsDownloadEnd;
+	private bool m_bSceneLoaded;
+	AsyncOperation m_asyncMainScene;
+
 }
 
 

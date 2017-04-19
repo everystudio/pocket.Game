@@ -100,11 +100,11 @@ public class CtrlShopDetail : MonoBehaviour {
 				m_csParkRoot.ConnectingRoadCheck ();
 
 				m_bIsEnd = true;
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 
 			} else if (m_ButtonClose.ButtonPushed) {
 				m_bIsEnd = true;
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_CANCEL, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 
 			} else {
 			}

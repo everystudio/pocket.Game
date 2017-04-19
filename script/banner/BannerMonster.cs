@@ -185,7 +185,7 @@ public class BannerMonster : BannerBase {
 
 				if (m_bAbleUse) {
 					Debug.Log ("clicked:BannerBase.Mode=" + BannerBase.Mode.ToString ());
-					SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+					SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 
 					switch (BannerBase.Mode) {
 					case BannerBase.MODE.MONSTER_DETAIL:
@@ -209,14 +209,14 @@ public class BannerMonster : BannerBase {
 
 		case STEP.DETAIL:
 			if (bInit) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 				// この作り方はいただけませんねぇ・・・
 				GameObject obj = PrefabManager.Instance.MakeObject ("prefab/PrefMonsterDetail", gameObject.transform.parent.parent.parent.parent.gameObject);
 				m_monsterDetail = obj.GetComponent<CtrlMonsterDetail> ();
 				m_monsterDetail.Initialize (m_dataMonsterParam.monster_serial);
 			}
 			if (m_monsterDetail.IsEnd ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 
 				Destroy (m_monsterDetail.gameObject);
 				m_monsterDetail = null;
@@ -227,7 +227,7 @@ public class BannerMonster : BannerBase {
 		case STEP.SET_BUY:
 			if (bInit) {
 
-				SoundManager.Instance.PlaySE (SoundName.SET_ANIMAL, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.SET_ANIMAL, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 				Debug.LogError (m_csvMonsterParam);
 				Debug.LogError (m_csvMonsterParam.monster_id);
 				CsvMonsterParam monster_data = DataManager.GetMonster (m_csvMonsterParam.monster_id);
@@ -265,7 +265,7 @@ public class BannerMonster : BannerBase {
 		case STEP.SET_MINE:
 			if (bInit) {
 
-				SoundManager.Instance.PlaySE (SoundName.SET_ANIMAL, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.SET_ANIMAL, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 				Dictionary< string , string > dict = new Dictionary< string , string > ();
 				dict.Add( "item_serial" , GameMain.Instance.m_iSettingItemSerial.ToString() ); 
 				dict.Add( "collect_time" , "\"" + TimeManager.StrNow() +  "\""); 
@@ -310,7 +310,7 @@ public class BannerMonster : BannerBase {
 				Debug.Log ("here");
 				if (m_bGoldLess) {
 				} else {
-					SoundManager.Instance.PlaySE ("se_cure", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+					SoundManager.Instance.PlaySE ("se_cure", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 					CsvMonsterParam monster = DataManager.GetMonster (m_dataMonsterParam.monster_id);
 					int iCost = monster.revenew_coin * (int)(600.0f / (float)monster.revenew_interval);
 					DataManager.user.AddGold (-1 * iCost);
@@ -331,7 +331,7 @@ public class BannerMonster : BannerBase {
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.IDLE;
 			} else if (m_ojisanCheck.IsNo ()) {
-				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE (SoundName.BUTTON_PUSH, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 
 				Destroy (m_ojisanCheck.gameObject);
 				m_eStep = STEP.IDLE;

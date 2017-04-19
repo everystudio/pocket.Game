@@ -108,7 +108,7 @@ public class CtrlCollectGold : Singleton<CtrlCollectGold> {
 
 			//m_iCollectGold = iCollectGold;
 			if (0 < m_iCollectGold) {
-				SoundManager.Instance.PlaySE ("se_cash", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/se");
+				SoundManager.Instance.PlaySE ("se_cash", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 
 				DataManager.user.AddCollect ();
 				DataManager.user.AddGold (m_iCollectGold);
