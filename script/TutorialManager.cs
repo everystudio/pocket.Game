@@ -156,6 +156,7 @@ public class TutorialManager : Singleton<TutorialManager> {
 		if (m_eStepPre != m_eStep) {
 			m_eStepPre  = m_eStep;
 			bInit = true;
+			Debug.LogError("tutorialmanager:" + m_eStep);
 		}
 
 		switch (m_eStep) {

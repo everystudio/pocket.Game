@@ -24,9 +24,11 @@ public class CtrlLoading : MonoBehaviour {
 	public void ViewPercent( string _strMessage , float _fProgress ){
 
 		string strTemp = "";
+		/*
 		for (int i = 0; i < m_iLoopCount % 4; i++) {
 			strTemp += "・";
 		}
+		*/
 		if( 0.0f < _fProgress)
 		{
 			strTemp = "";

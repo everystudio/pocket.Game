@@ -188,28 +188,33 @@ public class InitialMain : StartupBase
 				m_csLoading.ViewPercent ("ネットワーク接続中", 0.0f);
 			}
 
-			if (CommonNetwork.Instance.IsConnected (m_iNetworkSerial)) {
-				// 一度終了に向かうように設定
-				m_eStep = STEP.DATAMANAGER_SETUP;
-				TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData (m_iNetworkSerial);
-				Debug.Log (data.m_strData);
+				if (CommonNetwork.Instance.IsConnected(m_iNetworkSerial))
+				{
+					m_csLoading.ViewPercent("更新完了一度再起動をお願いします", 0.0f);
+					// 一度終了に向かうように設定
+					m_eStep = STEP.DATAMANAGER_SETUP;
+					TNetworkData data = EveryStudioLibrary.CommonNetwork.Instance.GetData(m_iNetworkSerial);
+					Debug.Log(data.m_strData);
 					//Debug.Log (data.m_dictRecievedData);
 					//m_ssdSample = EveryStudioLibrary.CommonNetwork.Instance.ConvertSpreadSheetData (data.m_dictRecievedData);
 
-
-				CsvConfig config_data = new CsvConfig ();
+					CsvConfig config_data = new CsvConfig();
 					config_data.Input(SpreadSheetData.ConvertSpreadSheetData(data.m_dictRecievedData));
 
 					//config_data.Input (m_ssdSample);
-				if (false == config_data.Read (CsvConfig.KEY_CONFIG_VERSION).Equals (DataManager.Instance.config.Read (CsvConfig.KEY_CONFIG_VERSION)) || CONFIG_UPDATE == true) {
-					config_data.Save (CsvConfig.FILE_NAME);
-					DataManager.Instance.config.Load (CsvConfig.FILE_NAME);
-					m_eStep = STEP.CHECK_UPDATE;
+					if (false == config_data.Read(CsvConfig.KEY_CONFIG_VERSION).Equals(DataManager.Instance.config.Read(CsvConfig.KEY_CONFIG_VERSION)) || CONFIG_UPDATE == true)
+					{
+						config_data.Save(CsvConfig.FILE_NAME);
+						DataManager.Instance.config.Load(CsvConfig.FILE_NAME);
+						m_eStep = STEP.CHECK_UPDATE;
+					}
 				}
-			} else if (CommonNetwork.Instance.IsError (m_iNetworkSerial ) ) {
-				m_eStep = STEP.NETWORK_ERROR;
-			} else {
-			}
+				else if (CommonNetwork.Instance.IsError(m_iNetworkSerial))
+				{
+					m_eStep = STEP.NETWORK_ERROR;
+				}
+				else {
+				}
 
 			break;
 
