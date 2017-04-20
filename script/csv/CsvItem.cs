@@ -96,7 +96,7 @@ public class CsvItem : CsvData< CsvItemParam>
 
 	public const string FilePath = "csv/item";
 
-	public void Load() { Load(FilePath); }
+	public void Load2() { Load(FilePath); }
 
 	public CsvItemParam Select( int _iItemId ){
 		return SelectOne( string.Format( " item_id = {0} " , _iItemId ));

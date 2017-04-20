@@ -139,14 +139,6 @@ public class GameMain : MonoBehaviour {
 		m_eMoveStatus = STATUS.NONE;
 		m_iMoveTab = 0;
 
-		string strUnityAdsAppId = "";
-		#if UNITY_ANDROID
-		strUnityAdsAppId = DataManager.Instance.config.Read( DataManager.Instance.KEY_UNITYADS_APP_ID_ANDROID );
-		#elif UNITY_IOS
-		strUnityAdsAppId = DataManager.Instance.config.Read( DataManager.Instance.KEY_UNITYADS_APP_ID_IOS );
-		#endif
-		//UnityAdsSupporter.Instance.Initialize (strUnityAdsAppId);
-
 		if (m_bInitialized == false) {
 			int iWidth = PlayerPrefs.GetInt (DefineOld.USER_WIDTH);
 			int iHeight= PlayerPrefs.GetInt (DefineOld.USER_HEIGHT);
@@ -172,6 +164,13 @@ public class GameMain : MonoBehaviour {
 			*/
 			SetStatus (STATUS.PARK);
 			AdsManager.Instance.Initialize ();
+			string gameId = "1067743";
+#if UNITY_ANDROID
+			gameId = "1067742";
+#elif UNITY_IOS
+			gameId = "1067743";
+#endif
+			UnityAdsSupporter.Instance.Initialize(gameId);
 
 		}
 
@@ -414,7 +413,7 @@ public class GameMain : MonoBehaviour {
 
 		//レイを投射してオブジェクトを検出
 		if (Physics.Raycast (ray, out hit, fDistance)) {
-			Debug.Log (hit.collider.gameObject.name);
+			//Debug.Log (hit.collider.gameObject.name);
 			if (hit.collider.gameObject.name.Equals (DataManager.Instance.KEY_TOUCHABLE_FIELD_NAME)) {
 				GameObject objPoint = new GameObject ();
 				objPoint.transform.position = hit.point;

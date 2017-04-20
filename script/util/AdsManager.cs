@@ -31,7 +31,7 @@ public class AdsManager : Singleton<AdsManager> {
 	#elif UNITY_ANDROID
 	#endif
 
-	public override void Initialize ()
+	public void InitialBanner()
 	{
 #if UNITY_EDITOR
 		string adUnitId1 = "unused";
@@ -42,7 +42,8 @@ public class AdsManager : Singleton<AdsManager> {
 #else
         string adUnitId1 = "unexpected_platform";
 #endif
-		if (m_nendAdBanner == null) {
+		if (m_nendAdBanner == null)
+		{
 			BannerView bannerView1 = new BannerView(adUnitId1, AdSize.Banner, AdPosition.Bottom);
 			// Create an empty ad request.
 			AdRequest request1 = new AdRequest.Builder().Build();
@@ -50,6 +51,12 @@ public class AdsManager : Singleton<AdsManager> {
 			bannerView1.LoadAd(request1);
 			m_nendAdBanner = bannerView1;
 		}
+
+	}
+
+	public override void Initialize ()
+	{
+		InitialBanner();
 		// 最初はでないようにする
 		foreach (GameObject obj in m_goAdNativePanelList) {
 			obj.SetActive (false);
@@ -63,10 +70,15 @@ public class AdsManager : Singleton<AdsManager> {
 	#endif
 	public void ShowAdBanner( bool _bFlag ){
 
-		if (_bFlag) {
-			m_nendAdBanner.Show ();
-		} else {
-			m_nendAdBanner.Hide ();
+		if (m_nendAdBanner != null)
+		{
+			if (_bFlag)
+			{
+				m_nendAdBanner.Show();
+			}
+			else {
+				m_nendAdBanner.Hide();
+			}
 		}
 	}
 

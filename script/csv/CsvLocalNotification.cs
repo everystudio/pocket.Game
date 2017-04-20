@@ -13,7 +13,7 @@ public class CsvLocalNotificationParam : CsvDataParam
 public class CsvLocalNotificationData : CsvData<CsvLocalNotificationParam> {
 
 	private static readonly string FilePath = "csv/local_notification";
-	public void Load() { Load(FilePath); }
+	public void Load2() { Load(FilePath); }
 }
 
 

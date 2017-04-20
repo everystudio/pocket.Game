@@ -36,8 +36,9 @@ public class DataManager : DataManagerBase <DataManager>{
 		return ".unity3d.android";
 #elif UNITY_IOS
 		return ".unity3d.iphone";
-#endif
+#else
 		return "";
+#endif
 	}
 
 	public readonly string KEY_HELP_ACTION_MOVIE_PROB = "key_help_action_movie_prob";
@@ -155,8 +156,8 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 	public void AllLoad(){
 		config.Load (CsvConfig.FILE_NAME);
 		user_data.Load( DataKvs.FILE_NAME );
-		m_csvItem.Load ();
-		m_csvMonster.Load ();
+		m_csvItem.Load2 ();
+		m_csvMonster.Load2 ();
 		dataMonster.Load (DataMonster.FILENAME);
 		dataStaff.Load (DataStaff.FILENAME);
 		//Debug.LogError ("here");
@@ -167,12 +168,12 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		//m_csvWork.Load ();
 		dataWork.Load (DataWork.FILENAME);
 
-		m_csvStaff.Load ();
+		m_csvStaff.Load2 ();
 		m_csvLevel.Load ();
 		m_csvTime.Load ();
-		m_csvWord.Load ();
+		m_csvWord.Load2 ();
 		m_csvTutorial.Load ();
-		m_csvLocalNotification.Load ();
+		m_csvLocalNotification.Load2 ();
 		RoadLoad ();
 
 	}

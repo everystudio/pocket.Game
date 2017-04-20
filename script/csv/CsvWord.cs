@@ -13,7 +13,7 @@ namespace pocket
 	{
 
 		private static readonly string FilePath = "csv/japanese";
-		public void Load() { Load(FilePath); }
+		public void Load2() { Load(FilePath); }
 	}
 }
 

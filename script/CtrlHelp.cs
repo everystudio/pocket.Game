@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Advertisements;
 
 public class CtrlHelp : ButtonBase {
 
@@ -40,13 +41,10 @@ public class CtrlHelp : ButtonBase {
 	private bool IsAppear(){
 		bool bRet = false;
 
-		/*
 		// そもそもこれが出来てないなら出来ません
 		if (UnityAdsSupporter.Instance.IsReady () == false ) {
 			return false;
 		}
-		*/
-
 
 		string strTime = DataManager.Instance.user_data.Read (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME);
 		TimeSpan time_span = TimeManager.Instance.GetDiff (strTime, TimeManager.StrGetTime ());
@@ -102,8 +100,9 @@ public class CtrlHelp : ButtonBase {
 			if (bInit) {
 				m_sprImage.gameObject.SetActive (true);
 				TriggerClear ();
+					m_eActionType = ACTION_TYPE.MOVIE;
 
-				if (m_eActionType== ACTION_TYPE.NONE) {
+					if (m_eActionType== ACTION_TYPE.NONE) {
 					m_eActionType = DataManager.Instance.GetHelpActionType ();
 				}
 				//Debug.LogError (m_eActionType);
@@ -115,9 +114,11 @@ public class CtrlHelp : ButtonBase {
 
 		case STEP.CHECK:
 			if (bInit) {
+					/*
 				if (m_eActionType == ACTION_TYPE.MOVIE) {
 						m_eActionType = ACTION_TYPE.TWITTER;
 					}
+					*/
 					string strAction = "";
 				if (m_eActionType == ACTION_TYPE.MOVIE) {
 					strAction = "動画を見ている間に";
@@ -132,7 +133,7 @@ public class CtrlHelp : ButtonBase {
 				Destroy (m_ojisanCheck.gameObject);
 
 				if (m_eActionType == ACTION_TYPE.MOVIE) {
-						m_eStep = STEP.IDLE;
+						m_eStep = STEP.MOVIE;
 				} else {
 				
 					// WebブラウザのTwitter投稿画面を開く
@@ -159,25 +160,27 @@ public class CtrlHelp : ButtonBase {
 			break;
 
 		case STEP.MOVIE:
-			//ShowResult result = ShowResult.Finished;
-				/*
-			if (UnityAdsSupporter.Instance.IsShowed (out result)) {
-				switch (result) {
-				case ShowResult.Finished:
-					m_eStep = STEP.RESULT_SUCCESS;
-					break;
-				case ShowResult.Skipped:
-					m_eStep = STEP.RESULT_SKIP;
-					break;
-				case ShowResult.Failed:
-				default:
-					m_eStep = STEP.RESULT_FAIL;
-					break;
+				if( bInit)
+				{
+					UnityAdsSupporter.Instance.ShowRewardedAd();
 				}
-			}
-			*/
-				m_eStep = STEP.RESULT_SUCCESS;
-				DataManager.Instance.user_data.Write(DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME, TimeManager.StrGetTime());
+				ShowResult result = ShowResult.Finished;
+				if (UnityAdsSupporter.Instance.IsShowed (out result)) {
+					switch (result)
+					{
+						case ShowResult.Finished:
+							m_eStep = STEP.RESULT_SUCCESS;
+							break;
+						case ShowResult.Skipped:
+							m_eStep = STEP.RESULT_SKIP;
+							break;
+						case ShowResult.Failed:
+						default:
+							m_eStep = STEP.RESULT_FAIL;
+							break;
+					}
+					DataManager.Instance.user_data.Write(DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME, TimeManager.StrGetTime());
+				}
 				break;
 
 		case STEP.RESULT_SUCCESS:

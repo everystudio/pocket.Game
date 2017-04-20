@@ -95,7 +95,7 @@ public class InitialMain : StartupBase
 		m_eStep = STEP.IDLE;
 		m_eStep = STEP.CHECK_CONFIG;
 		m_eStepPre = STEP.MAX;
-
+		//AdsManager.Instance.InitialBanner();
 		//m_SwitchSpriteBack.SetSprite ("tutorial777");
 
 		//SoundManager.Instance.PlayBGM ("farming" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm");
@@ -159,6 +159,7 @@ public class InitialMain : StartupBase
 
 		if (m_btnVisitorDisp.ButtonPushed) {
 			m_btnVisitorDisp.TriggerClear ();
+			Caching.CleanCache();
 			SoundManager.Instance.PlaySE( SoundName.BUTTON_SELECT, "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/zoo/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se");
 			int set_disp_visitor = 0;
 			if (DataManager.Instance.user_data.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {

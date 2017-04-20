@@ -26,8 +26,8 @@ public class CsvWorkParam : CsvDataParam {
 
 public class CsvWork : CsvData<CsvWorkParam>
 {
-	private static readonly string FilePath = "csv/work";
-	public void Load() { Load(FilePath); }
+	//private static readonly string FilePath = "csv/work";
+	//public void Load() { Load(FilePath); }
 }
 
 

@@ -52,7 +52,7 @@ public class CsvMonsterParam : CsvDataParam
 public class CsvMonster : CsvData<CsvMonsterParam> {
 
 	public const string FilePath = "csv/monster";
-	public void Load() {
+	public void Load2() {
 		Load (FilePath);
 	}
 
