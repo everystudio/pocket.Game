@@ -29,7 +29,7 @@ public class CtrlTabChild : ButtonBase {
 			strSpriteName += "_off";
 		}
 		strSpriteName = string.Format ("texture/ui/{0}.png", strSpriteName);
-		m_sprImage.sprite2D = SpriteManager.Instance.Load (strSpriteName);
+		m_sprImage.sprite2D = SpriteManager.Instance.LoadSprite (strSpriteName);
 		//m_uiButton.normalSprite = strSpriteName;
 		return;
 	}

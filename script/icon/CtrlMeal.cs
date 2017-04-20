@@ -20,7 +20,7 @@ public class CtrlMeal : MonoBehaviour {
 		{
 			iIndex = 0;
 		}
-		m_sprMeal.sprite2D = SpriteManager.Instance.Load(string.Format("food{0}.png", strTypeArr[iIndex]));
+		m_sprMeal.sprite2D = SpriteManager.Instance.LoadSprite(string.Format("food{0}.png", strTypeArr[iIndex]));
 
 		m_sprMeal.depth = _iDepth;
 		m_sprMeal.width = (int)m_sprMeal.sprite2D.rect.width;

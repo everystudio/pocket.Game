@@ -63,7 +63,10 @@ public class ParkMain : PageBase2 {
 	// 警告つぶしとりあえず宣言
 	protected override void initialize(){
 
-		m_sprBackground.sprite2D = SpriteManager.Instance.Load ("texture/back/bg_main.png");
+		if (m_sprBackground.sprite2D.name.Contains("bg_main") == false)
+		{
+			m_sprBackground.sprite2D = SpriteManager.Instance.LoadSprite("texture/back/bg_main.png");
+		}
 		m_eStep = STEP.SETUP_DB;
 		m_eStepPre = STEP.MAX;
 		m_footer.TriggerClearAll ();
@@ -76,7 +79,7 @@ public class ParkMain : PageBase2 {
 
 	}
 	protected override void close(){
-		m_sprBackground.sprite2D = SpriteManager.Instance.Load ("texture/back/bg_table.png");
+		m_sprBackground.sprite2D = SpriteManager.Instance.LoadSprite ("texture/back/bg_table.png");
 		AdsManager.Instance.ShowIcon ( false);
 		//Debug.LogError ("close");
 
@@ -129,7 +132,7 @@ public class ParkMain : PageBase2 {
 
 		case STEP.IDLE:
 			if (bInit) {
-				SoundManager.Instance.PlayBGM (DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_PARK)  , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				SoundManager.Instance.PlayBGM (DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_PARK)  , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm");
 				//SoundManager.Instance.PlayBgmMidi( "sound/midi/bgm" , DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_PARK) , "sound/midi/bank" , "GMBank.bank" );
 				m_eEditMode = ParkMain.EDIT_MODE.NORMAL;
 				m_footer.gameObject.SetActive (true);
@@ -144,7 +147,9 @@ public class ParkMain : PageBase2 {
 				m_parkMainController.Initialize (this);
 			}
 			if (m_parkMainController.IsEnd ()) {
-				m_eEditMode = ParkMain.EDIT_MODE.MOVE;;
+					UIAssistant.main.ShowPage("None");
+
+					m_eEditMode = ParkMain.EDIT_MODE.MOVE;;
 				m_eStep = STEP.SETTING_ITEM;
 			}
 			break;

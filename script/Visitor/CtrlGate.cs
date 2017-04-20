@@ -25,11 +25,11 @@ public class CtrlGate : Singleton<CtrlGate> {
 		m_iVisitorSerialNew = 0;
 		m_iX = _iX;
 		m_iY = _iY;
-		m_iCapacity = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL) / 2 ;
+		m_iCapacity = DataManager.Instance.user_data.ReadInt (DefineOld.USER_LEVEL) / 2 ;
 		m_eStep = STEP.IDLE;
 		bool bDispVisitor = true;
-		if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
-			if (DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
+		if (DataManager.Instance.user_data.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
+			if (DataManager.Instance.user_data.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
 				bDispVisitor = false;
 			}
 		}
@@ -75,7 +75,7 @@ public class CtrlGate : Singleton<CtrlGate> {
 						iActiveNum += 1;
 					}
 				}
-				m_iCapacity = DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL);
+				m_iCapacity = DataManager.Instance.user_data.ReadInt (DefineOld.USER_LEVEL);
 
 				if (iActiveNum < m_iCapacity) {
 					m_eStep = STEP.OUTPUT;

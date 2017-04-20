@@ -74,7 +74,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 	private void setSprite (int _iType, int _iFrame){
 		string people = string.Format ("texture/ui/people{0:D3}_{1:D2}.png", _iType, _iFrame);
 		//Debug.Log (people);
-		m_sprChara.sprite2D = SpriteManager.Instance.Load (people);
+		m_sprChara.sprite2D = SpriteManager.Instance.LoadSprite (people);
 		//Debug.Log (m_sprChara.sprite2D);
 		m_sprChara.width = (int)m_sprChara.sprite2D.textureRect.width;
 		m_sprChara.height = (int)m_sprChara.sprite2D.textureRect.height;
@@ -362,7 +362,7 @@ public class CtrlVisitor : MonoBehaviourEx {
 
 	public void TamashiiCollect(int _iTemp)
 	{
-		SoundManager.Instance.PlaySE("cursor_01", "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/5_4/se/cursor");
+		SoundManager.Instance.PlaySE("cursor_01", DataManager.Instance.SOUND_PATH);
 		  // 事情により引数は使わないです
 		DataManager.user.AddExp(m_iGetExp);
 		m_iGetExp = 0;

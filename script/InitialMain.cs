@@ -5,9 +5,8 @@ using System.Collections.Generic;
 using System;
 using EveryStudioLibrary;
 //using Prime31;
-using NendUnityPlugin.AD;
 
-public class InitialMain : MonoBehaviour {
+public class InitialMain : StartupBase {
 
 	static public bool INITIALIZE_MAIN = false;
 	public bool CONFIG_UPDATE = false;
@@ -31,7 +30,9 @@ public class InitialMain : MonoBehaviour {
 		REVIEW					,
 
 		IDLE					,
-		DB_SETUP				,
+		IDLE1,
+		IDLE2,
+		DB_SETUP,
 		INPUT_WAIT				,
 
 		DB_BACKUP_NOEXIST		,
@@ -65,11 +66,6 @@ public class InitialMain : MonoBehaviour {
 	[SerializeField]
 	private GameObject m_posDisplay;
 	#region DB関係
-	DataKvs m_dbKvs{
-		get{ 
-			return DataManager.Instance.kvs_data;
-		}
-	}
 	DataWork m_dbWork {
 		get{
 			return DataManager.Instance.dataWork;
@@ -112,7 +108,7 @@ public class InitialMain : MonoBehaviour {
 		//m_SwitchSpriteBack.SetSprite ("tutorial777");
 
 		//SoundManager.Instance.PlayBGM ("farming" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm");
-		SoundManager.Instance.PlayBGM ( "maoudamashii_5_village01" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+		SoundManager.Instance.PlayBGM ( "maoudamashii_5_village01" , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm");
 #if UNITY_ANDROID
 		/*
 		GoogleIAB.enableLogging (true);
@@ -126,30 +122,31 @@ public class InitialMain : MonoBehaviour {
 		GoogleIAB.init( key );
 				*/
 #endif
-
-		SpriteManager.Instance.LoadAtlas ("atlas/ad001");
-		SpriteManager.Instance.LoadAtlas ("atlas/back001");
-		SpriteManager.Instance.LoadAtlas ("atlas/back002");
-		SpriteManager.Instance.LoadAtlas ("atlas/item001");
-		SpriteManager.Instance.LoadAtlas ("atlas/item002");
-		SpriteManager.Instance.LoadAtlas ("atlas/item003");
-		SpriteManager.Instance.LoadAtlas ("atlas/item004");
-		SpriteManager.Instance.LoadAtlas ("atlas/item005");
-		SpriteManager.Instance.LoadAtlas ("atlas/monster001");
-		SpriteManager.Instance.LoadAtlas ("atlas/monster002");
-		SpriteManager.Instance.LoadAtlas ("atlas/staff001");
-		SpriteManager.Instance.LoadAtlas ("atlas/tutorial001");
-		SpriteManager.Instance.LoadAtlas ("atlas/tutorial002");
-		SpriteManager.Instance.LoadAtlas ("atlas/tutorial003");
-		SpriteManager.Instance.LoadAtlas ("atlas/ui001");
-		SpriteManager.Instance.LoadAtlas ("atlas/ui002");
-		SpriteManager.Instance.LoadAtlas ("atlas/ui003");
+		/*
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/ad001");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/back001");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/back002");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/item001");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/item002");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/item003");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/item004");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/item005");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/monster001");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/monster002");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/staff001");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/tutorial001");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/tutorial002");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/tutorial003");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/ui001");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/ui002");
+		SpriteManager.Instance.LoadSpriteAtlas ("atlas/ui003");
+		*/
 		//m_SwitchSpriteBack.SetSprite ("garalley_003");
-		m_SwitchSpriteBack.SetSprite ("texture/back/bg001.png");
+		//m_SwitchSpriteBack.SetSprite ("texture/back/bg001.png");
 
 		bool bDispVisitor = true;
-		if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
-			if (DataManager.Instance.data_kvs.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
+		if (DataManager.Instance.user_data.HasKey (DataManager.Instance.KEY_DISP_VISITOR)) {
+			if (DataManager.Instance.user_data.ReadInt (DataManager.Instance.KEY_DISP_VISITOR) == 0) {
 				bDispVisitor = false;
 			}
 		}
@@ -190,8 +187,6 @@ public class InitialMain : MonoBehaviour {
 		{
 			strInterstitialGameSpotid = DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_GAME_STOPID);
 		}
-		NendAdInterstitial.Instance.Load(strInterstitialStartApiKey, strInterstitialStartSpotid);
-		NendAdInterstitial.Instance.Load(strInterstitialGameApiKey, strInterstitialGameSpotid);
 	}
 
 	// Update is called once per frame
@@ -234,7 +229,7 @@ public class InitialMain : MonoBehaviour {
 				FORCE_UPDATE_SKIT = 0 < config_data.ReadInt(DataManager.Instance.KEY_SKIT_UPDATE) ? true : false;
 				FORCE_UPDATE_WORD = 0 < config_data.ReadInt(DataManager.Instance.KEY_WORD_UPDATE) ? true : false;
 
-					if( DataManager.Instance.data_kvs.HasKey("startup") == false)
+					if( DataManager.Instance.user_data.HasKey("startup") == false)
 					{
 						CONFIG_UPDATE = true;
 						FORCE_UPDATE_ITEM = true;
@@ -242,16 +237,16 @@ public class InitialMain : MonoBehaviour {
 						FORCE_UPDATE_WORK = true;
 						FORCE_UPDATE_SKIT = true;
 						FORCE_UPDATE_WORD = true;
-						DataManager.Instance.data_kvs.WriteString("startup", "startuped");
+						DataManager.Instance.user_data.WriteString("startup", "startuped");
 					}
 
 				if (CONFIG_UPDATE == true) {
 					// 毎回更新させる
 					DataManager.Instance.config.WriteInt (CsvConfig.KEY_CONFIG_VERSION, 0);
 						/*
-					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, 0);
-					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, 0);
-					DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, 0);
+					DataManager.Instance.user_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, 0);
+					DataManager.Instance.user_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, 0);
+					DataManager.Instance.user_data.WriteInt (DataManager.Instance.KEY_WORK_VERSION, 0);
 					*/
 				}
 
@@ -275,31 +270,31 @@ public class InitialMain : MonoBehaviour {
 			if (m_csLoading != null) {
 				m_csLoading.ViewPercent ("更新データ確認中", 0.0f);
 			}
-			if (false == DataManager.Instance.config.Read(FileDownloadManager.KEY_DOWNLOAD_VERSION).Equals(DataManager.Instance.kvs_data.Read(FileDownloadManager.KEY_DOWNLOAD_VERSION)))
+			if (false == DataManager.Instance.config.Read(FileDownloadManager.KEY_DOWNLOAD_VERSION).Equals(DataManager.Instance.user_data.Read(FileDownloadManager.KEY_DOWNLOAD_VERSION)))
 			{
 				m_eStep = STEP.UPDATE_DOWNLOAD;
 			}
-			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_ITEM_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_ITEM_VERSION)) || FORCE_UPDATE_ITEM)
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_ITEM_VERSION).Equals(DataManager.Instance.user_data.Read(DataManager.Instance.KEY_ITEM_VERSION)) || FORCE_UPDATE_ITEM)
 			{
 				m_eStep = STEP.UPDATE_ITEM_DATA;
 				FORCE_UPDATE_ITEM = false;
 			}
-			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_MONSTER_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_MONSTER_VERSION)) || FORCE_UPDATE_MONSTER)
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_MONSTER_VERSION).Equals(DataManager.Instance.user_data.Read(DataManager.Instance.KEY_MONSTER_VERSION)) || FORCE_UPDATE_MONSTER)
 			{
 				m_eStep = STEP.UPDATE_MONSTER_DATA;
 				FORCE_UPDATE_MONSTER = false;
 			}
-			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_WORK_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_WORK_VERSION)) || FORCE_UPDATE_WORK)
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_WORK_VERSION).Equals(DataManager.Instance.user_data.Read(DataManager.Instance.KEY_WORK_VERSION)) || FORCE_UPDATE_WORK)
 			{
 				m_eStep = STEP.UPDATE_WORK_DATA;
 				FORCE_UPDATE_WORK = false;
 			}
-			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_SKIT_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_SKIT_VERSION)) || FORCE_UPDATE_SKIT)
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_SKIT_VERSION).Equals(DataManager.Instance.user_data.Read(DataManager.Instance.KEY_SKIT_VERSION)) || FORCE_UPDATE_SKIT)
 			{
 				m_eStep = STEP.UPDATE_SKIT_DATA;
 				FORCE_UPDATE_SKIT = false;
 			}
-			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_WORD_VERSION).Equals(DataManager.Instance.kvs_data.Read(DataManager.Instance.KEY_WORD_VERSION)) || FORCE_UPDATE_WORD)
+			else if (false == DataManager.Instance.config.Read(DataManager.Instance.KEY_WORD_VERSION).Equals(DataManager.Instance.user_data.Read(DataManager.Instance.KEY_WORD_VERSION)) || FORCE_UPDATE_WORD)
 			{
 				m_eStep = STEP.UPDATE_WORD_DATA;
 				FORCE_UPDATE_WORD = false;
@@ -342,8 +337,8 @@ public class InitialMain : MonoBehaviour {
 
 			if (FileDownloadManager.Instance.IsIdle ()) {
 				m_eStep = STEP.CHECK_UPDATE;
-				DataManager.Instance.kvs_data.WriteInt (FileDownloadManager.KEY_DOWNLOAD_VERSION, DataManager.Instance.config.ReadInt (FileDownloadManager.KEY_DOWNLOAD_VERSION));
-				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+				DataManager.Instance.user_data.WriteInt (FileDownloadManager.KEY_DOWNLOAD_VERSION, DataManager.Instance.config.ReadInt (FileDownloadManager.KEY_DOWNLOAD_VERSION));
+				DataManager.Instance.user_data.Save (DataKvs.FILE_NAME);
 				DataManager.Instance.AllLoad ();
 			}
 			break;
@@ -388,8 +383,8 @@ public class InitialMain : MonoBehaviour {
 						}
 						item_master.Save(CsvItem.FilePath);
 					}
-				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_ITEM_VERSION));
-				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+				DataManager.Instance.user_data.WriteInt (DataManager.Instance.KEY_ITEM_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_ITEM_VERSION));
+				DataManager.Instance.user_data.Save (DataKvs.FILE_NAME);
 				DataManager.Instance.AllLoad ();
 				m_eStep = STEP.CHECK_UPDATE;
 			}
@@ -434,8 +429,8 @@ public class InitialMain : MonoBehaviour {
 						}
 						monster_master.Save(CsvMonster.FilePath);
 					}
-				DataManager.Instance.kvs_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_MONSTER_VERSION));
-				DataManager.Instance.kvs_data.Save (DataKvs.FILE_NAME);
+				DataManager.Instance.user_data.WriteInt (DataManager.Instance.KEY_MONSTER_VERSION, DataManager.Instance.config.ReadInt (DataManager.Instance.KEY_MONSTER_VERSION));
+				DataManager.Instance.user_data.Save (DataKvs.FILE_NAME);
 				DataManager.Instance.AllLoad ();
 				m_eStep = STEP.CHECK_UPDATE;
 			}
@@ -480,8 +475,8 @@ public class InitialMain : MonoBehaviour {
 						DataManager.Instance.dataWork.Save(DataWork.FILENAME);
 					}
 
-					DataManager.Instance.kvs_data.WriteInt(DataManager.Instance.KEY_WORK_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_WORK_VERSION));
-					DataManager.Instance.kvs_data.Save(DataKvs.FILE_NAME);
+					DataManager.Instance.user_data.WriteInt(DataManager.Instance.KEY_WORK_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_WORK_VERSION));
+					DataManager.Instance.user_data.Save(DataKvs.FILE_NAME);
 					DataManager.Instance.AllLoad();
 					m_eStep = STEP.CHECK_UPDATE;
 				}
@@ -509,8 +504,8 @@ public class InitialMain : MonoBehaviour {
 					DataManager.Instance.skitData.Input(m_ssdSample);
 					DataManager.Instance.skitData.Save(DataManager.Instance.FILENAME_SKIT_DATA);
 
-					DataManager.Instance.kvs_data.WriteInt(DataManager.Instance.KEY_SKIT_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_SKIT_VERSION));
-					DataManager.Instance.kvs_data.Save(DataKvs.FILE_NAME);
+					DataManager.Instance.user_data.WriteInt(DataManager.Instance.KEY_SKIT_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_SKIT_VERSION));
+					DataManager.Instance.user_data.Save(DataKvs.FILE_NAME);
 					DataManager.Instance.AllLoad();
 					m_eStep = STEP.CHECK_UPDATE;
 				}
@@ -537,8 +532,8 @@ public class InitialMain : MonoBehaviour {
 					DataManager.Instance.word.Input(m_ssdSample);
 					DataManager.Instance.word.Save(DataManager.Instance.FILENAME_WORD_DATA);
 
-					DataManager.Instance.kvs_data.WriteInt(DataManager.Instance.KEY_WORD_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_WORD_VERSION));
-					DataManager.Instance.kvs_data.Save(DataKvs.FILE_NAME);
+					DataManager.Instance.user_data.WriteInt(DataManager.Instance.KEY_WORD_VERSION, DataManager.Instance.config.ReadInt(DataManager.Instance.KEY_WORD_VERSION));
+					DataManager.Instance.user_data.Save(DataKvs.FILE_NAME);
 					DataManager.Instance.AllLoad();
 					m_eStep = STEP.CHECK_UPDATE;
 				}
@@ -558,12 +553,14 @@ public class InitialMain : MonoBehaviour {
 			}
 			break;
 		case STEP.SOUND_LOAD:
-			m_btnStart.gameObject.SetActive (true);
+			//m_btnStart.gameObject.SetActive (true);
 			m_eStep = STEP.IDLE;
 
-			if (ReviewManager.Instance.IsReadyReview () && 3 < DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_LEVEL)) {
+				/*
+			if (ReviewManager.Instance.IsReadyReview () && 3 < DataManager.Instance.user_data.ReadInt (DefineOld.USER_LEVEL)) {
 				m_eStep = STEP.REVIEW;
 			}
+			*/
 			break;
 
 		case STEP.REVIEW:
@@ -586,33 +583,66 @@ public class InitialMain : MonoBehaviour {
 			break;
 
 		case STEP.IDLE:
-			if (bInit) {
-				m_btnStart.TriggerClear ();
-				m_btnBackup.TriggerClear ();
-					NendAdInterstitial.Instance.Show(DataManager.Instance.config.Read(DataManager.Instance.KEY_INTERSTENTIAL_START_STOPID));
+				if (bInit)
+				{
+					AssetBundleManager.Instance.Initialize("https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/", 1);
+					StartCoroutine("assetbundleDownload");
+					m_bIsDownloadEnd = false;
 				}
-				if (m_btnStart.ButtonPushed) {
-				m_eStep = STEP.DB_SETUP;
-				SoundManager.Instance.PlaySE ("se_cleanup" , DataManager.Instance.SOUND_PATH);
 
-				GoogleAnalytics.Instance.Log ("push_start");
-
-				/*
-				PlayerPrefs.SetInt (DefineOld.USER_WIDTH, 45);
-				PlayerPrefs.SetInt (DefineOld.USER_HEIGHT, 45);
-				PlayerPrefs.Save ();
-				*/
-
-			} else if (m_btnBackup.ButtonPushed) {
-
-				string backupDB = System.IO.Path.Combine (Application.persistentDataPath, DefineOld.DB_NAME_DOUBTSUEN_BK );
-				if (System.IO.File.Exists (backupDB) == false ) {
-					m_eStep = STEP.DB_BACKUP_NOEXIST;
-				} else {
-					m_eStep = STEP.DB_BACKUP_CHECK;
+				if (m_bIsDownloadEnd)
+				{
+					m_eStep = STEP.IDLE1;
 				}
-			} else {
-			}
+				break;
+
+			case STEP.IDLE1:
+				if (bInit)
+				{
+					m_bSceneLoaded = false;
+					StartCoroutine("standbyMainScene");
+				}
+				if (m_bSceneLoaded)
+				{
+					m_eStep = STEP.IDLE2;
+				}
+				break;
+
+			case STEP.IDLE2:
+
+				if (bInit)
+				{
+					m_btnStart.gameObject.SetActive(true);
+					m_btnStart.TriggerClear();
+					m_btnBackup.TriggerClear();
+				}
+				if (m_btnStart.ButtonPushed)
+				{
+					m_eStep = STEP.DB_SETUP;
+					SoundManager.Instance.PlaySE("se_cleanup", DataManager.Instance.SOUND_PATH);
+
+					GoogleAnalytics.Instance.Log("push_start");
+
+					/*
+					PlayerPrefs.SetInt (DefineOld.USER_WIDTH, 45);
+					PlayerPrefs.SetInt (DefineOld.USER_HEIGHT, 45);
+					PlayerPrefs.Save ();
+					*/
+				}
+				else if (m_btnBackup.ButtonPushed)
+				{
+
+					string backupDB = System.IO.Path.Combine(Application.persistentDataPath, DefineOld.DB_NAME_DOUBTSUEN_BK);
+					if (System.IO.File.Exists(backupDB) == false)
+					{
+						m_eStep = STEP.DB_BACKUP_NOEXIST;
+					}
+					else {
+						m_eStep = STEP.DB_BACKUP_CHECK;
+					}
+				}
+				else {
+				}
 
 			break;
 
@@ -640,9 +670,9 @@ public class InitialMain : MonoBehaviour {
 				*/
 
 				if (DataManager.Instance.m_dataItem.list.Count == 0) {
-					DataManager.Instance.data_kvs.WriteInt (DefineOld.USER_SYAKKIN,300000000);
-					DataManager.Instance.data_kvs.WriteInt (DefineOld.USER_TICKET,5);
-					DataManager.Instance.data_kvs.WriteInt (DefineOld.USER_SYOJIKIN,10000);
+					DataManager.Instance.user_data.WriteInt (DefineOld.USER_SYAKKIN,300000000);
+					DataManager.Instance.user_data.WriteInt (DefineOld.USER_TICKET,5);
+					DataManager.Instance.user_data.WriteInt (DefineOld.USER_SYOJIKIN,10000);
 
 					DataItem initial_data_item = new DataItem ();
 					initial_data_item.Load ("csv/master/InitialDataItem");
@@ -722,29 +752,34 @@ public class InitialMain : MonoBehaviour {
 
 			break;
 
-		case STEP.INPUT_WAIT:
-			if (bInit) {
-				m_btnStart.TriggerClear ();
+			case STEP.INPUT_WAIT:
+				if (bInit)
+				{
+					m_btnStart.TriggerClear();
 				}
-				if (true) {
+				if (true)
+				{
+					// とりあえず全部調べる
+					List<DataWorkParam> cleared_work_list = m_dbWork.Select(string.Format(" status = {0} ", (int)DefineOld.Work.STATUS.CLEARD));
+					foreach (DataWorkParam work in cleared_work_list)
+					{
+						List<CsvMonsterParam> list_monster = m_dbMonsterMaster.Select(string.Format(" status = 0 and open_work_id = {0} ", work.work_id));
+						foreach (CsvMonsterParam data_monster_master in list_monster)
+						{
+							Dictionary<string, string> monster_master_dict = new Dictionary<string, string>();
+							monster_master_dict.Add("status", "1");
 
-				// とりあえず全部調べる
-				List<DataWorkParam> cleared_work_list = m_dbWork.Select ( string.Format(" status = {0} " , (int)DefineOld.Work.STATUS.CLEARD ));
-				foreach (DataWorkParam work in cleared_work_list) {
-					List<CsvMonsterParam> list_monster = m_dbMonsterMaster.Select ( string.Format(" status = 0 and open_work_id = {0} " , work.work_id ));
-					foreach (CsvMonsterParam data_monster_master in list_monster) {
-						Dictionary< string , string > monster_master_dict = new Dictionary< string , string > ();
-						monster_master_dict.Add ("status", "1");
+							m_dbMonsterMaster.Update(monster_master_dict, string.Format("monster_id = {0}", data_monster_master.monster_id));
+						}
 
-						m_dbMonsterMaster.Update (monster_master_dict , string.Format( "monster_id = {0}" , data_monster_master.monster_id ) );
 					}
+					m_btnStart.TriggerClear();
+					m_asyncMainScene.allowSceneActivation = true;
 
+					//SceneManager.LoadScene("park_main");
+					//Application.LoadLevel ("park_main");
 				}
-				m_btnStart.TriggerClear ();
-				SceneManager.LoadScene ("park_main");
-				//Application.LoadLevel ("park_main");
-			}
-			break;
+				break;
 
 		case STEP.DB_BACKUP_NOEXIST:
 			if (bInit) {
@@ -826,6 +861,85 @@ public class InitialMain : MonoBehaviour {
 		}
 	
 	}
+
+	protected override void DownloadProgress(float _fProgress, int _iFileIndex, int _iFileNum)
+	{
+		//base.DownloadProgress(_fProgress, _iFileIndex, _iFileNum);
+		m_csLoading.ViewPercent(string.Format("データチェック中：{0:0.0}%", 100.0f * _fProgress), 1.0f);
+	}
+	protected override void DownloadCompleted()
+	{
+		base.DownloadCompleted();
+		m_bIsDownloadEnd = true;
+	}
+
+	protected override void LoadSceneProgress(float _fProgress)
+	{
+		m_csLoading.ViewPercent(string.Format("データ展開中：{0:0.0}%", 100.0f * _fProgress), 1.0f);
+		//base.LoadSceneProgress(_fProgress);
+	}
+
+
+	IEnumerator assetbundleDownload()
+	{
+		yield return AssetBundleManager.Instance.DownloadAssetBundle(new string[] { "scene_main" }, ((float progress, int fileIndex, bool isComplete, string error) =>
+		{
+			// エラー処理
+			if (error != null)
+			{
+				DownloadError();
+			}
+			// 進捗処理
+			else if (isComplete)
+			{
+				DownloadCompleted();
+			}
+			else {
+				DownloadProgress(progress, fileIndex, GetLoadAssetbundleNames().Length);
+			}
+		}));
+	}
+
+
+	public IEnumerator standbyMainScene()
+	{
+		Debug.LogError("activateMainScene start");
+		yield return AssetBundleManager.Instance.LoadAssetBundle(GetSceneAssetBundleName(), ((bool isSuccess, string error) => {
+			if (isSuccess)
+			{
+				Debug.Log("ロード成功");
+			}
+			else {
+				Debug.Log("ロード失敗 : " + error);
+			}
+		}));
+		Debug.LogError("activateMainScene end");
+
+		LoadSceneStart();
+		//		yield return SceneManager.LoadSceneAsync("main");
+		m_asyncMainScene = SceneManager.LoadSceneAsync(GetNextSceneName());
+
+		m_asyncMainScene.allowSceneActivation = false;
+		while (m_asyncMainScene.progress < 0.9f)
+		{
+			LoadSceneProgress(m_asyncMainScene.progress);
+			yield return new WaitForEndOfFrame();
+		}
+		Debug.Log("Scene Loaded");
+
+		LoadSceneCompleted();
+
+		yield return new WaitForSeconds(0.5f);
+
+		m_bSceneLoaded = true;
+
+	}
+	private bool m_bIsDownloadEnd;
+	private bool m_bSceneLoaded;
+	AsyncOperation m_asyncMainScene;
+
+
+
 }
 
 

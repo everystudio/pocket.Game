@@ -31,7 +31,7 @@ public class CtrlBookMonster : CtrlMonsterDetail {
 		string strSpriteName = GetSpriteName (master_data.monster_id);
 		//UIAtlas atlas = AtlasManager.Instance.GetAtlas (strSpriteName);
 		//m_sprMonster.atlas = atlas;
-		m_sprMonster.sprite2D = SpriteManager.Instance.Load( strSpriteName );
+		m_sprMonster.sprite2D = SpriteManager.Instance.LoadSprite( strSpriteName );
 
 		m_sprMonster.width= (int)m_sprMonster.sprite2D.textureRect.width;
 		m_sprMonster.height = (int)m_sprMonster.sprite2D.textureRect.height;

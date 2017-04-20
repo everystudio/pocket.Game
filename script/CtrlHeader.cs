@@ -36,7 +36,7 @@ public class CtrlHeader : MonoBehaviour {
 		foreach (DataItem item in item_list) {
 			iUriagePerHour += item.GetUriagePerHour ();
 		}
-		DataManager.Instance.kvs_data.WriteInt (DefineOld.USER_URIAGE_PAR_HOUR, iUriagePerHour);
+		DataManager.Instance.user_data.WriteInt (DefineOld.USER_URIAGE_PAR_HOUR, iUriagePerHour);
 
 
 		// 一時間あたりの支出
@@ -44,23 +44,23 @@ public class CtrlHeader : MonoBehaviour {
 		foreach (DataItem item in item_list) {
 			iShisyutsuHour += item.GetShiSyutsuPerHour ();
 		}
-		DataManager.Instance.kvs_data.WriteInt (DefineOld.USER_SHISYUTU_PAR_HOUR, iShisyutsuHour);
+		DataManager.Instance.user_data.WriteInt (DefineOld.USER_SHISYUTU_PAR_HOUR, iShisyutsuHour);
 		*/
 
 
 		//GetUriagePerHour
 
-		m_numSyakkin.InitializeNumberOnly (DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_SYAKKIN));
-		m_numUriagePerHour.InitializeNumberOnly (DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_URIAGE_PAR_HOUR));
-		m_numShisyutsuPerHour.InitializeNumberOnly (DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_SHISYUTU_PAR_HOUR));
-		m_numShojikin.InitializeNumberOnly (DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_SYOJIKIN));
-		m_numTicket.InitializeNumberOnly (DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_TICKET));
+		m_numSyakkin.InitializeNumberOnly (DataManager.Instance.user_data.ReadInt(DefineOld.USER_SYAKKIN));
+		m_numUriagePerHour.InitializeNumberOnly (DataManager.Instance.user_data.ReadInt(DefineOld.USER_URIAGE_PAR_HOUR));
+		m_numShisyutsuPerHour.InitializeNumberOnly (DataManager.Instance.user_data.ReadInt(DefineOld.USER_SHISYUTU_PAR_HOUR));
+		m_numShojikin.InitializeNumberOnly (DataManager.Instance.user_data.ReadInt(DefineOld.USER_SYOJIKIN));
+		m_numTicket.InitializeNumberOnly (DataManager.Instance.user_data.ReadInt(DefineOld.USER_TICKET));
 
 		DataManager.user.ParamUpdate ();
 
 		/*
-		m_numLevel.InitializeNumberOnly (DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_LEVEL));
-		m_numLevelNextExp.InitializeNumberOnly (DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_NEXT_EXP));
+		m_numLevel.InitializeNumberOnly (DataManager.Instance.user_data.ReadInt(DefineOld.USER_LEVEL));
+		m_numLevelNextExp.InitializeNumberOnly (DataManager.Instance.user_data.ReadInt(DefineOld.USER_NEXT_EXP));
 		*/
 
 		m_ctrlHeaderExp = gameObject.AddComponent<CtrlHeaderExp> ();
@@ -91,22 +91,22 @@ public class CtrlHeader : MonoBehaviour {
 	public void RefleshNum(bool _bForce = false ){
 
 		if (_bForce) {
-			m_numSyakkin.ForceSet (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_SYAKKIN));
-			m_numUriagePerHour.ForceSet (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_URIAGE_PAR_HOUR));
-			m_numShisyutsuPerHour.ForceSet (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_SHISYUTU_PAR_HOUR));
-			m_numShojikin.ForceSet (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_SYOJIKIN));
-			m_numTicket.ForceSet (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_TICKET));
+			m_numSyakkin.ForceSet (DataManager.Instance.user_data.ReadInt (DefineOld.USER_SYAKKIN));
+			m_numUriagePerHour.ForceSet (DataManager.Instance.user_data.ReadInt (DefineOld.USER_URIAGE_PAR_HOUR));
+			m_numShisyutsuPerHour.ForceSet (DataManager.Instance.user_data.ReadInt (DefineOld.USER_SHISYUTU_PAR_HOUR));
+			m_numShojikin.ForceSet (DataManager.Instance.user_data.ReadInt (DefineOld.USER_SYOJIKIN));
+			m_numTicket.ForceSet (DataManager.Instance.user_data.ReadInt (DefineOld.USER_TICKET));
 		} else {
-			m_numSyakkin.Change (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_SYAKKIN));
-			m_numUriagePerHour.Change (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_URIAGE_PAR_HOUR));
-			m_numShisyutsuPerHour.Change (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_SHISYUTU_PAR_HOUR));
-			m_numShojikin.Change (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_SYOJIKIN));
-			m_numTicket.Change (DataManager.Instance.kvs_data.ReadInt (DefineOld.USER_TICKET));
+			m_numSyakkin.Change (DataManager.Instance.user_data.ReadInt (DefineOld.USER_SYAKKIN));
+			m_numUriagePerHour.Change (DataManager.Instance.user_data.ReadInt (DefineOld.USER_URIAGE_PAR_HOUR));
+			m_numShisyutsuPerHour.Change (DataManager.Instance.user_data.ReadInt (DefineOld.USER_SHISYUTU_PAR_HOUR));
+			m_numShojikin.Change (DataManager.Instance.user_data.ReadInt (DefineOld.USER_SYOJIKIN));
+			m_numTicket.Change (DataManager.Instance.user_data.ReadInt (DefineOld.USER_TICKET));
 		}
 
 		/*
-		m_numLevel.Change(DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_LEVEL));
-		m_numLevelNextExp.Change(DataManager.Instance.kvs_data.ReadInt(DefineOld.USER_NEXT_EXP));
+		m_numLevel.Change(DataManager.Instance.user_data.ReadInt(DefineOld.USER_LEVEL));
+		m_numLevelNextExp.Change(DataManager.Instance.user_data.ReadInt(DefineOld.USER_NEXT_EXP));
 		*/
 
 	}

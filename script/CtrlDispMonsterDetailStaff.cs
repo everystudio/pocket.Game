@@ -32,7 +32,7 @@ public class CtrlDispMonsterDetailStaff : MonoBehaviour {
 			string strFilename = CsvItem.GetFilename(officeParam.item_id, 1);
 			Debug.LogError(strFilename);
 			m_sprOffice.gameObject.SetActive(true);
-			m_sprOffice.sprite2D = SpriteManager.Instance.Load(strFilename);
+			m_sprOffice.sprite2D = SpriteManager.Instance.LoadSprite(strFilename);
 			m_lbSpot.gameObject.SetActive(false);
 		}
 		else

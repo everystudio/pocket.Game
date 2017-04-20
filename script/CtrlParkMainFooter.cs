@@ -45,15 +45,15 @@ public class CtrlParkMainFooter : MonoBehaviourEx {
 		switch (_iIndex)
 		{
 			case 0:
-				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_BOOK), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_BOOK), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm");
 				status = GameMain.STATUS.BOOK;
 				break;
 			case 1:
-				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_WORK), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_WORK), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm");
 				status = GameMain.STATUS.WORK;
 				break;
 			case 2:
-				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_SHOP), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				SoundManager.Instance.PlayBGM(DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_SHOP), "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm");
 				status = GameMain.STATUS.ITEM;
 				break;
 			default:
@@ -75,17 +75,17 @@ public class CtrlParkMainFooter : MonoBehaviourEx {
 			GameMain.STATUS status = GameMain.STATUS.NONE;
 			switch (m_PageButton.Index) {
 			case 0:
-				SoundManager.Instance.PlayBGM (DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_BOOK)  , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				SoundManager.Instance.PlayBGM (DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_BOOK)  , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm");
 				//SoundManager.Instance.PlayBgmMidi( "sound/midi/bgm" , DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_BOOK) , "sound/midi/bank" , "GMBank.bank" );
 				status = GameMain.STATUS.BOOK;
 				break;
 			case 1:
 				status = GameMain.STATUS.WORK;
-				SoundManager.Instance.PlayBGM ( DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_WORK)  , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				SoundManager.Instance.PlayBGM ( DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_WORK)  , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm");
 				//SoundManager.Instance.PlayBgmMidi( "sound/midi/bgm" , DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_WORK) , "sound/midi/bank" , "GMBank.bank" );
 				break;
 			case 2:
-				SoundManager.Instance.PlayBGM (DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_SHOP)  , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/bgm/maou");
+				SoundManager.Instance.PlayBGM (DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_SHOP)  , "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/bgm");
 				//SoundManager.Instance.PlayBgmMidi( "sound/midi/bgm" , DataManager.Instance.config.Read(DataManager.Instance.KEY_BGM_SHOP) , "sound/midi/bank" , "GMBank.bank" );
 				status = GameMain.STATUS.ITEM;
 				break;

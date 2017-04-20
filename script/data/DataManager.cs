@@ -5,7 +5,13 @@ using System.IO;
 
 public class DataManager : DataManagerBase <DataManager>{
 
-	public readonly string SOUND_PATH = "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/sound/5_4/pocket/se";
+	public string SOUND_PATH 
+	{
+		get
+		{
+			return "https://s3-ap-northeast-1.amazonaws.com/every-studio/app/pocket/kimodameshi/ver02/AssetBundles/" + AssetBundles.Utility.GetPlatformName() + "/assets/assetbundles/se";
+		}
+	}
 
 
 	public readonly string SPREAD_SHEET = "1mwbjeoyZkCs0k0XAOny_gFNJxormS0xoKO1IOPbEOLQ";
@@ -244,7 +250,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 
 	public void AllLoad(){
 		config.Load (CsvConfig.FILE_NAME);
-		kvs_data.Load( DataKvs.FILE_NAME );
+		user_data.Load( DataKvs.FILE_NAME );
 		m_csvItem.Load ();
 		m_csvMonster.Load ();
 		dataMonster.Load (DataMonster.FILENAME);
@@ -316,7 +322,7 @@ insert into new_table (test_key,test_value) values ('insert_key' , 'insert_value
 		return new CsvItemParam ();
 	}
 
-	public CsvSkit skitData = new CsvSkit();
+	public CsvSkit_v1_0 skitData = new CsvSkit_v1_0();
 
 	public CsvConfig word = new CsvConfig();
 	public string getWord( string _strKey)

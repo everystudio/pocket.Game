@@ -76,7 +76,11 @@ public class AdsManager : Singleton<AdsManager> {
 		{
 			BannerView bannerView1 = new BannerView(adUnitId1, AdSize.Banner, AdPosition.BottomLeft);
 			// Create an empty ad request.
-			AdRequest request1 = new AdRequest.Builder().Build();
+			AdRequest request1 = new AdRequest.Builder()
+				.AddTestDevice("B58A62380C00BF9DC7BA75C756B5F550")
+				.AddTestDevice("30ec665ef7c68238905003e951174579")
+				.Build();
+
 			// Load the banner with the request.
 			bannerView1.LoadAd(request1);
 			m_nendAdBanner = bannerView1;
@@ -184,8 +188,8 @@ public class AdsManager : Singleton<AdsManager> {
 		interstitial = new InterstitialAd(adUnitId);
 		// Create an empty ad request.
 		AdRequest request = new AdRequest.Builder()
-			.AddTestDevice(AdRequest.TestDeviceSimulator)       // Simulator.
-				.AddTestDevice("0123456789ABCDEF0123456789ABCDEF")
+				.AddTestDevice("B58A62380C00BF9DC7BA75C756B5F550")
+				.AddTestDevice("30ec665ef7c68238905003e951174579")
 				.Build();
 
 		// Load the interstitial with the request.

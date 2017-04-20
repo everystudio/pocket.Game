@@ -66,9 +66,9 @@ public class BannerScrollSwitch : ButtonManager {
 		}
 
 		//Debug.Log (strLeft + " : " + strRight);
-		m_sprLeft.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/ui/{0}.png" , strLeft));;
+		m_sprLeft.sprite2D = SpriteManager.Instance.LoadSprite( string.Format( "texture/ui/{0}.png" , strLeft));;
 		m_btnLeft.normalSprite = strLeft;
-		m_sprRight.sprite2D = SpriteManager.Instance.Load( string.Format( "texture/ui/{0}.png" , strRight));;
+		m_sprRight.sprite2D = SpriteManager.Instance.LoadSprite( string.Format( "texture/ui/{0}.png" , strRight));;
 		m_btnRight.normalSprite = strRight;
 		m_iSelectingIndex = _iIndex;
 		return;

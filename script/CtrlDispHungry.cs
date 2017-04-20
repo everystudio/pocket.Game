@@ -9,7 +9,7 @@ public class CtrlDispHungry : MonoBehaviour {
 	public void Set( float _iMealLevel ){
 		for (int i = 0; i < m_sprTripeArr.Length; i++) {
 			if ( _iMealLevel < (i + 1) ) {
-				m_sprTripeArr [i].sprite2D = SpriteManager.Instance.Load( string.Format( "texture/ui/{0}.png" , "icon_manpuku3"));
+				m_sprTripeArr [i].sprite2D = SpriteManager.Instance.LoadSprite( string.Format( "texture/ui/{0}.png" , "icon_manpuku3"));
 			}
 		}
 	}

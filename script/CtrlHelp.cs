@@ -41,15 +41,13 @@ public class CtrlHelp : ButtonBase {
 	private bool IsAppear(){
 		bool bRet = false;
 
-		/*
 		// そもそもこれが出来てないなら出来ません
 		if (UnityAdsSupporter.Instance.IsReady () == false ) {
 			return false;
 		}
-		*/
 
 
-		string strTime = DataManager.Instance.data_kvs.Read (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME);
+		string strTime = DataManager.Instance.user_data.Read (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME);
 		TimeSpan time_span = TimeManager.Instance.GetDiff (strTime, TimeManager.StrGetTime ());
 		/*
 		Debug.Log (60 * 60);
@@ -65,8 +63,8 @@ public class CtrlHelp : ButtonBase {
 	// Use this for initialization
 	void Start () {
 		m_sprImage.gameObject.SetActive (false);
-		if (DataManager.Instance.data_kvs.HasKey (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME) == false ) {
-			DataManager.Instance.data_kvs.Write (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME, TimeManager.StrGetTime (-1*60*50));
+		if (DataManager.Instance.user_data.HasKey (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME) == false ) {
+			DataManager.Instance.user_data.Write (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME, TimeManager.StrGetTime (-1*60*50));
 		}
 
 		if (IsAppear ()) {
@@ -103,7 +101,7 @@ public class CtrlHelp : ButtonBase {
 			if (bInit) {
 				m_sprImage.gameObject.SetActive (true);
 				TriggerClear ();
-
+					m_eActionType = ACTION_TYPE.MOVIE;
 				if (m_eActionType== ACTION_TYPE.NONE) {
 					m_eActionType = DataManager.Instance.GetHelpActionType ();
 				}
@@ -184,7 +182,7 @@ public class CtrlHelp : ButtonBase {
 					m_eStep = STEP.RESULT_FAIL;
 					break;
 				}
-				DataManager.Instance.data_kvs.Write (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME, TimeManager.StrGetTime ());
+				DataManager.Instance.user_data.Write (DataManager.Instance.KEY_UNITYADS_LASTPLAY_TIME, TimeManager.StrGetTime ());
 			}
 			break;
 

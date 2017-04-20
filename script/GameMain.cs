@@ -195,11 +195,11 @@ public class GameMain : MonoBehaviour {
 		m_iMoveTab = 0;
 
 		string strUnityAdsAppId = "";
-		#if UNITY_ANDROID
-		strUnityAdsAppId = DataManager.Instance.config.Read( DataManager.Instance.KEY_UNITYADS_APP_ID_ANDROID );
-		#elif UNITY_IOS
-		strUnityAdsAppId = DataManager.Instance.config.Read( DataManager.Instance.KEY_UNITYADS_APP_ID_IOS );
-		#endif
+#if UNITY_ANDROID
+		strUnityAdsAppId = "1149460";// DataManager.Instance.config.Read( DataManager.Instance.KEY_UNITYADS_APP_ID_ANDROID );
+#elif UNITY_IOS
+		strUnityAdsAppId = "1149459";//strUnityAdsAppId = DataManager.Instance.config.Read( DataManager.Instance.KEY_UNITYADS_APP_ID_IOS );
+#endif
 		UnityAdsSupporter.Instance.Initialize (strUnityAdsAppId);
 
 		if (m_bInitialized == false) {
@@ -472,14 +472,14 @@ public class GameMain : MonoBehaviour {
 		foreach (DataItemParam item in item_list) {
 			iUriagePerHour += item.GetUriagePerHour ();
 		}
-		DataManager.Instance.kvs_data.WriteInt (DefineOld.USER_URIAGE_PAR_HOUR, iUriagePerHour);
+		DataManager.Instance.user_data.WriteInt (DefineOld.USER_URIAGE_PAR_HOUR, iUriagePerHour);
 
 		// 一時間あたりの支出
 		int iShisyutsuHour = 0;
 		foreach (DataItemParam item in item_list) {
 			iShisyutsuHour += item.GetShiSyutsuPerHour ();
 		}
-		DataManager.Instance.kvs_data.WriteInt (DefineOld.USER_SHISYUTU_PAR_HOUR, iShisyutsuHour);
+		DataManager.Instance.user_data.WriteInt (DefineOld.USER_SHISYUTU_PAR_HOUR, iShisyutsuHour);
 
 		m_header.RefleshNum (_bForce);
 	}

@@ -72,9 +72,12 @@ public class ParkMainIdle : ParkMainController
 				m_fLongTapTime = 0.0f;
 				m_bLongTapCheck = false;
 				GameMain.Instance.BuildingSerial = 0;
-			}
 
-			if (0 < GameMain.Instance.SwitchItemSerial) {
+					UIAssistant.main.ShowPage("MainMenu");
+
+				}
+
+				if (0 < GameMain.Instance.SwitchItemSerial) {
 				int iSelectSerial = GameMain.Instance.SwitchItemSerial;
 				GameMain.Instance.m_iSettingItemSerial = iSelectSerial;
 				GameMain.Instance.SwitchItemSerial = 0;
@@ -146,6 +149,8 @@ public class ParkMainIdle : ParkMainController
 									m_eStep = STEP.SPEED_BUILD_CHECK;
 								}
 								else {
+									UIAssistant.main.ShowPage("None");
+
 									GameMain.Instance.SetStatus(GameMain.STATUS.CAGE_DETAIL);
 								}
 
@@ -160,6 +165,8 @@ public class ParkMainIdle : ParkMainController
 									m_eStep = STEP.SPEED_BUILD_CHECK;
 								}
 								else {
+									UIAssistant.main.ShowPage("None");
+
 									GameMain.Instance.SetStatus(GameMain.STATUS.OFFICE_DETAIL);
 								}
 							}
@@ -273,7 +280,9 @@ public class ParkMainIdle : ParkMainController
 
 		case STEP.SHOP:
 			if (bInit) {
-				GameObject objShopDetail = PrefabManager.Instance.MakeObject ("prefab/PrefShopDetail", GameMain.PanelFront);
+					UIAssistant.main.ShowPage("None");
+
+					GameObject objShopDetail = PrefabManager.Instance.MakeObject ("prefab/PrefShopDetail", GameMain.PanelFront);
 				m_ctrlShopDetail = objShopDetail.GetComponent<CtrlShopDetail> ();
 				m_ctrlShopDetail.Init (m_selectItem , m_parkMain.m_csParkRoot );
 				//m_selectItem;
